@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9B81EA3A5E3007D006D /* MapViewController.swift */; };
 		EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */; };
-		EBA372FB1EA3A0CC00E214DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA372FA1EA3A0CC00E214DD /* ViewController.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
+		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
+		2493F9B81EA3A5E3007D006D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBA372FA1EA3A0CC00E214DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA373041EA3A0CC00E214DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45F125794AA96C2A4D3B6D5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		680088FA8F458C29EE8BAF70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */,
+				FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EBA372EC1EA3A0CC00E214DD = {
 			isa = PBXGroup;
 			children = (
 				EBA372F71EA3A0CC00E214DD /* velib-map */,
 				EBA372F61EA3A0CC00E214DD /* Products */,
+				680088FA8F458C29EE8BAF70 /* Pods */,
+				45F125794AA96C2A4D3B6D5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
-				EBA372FA1EA3A0CC00E214DD /* ViewController.swift */,
+				2493F9B81EA3A5E3007D006D /* MapViewController.swift */,
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA373071EA3A0CC00E214DD /* Build configuration list for PBXNativeTarget "velib-map" */;
 			buildPhases = (
+				AAD3180426B869ED8A3F3B13 /* [CP] Check Pods Manifest.lock */,
 				EBA372F11EA3A0CC00E214DD /* Sources */,
 				EBA372F21EA3A0CC00E214DD /* Frameworks */,
 				EBA372F31EA3A0CC00E214DD /* Resources */,
+				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
+				D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,13 +159,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAD3180426B869ED8A3F3B13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBA372F11EA3A0CC00E214DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBA372FB1EA3A0CC00E214DD /* ViewController.swift in Sources */,
 				EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */,
+				2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +334,7 @@
 		};
 		EBA373081EA3A0CC00E214DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XDX42S5M9N;
@@ -272,6 +348,7 @@
 		};
 		EBA373091EA3A0CC00E214DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XDX42S5M9N;
@@ -302,6 +379,7 @@
 				EBA373091EA3A0CC00E214DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
