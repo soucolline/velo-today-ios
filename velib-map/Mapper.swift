@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreLocation
 
 class Mapper {
   
@@ -26,6 +27,9 @@ class Mapper {
     station.availableBikeStands = newsJSON["available_bike_stands"].intValue
     station.availableBikes = newsJSON["available_bikes"].intValue
     station.lastUpdate = newsJSON["last_update"].intValue
+    station.coordinate = CLLocationCoordinate2D(latitude: station.lat, longitude: station.lng)
+    station.title = station.name
+    station.subtitle = station.address
     
     return station
   }

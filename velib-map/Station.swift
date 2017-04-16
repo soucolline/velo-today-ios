@@ -8,14 +8,15 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
-class Station {
+class Station: NSObject, MKAnnotation {
   
   var number: Int?
   var name: String?
   var address: String?
-  var lat: Double?
-  var lng: Double?
+  var lat: Double = 0.0
+  var lng: Double = 0.0
   var banking: Bool?
   var bonus: Bool?
   var status: String?
@@ -24,6 +25,10 @@ class Station {
   var availableBikes: Int?
   var lastUpdate: Int?
   
+  var title: String?
+  var subtitle: String?
+  var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+  
   lazy var lastUpdateDate: Date? = {
     if let lastUpdate = self.lastUpdate {
       let timeInterval = TimeInterval(exactly: lastUpdate / 1000)
@@ -31,15 +36,6 @@ class Station {
       return date
     }
     return nil
-  }()
-  
-  lazy var location: CLLocationCoordinate2D? = {
-    guard let latitude = self.lat, let longitude = self.lng else {
-      return nil
-    }
-    
-    let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: latitude)!, longitude: CLLocationDegrees(exactly: longitude)!)
-    return loc
   }()
   
 }
