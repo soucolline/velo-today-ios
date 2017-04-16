@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246767B11EA3B1AE00EDE358 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246767B01EA3B1AE00EDE358 /* Station.swift */; };
 		2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9B81EA3A5E3007D006D /* MapViewController.swift */; };
 		2493F9BC1EA3A657007D006D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9BB1EA3A657007D006D /* Api.swift */; };
 		2493F9BE1EA3A6FC007D006D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9BD1EA3A6FC007D006D /* City.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
+		246767B01EA3B1AE00EDE358 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		2493F9B81EA3A5E3007D006D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2493F9BB1EA3A657007D006D /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		2493F9BD1EA3A6FC007D006D /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			children = (
 				2493F9BB1EA3A657007D006D /* Api.swift */,
 				2493F9BD1EA3A6FC007D006D /* City.swift */,
+				246767B01EA3B1AE00EDE358 /* Station.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,
+				246767B11EA3B1AE00EDE358 /* Station.swift in Sources */,
 				EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */,
 				2493F9BE1EA3A6FC007D006D /* City.swift in Sources */,
 				2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */,
