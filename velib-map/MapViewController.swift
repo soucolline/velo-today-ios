@@ -43,7 +43,7 @@ class MapViewController: UIViewController {
   }
   
   func centerMapOnLocation(location: CLLocation) {
-    let regionRadius: CLLocationDistance = 4000
+    let regionRadius: CLLocationDistance = 1000
     let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                               regionRadius * 2.0, regionRadius * 2.0)
     self.mapView.setRegion(coordinateRegion, animated: true)
@@ -57,16 +57,18 @@ extension MapViewController: MKMapViewDelegate {
       else { return nil }
     
     let identifier = "velibPin"
-    let view: MKPinAnnotationView
-    if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+    let pin: MKAnnotationView
+    let imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
+    if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
       deqeuedView.annotation = annotation
-      view = deqeuedView
+      pin = deqeuedView
     } else {
-      view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-      view.canShowCallout = true
-      view.calloutOffset = CGPoint(x: -5, y: 5)
+      pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      pin.canShowCallout = true
     }
     
-    return view
+    pin.image = UIImage(named: imageName)
+    
+    return pin
   }
 }
