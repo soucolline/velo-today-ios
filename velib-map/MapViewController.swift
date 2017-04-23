@@ -59,6 +59,16 @@ extension MapViewController: MKMapViewDelegate {
     let identifier = "velibPin"
     let pin: MKAnnotationView
     let imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
+    var imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
+    
+    if let bikes = annotation.availableBikes {
+      imageName = "pin-\(bikes)"
+    }
+    
+    if annotation.status! == "CLOSED" {
+      imageName = "pin-red"
+    }
+    
     if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
       deqeuedView.annotation = annotation
       pin = deqeuedView
