@@ -10,6 +10,7 @@ import UIKit
 import Just
 import SwiftyJSON
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
   
@@ -17,25 +18,31 @@ class MapViewController: UIViewController {
   
   var stations = [Station]()
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
+  let locationManager = CLLocationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.mapView.delegate = self
+    self.locationManager.delegate = self
+    self.locationManager.requestWhenInUseAuthorization()
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+    self.locationManager.requestLocation()
     
+    self.fetchPins()
+    self.showPins()
+  }
+  
+  func fetchPins() {
     let response = Just.get(Api.stationFrom(.paris).url)
     if response.ok {
       let responseJSON = JSON(response.json as Any)
-      
       let _ = responseJSON.map{ $0.1 }.map {
         let station = Mapper.mapStations(newsJSON: $0)
         self.stations.append(station)
       }
-      self.centerMapOnLocation(location: self.initialLocation)
-      self.showPins()
     } else {
       print("Something bad happened ==> \(String(describing: response.error?.localizedDescription))")
     }
-    
   }
   
   func showPins() {
@@ -58,7 +65,6 @@ extension MapViewController: MKMapViewDelegate {
     
     let identifier = "velibPin"
     let pin: MKAnnotationView
-    let imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
     var imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
     
     if let bikes = annotation.availableBikes {
@@ -80,5 +86,20 @@ extension MapViewController: MKMapViewDelegate {
     pin.image = UIImage(named: imageName)
     
     return pin
+  }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let location = manager.location
+      else { return }
+    
+    self.centerMapOnLocation(location: location)
+    self.locationManager.stopUpdatingLocation()
+    self.locationManager.delegate = nil
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    self.centerMapOnLocation(location: self.initialLocation)
   }
 }
