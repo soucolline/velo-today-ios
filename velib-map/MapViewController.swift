@@ -22,6 +22,10 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = "Velibs"
+    self.navigationController?.navigationBar.barTintColor = UIColor.orange
+    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    
     self.mapView.delegate = self
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
