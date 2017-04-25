@@ -9,12 +9,23 @@
 import UIKit
 import Just
 import SwiftyJSON
+import MBProgressHUD
 import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var reloadBtn: UIBarButtonItem! {
+    didSet {
+      let icon = UIImage(named: "reload")
+      let iconSize = CGRect(origin: CGPoint(x: 0,y :0), size: icon!.size)
+      let iconButton = UIButton(frame: iconSize)
+      iconButton.setBackgroundImage(icon, for: .normal)
+      iconButton.setBackgroundImage(icon, for: .highlighted)
+      reloadBtn.customView = iconButton
+    }
+  }
   
   var stations = [Station]()
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
@@ -26,14 +37,16 @@ class MapViewController: UIViewController {
     self.navigationController?.navigationBar.barTintColor = UIColor.orange
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     
+    let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
+    self.reloadBtn.customView?.addGestureRecognizer(tap)
+    
     self.mapView.delegate = self
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     self.locationManager.requestLocation()
     
-    self.fetchPins()
-    self.showPins()
+    self.reloadPins()
   }
   
   func fetchPins() {
@@ -45,7 +58,7 @@ class MapViewController: UIViewController {
         self.stations.append(station)
       }
     } else {
-      print("Something bad happened ==> \(String(describing: response.error?.localizedDescription))")
+      self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
     }
   }
   
@@ -60,6 +73,23 @@ class MapViewController: UIViewController {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
+  func reloadPins() {
+    let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
+    loader.label.text = "Downloading pins"
+    
+    self.mapView.removeAnnotations(self.stations)
+    self.stations.removeAll()
+    self.fetchPins()
+    self.showPins()
+    UIView.animate(withDuration: 0.5, animations: { () -> Void in
+      self.reloadBtn.customView?.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+    })
+    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { () -> Void in
+      self.reloadBtn.customView?.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
+    })
+    MBProgressHUD.hide(for: self.view, animated: true)
+  }
+  
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -69,7 +99,7 @@ extension MapViewController: MKMapViewDelegate {
     
     let identifier = "velibPin"
     let pin: MKAnnotationView
-    var imageName = annotation.availableBikes! > 0 ? "pin-green" : "pin-red"
+    var imageName = ""
     
     if let bikes = annotation.availableBikes {
       imageName = "pin-\(bikes)"

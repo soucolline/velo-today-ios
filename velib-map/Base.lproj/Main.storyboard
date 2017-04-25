@@ -33,9 +33,14 @@
                             <constraint firstItem="qbS-2h-9FH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="twq-ig-b3F"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="AA4-nU-0xW"/>
+                    <navigationItem key="navigationItem" id="AA4-nU-0xW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="g4T-Q7-NIL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="qbS-2h-9FH" id="4xv-3N-tAn"/>
+                        <outlet property="reloadBtn" destination="g4T-Q7-NIL" id="VrB-Si-PgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
