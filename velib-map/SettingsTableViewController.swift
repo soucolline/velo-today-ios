@@ -10,22 +10,31 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
   
+  let defaults = UserDefaults.standard
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.removeAllAccessoryType(tableview: self.tableView)
+    self.removeAllAccessoryType(tableview: self.tableView, inSection: 0)
     let cell = self.tableView.cellForRow(at: indexPath)
     cell?.accessoryType = cell?.accessoryType == .checkmark ? .none : .checkmark
-    cell?.selectionStyle = .none
+    self.changeMapStyle(style: cell?.reuseIdentifier)
   }
   
-  func removeAllAccessoryType(tableview: UITableView) {
-    for row in 0..<tableview.numberOfRows(inSection: 0) {
-      let indexPath = IndexPath(row: row, section: 0)
+  func removeAllAccessoryType(tableview: UITableView, inSection section: Int) {
+    for row in 0..<tableview.numberOfRows(inSection: section) {
+      let indexPath = IndexPath(row: row, section: section)
       let cell = tableview.cellForRow(at: indexPath)
       cell?.accessoryType = .none
     }
+  }
+  
+  func changeMapStyle(style: String?) {
+    guard let style = style, style != ""
+      else { return }
+    
+    self.defaults.set(style, forKey: "mapStyle")
   }
 }

@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="2774" y="416"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="Y0Z-zv-qlo">
             <objects>
                 <tableViewController id="4h1-KM-J9K" customClass="SettingsTableViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                         <sections>
                             <tableViewSection headerTitle="Map style" id="Kpi-0R-04e">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalStyle" textLabel="AH3-lT-ltR" style="IBUITableViewCellStyleDefault" id="unE-IW-0Yx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="normalStyle" textLabel="AH3-lT-ltR" style="IBUITableViewCellStyleDefault" id="unE-IW-0Yx">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="unE-IW-0Yx" id="ssi-Mc-4Ea">
@@ -91,7 +91,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hybridStyle" textLabel="Dfi-od-gVT" style="IBUITableViewCellStyleDefault" id="mqc-cu-EPJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="hybridStyle" textLabel="Dfi-od-gVT" style="IBUITableViewCellStyleDefault" id="mqc-cu-EPJ">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mqc-cu-EPJ" id="sMy-1e-TEk">
@@ -108,7 +108,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="satelliteStyle" textLabel="K8e-C6-m52" style="IBUITableViewCellStyleDefault" id="ydC-Sg-4Fw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="satelliteStyle" textLabel="K8e-C6-m52" style="IBUITableViewCellStyleDefault" id="ydC-Sg-4Fw">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ydC-Sg-4Fw" id="IAd-pA-grR">
@@ -133,7 +133,7 @@
                             <outlet property="delegate" destination="4h1-KM-J9K" id="gmt-lh-dPA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="xhN-7H-ozc"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xhN-7H-ozc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5z7-n8-CGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,5 +161,6 @@
     </scenes>
     <resources>
         <image name="bike" width="25" height="15"/>
+        <image name="settings" width="20" height="20"/>
     </resources>
 </document>

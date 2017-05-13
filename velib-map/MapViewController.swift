@@ -49,6 +49,11 @@ class MapViewController: UIViewController {
     self.reloadPins()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.setMapStyle()
+  }
+  
   func fetchPins() {
     let response = Just.get(Api.stationFrom(.paris).url)
     if response.ok {
@@ -64,6 +69,23 @@ class MapViewController: UIViewController {
   
   func showPins() {
     let _ = self.stations.map{ self.mapView.addAnnotation($0) }
+  }
+  
+  func setMapStyle() {
+    let defaults = UserDefaults.standard
+    guard let mapStyle = defaults.value(forKey: "mapStyle") as? String
+      else { return }
+    
+    switch mapStyle {
+      case "normalStyle":
+        self.mapView.mapType = .standard
+      case "hybridStyle":
+        self.mapView.mapType = .hybrid
+      case "satelliteStyle":
+        self.mapView.mapType = .satellite
+      default:
+        self.mapView.mapType = .standard
+    }
   }
   
   func centerMapOnLocation(location: CLLocation) {
