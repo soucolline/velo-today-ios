@@ -57,12 +57,28 @@
                     <view key="view" contentMode="scaleToFill" id="nGh-IS-9Yf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-7Y-AX6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="304"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304" id="ich-bU-x56"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ltf-7Y-AX6" secondAttribute="trailing" id="ROx-md-GZs"/>
+                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="leading" secondItem="nGh-IS-9Yf" secondAttribute="leading" id="WKz-F1-j5M"/>
+                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="top" secondItem="1kv-Yx-R4e" secondAttribute="bottom" id="kgl-de-mtX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Ltf-7Y-AX6" id="3ya-Tj-t8o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNR-Bm-3ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5566" y="89"/>
+            <point key="canvasLocation" x="5565.6000000000004" y="88.605697151424295"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1Yc-PY-zUS">
