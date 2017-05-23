@@ -28,8 +28,11 @@ class Mapper {
     station.availableBikes = newsJSON["available_bikes"].intValue
     station.lastUpdate = newsJSON["last_update"].intValue
     station.coordinate = CLLocationCoordinate2D(latitude: station.lat, longitude: station.lng)
-    station.title = station.name
-    station.subtitle = station.address
+    station.title = station.name?.components(separatedBy: " - ").last
+    
+    if let bikes = station.availableBikes, let stands = station.availableBikeStands {
+      station.subtitle = "\(bikes) vélos - \(stands) places"
+    }
     
     return station
   }
