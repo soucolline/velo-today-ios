@@ -39,11 +39,30 @@
                     <connections>
                         <outlet property="mapView" destination="8Ck-SF-jqR" id="BQq-zd-ieX"/>
                         <outlet property="reloadBtn" destination="Ozc-4H-D5D" id="AUS-xH-Rfa"/>
+                        <segue destination="WZn-vt-Mh5" kind="show" identifier="detailStationSegue" id="upS-kF-3C3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yX-qc-Zfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4664.8000000000002" y="88.605697151424295"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Fhb-ua-YyG">
+            <objects>
+                <viewController id="WZn-vt-Mh5" customClass="DetailViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1kv-Yx-R4e"/>
+                        <viewControllerLayoutGuide type="bottom" id="d4W-uF-HU8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nGh-IS-9Yf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNR-Bm-3ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5566" y="89"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1Yc-PY-zUS">
