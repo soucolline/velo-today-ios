@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var stackViewBtns: UIStackView!
   @IBOutlet weak var bikesLabel: UILabel!
   @IBOutlet weak var standsLabel: UILabel!
+  @IBOutlet weak var lastUpdateLabel: UILabel!
   
   var currentStation: Station?
   
@@ -56,6 +57,16 @@ class DetailViewController: UIViewController {
       self.bikesLabel.text = "\(bikes) vélos disponibles"
       self.standsLabel.text = "\(stands) stands disponibles"
     }
+    
+    if let lastUpdate = self.currentStation?.lastUpdate {
+      let date = Date(timeIntervalSince1970: TimeInterval(lastUpdate / 1000))
+      let formatter = DateFormatter()
+      formatter.timeZone = TimeZone.current
+      formatter.locale = Locale.current
+      formatter.dateFormat =  "yyyy-MM-dd' à 'HH:mm"
+      self.lastUpdateLabel.text = "Mis à jour le \(formatter.string(from: date))"
+    }
+    
   }
   
 }
