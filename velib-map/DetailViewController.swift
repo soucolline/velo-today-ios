@@ -13,11 +13,15 @@ import CoreLocation
 class DetailViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var stackViewBtns: UIStackView!
+  @IBOutlet weak var bikesLabel: UILabel!
+  @IBOutlet weak var standsLabel: UILabel!
   
   var currentStation: Station?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     let screenHeight = UIScreen.main.bounds.height
     self.mapView.frame.size.height = screenHeight / 2
     self.mapView.delegate = self
@@ -31,6 +35,8 @@ class DetailViewController: UIViewController {
       self.centerMapOnLocation(location: coordinates)
     }
     
+    self.setupBtns()
+    
   }
   
   func centerMapOnLocation(location: CLLocation) {
@@ -38,6 +44,18 @@ class DetailViewController: UIViewController {
     let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                               regionRadius * 2.0, regionRadius * 2.0)
     self.mapView.setRegion(coordinateRegion, animated: true)
+  }
+  
+  func setupBtns() {
+    let _  = self.stackViewBtns.arrangedSubviews.map {
+      $0.clipsToBounds = true
+      $0.layer.cornerRadius = 5.0
+    }
+    
+    if let bikes = self.currentStation?.availableBikes, let stands = self.currentStation?.availableBikeStands {
+      self.bikesLabel.text = "\(bikes) vélos disponibles"
+      self.standsLabel.text = "\(stands) stands disponibles"
+    }
   }
   
 }
