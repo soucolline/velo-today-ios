@@ -9,5 +9,6 @@ target 'velib-map' do
   pod 'Just'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'CoreStore', '~> 4.0'
 
 end
