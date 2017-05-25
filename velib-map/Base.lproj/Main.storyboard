@@ -124,6 +124,9 @@
                                 <state key="normal" title="Ajouter aux favoris">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="toggleFavorite:" destination="WZn-vt-Mh5" eventType="touchUpInside" id="KNE-ag-uMY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +145,7 @@
                     </view>
                     <connections>
                         <outlet property="bikesLabel" destination="kjU-H7-SdD" id="Ykz-Hw-XGE"/>
+                        <outlet property="favBtn" destination="h56-CB-O4L" id="bYo-Y8-2Nb"/>
                         <outlet property="lastUpdateLabel" destination="Ucu-K4-A1h" id="Fwe-zE-djb"/>
                         <outlet property="mapView" destination="Ltf-7Y-AX6" id="3ya-Tj-t8o"/>
                         <outlet property="stackViewBtns" destination="jEj-Py-zBB" id="JTL-Gx-fTE"/>
