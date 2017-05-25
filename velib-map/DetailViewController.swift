@@ -58,13 +58,12 @@ class DetailViewController: UIViewController {
       self.standsLabel.text = "\(stands) stands disponibles"
     }
     
-    if let lastUpdate = self.currentStation?.lastUpdate {
-      let date = Date(timeIntervalSince1970: TimeInterval(lastUpdate / 1000))
+    if let lastUpdate = self.currentStation?.lastUpdateDate {
       let formatter = DateFormatter()
       formatter.timeZone = TimeZone.current
       formatter.locale = Locale.current
       formatter.dateFormat =  "yyyy-MM-dd' à 'HH:mm"
-      self.lastUpdateLabel.text = "Mis à jour le \(formatter.string(from: date))"
+      self.lastUpdateLabel.text = "Mis à jour le \(formatter.string(from: lastUpdate))"
     }
     
   }
