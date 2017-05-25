@@ -18,6 +18,7 @@
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 		EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3FD691EAE0A82001E184E /* PopupManager.swift */; };
 		EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */; };
+		EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		EBA373041EA3A0CC00E214DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBA3FD691EAE0A82001E184E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
 		EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				2493F9BA1EA3A64B007D006D /* models */,
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
 				2493F9B81EA3A5E3007D006D /* MapViewController.swift */,
+				EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */,
 				EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */,
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */,
 				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,
 				EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */,
 				246767B11EA3B1AE00EDE358 /* Station.swift in Sources */,

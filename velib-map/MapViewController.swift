@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
   }
   
   var stations = [Station]()
+  var currentStation: Station?
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
@@ -112,6 +113,13 @@ class MapViewController: UIViewController {
     MBProgressHUD.hide(for: self.view, animated: true)
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "detailStationSegue" {
+      let vc = segue.destination as? DetailViewController
+      vc?.currentStation = self.currentStation
+    }
+  }
+  
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -137,11 +145,18 @@ extension MapViewController: MKMapViewDelegate {
     } else {
       pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       pin.canShowCallout = true
+      pin.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
     }
     
     pin.image = UIImage(named: imageName)
     
     return pin
+  }
+  
+  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    let station = view.annotation as? Station
+    self.currentStation = station
+    self.performSegue(withIdentifier: "detailStationSegue", sender: self)
   }
 }
 
