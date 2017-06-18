@@ -168,14 +168,14 @@
                     <connections>
                         <segue destination="sAC-Tf-b3N" kind="relationship" relationship="viewControllers" id="HMc-2A-Oh1"/>
                         <segue destination="mVJ-ga-Zlw" kind="relationship" relationship="viewControllers" id="mlP-V4-89H"/>
-                        <segue destination="4h1-KM-J9K" kind="relationship" relationship="viewControllers" id="0Q6-pF-gyC"/>
+                        <segue destination="0oQ-p4-4Mc" kind="relationship" relationship="viewControllers" id="0Q6-pF-gyC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKs-C6-4fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2727" y="655"/>
         </scene>
-        <!--Settings-->
+        <!--Settings Table View Controller-->
         <scene sceneID="Y0Z-zv-qlo">
             <objects>
                 <tableViewController id="4h1-KM-J9K" customClass="SettingsTableViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,11 +245,11 @@
                             <outlet property="delegate" destination="4h1-KM-J9K" id="gmt-lh-dPA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xhN-7H-ozc"/>
+                    <navigationItem key="navigationItem" id="nvE-Fm-jy4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5z7-n8-CGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3726" y="1544"/>
+            <point key="canvasLocation" x="4664.8000000000002" y="1543.1784107946028"/>
         </scene>
         <!--Favorite Table View Controller-->
         <scene sceneID="2Nc-Rp-gIJ">
@@ -317,6 +317,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0v-HZ-wUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3725.5999999999999" y="807.34632683658174"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="0mY-oN-Lh6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0oQ-p4-4Mc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xhN-7H-ozc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nVz-4H-Icu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4h1-KM-J9K" kind="relationship" relationship="rootViewController" id="Gxm-49-j92"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvJ-fV-pbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3725.5999999999999" y="1543.1784107946028"/>
         </scene>
     </scenes>
     <resources>

@@ -14,16 +14,9 @@ class SettingsTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    UIApplication.shared.statusBarStyle = .default
-  }
-  
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    UIApplication.shared.statusBarStyle = .lightContent
+    self.title = "Réglages"
+    self.navigationController?.navigationBar.barTintColor = UIColor.orange
+    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
