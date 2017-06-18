@@ -35,8 +35,6 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Velibs"
-    self.navigationController?.navigationBar.barTintColor = UIColor.orange
-    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)

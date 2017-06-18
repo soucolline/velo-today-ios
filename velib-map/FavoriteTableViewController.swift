@@ -13,7 +13,5 @@ class FavoriteTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Liste des favoris"
-    self.navigationController?.navigationBar.barTintColor = UIColor.orange
-    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
   }
 }

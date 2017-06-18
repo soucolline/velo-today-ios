@@ -25,11 +25,9 @@ class DetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = self.currentStation.title ?? "N/A"
     
     self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
-    
-    self.title = self.currentStation.title ?? "N/A"
-    self.navigationController?.navigationBar.tintColor = UIColor.white
     
     // Set mapview size
     let screenHeight = UIScreen.main.bounds.height

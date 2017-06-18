@@ -15,8 +15,6 @@ class SettingsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Réglages"
-    self.navigationController?.navigationBar.barTintColor = UIColor.orange
-    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
