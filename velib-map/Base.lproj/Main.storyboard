@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -167,12 +167,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="sAC-Tf-b3N" kind="relationship" relationship="viewControllers" id="HMc-2A-Oh1"/>
+                        <segue destination="mVJ-ga-Zlw" kind="relationship" relationship="viewControllers" id="mlP-V4-89H"/>
                         <segue destination="4h1-KM-J9K" kind="relationship" relationship="viewControllers" id="0Q6-pF-gyC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKs-C6-4fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2774" y="416"/>
+            <point key="canvasLocation" x="2727" y="655"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Y0Z-zv-qlo">
@@ -248,7 +249,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5z7-n8-CGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3726" y="795"/>
+            <point key="canvasLocation" x="3726" y="1544"/>
+        </scene>
+        <!--Favorite Table View Controller-->
+        <scene sceneID="2Nc-Rp-gIJ">
+            <objects>
+                <tableViewController id="GbV-Nz-Zkx" customClass="FavoriteTableViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UHr-2s-j9c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" id="BOQ-DR-BQx">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOQ-DR-BQx" id="5uf-JK-Fsm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GbV-Nz-Zkx" id="KuR-lD-Fvh"/>
+                            <outlet property="delegate" destination="GbV-Nz-Zkx" id="VTP-mB-bOE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="v1W-UK-eaW"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1F-e3-Tjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4664.8000000000002" y="807.34632683658174"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="cBs-Uf-5dG">
@@ -269,9 +299,29 @@
             </objects>
             <point key="canvasLocation" x="3725.5999999999999" y="88.605697151424295"/>
         </scene>
+        <!--Favoris-->
+        <scene sceneID="Rcu-RN-LXv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mVJ-ga-Zlw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favoris" image="star" id="Hl3-Tb-lvZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3oR-DV-Y3Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GbV-Nz-Zkx" kind="relationship" relationship="rootViewController" id="nMy-Z5-Si9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J0v-HZ-wUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3725.5999999999999" y="807.34632683658174"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bike" width="25" height="15"/>
         <image name="settings" width="20" height="20"/>
+        <image name="star" width="20" height="19"/>
     </resources>
 </document>

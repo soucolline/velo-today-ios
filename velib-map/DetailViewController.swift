@@ -105,7 +105,6 @@ class DetailViewController: UIViewController {
     }
   }
   
-  
 }
 
 extension DetailViewController: MKMapViewDelegate {
