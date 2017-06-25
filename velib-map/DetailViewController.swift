@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreStore
 
 class DetailViewController: UIViewController {
   
@@ -17,27 +18,26 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var bikesLabel: UILabel!
   @IBOutlet weak var standsLabel: UILabel!
   @IBOutlet weak var lastUpdateLabel: UILabel!
+  @IBOutlet weak var favBtn: UIButton!
   
-  var currentStation: Station?
+  var currentStation: Station!
+  var isFavStation: FavoriteStation?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = self.currentStation.title ?? "N/A"
     
+    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
+    
+    // Set mapview size
     let screenHeight = UIScreen.main.bounds.height
     self.mapView.frame.size.height = screenHeight / 2
     self.mapView.delegate = self
-    
-    self.navigationController?.navigationBar.tintColor = UIColor.white
-    
-    if let station = self.currentStation {
-      let coordinates = CLLocation(latitude: station.lat, longitude: station.lng)
-      self.title = station.title ?? "N/A"
-      self.mapView.addAnnotation(station)
-      self.centerMapOnLocation(location: coordinates)
-    }
+    self.mapView.addAnnotation(self.currentStation)
     
     self.setupBtns()
-    
+    self.updateFavBtn()
+    self.centerMapOnLocation(location: self.currentStation.location)
   }
   
   func centerMapOnLocation(location: CLLocation) {
@@ -48,25 +48,59 @@ class DetailViewController: UIViewController {
   }
   
   func setupBtns() {
+    guard let station = self.currentStation
+      else { return }
+    
+    // Add corner radius
     let _  = self.stackViewBtns.arrangedSubviews.map {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
     
-    if let bikes = self.currentStation?.availableBikes, let stands = self.currentStation?.availableBikeStands {
-      self.bikesLabel.text = "\(bikes) vélos disponibles"
-      self.standsLabel.text = "\(stands) stands disponibles"
+    self.bikesLabel.text = "\(station.availableBikes ?? 0) vélos disponibles"
+    self.standsLabel.text = "\(station.availableBikeStands ?? 0) stands disponibles"
+    self.lastUpdateLabel.text = station.lastUpdateDateString
+  }
+  
+  func updateFavBtn() {
+    if isFavStation != nil {
+      self.favBtn.backgroundColor = UIColor.colorFromInteger(color: 0xD91E18)
+      self.favBtn.setTitle("Supprimer des favoris", for: .normal)
+    } else {
+      self.favBtn.backgroundColor = UIColor.colorFromInteger(color: 0x3FC380)
+      self.favBtn.setTitle("Ajouter aux favoris", for: .normal)
     }
+  }
+  
+  @IBAction func toggleFavorite(_ sender: UIButton) {
+    guard let station = self.currentStation
+      else { return }
     
-    if let lastUpdate = self.currentStation?.lastUpdate {
-      let date = Date(timeIntervalSince1970: TimeInterval(lastUpdate / 1000))
-      let formatter = DateFormatter()
-      formatter.timeZone = TimeZone.current
-      formatter.locale = Locale.current
-      formatter.dateFormat =  "yyyy-MM-dd' à 'HH:mm"
-      self.lastUpdateLabel.text = "Mis à jour le \(formatter.string(from: date))"
+    if self.isFavStation == nil {
+      CoreStore.perform(asynchronous: { transaction in
+        let favStation = transaction.create(Into<FavoriteStation>())
+        favStation.number = Int32(station.number!)
+        favStation.availableBikes = Int16(station.availableBikes!)
+        favStation.availableBikeStands = Int16(station.availableBikeStands!)
+        favStation.name = station.name
+        favStation.address = station.address
+        self.isFavStation = favStation
+      }, completion: { result in
+        let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
+        print("number of favorite stations ==> \(favStationsCount ?? -1)")
+        self.updateFavBtn()
+      })
+    } else {
+      let currentFav = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: station.number))
+      CoreStore.perform(asynchronous: { transaction in
+        transaction.delete(currentFav)
+      }, completion: { result in
+        let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
+        print("number of favorite stations ==> \(favStationsCount ?? -1)")
+        self.isFavStation = nil
+        self.updateFavBtn()
+      })
     }
-    
   }
   
 }

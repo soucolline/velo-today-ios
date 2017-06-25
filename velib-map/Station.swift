@@ -29,6 +29,12 @@ class Station: NSObject, MKAnnotation {
   var subtitle: String?
   var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
   
+  lazy var location: CLLocation = {
+    let lat = self.lat
+    let lng = self.lng
+    return CLLocation(latitude: lat, longitude: lng)
+  }()
+  
   lazy var lastUpdateDate: Date? = {
     if let lastUpdate = self.lastUpdate {
       let timeInterval = TimeInterval(exactly: lastUpdate / 1000)
@@ -36,6 +42,17 @@ class Station: NSObject, MKAnnotation {
       return date
     }
     return nil
+  }()
+  
+  lazy var lastUpdateDateString: String? = {
+    if let lastUpdate = self.lastUpdateDate {
+      let formatter = DateFormatter()
+      formatter.timeZone = TimeZone.current
+      formatter.locale = Locale.current
+      formatter.dateFormat =  "yyyy-MM-dd' à 'HH:mm"
+      return "Mis à jour le \(formatter.string(from: lastUpdate))"
+    }
+    return ""
   }()
   
 }

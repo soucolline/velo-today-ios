@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreStore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+    UINavigationBar.appearance().tintColor = UIColor.white
+    UINavigationBar.appearance().barTintColor = UIColor.orange
     UIApplication.shared.statusBarStyle = .lightContent
+    
+    let dataStack = DataStack(
+      xcodeModelName: "velibMap",
+      migrationChain: []
+    )
+    do {
+     try dataStack.addStorageAndWait()
+    } catch { 
+      print("Could not create Database")
+    }
+    
+    CoreStore.defaultStack = dataStack
     return true
   }
 

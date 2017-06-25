@@ -35,8 +35,6 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Velibs"
-    self.navigationController?.navigationBar.barTintColor = UIColor.orange
-    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)
@@ -56,7 +54,7 @@ class MapViewController: UIViewController {
   }
   
   func fetchPins() {
-    let response = Just.get(Api.stationFrom(.paris).url)
+    let response = Just.get(Api.allStationsFrom(.paris).url)
     if response.ok {
       let responseJSON = JSON(response.json as Any)
       let _ = responseJSON.map{ $0.1 }.map {
