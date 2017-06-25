@@ -25,6 +25,7 @@ class FavoriteTableViewController: UITableViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.fetchedStations.removeAll()
     self.fetchStations()
     self.tableView.reloadData()
   }
@@ -48,9 +49,13 @@ class FavoriteTableViewController: UITableViewController {
     return self.fetchedStations.count
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100
+  }
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
-    cell.textLabel?.text = self.fetchedStations[indexPath.row].name
+    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
+    cell.feed(with: self.fetchedStations[indexPath.row])
     return cell
   }
 }
