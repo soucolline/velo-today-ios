@@ -20,7 +20,7 @@ class FavoriteTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Liste des favoris"
+    self.title = "Favoris"
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
   }
   
