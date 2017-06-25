@@ -10,17 +10,23 @@ import UIKit
 import CoreStore
 import Just
 import SwiftyJSON
+import MBProgressHUD
 
 class FavoriteTableViewController: UITableViewController {
   
   var favStations = [FavoriteStation]()
   var fetchedStations = [Station]()
+  var stationToSegue: Station?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Liste des favoris"
-    self.favStations = CoreStore.fetchAll(From<FavoriteStation>()) ?? []
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.favStations = CoreStore.fetchAll(From<FavoriteStation>()) ?? []
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -31,12 +37,25 @@ class FavoriteTableViewController: UITableViewController {
   }
   
   func fetchStations() {
+    let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
+    loader.label.text = "Rafraichissement des données"
+    
     let _ = self.favStations.map {
       let r = Just.get(Api.stationFrom($0.number).url)
       if r.ok {
         let responseJSON = JSON(r.json as Any)
         let station = Mapper.mapStations(newsJSON: responseJSON)
         self.fetchedStations.append(station)
+      }
+    }
+    MBProgressHUD.hide(for: self.view, animated: true)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "favoriteToDetailSegue" {
+      if let station = self.stationToSegue {
+        let vc = segue.destination as? DetailViewController
+        vc?.currentStation = station
       }
     }
   }
@@ -51,6 +70,11 @@ class FavoriteTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.stationToSegue = self.fetchedStations[indexPath.row]
+    self.performSegue(withIdentifier: "favoriteToDetailSegue", sender: self)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

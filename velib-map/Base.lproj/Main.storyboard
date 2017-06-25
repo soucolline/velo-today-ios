@@ -338,6 +338,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="v1W-UK-eaW"/>
+                    <connections>
+                        <segue destination="WZn-vt-Mh5" kind="show" identifier="favoriteToDetailSegue" id="iFf-5S-xXS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1F-e3-Tjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -406,4 +409,7 @@
         <image name="settings" width="20" height="20"/>
         <image name="star" width="20" height="19"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iFf-5S-xXS"/>
+    </inferredMetricsTieBreakers>
 </document>
