@@ -46,6 +46,8 @@ class FavoriteTableViewController: UITableViewController {
         let responseJSON = JSON(r.json as Any)
         let station = Mapper.mapStations(newsJSON: responseJSON)
         self.fetchedStations.append(station)
+      } else {
+        self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
       }
     }
     MBProgressHUD.hide(for: self.view, animated: true)
