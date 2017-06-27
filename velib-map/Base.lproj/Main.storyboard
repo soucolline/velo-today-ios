@@ -161,6 +161,7 @@
         <scene sceneID="1Yc-PY-zUS">
             <objects>
                 <tabBarController id="bkd-Eo-Zgj" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rcv-x7-1eV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
