@@ -7,21 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246767B11EA3B1AE00EDE358 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246767B01EA3B1AE00EDE358 /* Station.swift */; };
+		246767B31EA3B2DF00EDE358 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246767B21EA3B2DF00EDE358 /* Mapper.swift */; };
+		2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9B81EA3A5E3007D006D /* MapViewController.swift */; };
+		2493F9BC1EA3A657007D006D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9BB1EA3A657007D006D /* Api.swift */; };
+		2493F9BE1EA3A6FC007D006D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493F9BD1EA3A6FC007D006D /* City.swift */; };
+		EB31AAE21EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB31AAE11EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift */; };
+		EB79F4001EF6F04D00F7BC72 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */; };
 		EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */; };
-		EBA372FB1EA3A0CC00E214DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA372FA1EA3A0CC00E214DD /* ViewController.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
+		EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3FD691EAE0A82001E184E /* PopupManager.swift */; };
+		EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */; };
+		EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */; };
+		EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1471ED6D7840036DBBB /* velibMap.xcdatamodeld */; };
+		EBDFA1541ED6E17D0036DBBB /* FavoriteStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1521ED6E17D0036DBBB /* FavoriteStation.swift */; };
+		EBDFA1581ED70F040036DBBB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1571ED70F040036DBBB /* UIColor.swift */; };
+		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
+		246767B01EA3B1AE00EDE358 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		246767B21EA3B2DF00EDE358 /* Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		2493F9B81EA3A5E3007D006D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2493F9BB1EA3A657007D006D /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		2493F9BD1EA3A6FC007D006D /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB31AAE11EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBA372FA1EA3A0CC00E214DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA373041EA3A0CC00E214DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBA3FD691EAE0A82001E184E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
+		EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EBDFA1481ED6D7840036DBBB /* velibMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = velibMap.xcdatamodel; sourceTree = "<group>"; };
+		EBDFA1521ED6E17D0036DBBB /* FavoriteStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStation.swift; sourceTree = "<group>"; };
+		EBDFA1571ED70F040036DBBB /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +57,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2493F9BA1EA3A64B007D006D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFA1521ED6E17D0036DBBB /* FavoriteStation.swift */,
+				2493F9BB1EA3A657007D006D /* Api.swift */,
+				2493F9BD1EA3A6FC007D006D /* City.swift */,
+				246767B01EA3B1AE00EDE358 /* Station.swift */,
+				246767B21EA3B2DF00EDE358 /* Mapper.swift */,
+				EBA3FD691EAE0A82001E184E /* PopupManager.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		45F125794AA96C2A4D3B6D5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		680088FA8F458C29EE8BAF70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */,
+				FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EB31AAE01EFFDB6200CC5D04 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EB31AAE11EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
 		EBA372EC1EA3A0CC00E214DD = {
 			isa = PBXGroup;
 			children = (
 				EBA372F71EA3A0CC00E214DD /* velib-map */,
 				EBA372F61EA3A0CC00E214DD /* Products */,
+				680088FA8F458C29EE8BAF70 /* Pods */,
+				45F125794AA96C2A4D3B6D5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +123,29 @@
 		EBA372F71EA3A0CC00E214DD /* velib-map */ = {
 			isa = PBXGroup;
 			children = (
+				EBDFA1561ED70ED00036DBBB /* extensions */,
+				2493F9BA1EA3A64B007D006D /* models */,
+				EB31AAE01EFFDB6200CC5D04 /* cells */,
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
-				EBA372FA1EA3A0CC00E214DD /* ViewController.swift */,
+				2493F9B81EA3A5E3007D006D /* MapViewController.swift */,
+				EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */,
+				EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */,
+				EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */,
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBA373041EA3A0CC00E214DD /* Info.plist */,
+				EBDFA1471ED6D7840036DBBB /* velibMap.xcdatamodeld */,
 			);
 			path = "velib-map";
+			sourceTree = "<group>";
+		};
+		EBDFA1561ED70ED00036DBBB /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFA1571ED70F040036DBBB /* UIColor.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA373071EA3A0CC00E214DD /* Build configuration list for PBXNativeTarget "velib-map" */;
 			buildPhases = (
+				AAD3180426B869ED8A3F3B13 /* [CP] Check Pods Manifest.lock */,
 				EBA372F11EA3A0CC00E214DD /* Sources */,
 				EBA372F21EA3A0CC00E214DD /* Frameworks */,
 				EBA372F31EA3A0CC00E214DD /* Resources */,
+				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
+				D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,7 +184,7 @@
 					EBA372F41EA3A0CC00E214DD = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = XDX42S5M9N;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -132,13 +219,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAD3180426B869ED8A3F3B13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBA372F11EA3A0CC00E214DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBA372FB1EA3A0CC00E214DD /* ViewController.swift in Sources */,
+				EB79F4001EF6F04D00F7BC72 /* FavoriteTableViewController.swift in Sources */,
+				EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */,
+				EBDFA1581ED70F040036DBBB /* UIColor.swift in Sources */,
+				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,
+				EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */,
+				EB31AAE21EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift in Sources */,
+				EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */,
+				246767B11EA3B1AE00EDE358 /* Station.swift in Sources */,
 				EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */,
+				EBDFA1541ED6E17D0036DBBB /* FavoriteStation.swift in Sources */,
+				EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */,
+				2493F9BE1EA3A6FC007D006D /* City.swift in Sources */,
+				246767B31EA3B2DF00EDE358 /* Mapper.swift in Sources */,
+				2493F9B91EA3A5E3007D006D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +406,7 @@
 		};
 		EBA373081EA3A0CC00E214DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XDX42S5M9N;
@@ -266,19 +414,23 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
+				PROVISIONING_PROFILE_SPECIFIER = VelibMap_development;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		EBA373091EA3A0CC00E214DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XDX42S5M9N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "velib-map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,8 +454,22 @@
 				EBA373091EA3A0CC00E214DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EBDFA1471ED6D7840036DBBB /* velibMap.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EBDFA1481ED6D7840036DBBB /* velibMap.xcdatamodel */,
+			);
+			currentVersion = EBDFA1481ED6D7840036DBBB /* velibMap.xcdatamodel */;
+			path = velibMap.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EBA372ED1EA3A0CC00E214DD /* Project object */;
 }

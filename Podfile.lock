@@ -1,0 +1,21 @@
+PODS:
+  - CoreStore (4.0.0)
+  - Just (0.5.7)
+  - MBProgressHUD (1.0.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - CoreStore (~> 4.0)
+  - Just
+  - MBProgressHUD (~> 1.0.0)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  CoreStore: 4ed5c038a486b9d58a2fa7e17dcd0fee080d9f3d
+  Just: d19e769d86b965e39ae58cb3c0cbad07706634a8
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: e8106bdb96ce3f7de9cf30d18ab8461dc52f3f1d
+
+COCOAPODS: 1.2.0
