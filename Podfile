@@ -10,5 +10,7 @@ target 'velib-map' do
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'CoreStore', '~> 4.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
 end

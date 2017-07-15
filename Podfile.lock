@@ -1,21 +1,28 @@
 PODS:
   - CoreStore (4.0.0)
+  - Crashlytics (3.8.5):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.12)
   - Just (0.5.7)
   - MBProgressHUD (1.0.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - CoreStore (~> 4.0)
+  - Crashlytics
+  - Fabric
   - Just
   - MBProgressHUD (~> 1.0.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   CoreStore: 4ed5c038a486b9d58a2fa7e17dcd0fee080d9f3d
+  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
+  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   Just: d19e769d86b965e39ae58cb3c0cbad07706634a8
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e8106bdb96ce3f7de9cf30d18ab8461dc52f3f1d
+PODFILE CHECKSUM: 89d6babf6fc840014476e4853502eb89e263417d
 
 COCOAPODS: 1.2.0

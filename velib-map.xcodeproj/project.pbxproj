@@ -161,6 +161,7 @@
 				EBA372F31EA3A0CC00E214DD /* Resources */,
 				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
 				D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */,
+				24B27DAA1F1ABDA500977098 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -220,6 +221,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		24B27DAA1F1ABDA500977098 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6abd8c020462b87ae70facaec8d3bd0f4b47942b 5a8a1868eef3cd55f7d6b868cf930b6ccb1828ba5edc0b524f4ba0bebd28248f";
+		};
 		31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,12 +439,14 @@
 			baseConfigurationReference = FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = XDX42S5M9N;
 				INFOPLIST_FILE = "velib-map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "890d0a9f-2b2f-4b9c-8b17-67c427b23a2d";
+				PROVISIONING_PROFILE_SPECIFIER = VelibMap_distribution;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
