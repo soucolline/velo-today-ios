@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreStore
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     CoreStore.defaultStack = dataStack
+    
+    Fabric.with([Crashlytics.self])
     return true
   }
   
