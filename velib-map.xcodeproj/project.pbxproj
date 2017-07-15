@@ -439,12 +439,14 @@
 			baseConfigurationReference = FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = XDX42S5M9N;
 				INFOPLIST_FILE = "velib-map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "890d0a9f-2b2f-4b9c-8b17-67c427b23a2d";
+				PROVISIONING_PROFILE_SPECIFIER = VelibMap_distribution;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
