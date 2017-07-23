@@ -1,9 +1,9 @@
 PODS:
-  - CoreStore (4.0.0)
+  - CoreStore (4.0.5)
   - Crashlytics (3.8.5):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.12)
-  - Just (0.5.7)
+  - Just (0.6.0)
   - MBProgressHUD (1.0.0)
   - SwiftyJSON (3.1.4)
 
@@ -16,10 +16,10 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  CoreStore: 4ed5c038a486b9d58a2fa7e17dcd0fee080d9f3d
+  CoreStore: 07e6cc86894eb80df9ce6fd0e54122df1ccaf531
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
-  Just: d19e769d86b965e39ae58cb3c0cbad07706634a8
+  Just: 0b60164cc2b516fbddd8948ef7841c70896f1e4d
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
