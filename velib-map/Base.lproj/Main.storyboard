@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -148,6 +148,7 @@
                         <outlet property="bikesLabel" destination="kjU-H7-SdD" id="Ykz-Hw-XGE"/>
                         <outlet property="favBtn" destination="h56-CB-O4L" id="bYo-Y8-2Nb"/>
                         <outlet property="lastUpdateLabel" destination="Ucu-K4-A1h" id="Fwe-zE-djb"/>
+                        <outlet property="mapHeightConstraint" destination="ich-bU-x56" id="P4r-QX-oOm"/>
                         <outlet property="mapView" destination="Ltf-7Y-AX6" id="3ya-Tj-t8o"/>
                         <outlet property="stackViewBtns" destination="jEj-Py-zBB" id="JTL-Gx-fTE"/>
                         <outlet property="standsLabel" destination="Aa1-cy-a3Z" id="ugU-6l-0jm"/>

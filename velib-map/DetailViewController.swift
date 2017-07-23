@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var standsLabel: UILabel!
   @IBOutlet weak var lastUpdateLabel: UILabel!
   @IBOutlet weak var favBtn: UIButton!
+  @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
+  
   
   var currentStation: Station!
   var isFavStation: FavoriteStation?
@@ -30,14 +32,18 @@ class DetailViewController: UIViewController {
     self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
     
     // Set mapview size
-    let screenHeight = UIScreen.main.bounds.height
-    self.mapView.frame.size.height = screenHeight / 2
+    self.mapHeightConstraint.constant = self.setMapHeight()
     self.mapView.delegate = self
     self.mapView.addAnnotation(self.currentStation)
     
     self.setupBtns()
     self.updateFavBtn()
     self.centerMapOnLocation(location: self.currentStation.location)
+  }
+  
+  func setMapHeight() -> CGFloat {
+    let screenHeight = UIScreen.main.bounds.height
+    return screenHeight == 568.0 ? screenHeight / 3 : screenHeight / 2
   }
   
   func centerMapOnLocation(location: CLLocation) {
