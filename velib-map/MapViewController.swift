@@ -65,7 +65,7 @@ class MapViewController: UIViewController, VelibEventBus {
   }
   
   func failure(error: String) {
-    self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
+    self.present(PopupManager.errorPopup(message: error), animated: true)
   }
   
   func setMapStyle() {
