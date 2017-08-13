@@ -12,5 +12,6 @@ target 'velib-map' do
   pod 'CoreStore', '~> 4.0'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '1.0.3' 
 
 end
