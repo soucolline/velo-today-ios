@@ -45,6 +45,10 @@ class DetailViewController: UIViewController, VelibEventBus {
       : self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
   }
   
+  deinit {
+    VelibPresenter.unregisterAll(self)
+  }
+  
   func setMapHeight() -> CGFloat {
     let screenHeight = UIScreen.main.bounds.height
     return screenHeight == 568.0 ? screenHeight / 3 : screenHeight / 2

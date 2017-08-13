@@ -13,6 +13,7 @@ import CoreStore
 
 protocol IVelibInteractor {
   func fetchPins()
+  func fetchAllStations(favoriteStations: [FavoriteStation])
   func addFavorite(station: Station)
   func removeFavorite(station: Station)
 }
@@ -35,6 +36,22 @@ class VelibInteractor: IVelibInteractor {
     } else {
       self.presenter.failure(error: "Impossible de recuperer les informations des stations")
     }
+  }
+  
+  func fetchAllStations(favoriteStations: [FavoriteStation]) {
+    var fetchedStations = [Station]()
+    let _ = favoriteStations.map {
+      let r = Just.get(Api.stationFrom($0.number).url)
+      if r.ok {
+        let responseJSON = JSON(r.json as Any)
+        let station = Mapper.mapStations(newsJSON: responseJSON)
+        fetchedStations.append(station)
+      } else {
+        self.presenter.failure(error: "Could not fetch station")
+      }
+    }
+    
+    self.presenter.fetchAllStationsSuccess(stations: fetchedStations)
   }
   
   func addFavorite(station: Station) {

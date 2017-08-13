@@ -11,6 +11,7 @@ import MagicSwiftBus
 
 @objc protocol VelibEventBus {
   @objc optional func fetchPinsSuccess(stations: [Station])
+  @objc optional func fetchAllStationsSuccess(stations: [Station])
   @objc optional func addFavoriteSuccess(favoriteStation: FavoriteStation)
   @objc optional func removeFavoriteSuccess()
   @objc optional func failure(error: String)
@@ -22,6 +23,7 @@ class VelibPresenter: Bus {
     case fetchPinsSuccess
     case addFavoriteSuccess
     case removeFavoriteSuccess
+    case fetchAllStationsSuccess
     case failure
     
     public var notification: Selector {
@@ -32,6 +34,8 @@ class VelibPresenter: Bus {
         return #selector(VelibEventBus.addFavoriteSuccess(favoriteStation:))
       case .removeFavoriteSuccess:
         return #selector(VelibEventBus.removeFavoriteSuccess)
+      case .fetchAllStationsSuccess:
+        return #selector(VelibEventBus.fetchAllStationsSuccess(stations:))
       case .failure:
         return #selector(VelibEventBus.failure(error:))
       }
@@ -40,6 +44,10 @@ class VelibPresenter: Bus {
   
   public func fetchPinsSuccess(stations: [Station]) {
     VelibPresenter.postOnMainThread(event: .fetchPinsSuccess, object: stations as AnyObject)
+  }
+  
+  public func fetchAllStationsSuccess(stations: [Station]) {
+    VelibPresenter.postOnMainThread(event: .fetchAllStationsSuccess, object: stations as AnyObject)
   }
   
   public func addFavoriteSuccess(favoriteStation: FavoriteStation) {
