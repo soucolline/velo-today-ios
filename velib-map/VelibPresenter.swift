@@ -11,7 +11,7 @@ import MagicSwiftBus
 
 @objc protocol VelibEventBus {
   @objc optional func fetchPinsSuccess(stations: [Station])
-  @objc optional func failure(error: Error)
+  @objc optional func failure(error: String)
 }
 
 class VelibPresenter: Bus {
@@ -30,11 +30,11 @@ class VelibPresenter: Bus {
     }
   }
   
-  public func fetchPinsSuccess(stations: Station) {
-    VelibPresenter.postOnMainThread(event: .fetchPinsSuccess, object: stations)
+  public func fetchPinsSuccess(stations: [Station]) {
+    VelibPresenter.postOnMainThread(event: .fetchPinsSuccess, object: stations as AnyObject)
   }
   
-  public func failure(error: Error) {
+  public func failure(error: String) {
     VelibPresenter.postOnMainThread(event: .failure, object: error as AnyObject)
   }
   

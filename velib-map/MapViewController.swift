@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import Just
-import SwiftyJSON
-import MBProgressHUD
 import MapKit
 import CoreLocation
+import MBProgressHUD
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, VelibEventBus {
   
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var reloadBtn: UIBarButtonItem! {
@@ -27,6 +25,7 @@ class MapViewController: UIViewController {
     }
   }
   
+  let interactor = VelibInteractor()
   var stations = [Station]()
   var currentStation: Station?
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
@@ -35,6 +34,8 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Velibs"
+    
+    VelibPresenter.register(self, events: .fetchPinsSuccess, .failure)
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)
@@ -53,21 +54,18 @@ class MapViewController: UIViewController {
     self.setMapStyle()
   }
   
-  func fetchPins() {
-    let response = Just.get(Api.allStationsFrom(.paris).url)
-    if response.ok {
-      let responseJSON = JSON(response.json as Any)
-      let _ = responseJSON.map{ $0.1 }.map {
-        let station = Mapper.mapStations(newsJSON: $0)
-        self.stations.append(station)
-      }
-    } else {
-      self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
-    }
+  deinit {
+    VelibPresenter.unregisterAll(self)
   }
   
-  func showPins() {
-    let _ = self.stations.map{ self.mapView.addAnnotation($0) }
+  func fetchPinsSuccess(stations: [Station]) {
+    MBProgressHUD.hide(for: self.view, animated: true)
+    self.stations = stations
+    let _ = self.stations.map { self.mapView.addAnnotation($0) }
+  }
+  
+  func failure(error: String) {
+    self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
   }
   
   func setMapStyle() {
@@ -100,15 +98,20 @@ class MapViewController: UIViewController {
     
     self.mapView.removeAnnotations(self.stations)
     self.stations.removeAll()
-    self.fetchPins()
-    self.showPins()
-    UIView.animate(withDuration: 0.5, animations: { () -> Void in
-      self.reloadBtn.customView?.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+    
+    self.animateReloadBtn()
+    self.interactor.fetchPins()
+  }
+  
+  func animateReloadBtn() {
+    UIView.animate(withDuration: 0.5, animations: {
+      self.reloadBtn.customView?.transform =
+        CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     })
-    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { () -> Void in
-      self.reloadBtn.customView?.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
+    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+      self.reloadBtn.customView?.transform =
+        CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
     })
-    MBProgressHUD.hide(for: self.view, animated: true)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
