@@ -23,6 +23,7 @@
 		EBDF00821F4084230009F2A9 /* VelibPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00811F4084230009F2A9 /* VelibPresenter.swift */; };
 		EBDF00871F4197E70009F2A9 /* ApiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00861F4197E70009F2A9 /* ApiWorker.swift */; };
 		EBDF00891F41994F0009F2A9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00881F41994F0009F2A9 /* String.swift */; };
+		EBDF008B1F419F6E0009F2A9 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */; };
 		EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */; };
 		EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */; };
 		EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1471ED6D7840036DBBB /* velibMap.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 		EBDF00811F4084230009F2A9 /* VelibPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibPresenter.swift; sourceTree = "<group>"; };
 		EBDF00861F4197E70009F2A9 /* ApiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiWorker.swift; sourceTree = "<group>"; };
 		EBDF00881F41994F0009F2A9 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 		EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EBDFA1481ED6D7840036DBBB /* velibMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = velibMap.xcdatamodel; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDF00861F4197E70009F2A9 /* ApiWorker.swift */,
+				EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */,
 			);
 			name = workers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				EBDF00871F4197E70009F2A9 /* ApiWorker.swift in Sources */,
 				EBDFA1581ED70F040036DBBB /* UIColor.swift in Sources */,
 				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,
+				EBDF008B1F419F6E0009F2A9 /* CoreDataWorker.swift in Sources */,
 				EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */,
 				EB31AAE21EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift in Sources */,
 				EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */,

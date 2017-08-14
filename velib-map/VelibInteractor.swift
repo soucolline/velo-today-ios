@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Just
-import SwiftyJSON
 import CoreStore
 
 protocol IVelibInteractor {
@@ -35,32 +33,15 @@ class VelibInteractor: IVelibInteractor {
   }
   
   func addFavorite(station: Station) {
-    do {
-      try CoreStore.perform(synchronous: { transaction in
-        let favStation = transaction.create(Into<FavoriteStation>())
-        favStation.number = Int32(station.number!)
-        favStation.availableBikes = Int16(station.availableBikes!)
-        favStation.availableBikeStands = Int16(station.availableBikeStands!)
-        favStation.name = station.name
-        favStation.address = station.address
-        self.presenter.addFavoriteSuccess(favoriteStation: favStation)
-      })
-    } catch let e {
-      self.presenter.failure(error: e.localizedDescription)
-    }
+    CoreDataWorker.addFavorite(station: station)
+      .then(self.presenter.addFavoriteSuccess)
+      .fail(self.presenter.failure)
   }
   
   func removeFavorite(station: Station) {
-    let currentFav = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: station.number))
-    
-    do {
-      try CoreStore.perform(synchronous: { transaction in
-        transaction.delete(currentFav)
-        self.presenter.removeFavoriteSuccess()
-      })
-    } catch let e {
-      self.presenter.failure(error: e.localizedDescription)
-    }
+    CoreDataWorker.removeFavorite(station: station)
+      .then(self.presenter.removeFavoriteSuccess)
+      .fail(self.presenter.failure)
   }
   
 }
