@@ -19,6 +19,11 @@
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 		EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3FD691EAE0A82001E184E /* PopupManager.swift */; };
+		EBDF00801F4081730009F2A9 /* VelibInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */; };
+		EBDF00821F4084230009F2A9 /* VelibPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00811F4084230009F2A9 /* VelibPresenter.swift */; };
+		EBDF00871F4197E70009F2A9 /* ApiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00861F4197E70009F2A9 /* ApiWorker.swift */; };
+		EBDF00891F41994F0009F2A9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00881F41994F0009F2A9 /* String.swift */; };
+		EBDF008B1F419F6E0009F2A9 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */; };
 		EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */; };
 		EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */; };
 		EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1471ED6D7840036DBBB /* velibMap.xcdatamodeld */; };
@@ -44,6 +49,11 @@
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA373041EA3A0CC00E214DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBA3FD691EAE0A82001E184E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
+		EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibInteractor.swift; sourceTree = "<group>"; };
+		EBDF00811F4084230009F2A9 /* VelibPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibPresenter.swift; sourceTree = "<group>"; };
+		EBDF00861F4197E70009F2A9 /* ApiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiWorker.swift; sourceTree = "<group>"; };
+		EBDF00881F41994F0009F2A9 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 		EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EBDFA1481ED6D7840036DBBB /* velibMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = velibMap.xcdatamodel; sourceTree = "<group>"; };
@@ -123,10 +133,13 @@
 		EBA372F71EA3A0CC00E214DD /* velib-map */ = {
 			isa = PBXGroup;
 			children = (
+				EBDF00851F4197D80009F2A9 /* workers */,
 				EBDFA1561ED70ED00036DBBB /* extensions */,
 				2493F9BA1EA3A64B007D006D /* models */,
 				EB31AAE01EFFDB6200CC5D04 /* cells */,
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
+				EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */,
+				EBDF00811F4084230009F2A9 /* VelibPresenter.swift */,
 				2493F9B81EA3A5E3007D006D /* MapViewController.swift */,
 				EBDFA1421ED4858F0036DBBB /* DetailViewController.swift */,
 				EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */,
@@ -140,10 +153,20 @@
 			path = "velib-map";
 			sourceTree = "<group>";
 		};
+		EBDF00851F4197D80009F2A9 /* workers */ = {
+			isa = PBXGroup;
+			children = (
+				EBDF00861F4197E70009F2A9 /* ApiWorker.swift */,
+				EBDF008A1F419F6E0009F2A9 /* CoreDataWorker.swift */,
+			);
+			name = workers;
+			sourceTree = "<group>";
+		};
 		EBDFA1561ED70ED00036DBBB /* extensions */ = {
 			isa = PBXGroup;
 			children = (
 				EBDFA1571ED70F040036DBBB /* UIColor.swift */,
+				EBDF00881F41994F0009F2A9 /* String.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -240,9 +263,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
+				"${BUILT_PRODUCTS_DIR}/FutureSwift/Future.framework",
+				"${BUILT_PRODUCTS_DIR}/Just/Just.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicSwiftBus/MagicSwiftBus.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Future.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Just.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicSwiftBus.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -255,13 +291,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-velib-map-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9FE762E1ACDE457F6E76C49 /* [CP] Copy Pods Resources */ = {
@@ -288,14 +327,19 @@
 			files = (
 				EB79F4001EF6F04D00F7BC72 /* FavoriteTableViewController.swift in Sources */,
 				EBDFA1431ED4858F0036DBBB /* DetailViewController.swift in Sources */,
+				EBDF00871F4197E70009F2A9 /* ApiWorker.swift in Sources */,
 				EBDFA1581ED70F040036DBBB /* UIColor.swift in Sources */,
 				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,
+				EBDF008B1F419F6E0009F2A9 /* CoreDataWorker.swift in Sources */,
 				EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */,
 				EB31AAE21EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift in Sources */,
 				EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */,
 				246767B11EA3B1AE00EDE358 /* Station.swift in Sources */,
 				EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */,
+				EBDF00821F4084230009F2A9 /* VelibPresenter.swift in Sources */,
 				EBDFA1541ED6E17D0036DBBB /* FavoriteStation.swift in Sources */,
+				EBDF00891F41994F0009F2A9 /* String.swift in Sources */,
+				EBDF00801F4081730009F2A9 /* VelibInteractor.swift in Sources */,
 				EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */,
 				2493F9BE1EA3A6FC007D006D /* City.swift in Sources */,
 				246767B31EA3B2DF00EDE358 /* Mapper.swift in Sources */,

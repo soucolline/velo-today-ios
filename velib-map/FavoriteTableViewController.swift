@@ -12,8 +12,9 @@ import Just
 import SwiftyJSON
 import MBProgressHUD
 
-class FavoriteTableViewController: UITableViewController {
+class FavoriteTableViewController: UITableViewController, VelibEventBus {
   
+  let interactor = VelibInteractor()
   var favStations = [FavoriteStation]()
   var fetchedStations = [Station]()
   var stationToSegue: Station?
@@ -22,6 +23,8 @@ class FavoriteTableViewController: UITableViewController {
     super.viewDidLoad()
     self.title = "Favoris"
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
+    
+    VelibPresenter.register(self, events: .fetchAllStationsSuccess, .failure)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -33,24 +36,27 @@ class FavoriteTableViewController: UITableViewController {
     super.viewDidAppear(animated)
     self.fetchedStations.removeAll()
     self.fetchStations()
-    self.tableView.reloadData()
+  }
+  
+  deinit {
+    VelibPresenter.unregisterAll(self)
   }
   
   func fetchStations() {
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Rafraichissement des données"
-    
-    let _ = self.favStations.map {
-      let r = Just.get(Api.stationFrom($0.number).url)
-      if r.ok {
-        let responseJSON = JSON(r.json as Any)
-        let station = Mapper.mapStations(newsJSON: responseJSON)
-        self.fetchedStations.append(station)
-      } else {
-        self.present(PopupManager.errorPopup(message: "Impossible de recuperer les informations des stations"), animated: true)
-      }
-    }
+    self.interactor.fetchAllStations(favoriteStations: self.favStations)
+  }
+  
+  func fetchAllStationsSuccess(stations: [Station]) {
+    self.fetchedStations = stations
+    self.tableView.reloadData()
     MBProgressHUD.hide(for: self.view, animated: true)
+  }
+  
+  func failure(error: String) {
+    MBProgressHUD.hide(for: self.view, animated: true)
+    self.present(PopupManager.errorPopup(message: error), animated: true)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
