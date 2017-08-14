@@ -23,35 +23,15 @@ class VelibInteractor: IVelibInteractor {
   let presenter = VelibPresenter()
   
   func fetchPins() {
-    var stations = [Station]()
-    
-    let response = Just.get(Api.allStationsFrom(.paris).url)
-    if response.ok {
-      let responseJSON = JSON(response.json as Any)
-      let _ = responseJSON.map{ $0.1 }.map {
-        let station = Mapper.mapStations(newsJSON: $0)
-        stations.append(station)
-      }
-      self.presenter.fetchPinsSuccess(stations: stations)
-    } else {
-      self.presenter.failure(error: "Impossible de recuperer les informations des stations")
-    }
+    ApiWorker.fetchPins()
+      .then(self.presenter.fetchPinsSuccess)
+      .fail(self.presenter.failure)
   }
   
   func fetchAllStations(favoriteStations: [FavoriteStation]) {
-    var fetchedStations = [Station]()
-    let _ = favoriteStations.map {
-      let r = Just.get(Api.stationFrom($0.number).url)
-      if r.ok {
-        let responseJSON = JSON(r.json as Any)
-        let station = Mapper.mapStations(newsJSON: responseJSON)
-        fetchedStations.append(station)
-      } else {
-        self.presenter.failure(error: "Could not fetch station")
-      }
-    }
-    
-    self.presenter.fetchAllStationsSuccess(stations: fetchedStations)
+    ApiWorker.fetchAllStations(favoriteStations: favoriteStations)
+      .then(self.presenter.fetchAllStationsSuccess)
+      .fail(self.presenter.failure)
   }
   
   func addFavorite(station: Station) {
