@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreStore
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, VelibEventBus {
   
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var stackViewBtns: UIStackView!
@@ -21,13 +21,15 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var favBtn: UIButton!
   @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
   
-  
+  let interactor = VelibInteractor()
   var currentStation: Station!
   var isFavStation: FavoriteStation?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = self.currentStation.title ?? "N/A"
+    
+    VelibPresenter.register(self, events: .addFavoriteSuccess, .removeFavoriteSuccess, .failure)
     
     self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
     
@@ -37,8 +39,14 @@ class DetailViewController: UIViewController {
     self.mapView.addAnnotation(self.currentStation)
     
     self.setupBtns()
-    self.updateFavBtn()
     self.centerMapOnLocation(location: self.currentStation.location)
+    self.isFavStation == nil
+      ? self.updateFavBtn(with: 0x3FC380, andTitle: "Ajouter aux favoris")
+      : self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
+  }
+  
+  deinit {
+    VelibPresenter.unregisterAll(self)
   }
   
   func setMapHeight() -> CGFloat {
@@ -68,50 +76,42 @@ class DetailViewController: UIViewController {
     self.lastUpdateLabel.text = station.lastUpdateDateString
   }
   
-  func updateFavBtn() {
-    if isFavStation != nil {
-      self.favBtn.backgroundColor = UIColor.colorFromInteger(color: 0xD91E18)
-      self.favBtn.setTitle("Supprimer des favoris", for: .normal)
-    } else {
-      self.favBtn.backgroundColor = UIColor.colorFromInteger(color: 0x3FC380)
-      self.favBtn.setTitle("Ajouter aux favoris", for: .normal)
-    }
+  func updateFavBtn(with color: UInt32, andTitle title: String) {
+    self.favBtn.backgroundColor = UIColor.colorFromInteger(color: color)
+    self.favBtn.setTitle(title, for: .normal)
   }
   
   @IBAction func toggleFavorite(_ sender: UIButton) {
     guard let station = self.currentStation
       else { return }
     
-    if self.isFavStation == nil {
-      CoreStore.perform(asynchronous: { transaction in
-        let favStation = transaction.create(Into<FavoriteStation>())
-        favStation.number = Int32(station.number!)
-        favStation.availableBikes = Int16(station.availableBikes!)
-        favStation.availableBikeStands = Int16(station.availableBikeStands!)
-        favStation.name = station.name
-        favStation.address = station.address
-        self.isFavStation = favStation
-      }, completion: { result in
-        let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
-        print("number of favorite stations ==> \(favStationsCount ?? -1)")
-        self.updateFavBtn()
-      })
-    } else {
-      let currentFav = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: station.number))
-      CoreStore.perform(asynchronous: { transaction in
-        transaction.delete(currentFav)
-      }, completion: { result in
-        let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
-        print("number of favorite stations ==> \(favStationsCount ?? -1)")
-        self.isFavStation = nil
-        self.updateFavBtn()
-      })
-    }
+    self.isFavStation == nil
+      ? self.interactor.addFavorite(station: station)
+      : self.interactor.removeFavorite(station: station)
+  }
+  
+  func addFavoriteSuccess(favoriteStation: FavoriteStation) {
+    self.isFavStation = favoriteStation
+    let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
+    print("number of favorite stations ==> \(favStationsCount ?? -1)")
+    self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
+  }
+  
+  func removeFavoriteSuccess() {
+    let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
+    print("number of favorite stations ==> \(favStationsCount ?? -1)")
+    self.isFavStation = nil
+    self.updateFavBtn(with: 0x3FC380, andTitle: "Ajouter aux favoris")
+  }
+  
+  func failure(error: String) {
+    self.present(PopupManager.errorPopup(message: error), animated: true)
   }
   
 }
 
 extension DetailViewController: MKMapViewDelegate {
+  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? Station
       else { return nil }
