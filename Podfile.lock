@@ -3,6 +3,7 @@ PODS:
   - Crashlytics (3.8.5):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.12)
+  - FutureSwift (2.0.0rc3)
   - Just (0.6.0)
   - MagicSwiftBus (1.0.1)
   - MBProgressHUD (1.0.0)
@@ -12,17 +13,24 @@ DEPENDENCIES:
   - CoreStore (~> 4.0)
   - Crashlytics
   - Fabric
+  - FutureSwift (from `https://github.com/othierry/future`, tag `2.0.0rc3`)
   - Just
   - MagicSwiftBus (from `https://github.com/favret/Magic-Swift-Bus`, tag `1.0.3`)
   - MBProgressHUD (~> 1.0.0)
   - SwiftyJSON
 
 EXTERNAL SOURCES:
+  FutureSwift:
+    :git: https://github.com/othierry/future
+    :tag: 2.0.0rc3
   MagicSwiftBus:
     :git: https://github.com/favret/Magic-Swift-Bus
     :tag: 1.0.3
 
 CHECKOUT OPTIONS:
+  FutureSwift:
+    :git: https://github.com/othierry/future
+    :tag: 2.0.0rc3
   MagicSwiftBus:
     :git: https://github.com/favret/Magic-Swift-Bus
     :tag: 1.0.3
@@ -31,11 +39,12 @@ SPEC CHECKSUMS:
   CoreStore: 07e6cc86894eb80df9ce6fd0e54122df1ccaf531
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
+  FutureSwift: e58778d65f12dd33951eed9fac80cf58fd566282
   Just: 0b60164cc2b516fbddd8948ef7841c70896f1e4d
   MagicSwiftBus: cfb59b7e46c01c26048c2c3e1ef0b3f99462635f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 2fe0bf264d4ab00cb6f2abee0f8fe351a5afef5f
+PODFILE CHECKSUM: ad6a346b35ce5a3a221f67feba702eb22b5d055b
 
 COCOAPODS: 1.3.1
