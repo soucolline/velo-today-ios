@@ -32,10 +32,10 @@ class CoreDataWorker {
   
   static func removeFavorite(station: Station) -> Future<Void> {
     return Promise { promise in
-      CoreStore.perform(asynchronous: { transaction in
+      CoreStore.perform(asynchronous: { transaction -> Void in
         transaction.deleteAll(From<FavoriteStation>(), Where("number", isEqualTo: station.number))
-      }, success: {
-        promise.resolve()
+      }, success: { result in
+        promise.resolve(result)
       }, failure: { error in
         promise.reject(error.localizedDescription)
       })

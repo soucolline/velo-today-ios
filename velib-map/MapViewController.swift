@@ -92,7 +92,7 @@ class MapViewController: UIViewController, VelibEventBus {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  func reloadPins() {
+  @objc func reloadPins() {
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Downloading pins"
     
