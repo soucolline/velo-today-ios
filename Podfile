@@ -6,10 +6,10 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
-  pod 'Just'
+  pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
-  pod 'CoreStore', '~> 4.0'
+  pod 'CoreStore', :git => 'https://github.com/JohnEstropia/CoreStore', :branch => 'prototype/Swift_4_0'
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '1.0.3' 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Just
+import Alamofire
 import SwiftyJSON
 import Future
 
@@ -18,18 +18,18 @@ class ApiWorker {
     return Promise { promise in
       var stations = [Station]()
       
-      let response = Just.get(Api.allStationsFrom(.paris).url)
-      if response.ok {
-        let responseJSON = JSON(response.json as Any)
+      Alamofire.request(Api.allStationsFrom(.paris).url).validate().responseJSON { response in
+        guard response.result.isSuccess
+          else { return promise.reject("Could not fetch pins") }
+        
+        let responseJSON = JSON(response.value as Any)
         let _ = responseJSON.map{ $0.1 }.map {
-          let station = Mapper.mapStations(newsJSON: $0)
+        let station = Mapper.mapStations(newsJSON: $0)
           stations.append(station)
         }
         
         promise.resolve(stations)
       }
-      
-      promise.reject("Could not fetch pins")
     }
   }
   
@@ -37,18 +37,20 @@ class ApiWorker {
     return Promise { promise in
       var fetchedStations = [Station]()
       
-      let _ = favoriteStations.map {
-        let r = Just.get(Api.stationFrom($0.number).url)
-        if r.ok {
-          let responseJSON = JSON(r.json as Any)
+      let _ = favoriteStations.map { station in
+        Alamofire.request(Api.stationFrom(station.number).url).validate().responseJSON { response in
+          guard response.result.isSuccess
+            else { return promise.reject("Could not fetch Stations") }
+          
+          let responseJSON = JSON(response.value as Any)
           let station = Mapper.mapStations(newsJSON: responseJSON)
           fetchedStations.append(station)
-        } else {
-            promise.reject("Could not fetch Stations")
+          
+          if fetchedStations.count == favoriteStations.count {
+            promise.resolve(fetchedStations)
+          }
         }
       }
-      
-      promise.resolve(fetchedStations)
     }
   }
   

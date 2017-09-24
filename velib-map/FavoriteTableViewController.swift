@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreStore
-import Just
 import SwiftyJSON
 import MBProgressHUD
 
