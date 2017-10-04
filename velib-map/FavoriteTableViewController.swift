@@ -39,12 +39,18 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
+    MBProgressHUD.hide(for: self.view, animated: true)
     VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchStations() {
-    guard self.favStations.count > 0
-      else { self.tableView.reloadData(); return }
+    guard self.favStations.count > 0 else {
+      self.tableView.reloadData()
+      let noStationLoader = MBProgressHUD.showAdded(to: self.view, animated: true)
+      noStationLoader.label.text = "Vous n'avez pas encore de favoris"
+      noStationLoader.mode = .text
+      return
+    }
     
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Rafraichissement des données"
