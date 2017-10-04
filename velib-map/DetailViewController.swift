@@ -67,7 +67,7 @@ class DetailViewController: UIViewController, VelibEventBus {
       else { return }
     
     // Add corner radius
-    let _  = self.stackViewBtns.arrangedSubviews.map {
+    _ = self.stackViewBtns.arrangedSubviews.map {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
@@ -138,4 +138,3 @@ extension DetailViewController: MKMapViewDelegate {
   }
   
 }
-

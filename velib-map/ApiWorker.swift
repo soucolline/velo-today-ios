@@ -11,7 +11,6 @@ import Alamofire
 import SwiftyJSON
 import Future
 
-
 class ApiWorker {
   
   static func fetchPins() -> Future<[Station]> {
@@ -23,7 +22,7 @@ class ApiWorker {
           else { return promise.reject("Could not fetch pins") }
         
         let responseJSON = JSON(response.value as Any)
-        let _ = responseJSON.map{ $0.1 }.map {
+        _ = responseJSON.map { $0.1 }.map {
         let station = Mapper.mapStations(newsJSON: $0)
           stations.append(station)
         }
@@ -37,7 +36,7 @@ class ApiWorker {
     return Promise { promise in
       var fetchedStations = [Station]()
       
-      let _ = favoriteStations.map { station in
+      _ = favoriteStations.map { station in
         Alamofire.request(Api.stationFrom(station.number).url).validate().responseJSON { response in
           guard response.result.isSuccess
             else { return promise.reject("Could not fetch Stations") }
