@@ -35,7 +35,7 @@ class MapViewController: UIViewController, VelibEventBus {
     super.viewDidLoad()
     self.title = "Velibs"
     
-    VelibPresenter.register(self, events: .fetchPinsSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .fetchPinsSuccess, .failure)
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)
@@ -54,8 +54,9 @@ class MapViewController: UIViewController, VelibEventBus {
     self.setMapStyle()
   }
   
-  deinit {
-    VelibPresenter.unregisterAll(self)
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchPinsSuccess(stations: [Station]) {
@@ -92,7 +93,7 @@ class MapViewController: UIViewController, VelibEventBus {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  func reloadPins() {
+  @objc func reloadPins() {
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Downloading pins"
     
