@@ -43,15 +43,15 @@ class VelibPresenter: Bus {
   }
   
   public func fetchPinsSuccess(stations: [Station]) {
-    VelibPresenter.postOnMainThread(event: .fetchPinsSuccess, object: stations as AnyObject)
+    VelibPresenter.postOnMainThread(event: .fetchPinsSuccess, object: nil, with: stations)
   }
   
   public func fetchAllStationsSuccess(stations: [Station]) {
-    VelibPresenter.postOnMainThread(event: .fetchAllStationsSuccess, object: stations as AnyObject)
+    VelibPresenter.postOnMainThread(event: .fetchAllStationsSuccess, object: nil, with: stations)
   }
   
   public func addFavoriteSuccess(favoriteStation: FavoriteStation) {
-    VelibPresenter.postOnMainThread(event: .addFavoriteSuccess, object: favoriteStation)
+    VelibPresenter.postOnMainThread(event: .addFavoriteSuccess, object: nil, with: favoriteStation)
   }
   
   public func removeFavoriteSuccess() {
@@ -59,7 +59,7 @@ class VelibPresenter: Bus {
   }
   
   public func failure(error: String) {
-    VelibPresenter.postOnMainThread(event: .failure, object: error as AnyObject)
+    VelibPresenter.postOnMainThread(event: .failure, object: nil, with: error)
   }
   
 }

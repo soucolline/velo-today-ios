@@ -29,7 +29,7 @@ class DetailViewController: UIViewController, VelibEventBus {
     super.viewDidLoad()
     self.title = self.currentStation.title ?? "N/A"
     
-    VelibPresenter.register(self, events: .addFavoriteSuccess, .removeFavoriteSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .addFavoriteSuccess, .removeFavoriteSuccess, .failure)
     
     self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
     
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController, VelibEventBus {
   }
   
   deinit {
-    VelibPresenter.unregisterAll(self)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func setMapHeight() -> CGFloat {

@@ -23,7 +23,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
     self.title = "Favoris"
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
     
-    VelibPresenter.register(self, events: .fetchAllStationsSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .fetchAllStationsSuccess, .failure)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +38,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   }
   
   deinit {
-    VelibPresenter.unregisterAll(self)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchStations() {

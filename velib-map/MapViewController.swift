@@ -35,7 +35,7 @@ class MapViewController: UIViewController, VelibEventBus {
     super.viewDidLoad()
     self.title = "Velibs"
     
-    VelibPresenter.register(self, events: .fetchPinsSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .fetchPinsSuccess, .failure)
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)
@@ -55,7 +55,7 @@ class MapViewController: UIViewController, VelibEventBus {
   }
   
   deinit {
-    VelibPresenter.unregisterAll(self)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchPinsSuccess(stations: [Station]) {
