@@ -54,7 +54,8 @@ class MapViewController: UIViewController, VelibEventBus {
     self.setMapStyle()
   }
   
-  deinit {
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     VelibPresenter.unregisterAll(observer: self)
   }
   

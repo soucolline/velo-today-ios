@@ -45,7 +45,8 @@ class DetailViewController: UIViewController, VelibEventBus {
       : self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
   }
   
-  deinit {
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     VelibPresenter.unregisterAll(observer: self)
   }
   
