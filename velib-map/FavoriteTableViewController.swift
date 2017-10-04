@@ -44,7 +44,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   }
   
   func fetchStations() {
-    guard self.favStations.count > 0 else {
+    guard !self.favStations.isEmpty else {
       self.tableView.reloadData()
       let noStationLoader = MBProgressHUD.showAdded(to: self.view, animated: true)
       noStationLoader.label.text = "Vous n'avez pas encore de favoris"
@@ -95,8 +95,8 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
-    cell.feed(with: self.fetchedStations[indexPath.row])
-    return cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as?   FavoriteTableViewCell
+    cell?.feed(with: self.fetchedStations[indexPath.row])
+    return cell ?? UITableViewCell()
   }
 }

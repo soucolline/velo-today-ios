@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 extension UIColor {
-  public class func fromInteger(red : Int, green : Int, blue : Int) -> UIColor {
-    return UIColor(red: CGFloat(red) / 255, green : CGFloat(green) / 255, blue : CGFloat(blue) / 255, alpha : 1)
+  public class func fromInteger(red: Int, green: Int, blue: Int) -> UIColor {
+    return UIColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
   }
   
   public final class func colorFromIntegerWithAlpha(color: UInt32) -> UIColor {

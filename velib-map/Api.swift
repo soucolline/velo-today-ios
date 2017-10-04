@@ -15,7 +15,7 @@ enum Api {
   case stationFrom(Int32)
   
   var url: String {
-    switch(self) {
+    switch self {
     case .allStationsFrom(let city):
       return "https://api.jcdecaux.com/vls/v1/stations?contract=\(city.rawValue)&apiKey=\(API_CLIENT_ID)"
     case .stationFrom(let number):
