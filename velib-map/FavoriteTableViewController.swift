@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreStore
-import Just
 import SwiftyJSON
 import MBProgressHUD
 
@@ -24,7 +23,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
     self.title = "Favoris"
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
     
-    VelibPresenter.register(self, events: .fetchAllStationsSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .fetchAllStationsSuccess, .failure)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -38,11 +37,21 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
     self.fetchStations()
   }
   
-  deinit {
-    VelibPresenter.unregisterAll(self)
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    MBProgressHUD.hide(for: self.view, animated: true)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchStations() {
+    guard !self.favStations.isEmpty else {
+      self.tableView.reloadData()
+      let noStationLoader = MBProgressHUD.showAdded(to: self.view, animated: true)
+      noStationLoader.label.text = "Vous n'avez pas encore de favoris"
+      noStationLoader.mode = .text
+      return
+    }
+    
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Rafraichissement des données"
     self.interactor.fetchAllStations(favoriteStations: self.favStations)
@@ -86,8 +95,8 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
-    cell.feed(with: self.fetchedStations[indexPath.row])
-    return cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as?   FavoriteTableViewCell
+    cell?.feed(with: self.fetchedStations[indexPath.row])
+    return cell ?? UITableViewCell()
   }
 }

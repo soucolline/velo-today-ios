@@ -17,7 +17,7 @@ class MapViewController: UIViewController, VelibEventBus {
   @IBOutlet weak var reloadBtn: UIBarButtonItem! {
     didSet {
       let icon = UIImage(named: "reload")
-      let iconSize = CGRect(origin: CGPoint(x: 0,y :0), size: icon!.size)
+      let iconSize = CGRect(origin: CGPoint(x: 0, y: 0), size: icon!.size)
       let iconButton = UIButton(frame: iconSize)
       iconButton.setBackgroundImage(icon, for: .normal)
       iconButton.setBackgroundImage(icon, for: .highlighted)
@@ -35,7 +35,7 @@ class MapViewController: UIViewController, VelibEventBus {
     super.viewDidLoad()
     self.title = "Velibs"
     
-    VelibPresenter.register(self, events: .fetchPinsSuccess, .failure)
+    VelibPresenter.register(observer: self, events: .fetchPinsSuccess, .failure)
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
     self.reloadBtn.customView?.addGestureRecognizer(tap)
@@ -54,14 +54,15 @@ class MapViewController: UIViewController, VelibEventBus {
     self.setMapStyle()
   }
   
-  deinit {
-    VelibPresenter.unregisterAll(self)
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    VelibPresenter.unregisterAll(observer: self)
   }
   
   func fetchPinsSuccess(stations: [Station]) {
     MBProgressHUD.hide(for: self.view, animated: true)
     self.stations = stations
-    let _ = self.stations.map { self.mapView.addAnnotation($0) }
+    _ = self.stations.map { self.mapView.addAnnotation($0) }
   }
   
   func failure(error: String) {
@@ -74,14 +75,14 @@ class MapViewController: UIViewController, VelibEventBus {
       else { return }
     
     switch mapStyle {
-      case "normalStyle":
-        self.mapView.mapType = .standard
-      case "hybridStyle":
-        self.mapView.mapType = .hybrid
-      case "satelliteStyle":
-        self.mapView.mapType = .satellite
-      default:
-        self.mapView.mapType = .standard
+    case "normalStyle":
+      self.mapView.mapType = .standard
+    case "hybridStyle":
+      self.mapView.mapType = .hybrid
+    case "satelliteStyle":
+      self.mapView.mapType = .satellite
+    default:
+      self.mapView.mapType = .standard
     }
   }
   
@@ -92,7 +93,7 @@ class MapViewController: UIViewController, VelibEventBus {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  func reloadPins() {
+  @objc func reloadPins() {
     let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
     loader.label.text = "Downloading pins"
     
