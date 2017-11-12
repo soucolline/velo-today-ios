@@ -10,6 +10,7 @@ import UIKit
 import CoreStore
 import Fabric
 import Crashlytics
+import ZLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     UINavigationBar.appearance().tintColor = UIColor.white
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UIApplication.shared.setStatusBarHidden(false, with: .none)
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     do {
      try dataStack.addStorageAndWait()
     } catch { 
-      print("Could not create Database")
+      ZLogger.log(message: "Could not create Database", event: .error)
     }
     
     CoreStore.defaultStack = dataStack

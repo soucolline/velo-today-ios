@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +15,6 @@
         <scene sceneID="s4A-S9-eiT">
             <objects>
                 <viewController id="u2X-Ga-dT5" customClass="MapViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wFf-uI-Whw"/>
-                        <viewControllerLayoutGuide type="bottom" id="nQj-9I-jjl"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hPl-Jh-n5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,11 +25,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8Ck-SF-jqR" secondAttribute="trailing" id="107-gy-510"/>
-                            <constraint firstItem="nQj-9I-jjl" firstAttribute="top" secondItem="8Ck-SF-jqR" secondAttribute="bottom" id="93d-qz-2cc"/>
-                            <constraint firstItem="8Ck-SF-jqR" firstAttribute="leading" secondItem="hPl-Jh-n5N" secondAttribute="leading" id="RvH-2S-Wmo"/>
-                            <constraint firstItem="8Ck-SF-jqR" firstAttribute="top" secondItem="wFf-uI-Whw" secondAttribute="bottom" id="Z7x-yK-CR7"/>
+                            <constraint firstItem="gL2-mb-dv5" firstAttribute="trailing" secondItem="8Ck-SF-jqR" secondAttribute="trailing" id="107-gy-510"/>
+                            <constraint firstItem="gL2-mb-dv5" firstAttribute="bottom" secondItem="8Ck-SF-jqR" secondAttribute="bottom" id="93d-qz-2cc"/>
+                            <constraint firstItem="8Ck-SF-jqR" firstAttribute="leading" secondItem="gL2-mb-dv5" secondAttribute="leading" id="RvH-2S-Wmo"/>
+                            <constraint firstItem="8Ck-SF-jqR" firstAttribute="top" secondItem="gL2-mb-dv5" secondAttribute="top" id="Z7x-yK-CR7"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="gL2-mb-dv5"/>
                     </view>
                     <navigationItem key="navigationItem" id="AUg-w7-d4v">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Ozc-4H-D5D"/>
@@ -51,10 +49,6 @@
         <scene sceneID="Fhb-ua-YyG">
             <objects>
                 <viewController id="WZn-vt-Mh5" customClass="DetailViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1kv-Yx-R4e"/>
-                        <viewControllerLayoutGuide type="bottom" id="d4W-uF-HU8"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nGh-IS-9Yf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,16 +127,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jEj-Py-zBB" firstAttribute="top" secondItem="Ucu-K4-A1h" secondAttribute="bottom" constant="20" id="HWF-Dt-Lhr"/>
-                            <constraint firstItem="Ucu-K4-A1h" firstAttribute="centerX" secondItem="nGh-IS-9Yf" secondAttribute="centerX" id="NOq-Su-6bM"/>
-                            <constraint firstAttribute="trailing" secondItem="h56-CB-O4L" secondAttribute="trailing" id="Q1X-UD-oGy"/>
-                            <constraint firstAttribute="trailing" secondItem="Ltf-7Y-AX6" secondAttribute="trailing" id="ROx-md-GZs"/>
-                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="leading" secondItem="nGh-IS-9Yf" secondAttribute="leading" id="WKz-F1-j5M"/>
-                            <constraint firstItem="jEj-Py-zBB" firstAttribute="centerX" secondItem="nGh-IS-9Yf" secondAttribute="centerX" id="Ym2-LB-V2i"/>
-                            <constraint firstItem="d4W-uF-HU8" firstAttribute="top" secondItem="jEj-Py-zBB" secondAttribute="bottom" constant="30" id="fIy-OI-m5c"/>
+                            <constraint firstItem="Ucu-K4-A1h" firstAttribute="centerX" secondItem="nor-gm-SQg" secondAttribute="centerX" id="NOq-Su-6bM"/>
+                            <constraint firstItem="nor-gm-SQg" firstAttribute="trailing" secondItem="h56-CB-O4L" secondAttribute="trailing" id="Q1X-UD-oGy"/>
+                            <constraint firstItem="nor-gm-SQg" firstAttribute="trailing" secondItem="Ltf-7Y-AX6" secondAttribute="trailing" id="ROx-md-GZs"/>
+                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="leading" secondItem="nor-gm-SQg" secondAttribute="leading" id="WKz-F1-j5M"/>
+                            <constraint firstItem="jEj-Py-zBB" firstAttribute="centerX" secondItem="nor-gm-SQg" secondAttribute="centerX" id="Ym2-LB-V2i"/>
+                            <constraint firstItem="nor-gm-SQg" firstAttribute="bottom" secondItem="jEj-Py-zBB" secondAttribute="bottom" constant="30" id="fIy-OI-m5c"/>
                             <constraint firstItem="h56-CB-O4L" firstAttribute="top" secondItem="Ltf-7Y-AX6" secondAttribute="bottom" id="hkb-s8-RHZ"/>
-                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="top" secondItem="1kv-Yx-R4e" secondAttribute="bottom" id="kgl-de-mtX"/>
-                            <constraint firstItem="h56-CB-O4L" firstAttribute="leading" secondItem="nGh-IS-9Yf" secondAttribute="leading" id="pvZ-W5-ykD"/>
+                            <constraint firstItem="Ltf-7Y-AX6" firstAttribute="top" secondItem="nor-gm-SQg" secondAttribute="top" id="kgl-de-mtX"/>
+                            <constraint firstItem="h56-CB-O4L" firstAttribute="leading" secondItem="nor-gm-SQg" secondAttribute="leading" id="pvZ-W5-ykD"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="nor-gm-SQg"/>
                     </view>
                     <connections>
                         <outlet property="bikesLabel" destination="kjU-H7-SdD" id="Ykz-Hw-XGE"/>
@@ -197,7 +192,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AH3-lT-ltR">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -214,7 +209,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Hybrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dfi-od-gVT">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -231,7 +226,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Satellite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K8e-C6-m52">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -267,11 +262,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOQ-DR-BQx" id="5uf-JK-Fsm">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a1N-fo-thP">
-                                            <rect key="frame" x="13" y="14" width="70" height="70"/>
+                                            <rect key="frame" x="21" y="14" width="70" height="70"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gu-7f-DtP">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
@@ -312,7 +307,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3o-AW-Q0t">
-                                            <rect key="frame" x="93" y="42" width="231" height="16"/>
+                                            <rect key="frame" x="101" y="42" width="222" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -355,7 +350,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" image="bike" id="8LI-Tl-nTW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PR8-It-jDM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -374,7 +369,7 @@
                     <tabBarItem key="tabBarItem" title="Favoris" image="star" id="Hl3-Tb-lvZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3oR-DV-Y3Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -393,7 +388,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xhN-7H-ozc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nVz-4H-Icu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

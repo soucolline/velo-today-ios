@@ -11,10 +11,11 @@ target 'velib-map' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
-  pod 'CoreStore', :git => 'https://github.com/JohnEstropia/CoreStore', :branch => 'prototype/Swift_4_0'
+  pod 'CoreStore'
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '3.0.0' 
   pod "FutureSwift", :git => 'https://github.com/othierry/future', :tag => '2.0.0rc3'
+  pod 'ZLogger'
 
 end
