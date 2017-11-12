@@ -49,6 +49,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
       let noStationLoader = MBProgressHUD.showAdded(to: self.view, animated: true)
       noStationLoader.label.text = "Vous n'avez pas encore de favoris"
       noStationLoader.mode = .text
+      noStationLoader.bounds = UIScreen.main.bounds
       return
     }
     
