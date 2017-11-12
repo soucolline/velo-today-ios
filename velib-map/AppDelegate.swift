@@ -10,6 +10,7 @@ import UIKit
 import CoreStore
 import Fabric
 import Crashlytics
+import ZLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     do {
      try dataStack.addStorageAndWait()
     } catch { 
-      print("Could not create Database")
+      ZLogger.log(message: "Could not create Database", event: .error)
     }
     
     CoreStore.defaultStack = dataStack

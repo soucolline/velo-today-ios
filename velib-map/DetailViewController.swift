@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreStore
+import ZLogger
 
 class DetailViewController: UIViewController, VelibEventBus {
   
@@ -94,13 +95,13 @@ class DetailViewController: UIViewController, VelibEventBus {
   func addFavoriteSuccess(favoriteStation: FavoriteStation) {
     self.isFavStation = favoriteStation
     let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
-    print("number of favorite stations ==> \(favStationsCount ?? -1)")
+    ZLogger.log(message: "number of favorite stations ==> \(favStationsCount ?? -1)", event: .info)
     self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
   }
   
   func removeFavoriteSuccess() {
     let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
-    print("number of favorite stations ==> \(favStationsCount ?? -1)")
+    ZLogger.log(message: "number of favorite stations ==> \(favStationsCount ?? -1)", event: .info)
     self.isFavStation = nil
     self.updateFavBtn(with: 0x3FC380, andTitle: "Ajouter aux favoris")
   }

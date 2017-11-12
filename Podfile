@@ -16,5 +16,6 @@ target 'velib-map' do
   pod 'Crashlytics'
   pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '3.0.0' 
   pod "FutureSwift", :git => 'https://github.com/othierry/future', :tag => '2.0.0rc3'
+  pod 'ZLogger'
 
 end
