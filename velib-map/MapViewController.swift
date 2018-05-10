@@ -65,8 +65,8 @@ class MapViewController: UIViewController, VelibEventBus {
     _ = self.stations.map { self.mapView.addAnnotation($0) }
   }
   
-  func failure(error: String) {
-    self.present(PopupManager.errorPopup(message: error), animated: true)
+  func failure(error: Error) {
+    self.present(PopupManager.errorPopup(message: "Error fren"), animated: true)
   }
   
   func setMapStyle() {

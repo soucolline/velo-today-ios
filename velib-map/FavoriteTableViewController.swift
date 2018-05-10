@@ -64,9 +64,9 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
     MBProgressHUD.hide(for: self.view, animated: true)
   }
   
-  func failure(error: String) {
+  func failure(error: Error) {
     MBProgressHUD.hide(for: self.view, animated: true)
-    self.present(PopupManager.errorPopup(message: error), animated: true)
+    self.present(PopupManager.errorPopup(message: error.localizedDescription), animated: true)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

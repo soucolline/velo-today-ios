@@ -9,17 +9,28 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import Future
+import Promises
+
+enum APIError: LocalizedError {
+  case notFound
+  
+  var errorDescription: String? {
+    switch self {
+    case .notFound:
+      return "Une erreur est survenue"
+    }
+  }
+}
 
 class ApiWorker {
   
-  static func fetchPins() -> Future<[Station]> {
-    return Promise { promise in
+  static func fetchPins() -> Promise<[Station]> {
+    return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
       
       Alamofire.request(Api.allStationsFrom(.paris).url).validate().responseJSON { response in
         guard response.result.isSuccess
-          else { return promise.reject("Could not fetch pins") }
+          else { return reject(APIError.notFound) }
         
         let responseJSON = JSON(response.value as Any)
         _ = responseJSON.map { $0.1 }.map {
@@ -27,26 +38,26 @@ class ApiWorker {
           stations.append(station)
         }
         
-        promise.resolve(stations)
+        fulfill(stations)
       }
     }
   }
-  
-  static func fetchAllStations(favoriteStations: [FavoriteStation]) -> Future<[Station]> {
-    return Promise { promise in
+    
+  static func fetchAllStations(favoriteStations: [FavoriteStation]) -> Promise<[Station]> {
+    return Promise<[Station]> { fulfill, reject in
       var fetchedStations = [Station]()
       
       _ = favoriteStations.map { station in
         Alamofire.request(Api.stationFrom(station.number).url).validate().responseJSON { response in
           guard response.result.isSuccess
-            else { return promise.reject("Could not fetch Stations") }
+            else { return reject(APIError.notFound) }
           
           let responseJSON = JSON(response.value as Any)
           let station = Mapper.mapStations(newsJSON: responseJSON)
           fetchedStations.append(station)
           
           if fetchedStations.count == favoriteStations.count {
-            promise.resolve(fetchedStations)
+            fulfill(fetchedStations)
           }
         }
       }

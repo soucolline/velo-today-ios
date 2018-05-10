@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Promises
 import CoreStore
 
 protocol IVelibInteractor {
@@ -23,25 +24,25 @@ class VelibInteractor: IVelibInteractor {
   func fetchPins() {
     ApiWorker.fetchPins()
       .then(self.presenter.fetchPinsSuccess)
-      .fail(self.presenter.failure)
+      .catch(self.presenter.failure)
   }
   
   func fetchAllStations(favoriteStations: [FavoriteStation]) {
     ApiWorker.fetchAllStations(favoriteStations: favoriteStations)
       .then(self.presenter.fetchAllStationsSuccess)
-      .fail(self.presenter.failure)
+      .catch(self.presenter.failure)
   }
   
   func addFavorite(station: Station) {
     CoreDataWorker.addFavorite(station: station)
       .then(self.presenter.addFavoriteSuccess)
-      .fail(self.presenter.failure)
+      .catch(self.presenter.failure)
   }
   
   func removeFavorite(station: Station) {
     CoreDataWorker.removeFavorite(station: station)
       .then(self.presenter.removeFavoriteSuccess)
-      .fail(self.presenter.failure)
+      .catch(self.presenter.failure)
   }
   
 }

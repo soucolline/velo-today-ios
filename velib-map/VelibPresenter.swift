@@ -14,7 +14,7 @@ import MagicSwiftBus
   @objc optional func fetchAllStationsSuccess(stations: [Station])
   @objc optional func addFavoriteSuccess(favoriteStation: FavoriteStation)
   @objc optional func removeFavoriteSuccess()
-  @objc optional func failure(error: String)
+  @objc optional func failure(error: Error)
 }
 
 class VelibPresenter: Bus {
@@ -54,11 +54,11 @@ class VelibPresenter: Bus {
     VelibPresenter.postOnMainThread(event: .addFavoriteSuccess, object: nil, with: favoriteStation)
   }
   
-  public func removeFavoriteSuccess() {
+  public func removeFavoriteSuccess(code: Int?) {
     VelibPresenter.postOnMainThread(event: .removeFavoriteSuccess, object: nil)
   }
   
-  public func failure(error: String) {
+  public func failure(error: Error) {
     VelibPresenter.postOnMainThread(event: .failure, object: nil, with: error)
   }
   

@@ -15,12 +15,12 @@ extension UIColor {
   }
   
   public final class func colorFromIntegerWithAlpha(color: UInt32) -> UIColor {
-    let r: UInt8 = UInt8(color >> 24)
-    let g: UInt8 = UInt8((color << 8) >> 24)
-    let b: UInt8 = UInt8((color << 16) >> 24)
-    let a: UInt8 = UInt8((color << 24) >> 24)
+    let red: UInt8 = UInt8(color >> 24)
+    let green: UInt8 = UInt8((color << 8) >> 24)
+    let blue: UInt8 = UInt8((color << 16) >> 24)
+    let alpha: UInt8 = UInt8((color << 24) >> 24)
     
-    return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a))
+    return UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: CGFloat(alpha))
   }
   
   public final class func colorFromInteger(color: UInt32) -> UIColor {

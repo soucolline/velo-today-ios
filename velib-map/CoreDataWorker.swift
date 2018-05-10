@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import Future
+import Promises
 import CoreStore
 
 class CoreDataWorker {
   
-  static func addFavorite(station: Station) -> Future<FavoriteStation> {
-    return Promise { promise in
+  static func addFavorite(station: Station) -> Promise<FavoriteStation> {
+    return Promise<FavoriteStation> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> FavoriteStation in
         let favStation = transaction.create(Into<FavoriteStation>())
         favStation.number = Int32(station.number!)
@@ -23,21 +23,21 @@ class CoreDataWorker {
         favStation.address = station.address
         return favStation
       }, success: { favStation in
-        promise.resolve(favStation)
+        fulfill(favStation)
       }, failure: { error in
-        promise.reject(error.localizedDescription)
+        reject(APIError.notFound)
       })
     }
   }
   
-  static func removeFavorite(station: Station) -> Future<Void> {
-    return Promise { promise in
-      CoreStore.perform(asynchronous: { transaction -> Void in
-        transaction.deleteAll(From<FavoriteStation>(), Where("number", isEqualTo: station.number))
+  static func removeFavorite(station: Station) -> Promise<Int?> {
+    return Promise<Int?> { fulfill, reject in
+      CoreStore.perform(asynchronous: { transaction -> Int? in
+        transaction.deleteAll(From<FavoriteStation>().where(\.number > 30))
       }, success: { result in
-        promise.resolve(result)
+        fulfill(0)
       }, failure: { error in
-        promise.reject(error.localizedDescription)
+        reject(APIError.notFound)
       })
     }
   }

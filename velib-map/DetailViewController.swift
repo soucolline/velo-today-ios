@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, VelibEventBus {
     
     VelibPresenter.register(observer: self, events: .addFavoriteSuccess, .removeFavoriteSuccess, .failure)
     
-    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where("number", isEqualTo: self.currentStation.number))
+    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>().where(format: "number", self.currentStation.number as Any))
     
     // Set mapview size
     self.mapHeightConstraint.constant = self.setMapHeight()
@@ -99,15 +99,15 @@ class DetailViewController: UIViewController, VelibEventBus {
     self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
   }
   
-  func removeFavoriteSuccess() {
+  func removeFavoriteSuccess(code: Int?) {
     let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
     ZLogger.log(message: "number of favorite stations ==> \(favStationsCount ?? -1)", event: .info)
     self.isFavStation = nil
     self.updateFavBtn(with: 0x3FC380, andTitle: "Ajouter aux favoris")
   }
   
-  func failure(error: String) {
-    self.present(PopupManager.errorPopup(message: error), animated: true)
+  func failure(error: Error) {
+    self.present(PopupManager.errorPopup(message: error.localizedDescription), animated: true)
   }
   
 }

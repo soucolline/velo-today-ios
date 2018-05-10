@@ -8,14 +8,14 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.7.2'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
-  pod 'CoreStore'
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'CoreStore', '~> 5.0'
+  pod 'Fabric', '~> 1.7'
+  pod 'Crashlytics', '~> 3.10'
   pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '3.0.0' 
-  pod "FutureSwift", :git => 'https://github.com/othierry/future', :tag => '2.0.0rc3'
+  pod 'PromisesSwift', '~> 1.1'
   pod 'ZLogger'
 
 end
