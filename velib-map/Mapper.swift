@@ -15,22 +15,22 @@ class Mapper {
   static func mapStations(newsJSON: JSON) -> Station {
     let station = Station()
     
-    station.number = newsJSON["number"].intValue
-    station.name = newsJSON["name"].stringValue
+    station.stationId = newsJSON["fields"]["station_id"].intValue
+    station.name = newsJSON["fields"]["name"].stringValue
     station.address = newsJSON["address"].stringValue
-    station.lat = newsJSON["position"]["lat"].doubleValue
-    station.lng = newsJSON["position"]["lng"].doubleValue
+    station.lat = newsJSON["fields"]["lat"].doubleValue
+    station.lon = newsJSON["fields"]["lon"].doubleValue
     station.banking = newsJSON["banking"].boolValue
     station.bonus = newsJSON["bonus"].boolValue
     station.status = newsJSON["status"].stringValue
     station.contractName = newsJSON["contract_name"].stringValue
-    station.availableBikeStands = newsJSON["available_bike_stands"].intValue
-    station.availableBikes = newsJSON["available_bikes"].intValue
-    station.lastUpdate = newsJSON["last_update"].intValue
-    station.coordinate = CLLocationCoordinate2D(latitude: station.lat, longitude: station.lng)
+    station.numdocksavailable = newsJSON["fields"]["numdocksavailable"].intValue
+    station.numbikesavailable = newsJSON["fields"]["numbikesavailable"].intValue
+    station.coordinate = CLLocationCoordinate2D(latitude: station.lat, longitude: station.lon)
     station.title = station.name?.components(separatedBy: " - ").last
+    station.lastReported = newsJSON["fields"]["last_reported"].intValue
     
-    if let bikes = station.availableBikes, let stands = station.availableBikeStands {
+    if let bikes = station.numbikesavailable, let stands = station.numdocksavailable {
       station.subtitle = "\(bikes) vélos - \(stands) places"
     }
     

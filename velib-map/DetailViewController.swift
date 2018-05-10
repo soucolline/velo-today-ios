@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, VelibEventBus {
     
     VelibPresenter.register(observer: self, events: .addFavoriteSuccess, .removeFavoriteSuccess, .failure)
     
-    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>().where(format: "number", self.currentStation.number as Any))
+    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation.stationId))
     
     // Set mapview size
     self.mapHeightConstraint.constant = self.setMapHeight()
@@ -73,8 +73,8 @@ class DetailViewController: UIViewController, VelibEventBus {
       $0.layer.cornerRadius = 5.0
     }
     
-    self.bikesLabel.text = "\(station.availableBikes ?? 0) vélos disponibles"
-    self.standsLabel.text = "\(station.availableBikeStands ?? 0) stands disponibles"
+    self.bikesLabel.text = "\(station.numbikesavailable ?? 0) vélos disponibles"
+    self.standsLabel.text = "\(station.numdocksavailable ?? 0) stands disponibles"
     self.lastUpdateLabel.text = station.lastUpdateDateString
   }
   
@@ -99,7 +99,7 @@ class DetailViewController: UIViewController, VelibEventBus {
     self.updateFavBtn(with: 0xD91E18, andTitle: "Supprimer des favoris")
   }
   
-  func removeFavoriteSuccess(code: Int?) {
+  func removeFavoriteSuccess(code: Int) {
     let favStationsCount = CoreStore.fetchCount(From<FavoriteStation>())
     ZLogger.log(message: "number of favorite stations ==> \(favStationsCount ?? -1)", event: .info)
     self.isFavStation = nil

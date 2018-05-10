@@ -28,11 +28,11 @@ class ApiWorker {
     return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
       
-      Alamofire.request(Api.allStationsFrom(.paris).url).validate().responseJSON { response in
+      Alamofire.request(Api.allStations.url).validate().responseJSON { response in
         guard response.result.isSuccess
           else { return reject(APIError.notFound) }
         
-        let responseJSON = JSON(response.value as Any)
+        let responseJSON = JSON(response.value as Any)["records"]
         _ = responseJSON.map { $0.1 }.map {
         let station = Mapper.mapStations(newsJSON: $0)
           stations.append(station)
@@ -52,12 +52,17 @@ class ApiWorker {
           guard response.result.isSuccess
             else { return reject(APIError.notFound) }
           
-          let responseJSON = JSON(response.value as Any)
-          let station = Mapper.mapStations(newsJSON: responseJSON)
-          fetchedStations.append(station)
+          let responseJSON = JSON(response.value as Any)["records"]
           
-          if fetchedStations.count == favoriteStations.count {
-            fulfill(fetchedStations)
+          if let json = responseJSON.first?.1 {
+            let station = Mapper.mapStations(newsJSON: json)
+            fetchedStations.append(station)
+            
+            if fetchedStations.count == favoriteStations.count {
+              fulfill(fetchedStations)
+            }
+          } else {
+            reject(APIError.notFound)
           }
         }
       }

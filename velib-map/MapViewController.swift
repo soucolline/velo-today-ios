@@ -133,7 +133,7 @@ extension MapViewController: MKMapViewDelegate {
     let pin: MKAnnotationView
     var imageName = ""
     
-    if let bikes = annotation.availableBikes {
+    if let bikes = annotation.numbikesavailable {
       imageName = "pin-\(bikes)"
     }
     

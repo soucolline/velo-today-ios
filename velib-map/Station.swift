@@ -12,18 +12,18 @@ import MapKit
 
 class Station: NSObject, MKAnnotation {
   
-  var number: Int?
+  var stationId: Int?
   var name: String?
   var address: String?
   var lat: Double = 0.0
-  var lng: Double = 0.0
+  var lon: Double = 0.0
   var banking: Bool?
   var bonus: Bool?
   var status: String?
   var contractName: String?
-  var availableBikeStands: Int?
-  var availableBikes: Int?
-  var lastUpdate: Int?
+  var numdocksavailable: Int?
+  var numbikesavailable: Int?
+  var lastReported: Int?
   
   var title: String?
   var subtitle: String?
@@ -31,13 +31,13 @@ class Station: NSObject, MKAnnotation {
   
   lazy var location: CLLocation = {
     let lat = self.lat
-    let lng = self.lng
+    let lng = self.lon
     return CLLocation(latitude: lat, longitude: lng)
   }()
   
   lazy var lastUpdateDate: Date? = {
-    if let lastUpdate = self.lastUpdate {
-      let timeInterval = TimeInterval(exactly: lastUpdate / 1000)
+    if let lastUpdate = self.lastReported {
+      let timeInterval = TimeInterval(exactly: lastUpdate)
       let date = Date(timeIntervalSince1970: timeInterval!)
       return date
     }
