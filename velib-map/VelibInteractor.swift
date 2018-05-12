@@ -22,13 +22,13 @@ class VelibInteractor: IVelibInteractor {
   let presenter = VelibPresenter()
   
   func fetchPins() {
-    ApiWorker.fetchPins()
+    MapService().fetchPins()
       .then(self.presenter.fetchPinsSuccess)
       .catch(self.presenter.failure)
   }
   
   func fetchAllStations(favoriteStations: [FavoriteStation]) {
-    ApiWorker.fetchAllStations(favoriteStations: favoriteStations)
+    MapService.fetchAllStations(favoriteStations: favoriteStations)
       .then(self.presenter.fetchAllStationsSuccess)
       .catch(self.presenter.failure)
   }

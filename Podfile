@@ -10,12 +10,14 @@ target 'velib-map' do
   # Pods for velib-map
   pod 'Alamofire', '~> 4.7.2'
   pod 'SwiftyJSON'
+  pod 'SVProgressHUD', '~> 2.2'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'CoreStore', '~> 5.0'
   pod 'Fabric', '~> 1.7'
   pod 'Crashlytics', '~> 3.10'
   pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '3.0.0' 
   pod 'PromisesSwift', '~> 1.1'
+  pod 'SwiftLint', '~> 0.25'
   pod 'ZLogger'
 
 end

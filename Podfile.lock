@@ -9,6 +9,8 @@ PODS:
   - PromisesObjC (1.1.1)
   - PromisesSwift (1.1.1):
     - PromisesObjC (= 1.1.1)
+  - SVProgressHUD (2.2.5)
+  - SwiftLint (0.25.1)
   - SwiftyJSON (3.1.4)
   - ZLogger (1.0.0)
 
@@ -20,6 +22,8 @@ DEPENDENCIES:
   - MagicSwiftBus (from `https://github.com/favret/Magic-Swift-Bus`, tag `3.0.0`)
   - MBProgressHUD (~> 1.0.0)
   - PromisesSwift (~> 1.1)
+  - SVProgressHUD (~> 2.2)
+  - SwiftLint (~> 0.25)
   - SwiftyJSON
   - ZLogger
 
@@ -32,6 +36,8 @@ SPEC REPOS:
     - MBProgressHUD
     - PromisesObjC
     - PromisesSwift
+    - SVProgressHUD
+    - SwiftLint
     - SwiftyJSON
     - ZLogger
 
@@ -54,9 +60,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PromisesObjC: c6ea89661f018e55cd83dd7d0b5a7751f5e63c23
   PromisesSwift: 23ae4ad1c81963d35a37a98b83dd1e63403c54b8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   ZLogger: 10113443f92e2514b852883df4431e35360df0dc
 
-PODFILE CHECKSUM: 817a4644ff72cd8899dee2b483589d72b097a4fa
+PODFILE CHECKSUM: 722dcbbedb9a5907256ebaea48c5a34ac4f67571
 
 COCOAPODS: 1.5.0

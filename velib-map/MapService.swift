@@ -11,20 +11,9 @@ import Alamofire
 import SwiftyJSON
 import Promises
 
-enum APIError: LocalizedError {
-  case notFound
+class MapService {
   
-  var errorDescription: String? {
-    switch self {
-    case .notFound:
-      return "Une erreur est survenue"
-    }
-  }
-}
-
-class ApiWorker {
-  
-  static func fetchPins() -> Promise<[Station]> {
+  func fetchPins() -> Promise<[Station]> {
     return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
       

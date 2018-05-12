@@ -107,7 +107,7 @@ class DetailViewController: UIViewController, VelibEventBus {
   }
   
   func failure(error: Error) {
-    self.present(PopupManager.errorPopup(message: error.localizedDescription), animated: true)
+    self.present(PopupManager.showErrorPopup(message: error.localizedDescription), animated: true)
   }
   
 }
