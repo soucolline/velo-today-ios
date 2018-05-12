@@ -72,7 +72,7 @@ class FavoriteTableViewController: UITableViewController, VelibEventBus {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "favoriteToDetailSegue" {
       if let station = self.stationToSegue {
-        let vc = segue.destination as? DetailViewController
+        let vc = segue.destination as? DetailsViewController
         vc?.currentStation = station
       }
     }

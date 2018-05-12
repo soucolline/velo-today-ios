@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import MBProgressHUD
 
-class MapViewController: UIViewController, VelibEventBus {
+class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var reloadBtn: UIBarButtonItem!
@@ -77,8 +77,8 @@ class MapViewController: UIViewController, VelibEventBus {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "detailStationSegue" {
-      let vc = segue.destination as? DetailViewController
-      vc?.currentStation = self.presenter.currentStation
+      let vc = segue.destination as? DetailsViewController
+      vc?.currentStation = self.presenter.getCurrentStation()
     }
   }
   

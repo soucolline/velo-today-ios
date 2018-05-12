@@ -28,19 +28,19 @@ class VelibInteractor: IVelibInteractor {
   }
   
   func fetchAllStations(favoriteStations: [FavoriteStation]) {
-    MapService.fetchAllStations(favoriteStations: favoriteStations)
+    MapService().fetchAllStations(favoriteStations: favoriteStations)
       .then(self.presenter.fetchAllStationsSuccess)
       .catch(self.presenter.failure)
   }
   
   func addFavorite(station: Station) {
-    CoreDataWorker.addFavorite(station: station)
+    CoreDataService().addFavorite(station: station)
       .then(self.presenter.addFavoriteSuccess)
       .catch(self.presenter.failure)
   }
   
   func removeFavorite(station: Station) {
-    CoreDataWorker.removeFavorite(station: station)
+    CoreDataService().removeFavorite(station: station)
       .then(self.presenter.removeFavoriteSuccess)
       .catch(self.presenter.failure)
   }

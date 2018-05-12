@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="4664.8000000000002" y="88.605697151424295"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="Fhb-ua-YyG">
             <objects>
-                <viewController id="WZn-vt-Mh5" customClass="DetailViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WZn-vt-Mh5" customClass="DetailsViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nGh-IS-9Yf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

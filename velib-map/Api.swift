@@ -19,7 +19,7 @@ enum Api {
     case .allStations:
       return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000"
     case .stationFrom(let number):
-      return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=station_id%3D+\(number)&rows=1000"
+      return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&q=station_id%3D+\(number)"
     }
   }
 }

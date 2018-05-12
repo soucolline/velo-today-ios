@@ -10,9 +10,9 @@ import Foundation
 import Promises
 import CoreStore
 
-class CoreDataWorker {
+class CoreDataService {
   
-  static func addFavorite(station: Station) -> Promise<FavoriteStation> {
+  func addFavorite(station: Station) -> Promise<FavoriteStation> {
     return Promise<FavoriteStation> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> FavoriteStation in
         let favStation = transaction.create(Into<FavoriteStation>())
@@ -24,23 +24,23 @@ class CoreDataWorker {
         return favStation
       }, success: { favStation in
         fulfill(favStation)
-      }, failure: { error in
+      }, failure: { _ in
         reject(APIError.notFound)
       })
     }
   }
   
-  static func removeFavorite(station: Station) -> Promise<Int> {
+  func removeFavorite(station: Station) -> Promise<Int> {
     return Promise<Int> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> Int? in
         transaction.deleteAll(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: station.stationId))
       }, success: { result in
         if let result = result {
           fulfill(result)
-        } else{
+        } else {
           fulfill(0)
         }
-      }, failure: { error in
+      }, failure: { _ in
         reject(APIError.notFound)
       })
     }

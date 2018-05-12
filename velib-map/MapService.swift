@@ -17,9 +17,8 @@ class MapService {
     return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
       
-      Alamofire.request(Api.allStations.url).validate().responseJSON { response in
-        guard response.result.isSuccess
-          else { return reject(APIError.notFound) }
+      Alamofire.request(K.Api.baseUrl).validate().responseJSON { response in
+        guard response.result.isSuccess else { return reject(APIError.notFound) }
         
         let responseJSON = JSON(response.value as Any)["records"]
         _ = responseJSON.map { $0.1 }.map {
@@ -32,7 +31,7 @@ class MapService {
     }
   }
     
-  static func fetchAllStations(favoriteStations: [FavoriteStation]) -> Promise<[Station]> {
+  func fetchAllStations(favoriteStations: [FavoriteStation]) -> Promise<[Station]> {
     return Promise<[Station]> { fulfill, reject in
       var fetchedStations = [Station]()
       

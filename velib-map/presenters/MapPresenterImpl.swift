@@ -21,6 +21,7 @@ protocol MapPresenter {
   var currentStation: Station? { get set }
   func reloadPins()
   func getMapStyle() -> String
+  func getCurrentStation() -> Station?
 }
 
 class MapPresenterImpl: MapPresenter {
@@ -64,6 +65,10 @@ class MapPresenterImpl: MapPresenter {
   func getMapStyle() -> String {
     let defaults = UserDefaults.standard
     return (defaults.value(forKey: "mapStyle") as? String) ?? ""
+  }
+  
+  func getCurrentStation() -> Station? {
+    return self.currentStation
   }
   
 }
