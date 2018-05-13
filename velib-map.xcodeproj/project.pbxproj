@@ -25,8 +25,6 @@
 		EBA3FD6A1EAE0A82001E184E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3FD691EAE0A82001E184E /* PopupManager.swift */; };
 		EBD0583020A6DCB800A7755B /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0582F20A6DCB800A7755B /* Loadable.swift */; };
 		EBD0583220A6DF8500A7755B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0583120A6DF8500A7755B /* APIError.swift */; };
-		EBDF00801F4081730009F2A9 /* VelibInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */; };
-		EBDF00821F4084230009F2A9 /* VelibPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00811F4084230009F2A9 /* VelibPresenter.swift */; };
 		EBDF00871F4197E70009F2A9 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF00861F4197E70009F2A9 /* MapService.swift */; };
 		EBDF008B1F419F6E0009F2A9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF008A1F419F6E0009F2A9 /* CoreDataService.swift */; };
 		EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */; };
@@ -59,8 +57,6 @@
 		EBA3FD691EAE0A82001E184E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
 		EBD0582F20A6DCB800A7755B /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		EBD0583120A6DF8500A7755B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibInteractor.swift; sourceTree = "<group>"; };
-		EBDF00811F4084230009F2A9 /* VelibPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibPresenter.swift; sourceTree = "<group>"; };
 		EBDF00861F4197E70009F2A9 /* MapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		EBDF008A1F419F6E0009F2A9 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -168,8 +164,6 @@
 				EBDFA1561ED70ED00036DBBB /* extensions */,
 				2493F9BA1EA3A64B007D006D /* models */,
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
-				EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */,
-				EBDF00811F4084230009F2A9 /* VelibPresenter.swift */,
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
@@ -312,7 +306,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MagicSwiftBus/MagicSwiftBus.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -324,7 +317,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicSwiftBus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -389,10 +381,8 @@
 				EBDFA1491ED6D7840036DBBB /* velibMap.xcdatamodeld in Sources */,
 				246767B11EA3B1AE00EDE358 /* Station.swift in Sources */,
 				EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */,
-				EBDF00821F4084230009F2A9 /* VelibPresenter.swift in Sources */,
 				EBDFA1541ED6E17D0036DBBB /* FavoriteStation.swift in Sources */,
 				EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */,
-				EBDF00801F4081730009F2A9 /* VelibInteractor.swift in Sources */,
 				EBDFA1411EC7448F0036DBBB /* SettingsTableViewController.swift in Sources */,
 				2493F9BE1EA3A6FC007D006D /* City.swift in Sources */,
 				246767B31EA3B2DF00EDE358 /* Mapper.swift in Sources */,

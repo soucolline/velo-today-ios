@@ -4,7 +4,6 @@ PODS:
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.6)
-  - MagicSwiftBus (3.0.0)
   - MBProgressHUD (1.0.0)
   - PromisesObjC (1.1.1)
   - PromisesSwift (1.1.1):
@@ -19,7 +18,6 @@ DEPENDENCIES:
   - CoreStore (~> 5.0)
   - Crashlytics (~> 3.10)
   - Fabric (~> 1.7)
-  - MagicSwiftBus (from `https://github.com/favret/Magic-Swift-Bus`, tag `3.0.0`)
   - MBProgressHUD (~> 1.0.0)
   - PromisesSwift (~> 1.1)
   - SVProgressHUD (~> 2.2)
@@ -41,22 +39,11 @@ SPEC REPOS:
     - SwiftyJSON
     - ZLogger
 
-EXTERNAL SOURCES:
-  MagicSwiftBus:
-    :git: https://github.com/favret/Magic-Swift-Bus
-    :tag: 3.0.0
-
-CHECKOUT OPTIONS:
-  MagicSwiftBus:
-    :git: https://github.com/favret/Magic-Swift-Bus
-    :tag: 3.0.0
-
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   CoreStore: 5fd51cbe7ea2d7b4dfc6327031ab6ff6f7c63175
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
-  MagicSwiftBus: 07193dc7d0246944c429fd49c87c493897cdaec0
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PromisesObjC: c6ea89661f018e55cd83dd7d0b5a7751f5e63c23
   PromisesSwift: 23ae4ad1c81963d35a37a98b83dd1e63403c54b8
@@ -65,6 +52,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   ZLogger: 10113443f92e2514b852883df4431e35360df0dc
 
-PODFILE CHECKSUM: 722dcbbedb9a5907256ebaea48c5a34ac4f67571
+PODFILE CHECKSUM: 282040590b3249296a7d120f266ef77b64ebcae9
 
 COCOAPODS: 1.5.0

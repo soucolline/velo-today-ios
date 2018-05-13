@@ -15,7 +15,6 @@ target 'velib-map' do
   pod 'CoreStore', '~> 5.0'
   pod 'Fabric', '~> 1.7'
   pod 'Crashlytics', '~> 3.10'
-  pod 'MagicSwiftBus', :git => 'https://github.com/favret/Magic-Swift-Bus', :tag => '3.0.0' 
   pod 'PromisesSwift', '~> 1.1'
   pod 'SwiftLint', '~> 0.25'
   pod 'ZLogger'
