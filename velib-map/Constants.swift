@@ -27,7 +27,12 @@ struct K {
   }
   
   struct SegueIdentifiers {
+    static let detailSegue = "detailStationSegue"
     static let favoriteToDetailSegue = "favoriteToDetailSegue"
+  }
+  
+  struct Preferences {
+    static let mapStyle = "mapStyle"
   }
   
 }

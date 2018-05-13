@@ -17,7 +17,11 @@ class MapViewController: UIViewController {
   @IBOutlet weak var reloadBtn: UIBarButtonItem!
   
   lazy var presenter: MapPresenter = {
-    return MapPresenterImpl(delegate: self, service: MapService())
+    return MapPresenterImpl(
+      delegate: self,
+      service: MapService(),
+      repository: PreferencesRepository(with: UserDefaults.standard)
+    )
   }()
   
   var loaderMessage: String {
@@ -53,14 +57,12 @@ class MapViewController: UIViewController {
   
   func setMapStyle() {
     switch self.presenter.getMapStyle() {
-    case "normalStyle":
+    case .normal:
       self.mapView.mapType = .standard
-    case "hybridStyle":
+    case .hybrid:
       self.mapView.mapType = .hybrid
-    case "satelliteStyle":
+    case .satellite:
       self.mapView.mapType = .satellite
-    default:
-      self.mapView.mapType = .standard
     }
   }
   
@@ -76,7 +78,7 @@ class MapViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "detailStationSegue" {
+    if segue.identifier == K.SegueIdentifiers.detailSegue {
       let vc = segue.destination as? DetailsViewController
       vc?.currentStation = self.presenter.getCurrentStation()
     }
@@ -109,6 +111,7 @@ extension MapViewController: MapViewDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
+  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? Station
       else { return nil }
@@ -142,11 +145,13 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     let station = view.annotation as? Station
     self.presenter.currentStation = station
-    self.performSegue(withIdentifier: "detailStationSegue", sender: self)
+    self.performSegue(withIdentifier: K.SegueIdentifiers.detailSegue, sender: self)
   }
+  
 }
 
 extension MapViewController: CLLocationManagerDelegate {
+  
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = manager.location
       else { return }
@@ -159,4 +164,5 @@ extension MapViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     self.centerMapOnLocation(location: self.initialLocation)
   }
+  
 }

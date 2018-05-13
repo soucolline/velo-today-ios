@@ -20,7 +20,7 @@ protocol MapViewDelegate: class, Loadable {
 protocol MapPresenter {
   var currentStation: Station? { get set }
   func reloadPins()
-  func getMapStyle() -> String
+  func getMapStyle() -> MapStyle
   func getCurrentStation() -> Station?
 }
 
@@ -28,13 +28,15 @@ class MapPresenterImpl: MapPresenter {
   
   private weak var delegate: MapViewDelegate?
   private let service: MapService
+  private let repository: PreferencesRepository
   
   var stations = [Station]()
   var currentStation: Station?
   
-  init(delegate: MapViewDelegate, service: MapService) {
+  init(delegate: MapViewDelegate, service: MapService, repository: PreferencesRepository) {
     self.delegate = delegate
     self.service = service
+    self.repository = repository
   }
   
   func reloadPins() {
@@ -62,9 +64,8 @@ class MapPresenterImpl: MapPresenter {
     }
   }
   
-  func getMapStyle() -> String {
-    let defaults = UserDefaults.standard
-    return (defaults.value(forKey: "mapStyle") as? String) ?? ""
+  func getMapStyle() -> MapStyle {
+    return self.repository.getMapStyle()
   }
   
   func getCurrentStation() -> Station? {
