@@ -17,6 +17,7 @@
 		EB1FFF0C20A72BCE00AA9F79 /* DetailsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1FFF0B20A72BCE00AA9F79 /* DetailsPresenterImpl.swift */; };
 		EB31AAE21EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB31AAE11EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift */; };
 		EB79F4001EF6F04D00F7BC72 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */; };
+		EBA2118F20A8A9E4006152C0 /* FavoritePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA2118E20A8A9E4006152C0 /* FavoritePresenterImpl.swift */; };
 		EBA372F91EA3A0CC00E214DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		EB1FFF0B20A72BCE00AA9F79 /* DetailsPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterImpl.swift; sourceTree = "<group>"; };
 		EB31AAE11EFFDB7B00CC5D04 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		EBA2118E20A8A9E4006152C0 /* FavoritePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenterImpl.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */,
 				EB1FFF0B20A72BCE00AA9F79 /* DetailsPresenterImpl.swift */,
+				EBA2118E20A8A9E4006152C0 /* FavoritePresenterImpl.swift */,
 			);
 			name = presenters;
 			sourceTree = "<group>";
@@ -167,8 +170,6 @@
 				EBA372F81EA3A0CC00E214DD /* AppDelegate.swift */,
 				EBDF007F1F4081730009F2A9 /* VelibInteractor.swift */,
 				EBDF00811F4084230009F2A9 /* VelibPresenter.swift */,
-				EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */,
-				EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */,
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
@@ -192,6 +193,8 @@
 				EB31AAE01EFFDB6200CC5D04 /* cells */,
 				2493F9B81EA3A5E3007D006D /* MapViewController.swift */,
 				EBDFA1421ED4858F0036DBBB /* DetailsViewController.swift */,
+				EB79F3FF1EF6F04D00F7BC72 /* FavoriteTableViewController.swift */,
+				EBDFA1401EC7448F0036DBBB /* SettingsTableViewController.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB79F4001EF6F04D00F7BC72 /* FavoriteTableViewController.swift in Sources */,
+				EBA2118F20A8A9E4006152C0 /* FavoritePresenterImpl.swift in Sources */,
 				EBDFA1431ED4858F0036DBBB /* DetailsViewController.swift in Sources */,
 				EBDF00871F4197E70009F2A9 /* MapService.swift in Sources */,
 				2493F9BC1EA3A657007D006D /* Api.swift in Sources */,

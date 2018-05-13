@@ -26,4 +26,8 @@ struct K {
     static let removeFavorite = "Supprimer des favoris"
   }
   
+  struct SegueIdentifiers {
+    static let favoriteToDetailSegue = "favoriteToDetailSegue"
+  }
+  
 }
