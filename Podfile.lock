@@ -4,7 +4,6 @@ PODS:
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.6)
-  - MBProgressHUD (1.0.0)
   - PromisesObjC (1.1.1)
   - PromisesSwift (1.1.1):
     - PromisesObjC (= 1.1.1)
@@ -18,7 +17,6 @@ DEPENDENCIES:
   - CoreStore (~> 5.0)
   - Crashlytics (~> 3.10)
   - Fabric (~> 1.7)
-  - MBProgressHUD (~> 1.0.0)
   - PromisesSwift (~> 1.1)
   - SVProgressHUD (~> 2.2)
   - SwiftLint (~> 0.25)
@@ -31,7 +29,6 @@ SPEC REPOS:
     - CoreStore
     - Crashlytics
     - Fabric
-    - MBProgressHUD
     - PromisesObjC
     - PromisesSwift
     - SVProgressHUD
@@ -44,7 +41,6 @@ SPEC CHECKSUMS:
   CoreStore: 5fd51cbe7ea2d7b4dfc6327031ab6ff6f7c63175
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PromisesObjC: c6ea89661f018e55cd83dd7d0b5a7751f5e63c23
   PromisesSwift: 23ae4ad1c81963d35a37a98b83dd1e63403c54b8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -52,6 +48,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   ZLogger: 10113443f92e2514b852883df4431e35360df0dc
 
-PODFILE CHECKSUM: 282040590b3249296a7d120f266ef77b64ebcae9
+PODFILE CHECKSUM: a89f3b7527796a67828ea619319d7588db13150d
 
 COCOAPODS: 1.5.0
