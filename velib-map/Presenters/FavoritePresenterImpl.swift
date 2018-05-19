@@ -45,7 +45,7 @@ class FavoritePresenterImpl: FavoritePresenter {
     }
     
     self.service.fetchAllStations(favoriteStations: favoriteStations).then { stations in
-      self.stations = stations
+      self.stations = stations.sorted { return $0.stationId > $1.stationId }
       self.delegate?.onFetchStationsSuccess()
       self.delegate?.onDismissLoading()
     }.catch { _ in

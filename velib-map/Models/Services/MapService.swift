@@ -61,7 +61,9 @@ class MapService {
               fetchedStations.append($0.station)
             }
             
-            fulfill(fetchedStations)
+            if fetchedStations.count == favoriteStations.count {
+              fulfill(fetchedStations)
+            }
           } catch _ {
             reject(APIError.couldNotDecodeData)
           }
