@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class PopupManager {
-  static func errorPopup(message: String) -> UIAlertController {
+  static func showErrorPopup(message: String) -> UIAlertController {
     let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .default)
     alert.addAction(okAction)

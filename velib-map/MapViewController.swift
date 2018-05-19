@@ -9,25 +9,30 @@
 import UIKit
 import MapKit
 import CoreLocation
-import MBProgressHUD
 
-class MapViewController: UIViewController, VelibEventBus {
+class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var reloadBtn: UIBarButtonItem! {
-    didSet {
-      let icon = UIImage(named: "reload")
-      let iconSize = CGRect(origin: CGPoint(x: 0, y: 0), size: icon!.size)
-      let iconButton = UIButton(frame: iconSize)
-      iconButton.setBackgroundImage(icon, for: .normal)
-      iconButton.setBackgroundImage(icon, for: .highlighted)
-      reloadBtn.customView = iconButton
+  @IBOutlet weak var reloadBtn: UIBarButtonItem!
+  
+  lazy var presenter: MapPresenter = {
+    return MapPresenterImpl(
+      delegate: self,
+      service: MapService(),
+      repository: PreferencesRepository(with: UserDefaults.standard)
+    )
+  }()
+  
+  var loaderMessage: String {
+    get {
+      return "Chargement des stations"
+    }
+    
+    set(newValue) {
+      self.loaderMessage = newValue
     }
   }
   
-  let interactor = VelibInteractor()
-  var stations = [Station]()
-  var currentStation: Station?
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
@@ -35,18 +40,13 @@ class MapViewController: UIViewController, VelibEventBus {
     super.viewDidLoad()
     self.title = "Velibs"
     
-    VelibPresenter.register(observer: self, events: .fetchPinsSuccess, .failure)
-    
-    let tap = UITapGestureRecognizer(target: self, action: #selector(reloadPins))
-    self.reloadBtn.customView?.addGestureRecognizer(tap)
-    
     self.mapView.delegate = self
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     self.locationManager.requestLocation()
     
-    self.reloadPins()
+    self.presenter.reloadPins()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -54,35 +54,14 @@ class MapViewController: UIViewController, VelibEventBus {
     self.setMapStyle()
   }
   
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    VelibPresenter.unregisterAll(observer: self)
-  }
-  
-  func fetchPinsSuccess(stations: [Station]) {
-    MBProgressHUD.hide(for: self.view, animated: true)
-    self.stations = stations
-    _ = self.stations.map { self.mapView.addAnnotation($0) }
-  }
-  
-  func failure(error: String) {
-    self.present(PopupManager.errorPopup(message: error), animated: true)
-  }
-  
   func setMapStyle() {
-    let defaults = UserDefaults.standard
-    guard let mapStyle = defaults.value(forKey: "mapStyle") as? String
-      else { return }
-    
-    switch mapStyle {
-    case "normalStyle":
+    switch self.presenter.getMapStyle() {
+    case .normal:
       self.mapView.mapType = .standard
-    case "hybridStyle":
+    case .hybrid:
       self.mapView.mapType = .hybrid
-    case "satelliteStyle":
+    case .satellite:
       self.mapView.mapType = .satellite
-    default:
-      self.mapView.mapType = .standard
     }
   }
   
@@ -93,53 +72,50 @@ class MapViewController: UIViewController, VelibEventBus {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  @objc func reloadPins() {
-    let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
-    loader.label.text = "Downloading pins"
-    
-    self.mapView.removeAnnotations(self.stations)
-    self.stations.removeAll()
-    
-    self.animateReloadBtn()
-    self.interactor.fetchPins()
-  }
-  
-  func animateReloadBtn() {
-    UIView.animate(withDuration: 0.5, animations: {
-      self.reloadBtn.customView?.transform =
-        CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-    })
-    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
-      self.reloadBtn.customView?.transform =
-        CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
-    })
+  @IBAction func reloadPins(_ sender: UIBarButtonItem) {
+    self.presenter.reloadPins()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "detailStationSegue" {
-      let vc = segue.destination as? DetailViewController
-      vc?.currentStation = self.currentStation
+    if segue.identifier == K.SegueIdentifiers.detailSegue {
+      let vc = segue.destination as? DetailsViewController
+      vc?.currentStation = self.presenter.getCurrentStation()
     }
   }
   
 }
 
+extension MapViewController: MapViewDelegate {
+  
+  func onCleanMap(with stations: [Station]) {
+    self.mapView.removeAnnotations(stations)
+  }
+  
+  func onFetchStationsSuccess(stations: [Station]) {
+    _ = stations.map { self.mapView.addAnnotation($0) }
+  }
+  
+  func onFetchStationsErrorNotFound() {
+    self.present(PopupManager.showErrorPopup(message: "Impossible de trouver de stations, veuillez réessayer"), animated: true)
+  }
+  
+  func onFetchStationsErrorServerError() {
+    self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+  }
+  
+  func onFetchStationsErrorCouldNotDecodeData() {
+    self.present(PopupManager.showErrorPopup(message: "Impossible de décoder les données"), animated: true)
+  }
+  
+}
+
 extension MapViewController: MKMapViewDelegate {
+  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let annotation = annotation as? Station
-      else { return nil }
+    guard let annotation = annotation as? Station else { return nil }
     
-    let identifier = "velibPin"
+    let identifier = K.Identifiers.velibPin
     let pin: MKAnnotationView
-    var imageName = ""
-    
-    if let bikes = annotation.availableBikes {
-      imageName = "pin-\(bikes)"
-    }
-    
-    if annotation.status! == "CLOSED" {
-      imageName = "pin-red"
-    }
     
     if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
       deqeuedView.annotation = annotation
@@ -150,19 +126,21 @@ extension MapViewController: MKMapViewDelegate {
       pin.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
     }
     
-    pin.image = UIImage(named: imageName)
+    pin.image = UIImage(named: "pin-\(annotation.numbikesavailable)")
     
     return pin
   }
   
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     let station = view.annotation as? Station
-    self.currentStation = station
-    self.performSegue(withIdentifier: "detailStationSegue", sender: self)
+    self.presenter.currentStation = station
+    self.performSegue(withIdentifier: K.SegueIdentifiers.detailSegue, sender: self)
   }
+  
 }
 
 extension MapViewController: CLLocationManagerDelegate {
+  
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = manager.location
       else { return }
@@ -175,4 +153,5 @@ extension MapViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     self.centerMapOnLocation(location: self.initialLocation)
   }
+  
 }

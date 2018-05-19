@@ -10,38 +10,37 @@ import Foundation
 import CoreLocation
 import MapKit
 
-class Station: NSObject, MKAnnotation {
+final class Station: NSObject, MKAnnotation, Codable {
   
-  var number: Int?
-  var name: String?
-  var address: String?
-  var lat: Double = 0.0
-  var lng: Double = 0.0
-  var banking: Bool?
-  var bonus: Bool?
-  var status: String?
-  var contractName: String?
-  var availableBikeStands: Int?
-  var availableBikes: Int?
-  var lastUpdate: Int?
+  let capacity: Int
+  let name: String
+  let numbikesavailable: Int
+  let lastReported: Int
+  let lon: Double?
+  let stationId: Int
+  let lat: Double?
+  let xy: [Double]?
+  let isInstalled: Int
+  let isRenting: Int
+  let numdocksavailable: Int
+  let isReturning: Int
   
   var title: String?
   var subtitle: String?
   var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
   
-  lazy var location: CLLocation = {
-    let lat = self.lat
-    let lng = self.lng
-    return CLLocation(latitude: lat, longitude: lng)
+  lazy var location: CLLocation? = {
+    if let lat = self.lat, let lon = self.lon {
+      return CLLocation(latitude: lat, longitude: lon)
+    } else {
+      return nil
+    }
   }()
   
   lazy var lastUpdateDate: Date? = {
-    if let lastUpdate = self.lastUpdate {
-      let timeInterval = TimeInterval(exactly: lastUpdate / 1000)
-      let date = Date(timeIntervalSince1970: timeInterval!)
-      return date
-    }
-    return nil
+    let timeInterval = TimeInterval(exactly: self.lastReported) ?? 0.0
+    let date = Date(timeIntervalSince1970: timeInterval)
+    return date
   }()
   
   lazy var lastUpdateDateString: String? = {
@@ -54,5 +53,44 @@ class Station: NSObject, MKAnnotation {
     }
     return ""
   }()
+  
+  enum CodingKeys: String, CodingKey {
+    case capacity
+    case name
+    case numbikesavailable
+    case lastReported = "last_reported"
+    case lon
+    case stationId = "station_id"
+    case lat
+    case xy
+    case isInstalled = "is_installed"
+    case isRenting = "is_renting"
+    case numdocksavailable
+    case isReturning = "is_returning"
+  }
+  
+  init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.capacity = try values.decodeIfPresent(Int.self, forKey: .capacity) ?? 0
+    self.name = try values.decodeIfPresent(String.self, forKey: .name) ?? "Station inconnue"
+    self.numbikesavailable = try values.decode(Int.self, forKey: .numbikesavailable)
+    self.lastReported = try values.decode(Int.self, forKey: .lastReported)
+    self.lon  = try values.decodeIfPresent(Double.self, forKey: .lon) ?? nil
+    self.stationId = try values.decodeIfPresent(Int.self, forKey: .stationId) ?? 0
+    self.lat = try values.decodeIfPresent(Double.self, forKey: .lat) ?? nil
+    self.xy = try values.decodeIfPresent(Array<Double>.self, forKey: .xy) ?? nil
+    self.isInstalled = try values.decode(Int.self, forKey: .isInstalled)
+    self.isRenting = try values.decode(Int.self, forKey: .isRenting)
+    self.numdocksavailable = try values.decode(Int.self, forKey: .numdocksavailable)
+    self.isReturning = try values.decode(Int.self, forKey: .isReturning)
+    
+    self.title = self.name
+    self.subtitle = "\(self.numbikesavailable) vélos - \(self.numdocksavailable) places"
+    super.init()
+    if let coordinates = self.location?.coordinate {
+      self.coordinate = coordinates
+    }
+  }
   
 }
