@@ -9,7 +9,6 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'Alamofire', '~> 4.7.2'
-  pod 'SwiftyJSON'
   pod 'SVProgressHUD', '~> 2.2'
   pod 'CoreStore', '~> 5.0'
   pod 'Fabric', '~> 1.7'

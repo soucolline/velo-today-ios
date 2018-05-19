@@ -9,7 +9,6 @@ PODS:
     - PromisesObjC (= 1.1.1)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.25.1)
-  - SwiftyJSON (3.1.4)
   - ZLogger (1.0.0)
 
 DEPENDENCIES:
@@ -20,7 +19,6 @@ DEPENDENCIES:
   - PromisesSwift (~> 1.1)
   - SVProgressHUD (~> 2.2)
   - SwiftLint (~> 0.25)
-  - SwiftyJSON
   - ZLogger
 
 SPEC REPOS:
@@ -33,7 +31,6 @@ SPEC REPOS:
     - PromisesSwift
     - SVProgressHUD
     - SwiftLint
-    - SwiftyJSON
     - ZLogger
 
 SPEC CHECKSUMS:
@@ -45,9 +42,8 @@ SPEC CHECKSUMS:
   PromisesSwift: 23ae4ad1c81963d35a37a98b83dd1e63403c54b8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   ZLogger: 10113443f92e2514b852883df4431e35360df0dc
 
-PODFILE CHECKSUM: a89f3b7527796a67828ea619319d7588db13150d
+PODFILE CHECKSUM: 83dc9ed885c8c0f6f7cffae408a141b66519a82a
 
 COCOAPODS: 1.5.0

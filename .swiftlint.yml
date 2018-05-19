@@ -46,4 +46,5 @@ identifier_name:
     - GlobalAPIKey
     - API_CLIENT_ID
     - vc
+    - xy
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

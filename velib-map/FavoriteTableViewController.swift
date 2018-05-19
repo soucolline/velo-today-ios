@@ -90,7 +90,7 @@ extension FavoriteTableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.favoriteCell, for: indexPath) as? FavoriteTableViewCell
     
     if let station = self.presenter.getStation(at: indexPath.row) {
       cell?.feed(with: station)

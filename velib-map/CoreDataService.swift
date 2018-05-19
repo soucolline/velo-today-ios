@@ -16,11 +16,11 @@ class CoreDataService {
     return Promise<FavoriteStation> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> FavoriteStation in
         let favStation = transaction.create(Into<FavoriteStation>())
-        favStation.number = Int32(station.stationId!)
-        favStation.availableBikes = Int16(station.numbikesavailable!)
-        favStation.availableBikeStands = Int16(station.numdocksavailable!)
+        favStation.number = Int32(station.stationId)
+        favStation.availableBikes = Int16(station.numbikesavailable)
+        favStation.availableBikeStands = Int16(station.numdocksavailable)
         favStation.name = station.name
-        favStation.address = station.address
+        favStation.address = station.name
         return favStation
       }, success: { favStation in
         fulfill(favStation)

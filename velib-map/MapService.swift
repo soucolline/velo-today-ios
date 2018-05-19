@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 import Promises
 
 class MapService {
@@ -19,14 +18,23 @@ class MapService {
       
       Alamofire.request(K.Api.baseUrl).validate().responseJSON { response in
         guard response.result.isSuccess else { return reject(APIError.notFound) }
-        
-        let responseJSON = JSON(response.value as Any)["records"]
-        _ = responseJSON.map { $0.1 }.map {
-        let station = Mapper.mapStations(newsJSON: $0)
-          stations.append(station)
+        guard let data = response.data else {
+          reject(APIError.internalServerError)
+          return
         }
         
-        fulfill(stations)
+        let decoder = JSONDecoder()
+        
+        do {
+          let dataRoot = try decoder.decode(FetchStationObjectResponseRoot.self, from: data)
+          _ = dataRoot.records.map {
+            stations.append($0.station)
+          }
+          
+          fulfill(stations)
+        } catch _ {
+          reject(APIError.couldNotDecodeData)
+        }
       }
     }
   }
@@ -36,21 +44,26 @@ class MapService {
       var fetchedStations = [Station]()
       
       _ = favoriteStations.map { station in
-        Alamofire.request(Api.stationFrom(station.number).url).validate().responseJSON { response in
-          guard response.result.isSuccess
-            else { return reject(APIError.notFound) }
+        let url = K.Api.baseUrl + K.Api.stationQuery + "\(station.number)"
+        
+        Alamofire.request(url).validate().responseJSON { response in
+          guard response.result.isSuccess else { return reject(APIError.notFound) }
+          guard let data = response.data else {
+            reject(APIError.internalServerError)
+            return
+          }
           
-          let responseJSON = JSON(response.value as Any)["records"]
+          let decoder = JSONDecoder()
           
-          if let json = responseJSON.first?.1 {
-            let station = Mapper.mapStations(newsJSON: json)
-            fetchedStations.append(station)
-            
-            if fetchedStations.count == favoriteStations.count {
-              fulfill(fetchedStations)
+          do {
+            let dataRoot = try decoder.decode(FetchStationObjectResponseRoot.self, from: data)
+            _ = dataRoot.records.map {
+              fetchedStations.append($0.station)
             }
-          } else {
-            reject(APIError.notFound)
+            
+            fulfill(fetchedStations)
+          } catch _ {
+            reject(APIError.couldNotDecodeData)
           }
         }
       }

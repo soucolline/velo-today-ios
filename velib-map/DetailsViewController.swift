@@ -60,22 +60,20 @@ class DetailsViewController: UIViewController {
   
   func centerMap(on location: CLLocation) {
     let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                              regionRadius * 2.0, regionRadius * 2.0)
+    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
   func setupBtns() {
     guard let station = self.presenter.getCurrentStation() else { return }
     
-    // Add corner radius
     _ = self.stackViewBtns.arrangedSubviews.map {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
     
-    self.bikesLabel.text = "\(station.numbikesavailable ?? 0) vélos disponibles"
-    self.standsLabel.text = "\(station.numdocksavailable ?? 0) stands disponibles"
+    self.bikesLabel.text = "\(station.numbikesavailable) vélos disponibles"
+    self.standsLabel.text = "\(station.numdocksavailable) stands disponibles"
     self.lastUpdateLabel.text = station.lastUpdateDateString
   }
   
@@ -125,14 +123,8 @@ extension DetailsViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? Station else { return nil }
     
-    var imageName = "pin"
-    
-    if annotation.status! == "CLOSED" {
-      imageName = "pin-red"
-    }
-    
-    let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: "velibPin")
-    pin.image = UIImage(named: imageName)
+    let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: K.Identifiers.velibPin)
+    pin.image = UIImage(named: "pin")
     
     return pin
   }

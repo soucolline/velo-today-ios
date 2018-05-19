@@ -35,4 +35,10 @@ struct K {
     static let mapStyle = "mapStyle"
   }
   
+  struct Identifiers {
+    static let velibPin = "velibPin"
+    static let favoriteCell = "favoriteCell"
+  }
+  
 }
+ 

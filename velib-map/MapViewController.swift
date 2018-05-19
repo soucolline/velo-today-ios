@@ -112,20 +112,10 @@ extension MapViewController: MapViewDelegate {
 extension MapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let annotation = annotation as? Station
-      else { return nil }
+    guard let annotation = annotation as? Station else { return nil }
     
-    let identifier = "velibPin"
+    let identifier = K.Identifiers.velibPin
     let pin: MKAnnotationView
-    var imageName = ""
-    
-    if let bikes = annotation.numbikesavailable {
-      imageName = "pin-\(bikes)"
-    }
-    
-    if annotation.status! == "CLOSED" {
-      imageName = "pin-red"
-    }
     
     if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
       deqeuedView.annotation = annotation
@@ -136,7 +126,7 @@ extension MapViewController: MKMapViewDelegate {
       pin.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
     }
     
-    pin.image = UIImage(named: imageName)
+    pin.image = UIImage(named: "pin-\(annotation.numbikesavailable)")
     
     return pin
   }
