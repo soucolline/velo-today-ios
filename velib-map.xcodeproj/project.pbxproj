@@ -30,7 +30,6 @@
 		EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBD20B0798A0012909E /* PopupManager.swift */; };
 		EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBC120B079B60012909E /* AppDelegate.swift */; };
 		EBADFBCC20B07ABB0012909E /* velibMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */; };
-		EBADFBD420B080A50012909E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBADFBD220B080A20012909E /* Info.plist */; };
 		EBC4DFF820B0332300E5966C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC4DFF720B0332300E5966C /* Constants.swift */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 /* End PBXBuildFile section */
@@ -257,7 +256,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Thomas Guilleminot";
 				TargetAttributes = {
 					EBA372F41EA3A0CC00E214DD = {
@@ -291,7 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBADFBD420B080A50012909E /* Info.plist in Resources */,
 				EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */,
 				EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */,
 				EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */,
@@ -441,6 +439,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -448,6 +447,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -497,6 +497,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -504,6 +505,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

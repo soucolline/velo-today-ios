@@ -33,6 +33,14 @@ class MapViewController: UIViewController {
     }
   }
   
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
+  override var prefersStatusBarHidden: Bool {
+    return false
+  }
+  
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
