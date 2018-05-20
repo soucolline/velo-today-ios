@@ -17,20 +17,17 @@ class FavoriteTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    _ = self.labelsStack.subviews.map { // Round corner of labels
+    
+    _ = self.labelsStack.subviews.map {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
-  
   func feed(with station: Station) {
-    let bikes = station.availableBikes ?? 0
-    let stands = station.availableBikeStands ?? 0
-    let name = station.address ?? "Indisponible"
+    let bikes = station.numbikesavailable
+    let stands = station.numdocksavailable
+    let name = station.name
     
     self.bikesLabel.text = "\(bikes) vélo\(bikes > 0 ? "s" : "")"
     self.standsLabel.text = "\(stands) place\(stands > 0 ? "s" : "")"

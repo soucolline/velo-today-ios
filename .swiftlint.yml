@@ -35,7 +35,8 @@ type_name:
   max_length: # warning and error
     warning: 40
     error: 50
-  excluded: iPhone # excluded via string
+  excluded: 
+    - K
 identifier_name:
   min_length: # only min_length
     error: 3 # only error
@@ -44,4 +45,6 @@ identifier_name:
     - URL
     - GlobalAPIKey
     - API_CLIENT_ID
+    - vc
+    - xy
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
