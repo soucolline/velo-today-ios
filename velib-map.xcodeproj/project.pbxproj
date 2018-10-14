@@ -565,8 +565,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "890d0a9f-2b2f-4b9c-8b17-67c427b23a2d";
-				PROVISIONING_PROFILE_SPECIFIER = VelibMap_distribution;
+				PROVISIONING_PROFILE = "600004c0-06e2-45b1-ab37-456b3d7e1f45";
+				PROVISIONING_PROFILE_SPECIFIER = velibMap_distribution;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

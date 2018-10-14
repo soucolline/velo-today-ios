@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Velibs"
+    self.title = "Stations disponibles"
     
     self.mapView.delegate = self
     self.locationManager.delegate = self
