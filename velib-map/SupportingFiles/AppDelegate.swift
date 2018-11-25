@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreStore
-import Fabric
-import Crashlytics
 import ZLogger
 
 @UIApplicationMain
@@ -17,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     UINavigationBar.appearance().tintColor = UIColor.white
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UINavigationBar.appearance().barStyle = .black
@@ -36,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     CoreStore.defaultStack = dataStack
     
-    Fabric.with([Crashlytics.self])
     return true
   }
   

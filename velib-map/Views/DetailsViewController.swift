@@ -60,7 +60,11 @@ class DetailsViewController: UIViewController {
   
   func centerMap(on location: CLLocation) {
     let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius * 2.0,
+      longitudinalMeters: regionRadius * 2.0
+    )
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   

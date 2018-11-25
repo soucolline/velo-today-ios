@@ -1,32 +1,25 @@
 PODS:
-  - Alamofire (4.7.2)
-  - CoreStore (5.1.0)
-  - Crashlytics (3.10.1):
-    - Fabric (~> 1.7.5)
-  - Fabric (1.7.6)
-  - PromisesObjC (1.1.1)
-  - PromisesSwift (1.1.1):
-    - PromisesObjC (= 1.1.1)
+  - Alamofire (4.7.3)
+  - CoreStore (5.3.1)
+  - PromisesObjC (1.2.4)
+  - PromisesSwift (1.2.4):
+    - PromisesObjC (= 1.2.4)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.25.1)
-  - ZLogger (1.0.0)
+  - SwiftLint (0.28.2)
+  - ZLogger (1.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7.2)
-  - CoreStore (~> 5.0)
-  - Crashlytics (~> 3.10)
-  - Fabric (~> 1.7)
-  - PromisesSwift (~> 1.1)
+  - Alamofire (~> 4.7.3)
+  - CoreStore (~> 5.3.1)
+  - PromisesSwift (~> 1.2.4)
   - SVProgressHUD (~> 2.2)
-  - SwiftLint (~> 0.25)
-  - ZLogger
+  - SwiftLint (~> 0.28)
+  - ZLogger (~> 1.0.1)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - CoreStore
-    - Crashlytics
-    - Fabric
     - PromisesObjC
     - PromisesSwift
     - SVProgressHUD
@@ -34,16 +27,14 @@ SPEC REPOS:
     - ZLogger
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  CoreStore: 5fd51cbe7ea2d7b4dfc6327031ab6ff6f7c63175
-  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
-  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
-  PromisesObjC: c6ea89661f018e55cd83dd7d0b5a7751f5e63c23
-  PromisesSwift: 23ae4ad1c81963d35a37a98b83dd1e63403c54b8
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  CoreStore: 89d0c8e7a9d76d0c533018b4850245c973f4ecbd
+  PromisesObjC: 4a3f2e30a0eb793e9bbb32cd367b625d4a14de5a
+  PromisesSwift: 8e1d2cdbc3cafb4f09d4b82df12f645bc19ab64e
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
-  ZLogger: 10113443f92e2514b852883df4431e35360df0dc
+  SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
+  ZLogger: ab82de457f677552740953c0884fcb31c70b542a
 
-PODFILE CHECKSUM: 83dc9ed885c8c0f6f7cffae408a141b66519a82a
+PODFILE CHECKSUM: 58faa93856ec31b8cebafb8edafd6b0947ecf6ef
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
