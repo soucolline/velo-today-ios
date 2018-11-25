@@ -11,8 +11,6 @@ target 'velib-map' do
   pod 'Alamofire', '~> 4.7.2'
   pod 'SVProgressHUD', '~> 2.2'
   pod 'CoreStore', '~> 5.0'
-  pod 'Fabric', '~> 1.7'
-  pod 'Crashlytics', '~> 3.10'
   pod 'PromisesSwift', '~> 1.1'
   pod 'SwiftLint', '~> 0.25'
   pod 'ZLogger'

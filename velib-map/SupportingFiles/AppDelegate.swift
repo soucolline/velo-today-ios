@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreStore
-import Fabric
-import Crashlytics
 import ZLogger
 
 @UIApplicationMain
@@ -36,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     CoreStore.defaultStack = dataStack
     
-    Fabric.with([Crashlytics.self])
     return true
   }
   
