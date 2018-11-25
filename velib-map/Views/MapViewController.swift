@@ -34,6 +34,8 @@ class MapViewController: UIViewController {
     self.title = "Stations disponibles"
     
     self.mapView.delegate = self
+    self.mapView.showsUserLocation = true
+    
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
