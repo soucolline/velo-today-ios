@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
+		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
+		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBADFBC120B079B60012909E /* AppDelegate.swift */,
+				EB274EEE21AAC46E00906077 /* AppComponent.swift */,
 				EBADFBD220B080A20012909E /* Info.plist */,
 				EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */,
 			);
@@ -310,6 +313,7 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLogger/ZLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -319,6 +323,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLogger.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +379,7 @@
 				EBADFBBA20B079670012909E /* APIError.swift in Sources */,
 				EBADFBAF20B079350012909E /* MapViewController.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
+				EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
 				EBADFBB820B079670012909E /* FavoriteStation.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,

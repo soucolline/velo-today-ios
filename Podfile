@@ -14,5 +14,6 @@ target 'velib-map' do
   pod 'PromisesSwift', '~> 1.2.4'
   pod 'SwiftLint', '~> 0.28'
   pod 'ZLogger', '~> 1.0.1'
+  pod 'Swinject', '~> 2.5'
 
 end

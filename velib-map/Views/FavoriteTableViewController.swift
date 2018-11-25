@@ -13,13 +13,14 @@ class FavoriteTableViewController: UITableViewController {
   
   var loaderMessage = "Chargement de vos stations préférées"
     
-  lazy var presenter: FavoritePresenter = {
-    return FavoritePresenterImpl(delegate: self, service: MapService())
-  }()
+  var presenter: FavoritePresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(FavoritePresenter.self))!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Favoris"
+    
+    self.presenter.setView(view: self)
+    
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
   }
   

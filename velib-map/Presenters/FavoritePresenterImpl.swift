@@ -16,6 +16,8 @@ protocol FavoriteViewDeletage: class, Loadable {
 }
 
 protocol FavoritePresenter {
+  func setView(view: FavoriteViewDeletage)
+  
   func fetchFavoriteStations()
   func getStation(at index: Int) -> Station?
   func getStationsCount() -> Int
@@ -28,9 +30,12 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   private var stations: [Station]?
   
-  init(delegate: FavoriteViewDeletage, service: MapService) {
-    self.delegate = delegate
+  init(service: MapService) {
     self.service = service
+  }
+  
+  func setView(view: FavoriteViewDeletage) {
+    self.delegate = view
   }
   
   func fetchFavoriteStations() {
@@ -39,6 +44,7 @@ class FavoritePresenterImpl: FavoritePresenter {
     let favoriteStations = CoreStore.fetchAll(From<FavoriteStation>()) ?? []
     
     guard !favoriteStations.isEmpty else {
+      self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
       return
