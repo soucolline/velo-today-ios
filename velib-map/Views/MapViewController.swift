@@ -23,15 +23,7 @@ class MapViewController: UIViewController {
     )
   }()
   
-  var loaderMessage: String {
-    get {
-      return "Chargement des stations"
-    }
-    
-    set(newValue) {
-      self.loaderMessage = newValue
-    }
-  }
+  var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent

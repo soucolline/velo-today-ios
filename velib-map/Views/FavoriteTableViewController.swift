@@ -11,15 +11,8 @@ import SVProgressHUD
 
 class FavoriteTableViewController: UITableViewController {
   
-  var loaderMessage: String {
-    get {
-      return "Chargement de vos stations préférées"
-    }
-    set(newValue) {
-      self.loaderMessage = newValue
-    }
-  }
-  
+  var loaderMessage = "Chargement de vos stations préférées"
+    
   lazy var presenter: FavoritePresenter = {
     return FavoritePresenterImpl(delegate: self, service: MapService())
   }()
