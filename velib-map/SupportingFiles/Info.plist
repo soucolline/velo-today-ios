@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Velib Today</string>
+	<string>Vélo Today</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,23 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.4.1</string>
 	<key>CFBundleVersion</key>
 	<string>0</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>6abd8c020462b87ae70facaec8d3bd0f4b47942b</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>

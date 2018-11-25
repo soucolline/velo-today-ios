@@ -24,14 +24,17 @@ class DetailsViewController: UIViewController {
   
   var currentStation: Station?
   
-  lazy var presenter: DetailsPresenter = {
-    return DetailsPresenterImpl(delegate: self, service: CoreDataService(), currentStation: self.currentStation)
-  }()
+  var presenter: DetailsPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(DetailsPresenter.self))!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.presenter.setView(view: self)
+    self.presenter.setData(currentStation: self.currentStation)
+    
     self.title = self.presenter.getCurrentStationTitle()
     self.mapView.delegate = self
+    
     self.setupUI()
   }
   
@@ -60,7 +63,11 @@ class DetailsViewController: UIViewController {
   
   func centerMap(on location: CLLocation) {
     let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius * 2.0,
+      longitudinalMeters: regionRadius * 2.0
+    )
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   

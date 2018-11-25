@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
+		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
+		EB274EF121AACD1500906077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB274EF021AACD1500906077 /* GoogleService-Info.plist */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
@@ -38,6 +40,8 @@
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
+		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
+		EB274EF021AACD1500906077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,8 +162,10 @@
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBADFBC120B079B60012909E /* AppDelegate.swift */,
+				EB274EEE21AAC46E00906077 /* AppComponent.swift */,
 				EBADFBD220B080A20012909E /* Info.plist */,
 				EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */,
+				EB274EF021AACD1500906077 /* GoogleService-Info.plist */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -237,8 +243,8 @@
 				EBA372F21EA3A0CC00E214DD /* Frameworks */,
 				EBA372F31EA3A0CC00E214DD /* Resources */,
 				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
-				24B27DAA1F1ABDA500977098 /* ShellScript */,
 				EB11657120A6DAF40086F8D7 /* SwiftLint */,
+				EB274EF221AACE7E00906077 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -291,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */,
+				EB274EF121AACD1500906077 /* GoogleService-Info.plist in Resources */,
 				EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */,
 				EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */,
 			);
@@ -299,19 +306,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		24B27DAA1F1ABDA500977098 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6abd8c020462b87ae70facaec8d3bd0f4b47942b 5a8a1868eef3cd55f7d6b868cf930b6ccb1828ba5edc0b524f4ba0bebd28248f";
-		};
 		31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,19 +315,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLogger/ZLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,6 +372,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
+		EB274EF221AACE7E00906077 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -388,6 +407,7 @@
 				EBADFBBA20B079670012909E /* APIError.swift in Sources */,
 				EBADFBAF20B079350012909E /* MapViewController.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
+				EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
 				EBADFBB820B079670012909E /* FavoriteStation.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,
@@ -549,7 +569,7 @@
 				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
 				PROVISIONING_PROFILE_SPECIFIER = VelibMap_development;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -565,10 +585,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "890d0a9f-2b2f-4b9c-8b17-67c427b23a2d";
-				PROVISIONING_PROFILE_SPECIFIER = VelibMap_distribution;
+				PROVISIONING_PROFILE = "600004c0-06e2-45b1-ab37-456b3d7e1f45";
+				PROVISIONING_PROFILE_SPECIFIER = velibMap_distribution;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

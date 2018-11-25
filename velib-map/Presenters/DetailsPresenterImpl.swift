@@ -19,6 +19,9 @@ protocol DetailsViewDelegate: class {
 }
 
 protocol DetailsPresenter {
+  func setView(view: DetailsViewDelegate)
+  func setData(currentStation: Station?)
+  
   func addFavorite()
   func removeFavorite()
   
@@ -33,14 +36,19 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   private weak var delegate: DetailsViewDelegate?
   private let service: CoreDataService
-  private let currentStation: Station?
+  private var currentStation: Station?
   private var isFavStation: FavoriteStation?
   
-  init(delegate: DetailsViewDelegate, service: CoreDataService, currentStation: Station?) {
-    self.delegate = delegate
+  init(service: CoreDataService) {
     self.service = service
+  }
+  
+  func setView(view: DetailsViewDelegate) {
+    self.delegate = view
+  }
+  
+  func setData(currentStation: Station?) {
     self.currentStation = currentStation
-    
     self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.stationId))
   }
   
