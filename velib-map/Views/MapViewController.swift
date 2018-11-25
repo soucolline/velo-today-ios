@@ -75,8 +75,11 @@ class MapViewController: UIViewController {
   
   func centerMapOnLocation(location: CLLocation) {
     let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                              regionRadius * 2.0, regionRadius * 2.0)
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius * 2.0,
+      longitudinalMeters: regionRadius * 2.0
+    )
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
@@ -131,7 +134,7 @@ extension MapViewController: MKMapViewDelegate {
     } else {
       pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       pin.canShowCallout = true
-      pin.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+      pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
     }
     
     pin.image = UIImage(named: "pin-\(annotation.numbikesavailable)")
