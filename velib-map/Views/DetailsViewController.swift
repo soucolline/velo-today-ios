@@ -24,14 +24,17 @@ class DetailsViewController: UIViewController {
   
   var currentStation: Station?
   
-  lazy var presenter: DetailsPresenter = {
-    return DetailsPresenterImpl(delegate: self, service: CoreDataService(), currentStation: self.currentStation)
-  }()
+  var presenter: DetailsPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(DetailsPresenter.self))!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.presenter.setView(view: self)
+    self.presenter.setData(currentStation: self.currentStation)
+    
     self.title = self.presenter.getCurrentStationTitle()
     self.mapView.delegate = self
+    
     self.setupUI()
   }
   

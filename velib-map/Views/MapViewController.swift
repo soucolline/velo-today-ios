@@ -15,23 +15,8 @@ class MapViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var reloadBtn: UIBarButtonItem!
   
-  lazy var presenter: MapPresenter = {
-    return MapPresenterImpl(
-      delegate: self,
-      service: MapService(),
-      repository: PreferencesRepository(with: UserDefaults.standard)
-    )
-  }()
-  
-  var loaderMessage: String {
-    get {
-      return "Chargement des stations"
-    }
-    
-    set(newValue) {
-      self.loaderMessage = newValue
-    }
-  }
+  var presenter: MapPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(MapPresenter.self))!
+  var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -54,6 +39,7 @@ class MapViewController: UIViewController {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     self.locationManager.requestLocation()
     
+    self.presenter.setView(view: self)
     self.presenter.reloadPins()
   }
   

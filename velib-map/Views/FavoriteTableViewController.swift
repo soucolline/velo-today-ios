@@ -11,22 +11,16 @@ import SVProgressHUD
 
 class FavoriteTableViewController: UITableViewController {
   
-  var loaderMessage: String {
-    get {
-      return "Chargement de vos stations préférées"
-    }
-    set(newValue) {
-      self.loaderMessage = newValue
-    }
-  }
-  
-  lazy var presenter: FavoritePresenter = {
-    return FavoritePresenterImpl(delegate: self, service: MapService())
-  }()
+  var loaderMessage = "Chargement de vos stations préférées"
+    
+  var presenter: FavoritePresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(FavoritePresenter.self))!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Favoris"
+    
+    self.presenter.setView(view: self)
+    
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
   }
   
