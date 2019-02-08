@@ -53,9 +53,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - PromisesObjC (1.2.4)
-  - PromisesSwift (1.2.4):
-    - PromisesObjC (= 1.2.4)
+  - PromisesObjC (1.2.6)
+  - PromisesSwift (1.2.6):
+    - PromisesObjC (= 1.2.6)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.28.2)
   - Swinject (2.5.0)
@@ -67,7 +67,7 @@ DEPENDENCIES:
   - Crashlytics (~> 3.11.1)
   - Fabric (~> 1.8.2)
   - Firebase/Core
-  - PromisesSwift (~> 1.2.4)
+  - PromisesSwift (~> 1.2.6)
   - SVProgressHUD (~> 2.2)
   - SwiftLint (~> 0.28)
   - Swinject (~> 2.5)
@@ -105,13 +105,13 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  PromisesObjC: 4a3f2e30a0eb793e9bbb32cd367b625d4a14de5a
-  PromisesSwift: 8e1d2cdbc3cafb4f09d4b82df12f645bc19ab64e
+  PromisesObjC: 60326422b6d692b9718a80666e67a9433862aa88
+  PromisesSwift: b3219d5e6545d5d7e8ad8038b4ad139f7ee0b3f0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   ZLogger: ab82de457f677552740953c0884fcb31c70b542a
 
-PODFILE CHECKSUM: 5c2e23e626467648f945cfceaf7acd33527ef01f
+PODFILE CHECKSUM: 64df3dcf193ecfb1e12bd273cab07bd2352098ac
 
 COCOAPODS: 1.5.3
