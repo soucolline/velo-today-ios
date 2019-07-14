@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */; };
+		E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkSession.swift; path = Workers/NetworkSession.swift; sourceTree = "<group>"; };
+		E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIWorker.swift; path = Workers/APIWorker.swift; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,15 @@
 				FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E99F3E6F22DB86A800476528 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */,
+				E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */,
+			);
+			name = Workers;
 			sourceTree = "<group>";
 		};
 		EB1FFF0820A72A8F00AA9F79 /* Utils */ = {
@@ -202,6 +215,7 @@
 				EB5D021120A6D8BF005AED49 /* Presenters */,
 				EBD5F85620A6D8860056B1E0 /* Views */,
 				EB1FFF0820A72A8F00AA9F79 /* Utils */,
+				E99F3E6F22DB86A800476528 /* Workers */,
 				EB54F9B520B07595008221A0 /* SupportingFiles */,
 			);
 			path = "velib-map";
@@ -309,7 +323,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
@@ -319,7 +332,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
@@ -373,6 +385,7 @@
 			files = (
 				EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */,
 				EBADFBA720B078DF0012909E /* FavoritePresenterImpl.swift in Sources */,
+				E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */,
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
 				EBADFBA120B078B50012909E /* CoreDataService.swift in Sources */,
 				EBADFBBB20B079670012909E /* MapStyle.swift in Sources */,
@@ -392,6 +405,7 @@
 				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
 				EBADFBCC20B07ABB0012909E /* velibMap.xcdatamodeld in Sources */,
 				EBADFBB320B0793E0012909E /* FavoriteTableViewCell.swift in Sources */,
+				E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */,
 				EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

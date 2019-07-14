@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.7.3)
   - CoreStore (6.3.1)
   - PromisesObjC (1.2.8)
   - PromisesSwift (1.2.8):
@@ -10,7 +9,6 @@ PODS:
   - ZLogger (1.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7.3)
   - CoreStore (= 6.3.1)
   - PromisesSwift (= 1.2.8)
   - SVProgressHUD (= 2.2.5)
@@ -27,11 +25,9 @@ SPEC REPOS:
     - Swinject
     - ZLogger
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
@@ -40,6 +36,6 @@ SPEC CHECKSUMS:
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   ZLogger: d53f23ce00f0f94a97271495f9f2957e5255938f
 
-PODFILE CHECKSUM: 158afaa3d6a613f7ad7b7666fe20fdd5781002df
+PODFILE CHECKSUM: 1f5d352b0cdec086418eb2a2079e6a9ae956bebd
 
 COCOAPODS: 1.7.3

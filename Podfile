@@ -8,7 +8,6 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
-  pod 'Alamofire', '~> 4.7.3'
   pod 'SVProgressHUD', '= 2.2.5'
   pod 'CoreStore', '= 6.3.1'
   pod 'PromisesSwift', '= 1.2.8'

@@ -7,33 +7,28 @@
 //
 
 import Foundation
-import Alamofire
 import Promises
 
 class MapService {
   
+  private let apiWorker: APIWorker
+  
+  init(with apiWorker: APIWorker) {
+    self.apiWorker = apiWorker
+  }
+  
   func fetchPins() -> Promise<[Station]> {
     return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
+      let url = URL(string: K.Api.baseUrl)!
       
-      Alamofire.request(K.Api.baseUrl).validate().responseJSON { response in
-        guard response.result.isSuccess else { return reject(APIError.notFound) }
-        guard let data = response.data else {
-          reject(APIError.internalServerError)
-          return
-        }
-        
-        let decoder = JSONDecoder()
-        
-        do {
-          let dataRoot = try decoder.decode(FetchStationObjectResponseRoot.self, from: data)
-          _ = dataRoot.records.map {
-            stations.append($0.station)
-          }
-          
+      self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
+        switch result {
+        case .success(let response):
+          _ = response.records.map { stations.append($0.station) }
           fulfill(stations)
-        } catch _ {
-          reject(APIError.couldNotDecodeData)
+        case .failure(let error):
+          reject(APIError.customError(error.localizedDescription))
         }
       }
     }
@@ -44,28 +39,19 @@ class MapService {
       var fetchedStations = [Station]()
       
       _ = favoriteStations.map { station in
-        let url = K.Api.baseUrl + K.Api.stationQuery + "\(station.number)"
+        let url = URL(string: K.Api.baseUrl + K.Api.stationQuery + "\(station.number)")!
         
-        Alamofire.request(url).validate().responseJSON { response in
-          guard response.result.isSuccess else { return reject(APIError.notFound) }
-          guard let data = response.data else {
-            reject(APIError.internalServerError)
-            return
-          }
-          
-          let decoder = JSONDecoder()
-          
-          do {
-            let dataRoot = try decoder.decode(FetchStationObjectResponseRoot.self, from: data)
-            _ = dataRoot.records.map {
-              fetchedStations.append($0.station)
-            }
+        self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
+          switch result {
+          case .success(let response):
+            _ = response.records.map { fetchedStations.append($0.station) }
             
             if fetchedStations.count == favoriteStations.count {
               fulfill(fetchedStations)
             }
-          } catch _ {
-            reject(APIError.couldNotDecodeData)
+            
+          case .failure(let error):
+            reject(APIError.customError(error.localizedDescription))
           }
         }
       }

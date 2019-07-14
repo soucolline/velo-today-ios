@@ -11,6 +11,8 @@ import Foundation
 enum APIError: Error {
   case notFound
   case internalServerError
-  case couldNotDecodeData
+  case couldNotDecodeJSON
+  case noData
   case unknown
+  case customError(String)
 }
