@@ -15,8 +15,10 @@ class AppComponent {
   func getContainer() -> Container {
     let container = Container()
     
-    container.register(MapService.self) { _ in
-      return MapService()
+    container.register(MapService.self) { resolver in
+      return MapService(
+        with: resolver.resolve(APIWorker.self)!
+      )
     }
     
     container.register(CoreDataService.self) { resolver in
@@ -63,6 +65,18 @@ class AppComponent {
       }
       
       return dataStack
+    }
+    
+    container.register(NetworkSession.self) { _ in
+      let session = URLSessionConfiguration.default
+      session.timeoutIntervalForRequest = 10.0
+      return URLSession(configuration: session)
+    }
+    
+    container.register(APIWorker.self) { resolver in
+      APIWorkerImpl(
+        with: resolver.resolve(NetworkSession.self)!
+      )
     }
     
     return container
