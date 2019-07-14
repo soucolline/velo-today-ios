@@ -25,8 +25,8 @@ class FavoriteTableViewCell: UITableViewCell {
   }
   
   func feed(with station: Station) {
-    let bikes = station.numbikesavailable
-    let stands = station.numdocksavailable
+    let bikes = station.freeBikes
+    let stands = station.freeDocks
     let name = station.name
     
     self.bikesLabel.text = "\(bikes) vélo\(bikes > 0 ? "s" : "")"

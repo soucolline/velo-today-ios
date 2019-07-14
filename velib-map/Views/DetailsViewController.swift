@@ -18,7 +18,6 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var stackViewBtns: UIStackView!
   @IBOutlet weak var bikesLabel: UILabel!
   @IBOutlet weak var standsLabel: UILabel!
-  @IBOutlet weak var lastUpdateLabel: UILabel!
   @IBOutlet weak var favBtn: UIButton!
   @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
   
@@ -79,9 +78,8 @@ class DetailsViewController: UIViewController {
       $0.layer.cornerRadius = 5.0
     }
     
-    self.bikesLabel.text = "\(station.numbikesavailable) vélos disponibles"
-    self.standsLabel.text = "\(station.numdocksavailable) stands disponibles"
-    self.lastUpdateLabel.text = station.lastUpdateDateString
+    self.bikesLabel.text = "\(station.freeBikes) vélos disponibles"
+    self.standsLabel.text = "\(station.freeDocks) stands disponibles"
   }
   
   func updateFavBtn(with color: UIColor, andTitle title: String) {

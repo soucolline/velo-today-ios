@@ -49,7 +49,7 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   func setData(currentStation: Station?) {
     self.currentStation = currentStation
-    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.stationId))
+    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.code))
   }
   
   func addFavorite() {
