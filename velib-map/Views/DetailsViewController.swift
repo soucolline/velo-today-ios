@@ -79,9 +79,9 @@ class DetailsViewController: UIViewController {
       $0.layer.cornerRadius = 5.0
     }
     
-    self.bikesLabel.text = "\(station.numbikesavailable) vélos disponibles"
-    self.standsLabel.text = "\(station.numdocksavailable) stands disponibles"
-    self.lastUpdateLabel.text = station.lastUpdateDateString
+    self.bikesLabel.text = "\(station.freeBikes) vélos disponibles"
+    self.standsLabel.text = "\(station.freeDocks) stands disponibles"
+    self.lastUpdateLabel.text = "To remove does not exist anymore" //station.lastUpdateDateString
   }
   
   func updateFavBtn(with color: UIColor, andTitle title: String) {

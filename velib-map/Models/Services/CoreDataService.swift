@@ -16,9 +16,9 @@ class CoreDataService {
     return Promise<FavoriteStation> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> FavoriteStation in
         let favStation = transaction.create(Into<FavoriteStation>())
-        favStation.number = Int32(station.stationId)
-        favStation.availableBikes = Int16(station.numbikesavailable)
-        favStation.availableBikeStands = Int16(station.numdocksavailable)
+        favStation.number = Int32(station.code) ?? 0
+        favStation.availableBikes = Int16(station.freeBikes)
+        favStation.availableBikeStands = Int16(station.freeDocks)
         favStation.name = station.name
         favStation.address = station.name
         return favStation
@@ -33,7 +33,7 @@ class CoreDataService {
   func removeFavorite(station: Station) -> Promise<Int> {
     return Promise<Int> { fulfill, reject in
       CoreStore.perform(asynchronous: { transaction -> Int? in
-        transaction.deleteAll(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: station.stationId))
+        transaction.deleteAll(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: station.code))
       }, success: { result in
         if let result = result {
           fulfill(result)
