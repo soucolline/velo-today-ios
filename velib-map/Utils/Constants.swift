@@ -13,7 +13,7 @@ struct K {
   
   struct Api {
     static let baseUrl = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000"
-    static let stationQuery = "&q=station_id%3D+"
+    static let stationQuery = "&q=station_code%3D+"
   }
   
   struct Colors {
