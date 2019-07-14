@@ -1,5 +1,6 @@
 PODS:
   - CoreStore (6.3.1)
+  - Cuckoo (1.0.6)
   - PromisesObjC (1.2.8)
   - PromisesSwift (1.2.8):
     - PromisesObjC (= 1.2.8)
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - CoreStore (= 6.3.1)
+  - Cuckoo (= 1.0.6)
   - PromisesSwift (= 1.2.8)
   - SVProgressHUD (= 2.2.5)
   - SwiftLint (= 0.33.1)
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://cdn.cocoapods.org/:
     - CoreStore
+    - Cuckoo
     - PromisesObjC
     - PromisesSwift
     - SwiftLint
@@ -29,6 +32,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
+  Cuckoo: 8074fc309159c4862665b83798f5ad03e061e8bd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -36,6 +40,6 @@ SPEC CHECKSUMS:
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   ZLogger: d53f23ce00f0f94a97271495f9f2957e5255938f
 
-PODFILE CHECKSUM: 1f5d352b0cdec086418eb2a2079e6a9ae956bebd
+PODFILE CHECKSUM: e9bf6ed8585babecb890f12ca383b7446c83387c
 
 COCOAPODS: 1.7.3

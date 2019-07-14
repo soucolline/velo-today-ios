@@ -15,3 +15,8 @@ target 'velib-map' do
   pod 'ZLogger', '= 1.1.0'
   pod 'Swinject', '= 2.6.2'
 end
+
+target 'velib-mapTests' do
+  use_frameworks!
+  pod 'Cuckoo', '= 1.0.6'
+end
