@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */; };
 		E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */; };
-		E94D2B9922DB94AB00A80A76 /* velib_mapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */; };
+		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
+		E94D2BA422DB958200A80A76 /* APIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */; };
+		E94D2BA722DB966500A80A76 /* fetchAll.json in Resources */ = {isa = PBXBuildFile; fileRef = E94D2BA622DB966500A80A76 /* fetchAll.json */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
@@ -58,8 +60,10 @@
 		E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkSession.swift; path = Workers/NetworkSession.swift; sourceTree = "<group>"; };
 		E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIWorker.swift; path = Workers/APIWorker.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = velib_mapTests.swift; sourceTree = "<group>"; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorkerTests.swift; sourceTree = "<group>"; };
+		E94D2BA622DB966500A80A76 /* fetchAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fetchAll.json; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,10 +148,20 @@
 		E94D2B9722DB94AB00A80A76 /* velib-mapTests */ = {
 			isa = PBXGroup;
 			children = (
-				E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */,
+				E94D2BA522DB963100A80A76 /* Stubs */,
+				E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */,
+				E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */,
 				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
 			);
 			path = "velib-mapTests";
+			sourceTree = "<group>";
+		};
+		E94D2BA522DB963100A80A76 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				E94D2BA622DB966500A80A76 /* fetchAll.json */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 		E99F3E6F22DB86A800476528 /* Workers */ = {
@@ -315,6 +329,7 @@
 				EBA372F31EA3A0CC00E214DD /* Resources */,
 				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
 				EB11657120A6DAF40086F8D7 /* SwiftLint */,
+				E94D2BA022DB951700A80A76 /* Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -374,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94D2BA722DB966500A80A76 /* fetchAll.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +492,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E94D2BA022DB951700A80A76 /* Cuckoo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Cuckoo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/velib-mapTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/velib-map/Workers/NetworkSession.swift\" \\\n\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n\n";
+		};
 		EB11657120A6DAF40086F8D7 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,7 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94D2B9922DB94AB00A80A76 /* velib_mapTests.swift in Sources */,
+				E94D2BA422DB958200A80A76 /* APIWorkerTests.swift in Sources */,
+				E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

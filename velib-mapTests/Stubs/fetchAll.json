@@ -1,0 +1,41 @@
+{
+  "nhits": 1362,
+  "parameters": {
+    "dataset": ["velib-disponibilite-en-temps-reel"],
+    "timezone": "UTC",
+    "rows": 1000,
+    "format": "json"
+  },
+  "records": [{
+    "datasetid": "velib-disponibilite-en-temps-reel",
+    "recordid": "021cbe13a813a127faf4ca89cacee73f2285dd24",
+    "fields": {
+      "nbfreeedock": 32,
+      "nbebike": 4,
+      "station_state": "Operative",
+      "maxbikeoverflow": 41,
+      "station_type": "no",
+      "overflowactivation": "no",
+      "station_code": "17026",
+      "densitylevel": "1",
+      "nbedock": 0,
+      "station_name": "Jouffroy d'Abbans - Wagram",
+      "nbdock": 41,
+      "station": "{\"code\": \"17026\", \"name\": \"Jouffroy d'Abbans - Wagram\", \"state\": \"Operative\", \"type\": \"no\", \"dueDate\": 1519858800, \"gps\": {\"latitude\": 48.881973298351625, \"longitude\": 2.301132157444954}}",
+      "nbbikeoverflow": 0,
+      "nbfreedock": 32,
+      "nbbike": 5,
+      "overflow": "no",
+      "creditcard": "yes",
+      "geo": [48.881973298351625, 2.301132157444954],
+      "duedate": "2018-02-28",
+      "kioskstate": "yes",
+      "nbebikeoverflow": 0
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [2.301132157444954, 48.881973298351625]
+    },
+    "record_timestamp": "2019-06-25T15:52:02+00:00"
+  }]
+}
