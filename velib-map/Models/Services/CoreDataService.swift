@@ -12,9 +12,15 @@ import CoreStore
 
 class CoreDataService {
   
+  private let dataStack: DataStack
+  
+  init(with dataStack: DataStack) {
+    self.dataStack = dataStack
+  }
+  
   func addFavorite(station: Station) -> Promise<FavoriteStation> {
     return Promise<FavoriteStation> { fulfill, reject in
-      CoreStore.perform(asynchronous: { transaction -> FavoriteStation in
+      self.dataStack.perform(asynchronous: { transaction -> FavoriteStation in
         let favStation = transaction.create(Into<FavoriteStation>())
         favStation.number = Int32(station.code) ?? 0
         favStation.availableBikes = Int16(station.freeBikes)
@@ -32,7 +38,7 @@ class CoreDataService {
   
   func removeFavorite(station: Station) -> Promise<Int> {
     return Promise<Int> { fulfill, reject in
-      CoreStore.perform(asynchronous: { transaction -> Int? in
+      self.dataStack.perform(asynchronous: { transaction -> Int? in
         try? transaction.deleteAll(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: station.code))
       }, success: { result in
         if let result = result {

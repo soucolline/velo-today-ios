@@ -24,18 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UINavigationBar.appearance().barStyle = .black
     
-    let dataStack = DataStack(
-      xcodeModelName: "velibMap",
-      migrationChain: []
-    )
-    do {
-     try dataStack.addStorageAndWait()
-    } catch { 
-      ZLogger.error(message: "Could not create Database")
-    }
-    
-    CoreStore.defaultStack = dataStack
-    
     return true
   }
   
