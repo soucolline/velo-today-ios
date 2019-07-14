@@ -98,12 +98,12 @@ class DetailsViewController: UIViewController {
 extension DetailsViewController: DetailsViewDelegate {
   
   func onAddFavoriteSuccess(numberOfFavoriteStations: Int) {
-    ZLogger.log(message: "number of favorite stations ==> \(numberOfFavoriteStations)", event: .info)
+    ZLogger.info(message: "number of favorite stations ==> \(numberOfFavoriteStations)")
     self.updateFavBtn(with: K.Colors.red, andTitle: K.Strings.removeFavorite)
   }
   
   func onRemoveFavoriteSuccess(numberOfFavoriteStations: Int) {
-    ZLogger.log(message: "number of favorite stations ==> \(numberOfFavoriteStations)", event: .info)
+    ZLogger.info(message: "number of favorite stations ==> \(numberOfFavoriteStations)")
     self.updateFavBtn(with: K.Colors.green, andTitle: K.Strings.addFavorite)
   }
   

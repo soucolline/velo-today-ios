@@ -10,7 +10,6 @@ import UIKit
 import CoreStore
 import ZLogger
 import Swinject
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,12 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     do {
      try dataStack.addStorageAndWait()
     } catch { 
-      ZLogger.log(message: "Could not create Database", event: .error)
+      ZLogger.error(message: "Could not create Database")
     }
     
     CoreStore.defaultStack = dataStack
-    
-    FirebaseApp.configure()
     
     return true
   }
