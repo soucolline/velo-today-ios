@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */; };
 		E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */; };
+		E94D2B9922DB94AB00A80A76 /* velib_mapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
@@ -37,11 +38,24 @@
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E94D2B9B22DB94AB00A80A76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBA372ED1EA3A0CC00E214DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBA372F41EA3A0CC00E214DD;
+			remoteInfo = "velib-map";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B8E22DB8F8E00A80A76 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkSession.swift; path = Workers/NetworkSession.swift; sourceTree = "<group>"; };
 		E94D2B8F22DB8F8E00A80A76 /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIWorker.swift; path = Workers/APIWorker.swift; sourceTree = "<group>"; };
+		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = velib_mapTests.swift; sourceTree = "<group>"; };
+		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +87,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E94D2B9322DB94AB00A80A76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBA372F21EA3A0CC00E214DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +131,15 @@
 				FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E94D2B9722DB94AB00A80A76 /* velib-mapTests */ = {
+			isa = PBXGroup;
+			children = (
+				E94D2B9822DB94AB00A80A76 /* velib_mapTests.swift */,
+				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
+			);
+			path = "velib-mapTests";
 			sourceTree = "<group>";
 		};
 		E99F3E6F22DB86A800476528 /* Workers */ = {
@@ -194,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA372F71EA3A0CC00E214DD /* velib-map */,
+				E94D2B9722DB94AB00A80A76 /* velib-mapTests */,
 				EBA372F61EA3A0CC00E214DD /* Products */,
 				680088FA8F458C29EE8BAF70 /* Pods */,
 				45F125794AA96C2A4D3B6D5B /* Frameworks */,
@@ -204,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA372F51EA3A0CC00E214DD /* velib-map.app */,
+				E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +277,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E94D2B9522DB94AB00A80A76 /* velib-mapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */;
+			buildPhases = (
+				E94D2B9222DB94AB00A80A76 /* Sources */,
+				E94D2B9322DB94AB00A80A76 /* Frameworks */,
+				E94D2B9422DB94AB00A80A76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E94D2B9C22DB94AB00A80A76 /* PBXTargetDependency */,
+			);
+			name = "velib-mapTests";
+			productName = "velib-mapTests";
+			productReference = E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EBA372F41EA3A0CC00E214DD /* velib-map */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA373071EA3A0CC00E214DD /* Build configuration list for PBXNativeTarget "velib-map" */;
@@ -271,10 +321,16 @@
 		EBA372ED1EA3A0CC00E214DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Thomas Guilleminot";
 				TargetAttributes = {
+					E94D2B9522DB94AB00A80A76 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = XDX42S5M9N;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EBA372F41EA3A0CC00E214DD;
+					};
 					EBA372F41EA3A0CC00E214DD = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = XDX42S5M9N;
@@ -298,11 +354,19 @@
 			projectRoot = "";
 			targets = (
 				EBA372F41EA3A0CC00E214DD /* velib-map */,
+				E94D2B9522DB94AB00A80A76 /* velib-mapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E94D2B9422DB94AB00A80A76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBA372F31EA3A0CC00E214DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +443,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E94D2B9222DB94AB00A80A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E94D2B9922DB94AB00A80A76 /* velib_mapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBA372F11EA3A0CC00E214DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,6 +484,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E94D2B9C22DB94AB00A80A76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBA372F41EA3A0CC00E214DD /* velib-map */;
+			targetProxy = E94D2B9B22DB94AB00A80A76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EBA372FC1EA3A0CC00E214DD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -432,6 +512,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E94D2B9D22DB94AB00A80A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "velib-mapTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-mapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/velib-map.app/velib-map";
+			};
+			name = Debug;
+		};
+		E94D2B9E22DB94AB00A80A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "velib-mapTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-mapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/velib-map.app/velib-map";
+			};
+			name = Release;
+		};
 		EBA373051EA3A0CC00E214DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -584,6 +711,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E94D2B9D22DB94AB00A80A76 /* Debug */,
+				E94D2B9E22DB94AB00A80A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EBA372F01EA3A0CC00E214DD /* Build configuration list for PBXProject "velib-map" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
