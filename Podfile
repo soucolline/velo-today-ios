@@ -9,10 +9,10 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'Alamofire', '~> 4.7.3'
-  pod 'SVProgressHUD', '~> 2.2'
+  pod 'SVProgressHUD', '= 2.2.5'
   pod 'CoreStore', '~> 5.3.1'
-  pod 'PromisesSwift', '~> 1.2.6'
-  pod 'SwiftLint', '~> 0.28'
-  pod 'ZLogger', '~> 1.0.1'
-  pod 'Swinject', '~> 2.5'
+  pod 'PromisesSwift', '= 1.2.8'
+  pod 'SwiftLint', '= 0.33.1'
+  pod 'ZLogger', '= 1.1.0'
+  pod 'Swinject', '= 2.6.2'
 end

@@ -1,44 +1,45 @@
 PODS:
   - Alamofire (4.7.3)
   - CoreStore (5.3.1)
-  - PromisesObjC (1.2.6)
-  - PromisesSwift (1.2.6):
-    - PromisesObjC (= 1.2.6)
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.28.2)
-  - Swinject (2.5.0)
-  - ZLogger (1.0.1)
+  - SwiftLint (0.33.1)
+  - Swinject (2.6.2)
+  - ZLogger (1.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.3)
   - CoreStore (~> 5.3.1)
-  - PromisesSwift (~> 1.2.6)
-  - SVProgressHUD (~> 2.2)
-  - SwiftLint (~> 0.28)
-  - Swinject (~> 2.5)
-  - ZLogger (~> 1.0.1)
+  - PromisesSwift (= 1.2.8)
+  - SVProgressHUD (= 2.2.5)
+  - SwiftLint (= 0.33.1)
+  - Swinject (= 2.6.2)
+  - ZLogger (= 1.1.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - CoreStore
+  https://cdn.cocoapods.org/:
     - PromisesObjC
     - PromisesSwift
-    - SVProgressHUD
     - SwiftLint
     - Swinject
     - ZLogger
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CoreStore
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   CoreStore: 89d0c8e7a9d76d0c533018b4850245c973f4ecbd
-  PromisesObjC: 60326422b6d692b9718a80666e67a9433862aa88
-  PromisesSwift: b3219d5e6545d5d7e8ad8038b4ad139f7ee0b3f0
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
-  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
-  ZLogger: ab82de457f677552740953c0884fcb31c70b542a
+  SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
+  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
+  ZLogger: d53f23ce00f0f94a97271495f9f2957e5255938f
 
-PODFILE CHECKSUM: 2352a91c0639c9a33b27c1943ee5da0d732296f3
+PODFILE CHECKSUM: 85956bf6626af93aaae78f19f6f7c1783b1c7a08
 
 COCOAPODS: 1.7.3
