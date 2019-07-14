@@ -62,7 +62,7 @@ class MapPresenterImpl: MapPresenter {
         self.delegate?.onFetchStationsErrorNotFound()
       case APIError.internalServerError, APIError.unknown:
         self.delegate?.onFetchStationsErrorServerError()
-      case APIError.couldNotDecodeData:
+      case APIError.couldNotDecodeJSON:
         self.delegate?.onFetchStationsErrorCouldNotDecodeData()
       default: ()
       }

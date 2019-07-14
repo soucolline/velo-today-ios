@@ -33,7 +33,7 @@ class MapService {
           
           fulfill(stations)
         } catch _ {
-          reject(APIError.couldNotDecodeData)
+          reject(APIError.couldNotDecodeJSON)
         }
       }
     }
@@ -65,7 +65,7 @@ class MapService {
               fulfill(fetchedStations)
             }
           } catch _ {
-            reject(APIError.couldNotDecodeData)
+            reject(APIError.couldNotDecodeJSON)
           }
         }
       }
