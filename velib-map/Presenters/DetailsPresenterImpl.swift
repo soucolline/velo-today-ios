@@ -49,7 +49,11 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   func setData(currentStation: Station?) {
     self.currentStation = currentStation
-    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.code))
+    do {
+      self.isFavStation = try CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.code))
+    } catch {
+      self.isFavStation = nil
+    }
   }
   
   func addFavorite() {
@@ -97,7 +101,11 @@ class DetailsPresenterImpl: DetailsPresenter {
   }
   
   private func getNumberOfFavoriteStations() -> Int {
-    return CoreStore.fetchCount(From<FavoriteStation>()) ?? 0
+    do {
+      return try CoreStore.fetchCount(From<FavoriteStation>())
+    } catch {
+      return 0
+    }
   }
   
 }

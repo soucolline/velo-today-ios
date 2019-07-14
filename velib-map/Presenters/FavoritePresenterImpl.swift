@@ -41,9 +41,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   func fetchFavoriteStations() {
     self.delegate?.onShowLoading()
     
-    let favoriteStations = CoreStore.fetchAll(From<FavoriteStation>()) ?? []
-    
-    guard !favoriteStations.isEmpty else {
+    guard let favoriteStations = try? CoreStore.fetchAll(From<FavoriteStation>()) else {
       self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
