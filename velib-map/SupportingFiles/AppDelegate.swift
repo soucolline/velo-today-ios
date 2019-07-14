@@ -10,7 +10,6 @@ import UIKit
 import CoreStore
 import ZLogger
 import Swinject
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     CoreStore.defaultStack = dataStack
-    
-    FirebaseApp.configure()
     
     return true
   }

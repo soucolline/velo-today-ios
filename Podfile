@@ -15,8 +15,4 @@ target 'velib-map' do
   pod 'SwiftLint', '~> 0.28'
   pod 'ZLogger', '~> 1.0.1'
   pod 'Swinject', '~> 2.5'
-  pod 'Firebase/Core'
-  pod 'Fabric', '~> 1.8.2'
-  pod 'Crashlytics', '~> 3.11.1'
-
 end
