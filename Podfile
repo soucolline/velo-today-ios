@@ -19,4 +19,5 @@ end
 target 'velib-mapTests' do
   use_frameworks!
   pod 'Cuckoo', '= 1.0.6'
+  pod 'PromisesSwift', '= 1.2.8'
 end

@@ -32,7 +32,7 @@ class MapPresenterImpl: MapPresenter {
   private let service: MapService
   private let repository: PreferencesRepository
   
-  var stations = [Station]()
+  var stations: [Station] = [Station]()
   var currentStation: Station?
   
   init(service: MapService, repository: PreferencesRepository) {
