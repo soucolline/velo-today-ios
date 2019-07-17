@@ -1,4 +1,5 @@
 PODS:
+  - Bugsnag (5.22.2)
   - CoreStore (6.3.1)
   - Cuckoo (1.0.6)
   - PromisesObjC (1.2.8)
@@ -10,6 +11,7 @@ PODS:
   - ZLogger (1.1.0)
 
 DEPENDENCIES:
+  - Bugsnag
   - CoreStore (= 6.3.1)
   - Cuckoo (= 1.0.6)
   - PromisesSwift (= 1.2.8)
@@ -20,6 +22,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://cdn.cocoapods.org/:
+    - Bugsnag
     - CoreStore
     - Cuckoo
     - PromisesObjC
@@ -31,6 +34,7 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Bugsnag: 3e9e2b563f1e99ce447de123c65e851bd109fa9f
   CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
   Cuckoo: 8074fc309159c4862665b83798f5ad03e061e8bd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6

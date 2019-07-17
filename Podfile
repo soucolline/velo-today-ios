@@ -14,6 +14,7 @@ target 'velib-map' do
   pod 'SwiftLint', '= 0.33.1'
   pod 'ZLogger', '= 1.1.0'
   pod 'Swinject', '= 2.6.2'
+  pod 'Bugsnag'
 end
 
 target 'velib-mapTests' do
