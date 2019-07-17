@@ -43,7 +43,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   func fetchFavoriteStations() {
     self.delegate?.onShowLoading()
     
-    guard let favoriteStations = try? self.dataStack.fetchAll(From<FavoriteStation>()) else {
+    guard let favoriteStations = try? self.dataStack.fetchAll(From<FavoriteStation>()), !favoriteStations.isEmpty else {
       self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
