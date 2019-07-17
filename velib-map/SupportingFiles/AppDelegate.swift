@@ -10,6 +10,8 @@ import UIKit
 import CoreStore
 import ZLogger
 import Swinject
+import Bugsnag
+import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().tintColor = UIColor.white
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UINavigationBar.appearance().barStyle = .black
+    
+    #if RELEASE
+    Bugsnag.start(withApiKey: VelibMapKeys().bugsnagApiKey)
+    #endif
     
     return true
   }

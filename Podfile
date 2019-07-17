@@ -14,6 +14,7 @@ target 'velib-map' do
   pod 'SwiftLint', '= 0.33.1'
   pod 'ZLogger', '= 1.1.0'
   pod 'Swinject', '= 2.6.2'
+  pod 'Bugsnag'
 end
 
 target 'velib-mapTests' do
@@ -21,3 +22,9 @@ target 'velib-mapTests' do
   pod 'Cuckoo', '= 1.0.6'
   pod 'PromisesSwift', '= 1.2.8'
 end
+
+plugin 'cocoapods-keys', {
+  :project => "velib-map",
+  :keys => [
+  "BugsnagApiKey"
+]}

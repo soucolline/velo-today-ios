@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Bugsnag
 
 protocol TaskExecutable: Codable {}
 
@@ -37,11 +38,13 @@ class APIWorkerImpl: APIWorker {
     
     self.session.loadData(from: url) { data, error in
       guard error == nil else {
+        Bugsnag.notify(NSException(name: NSExceptionName(rawValue: "API Error"), reason: error?.localizedDescription))
         completion(.failure(.customError(error?.localizedDescription ?? "Unknown error")))
         return
       }
       
       guard let jsonData = data else {
+        Bugsnag.notify(NSException(name: NSExceptionName(rawValue: "API Error"), reason: "No data"))
         completion(.failure(.noData))
         return
       }
@@ -50,6 +53,7 @@ class APIWorkerImpl: APIWorker {
         let resources = try JSONDecoder().decode(type, from: jsonData)
         completion(.success(resources))
       } catch {
+        Bugsnag.notify(NSException(name: NSExceptionName(rawValue: "API Error"), reason: "Could not decode JSON"))
         completion(.failure(.couldNotDecodeJSON))
       }
     }

@@ -1,6 +1,8 @@
 PODS:
+  - Bugsnag (5.22.2)
   - CoreStore (6.3.1)
   - Cuckoo (1.0.6)
+  - Keys (1.0.1)
   - PromisesObjC (1.2.8)
   - PromisesSwift (1.2.8):
     - PromisesObjC (= 1.2.8)
@@ -10,8 +12,10 @@ PODS:
   - ZLogger (1.1.0)
 
 DEPENDENCIES:
+  - Bugsnag
   - CoreStore (= 6.3.1)
   - Cuckoo (= 1.0.6)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - PromisesSwift (= 1.2.8)
   - SVProgressHUD (= 2.2.5)
   - SwiftLint (= 0.33.1)
@@ -20,6 +24,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://cdn.cocoapods.org/:
+    - Bugsnag
     - CoreStore
     - Cuckoo
     - PromisesObjC
@@ -30,9 +35,15 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - SVProgressHUD
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
+  Bugsnag: 3e9e2b563f1e99ce447de123c65e851bd109fa9f
   CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
   Cuckoo: 8074fc309159c4862665b83798f5ad03e061e8bd
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -40,6 +51,6 @@ SPEC CHECKSUMS:
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   ZLogger: d53f23ce00f0f94a97271495f9f2957e5255938f
 
-PODFILE CHECKSUM: 1b5540e057737b0ac2268d385262cb5fd2b580e3
+PODFILE CHECKSUM: ac8c09b704e4a39ad7d50916ac83f6b07e633744
 
 COCOAPODS: 1.7.3
