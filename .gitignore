@@ -69,3 +69,6 @@ fastlane/test_output
 
 # Mocks
 velib-mapTests/GeneratedMocks.swift
+
+# Secrets
+.env.default
