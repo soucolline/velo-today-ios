@@ -36,11 +36,13 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   private weak var delegate: DetailsViewDelegate?
   private let service: CoreDataService
+  private let dataStack: DataStack
   private var currentStation: Station?
   private var isFavStation: FavoriteStation?
   
-  init(service: CoreDataService) {
+  init(with service: CoreDataService, dataStack: DataStack) {
     self.service = service
+    self.dataStack = dataStack
   }
   
   func setView(view: DetailsViewDelegate) {
@@ -49,7 +51,11 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   func setData(currentStation: Station?) {
     self.currentStation = currentStation
-    self.isFavStation = CoreStore.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.stationId))
+    do {
+      self.isFavStation = try self.dataStack.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.code))
+    } catch {
+      self.isFavStation = nil
+    }
   }
   
   func addFavorite() {
@@ -97,7 +103,11 @@ class DetailsPresenterImpl: DetailsPresenter {
   }
   
   private func getNumberOfFavoriteStations() -> Int {
-    return CoreStore.fetchCount(From<FavoriteStation>()) ?? 0
+    do {
+      return try self.dataStack.fetchCount(From<FavoriteStation>())
+    } catch {
+      return 0
+    }
   }
   
 }

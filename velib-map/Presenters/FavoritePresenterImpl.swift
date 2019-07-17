@@ -27,11 +27,13 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   private weak var delegate: FavoriteViewDeletage?
   private let service: MapService
+  private let dataStack: DataStack
   
   private var stations: [Station]?
   
-  init(service: MapService) {
+  init(with service: MapService, dataStack: DataStack) {
     self.service = service
+    self.dataStack = dataStack
   }
   
   func setView(view: FavoriteViewDeletage) {
@@ -41,9 +43,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   func fetchFavoriteStations() {
     self.delegate?.onShowLoading()
     
-    let favoriteStations = CoreStore.fetchAll(From<FavoriteStation>()) ?? []
-    
-    guard !favoriteStations.isEmpty else {
+    guard let favoriteStations = try? self.dataStack.fetchAll(From<FavoriteStation>()), !favoriteStations.isEmpty else {
       self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
@@ -51,7 +51,7 @@ class FavoritePresenterImpl: FavoritePresenter {
     }
     
     self.service.fetchAllStations(favoriteStations: favoriteStations).then { stations in
-      self.stations = stations.sorted { return $0.stationId > $1.stationId }
+      self.stations = stations.sorted { return $0.code > $1.code }
       self.delegate?.onFetchStationsSuccess()
       self.delegate?.onDismissLoading()
     }.catch { _ in

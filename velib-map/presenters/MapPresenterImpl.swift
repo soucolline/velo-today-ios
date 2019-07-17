@@ -32,7 +32,7 @@ class MapPresenterImpl: MapPresenter {
   private let service: MapService
   private let repository: PreferencesRepository
   
-  var stations = [Station]()
+  var stations: [Station] = [Station]()
   var currentStation: Station?
   
   init(service: MapService, repository: PreferencesRepository) {
@@ -62,7 +62,7 @@ class MapPresenterImpl: MapPresenter {
         self.delegate?.onFetchStationsErrorNotFound()
       case APIError.internalServerError, APIError.unknown:
         self.delegate?.onFetchStationsErrorServerError()
-      case APIError.couldNotDecodeData:
+      case APIError.couldNotDecodeJSON:
         self.delegate?.onFetchStationsErrorCouldNotDecodeData()
       default: ()
       }

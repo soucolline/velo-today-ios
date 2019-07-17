@@ -10,7 +10,8 @@ import UIKit
 import CoreStore
 import ZLogger
 import Swinject
-import Firebase
+import Bugsnag
+import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,19 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UINavigationBar.appearance().barStyle = .black
     
-    let dataStack = DataStack(
-      xcodeModelName: "velibMap",
-      migrationChain: []
-    )
-    do {
-     try dataStack.addStorageAndWait()
-    } catch { 
-      ZLogger.log(message: "Could not create Database", event: .error)
-    }
-    
-    CoreStore.defaultStack = dataStack
-    
-    FirebaseApp.configure()
+    #if RELEASE
+    Bugsnag.start(withApiKey: VelibMapKeys().bugsnagApiKey)
+    #endif
     
     return true
   }

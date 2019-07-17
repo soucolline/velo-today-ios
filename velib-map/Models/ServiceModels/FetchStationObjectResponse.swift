@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchStationObjectResponseRoot: Codable {
+struct FetchStationObjectResponseRoot: TaskExecutable {
   
   let records: [FetchStationObjectResponse]
   

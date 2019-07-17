@@ -1,5 +1,5 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+source 'https://cdn.cocoapods.org/'
+platform :ios, '10.0'
 
 inhibit_all_warnings!
 
@@ -8,15 +8,23 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
-  pod 'Alamofire', '~> 4.7.3'
-  pod 'SVProgressHUD', '~> 2.2'
-  pod 'CoreStore', '~> 5.3.1'
-  pod 'PromisesSwift', '~> 1.2.4'
-  pod 'SwiftLint', '~> 0.28'
-  pod 'ZLogger', '~> 1.0.1'
-  pod 'Swinject', '~> 2.5'
-  pod 'Firebase/Core'
-  pod 'Fabric', '~> 1.8.2'
-  pod 'Crashlytics', '~> 3.11.1'
-
+  pod 'SVProgressHUD', '= 2.2.5'
+  pod 'CoreStore', '= 6.3.1'
+  pod 'PromisesSwift', '= 1.2.8'
+  pod 'SwiftLint', '= 0.33.1'
+  pod 'ZLogger', '= 1.1.0'
+  pod 'Swinject', '= 2.6.2'
+  pod 'Bugsnag'
 end
+
+target 'velib-mapTests' do
+  use_frameworks!
+  pod 'Cuckoo', '= 1.0.6'
+  pod 'PromisesSwift', '= 1.2.8'
+end
+
+plugin 'cocoapods-keys', {
+  :project => "velib-map",
+  :keys => [
+  "BugsnagApiKey"
+]}
