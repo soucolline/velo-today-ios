@@ -81,7 +81,7 @@ class MapPresenterTests: XCTestCase {
     
     verify(self.mockMapService).fetchPins()
     
-    _ = waitForPromises(timeout: 1)
+    _ = waitForPromises(timeout: 3)
     
     verify(self.mockMapViewDelegate).onDismissLoading()
     verify(self.mockMapViewDelegate).onFetchStationsErrorServerError()
@@ -102,7 +102,7 @@ class MapPresenterTests: XCTestCase {
     
     verify(self.mockMapService).fetchPins()
     
-    _ = waitForPromises(timeout: 1)
+    _ = waitForPromises(timeout: 3)
     
     verify(self.mockMapViewDelegate).onDismissLoading()
     verify(self.mockMapViewDelegate).onFetchStationsErrorNotFound()
@@ -123,7 +123,7 @@ class MapPresenterTests: XCTestCase {
     
     verify(self.mockMapService).fetchPins()
     
-    _ = waitForPromises(timeout: 1)
+    _ = waitForPromises(timeout: 3)
     
     verify(self.mockMapViewDelegate).onDismissLoading()
     verify(self.mockMapViewDelegate).onFetchStationsErrorCouldNotDecodeData()
