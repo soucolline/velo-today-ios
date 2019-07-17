@@ -26,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().barTintColor = UIColor.orange
     UINavigationBar.appearance().barStyle = .black
     
+    #if RELEASE
     Bugsnag.start(withApiKey: VelibMapKeys().bugsnagApiKey)
+    #endif
     
     return true
   }
