@@ -17,8 +17,8 @@ struct K {
   }
   
   struct Colors {
-    static let green: UIColor = #colorLiteral(red: 0.2470588235, green: 0.7647058824, blue: 0.5019607843, alpha: 1)
-    static let red: UIColor = #colorLiteral(red: 0.8509803922, green: 0.1176470588, blue: 0.09411764706, alpha: 1)
+    static let green = UIColor.systemGreen
+    static let red = UIColor.systemRed
   }
   
   struct Strings {
