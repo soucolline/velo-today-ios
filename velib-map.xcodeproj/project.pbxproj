@@ -781,10 +781,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
-				PROVISIONING_PROFILE_SPECIFIER = VelibMap_development;
+				PROVISIONING_PROFILE_SPECIFIER = "velib-today_dev";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
@@ -800,10 +801,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "600004c0-06e2-45b1-ab37-456b3d7e1f45";
-				PROVISIONING_PROFILE_SPECIFIER = velibMap_distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "velib-today_appstore";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
