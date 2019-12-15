@@ -125,7 +125,7 @@ extension MapViewController: MKMapViewDelegate {
       pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
     }
     
-    pin.image = UIImage(named: "pin-\(annotation.freeBikes)")
+    pin.image = UIImage(named: "pin-\(annotation.freeBikes + annotation.freeElectricBikes)")
     
     return pin
   }
