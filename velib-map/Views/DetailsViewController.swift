@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var stackViewBtns: UIStackView!
   @IBOutlet weak var bikesLabel: UILabel!
+  @IBOutlet weak var electricBikesLabel: UILabel!
   @IBOutlet weak var standsLabel: UILabel!
   @IBOutlet weak var favBtn: UIButton!
   @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
@@ -79,6 +80,7 @@ class DetailsViewController: UIViewController {
     }
     
     self.bikesLabel.text = "\(station.freeBikes) vélos disponibles"
+    self.electricBikesLabel.text = "\(station.freeElectricBikes) vélos eléctriques disponibles"
     self.standsLabel.text = "\(station.freeDocks) stands disponibles"
   }
   
