@@ -9,17 +9,17 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'SVProgressHUD', '= 2.2.5'
-  pod 'CoreStore', '= 6.3.1'
+  pod 'CoreStore', '= 7.0.1'
   pod 'PromisesSwift', '= 1.2.8'
-  pod 'SwiftLint', '= 0.33.1'
+  pod 'SwiftLint', '= 0.38.0'
   pod 'ZLogger', '= 1.1.0'
-  pod 'Swinject', '= 2.6.2'
+  pod 'Swinject', '= 2.7.1'
   pod 'Bugsnag'
 end
 
 target 'velib-mapTests' do
   use_frameworks!
-  pod 'Cuckoo', '= 1.0.6'
+  pod 'Cuckoo', '= 1.3.0'
   pod 'PromisesSwift', '= 1.2.8'
 end
 
