@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import ZLogger
+import Swinject
 
 class DetailsViewController: UIViewController {
   
@@ -22,8 +23,8 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
   
   var currentStation: Station?
-  
-  var presenter: DetailsPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(DetailsPresenter.self))!
+
+  private let presenter: DetailsPresenter = Assembler.inject(DetailsPresenter.self)
   
   override func viewDidLoad() {
     super.viewDidLoad()

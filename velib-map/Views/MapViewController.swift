@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Swinject
 
 class MapViewController: UIViewController {
   
-  @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var reloadBtn: UIBarButtonItem!
-  
-  var presenter: MapPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(MapPresenter.self))!
+  @IBOutlet private var mapView: MKMapView!
+  @IBOutlet private var reloadBtn: UIBarButtonItem!
+
+  private var presenter: MapPresenter = Assembler.inject(MapPresenter.self)
+
   var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
