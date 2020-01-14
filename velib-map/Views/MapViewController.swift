@@ -73,7 +73,7 @@ class MapViewController: UIViewController {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  @IBAction func reloadPins(_ sender: UIBarButtonItem) {
+  @IBAction private func reloadPins(_ sender: UIBarButtonItem) {
     self.presenter.reloadPins()
   }
   

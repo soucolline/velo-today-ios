@@ -20,7 +20,7 @@ class MapService {
   func fetchPins() -> Promise<[Station]> {
     return Promise<[Station]> { fulfill, reject in
       var stations = [Station]()
-      let url = URL(string: K.Api.baseUrl)!
+      guard let url = URL(string: K.Api.baseUrl) else { return }
       
       self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
         switch result {
@@ -39,7 +39,7 @@ class MapService {
       var fetchedStations = [Station]()
 
       _ = ids.map { id in
-        let url = URL(string: K.Api.baseUrl + K.Api.stationQuery + "\(id)")!
+        guard let url = URL(string: K.Api.baseUrl + K.Api.stationQuery + "\(id)") else { return }
 
         self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
           switch result {

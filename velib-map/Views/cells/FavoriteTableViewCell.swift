@@ -10,10 +10,10 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
   
-  @IBOutlet weak var labelsStack: UIStackView!
-  @IBOutlet weak var bikesLabel: UILabel!
-  @IBOutlet weak var standsLabel: UILabel!
-  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet private var labelsStack: UIStackView!
+  @IBOutlet private var bikesLabel: UILabel!
+  @IBOutlet private var standsLabel: UILabel!
+  @IBOutlet private var nameLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
