@@ -7,64 +7,54 @@
 //
 
 import Swinject
-import CoreStore
 import ZLogger
 
+// swiftlint:disable function_body_length
 class AppComponent {
   
   func getContainer() -> Container {
     let container = Container()
     
     container.register(MapService.self) { resolver in
-      return MapService(
+      MapService(
         with: resolver.resolve(APIWorker.self)!
       )
     }
     
-    container.register(CoreDataService.self) { resolver in
-      return CoreDataService(
-        with: resolver.resolve(DataStack.self)!
+    container.register(PreferencesRepository.self) { resolver in
+      PreferencesRepository(
+        with: resolver.resolve(UserDefaults.self)!
       )
     }
-    
-    container.register(PreferencesRepository.self) { _ in
-      return PreferencesRepository(with: UserDefaults.standard)
+
+    container.register(FavoriteRepository.self) { resolver in
+      FavoriteRepository(
+        with: resolver.resolve(UserDefaults.self)!
+      )
+    }
+
+    container.register(UserDefaults.self) { _ in
+      UserDefaults.standard
     }
     
     container.register(MapPresenter.self) { resolver in
-      return MapPresenterImpl(
+      MapPresenterImpl(
         service: resolver.resolve(MapService.self)!,
         repository: resolver.resolve(PreferencesRepository.self)!
       )
     }
     
     container.register(DetailsPresenter.self) { resolver in
-      return DetailsPresenterImpl(
-        with: resolver.resolve(CoreDataService.self)!,
-        dataStack: resolver.resolve(DataStack.self)!
+      DetailsPresenterImpl(
+        with: resolver.resolve(FavoriteRepository.self)!
       )
     }
     
     container.register(FavoritePresenter.self) { resolver in
-      return FavoritePresenterImpl(
+      FavoritePresenterImpl(
         with: resolver.resolve(MapService.self)!,
-        dataStack: resolver.resolve(DataStack.self)!
+        favoriteRepository: resolver.resolve(FavoriteRepository.self)!
       )
-    }
-    
-    container.register(DataStack.self) { _ in
-      let dataStack = DataStack(
-        xcodeModelName: "velibMap",
-        migrationChain: []
-      )
-      
-      do {
-        try dataStack.addStorageAndWait()
-      } catch {
-        ZLogger.error(message: "Could not create Database")
-      }
-      
-      return dataStack
     }
     
     container.register(NetworkSession.self) { _ in

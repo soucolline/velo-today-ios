@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreStore
 import ZLogger
 import Swinject
 import Bugsnag

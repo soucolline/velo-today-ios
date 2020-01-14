@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreStore
 import CoreLocation
 
 protocol DetailsViewDelegate: class {
@@ -35,14 +34,12 @@ protocol DetailsPresenter {
 class DetailsPresenterImpl: DetailsPresenter {
   
   private weak var delegate: DetailsViewDelegate?
-  private let service: CoreDataService
-  private let dataStack: DataStack
+  private let favoriteRepository: FavoriteRepository
   private var currentStation: Station?
-  private var isFavStation: FavoriteStation?
+  private var isFavStation = false
   
-  init(with service: CoreDataService, dataStack: DataStack) {
-    self.service = service
-    self.dataStack = dataStack
+  init(with favoriteRepository: FavoriteRepository) {
+    self.favoriteRepository = favoriteRepository
   }
   
   func setView(view: DetailsViewDelegate) {
@@ -51,10 +48,11 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   func setData(currentStation: Station?) {
     self.currentStation = currentStation
-    do {
-      self.isFavStation = try self.dataStack.fetchOne(From<FavoriteStation>(), Where<FavoriteStation>("number", isEqualTo: self.currentStation?.code))
-    } catch {
-      self.isFavStation = nil
+
+    if let code = self.currentStation?.code {
+      self.isFavStation = self.favoriteRepository.isFavoriteStation(from: code)
+    } else {
+      self.isFavStation = false
     }
   }
   
@@ -63,13 +61,10 @@ class DetailsPresenterImpl: DetailsPresenter {
       self.delegate?.onAddFavoriteError()
       return
     }
-    
-    self.service.addFavorite(station: station).then { favoriteStation in
-      self.isFavStation = favoriteStation
-      self.delegate?.onAddFavoriteSuccess(numberOfFavoriteStations: self.getNumberOfFavoriteStations())
-    }.catch { _ in
-      self.delegate?.onAddFavoriteError()
-    }
+
+    self.favoriteRepository.addFavoriteStation(for: station.code)
+    self.isFavStation = true
+    self.delegate?.onAddFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
   }
   
   func removeFavorite() {
@@ -77,37 +72,25 @@ class DetailsPresenterImpl: DetailsPresenter {
       self.delegate?.onRemoveFavoriteError()
       return
     }
-    
-    self.service.removeFavorite(station: station).then { _ in
-      self.isFavStation = nil
-      self.delegate?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.getNumberOfFavoriteStations())
-    }.catch { _ in
-        self.delegate?.onRemoveFavoriteError()
-    }
+
+    self.favoriteRepository.removeFavoriteStations(for: station.code)
+    self.isFavStation = false
+    self.delegate?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
   }
   
   func getCurrentStation() -> Station? {
-    return self.currentStation
+    self.currentStation
   }
   
   func getCurrentStationTitle() -> String {
-    return self.currentStation?.name ?? "N/A"
+    self.currentStation?.name ?? "N/A"
   }
   
   func getCurrentStationLocation() -> CLLocation? {
-    return self.currentStation?.location
+    self.currentStation?.location
   }
   
   func isFavoriteStation() -> Bool {
-    return self.isFavStation != nil ? true : false
+    self.isFavStation
   }
-  
-  private func getNumberOfFavoriteStations() -> Int {
-    do {
-      return try self.dataStack.fetchCount(From<FavoriteStation>())
-    } catch {
-      return 0
-    }
-  }
-  
 }

@@ -28,5 +28,4 @@ class PreferencesRepository {
   func setMapStyle(identifier: String) {
     self.defaults.set(identifier, forKey: K.Preferences.mapStyle)
   }
-  
 }

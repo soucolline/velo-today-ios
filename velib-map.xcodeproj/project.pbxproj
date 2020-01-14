@@ -13,13 +13,13 @@
 		E94D2BA422DB958200A80A76 /* APIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */; };
 		E94D2BA722DB966500A80A76 /* fetchAll.json in Resources */ = {isa = PBXBuildFile; fileRef = E94D2BA622DB966500A80A76 /* fetchAll.json */; };
 		E94D2BA922DB9C0D00A80A76 /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA822DB9C0D00A80A76 /* MapPresenterTests.swift */; };
+		E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1123CE12CC00FFCDBD /* FavoriteRepository.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB274EEE21AAC46E00906077 /* AppComponent.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 		EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFB9E20B078A80012909E /* FetchStationObjectResponse.swift */; };
-		EBADFBA120B078B50012909E /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA020B078B50012909E /* CoreDataService.swift */; };
 		EBADFBA320B078C60012909E /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA220B078C50012909E /* MapService.swift */; };
 		EBADFBA620B078DF0012909E /* DetailsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA420B078DF0012909E /* DetailsPresenterImpl.swift */; };
 		EBADFBA720B078DF0012909E /* FavoritePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA520B078DF0012909E /* FavoritePresenterImpl.swift */; };
@@ -66,6 +66,7 @@
 		E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorkerTests.swift; sourceTree = "<group>"; };
 		E94D2BA622DB966500A80A76 /* fetchAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fetchAll.json; sourceTree = "<group>"; };
 		E94D2BA822DB9C0D00A80A76 /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
+		E9C2FF1123CE12CC00FFCDBD /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteRepository.swift; path = Models/Repositories/FavoriteRepository.swift; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EB274EEE21AAC46E00906077 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = SupportingFiles/AppComponent.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +74,6 @@
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBADFB9E20B078A80012909E /* FetchStationObjectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchStationObjectResponse.swift; path = Models/ServiceModels/FetchStationObjectResponse.swift; sourceTree = "<group>"; };
-		EBADFBA020B078B50012909E /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataService.swift; path = Models/Services/CoreDataService.swift; sourceTree = "<group>"; };
 		EBADFBA220B078C50012909E /* MapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapService.swift; path = Models/Services/MapService.swift; sourceTree = "<group>"; };
 		EBADFBA420B078DF0012909E /* DetailsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsPresenterImpl.swift; path = Presenters/DetailsPresenterImpl.swift; sourceTree = "<group>"; };
 		EBADFBA520B078DF0012909E /* FavoritePresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritePresenterImpl.swift; path = Presenters/FavoritePresenterImpl.swift; sourceTree = "<group>"; };
@@ -217,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				EBADFBA820B0790C0012909E /* PreferencesRepository.swift */,
+				E9C2FF1123CE12CC00FFCDBD /* FavoriteRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -294,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				EBADFBA220B078C50012909E /* MapService.swift */,
-				EBADFBA020B078B50012909E /* CoreDataService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -418,7 +418,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys-framework/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
-				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -429,7 +428,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -558,7 +556,6 @@
 				EBADFBA720B078DF0012909E /* FavoritePresenterImpl.swift in Sources */,
 				E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */,
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
-				EBADFBA120B078B50012909E /* CoreDataService.swift in Sources */,
 				EBADFBBB20B079670012909E /* MapStyle.swift in Sources */,
 				EBADFBA620B078DF0012909E /* DetailsPresenterImpl.swift in Sources */,
 				EBADFBBA20B079670012909E /* APIError.swift in Sources */,
@@ -566,6 +563,7 @@
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
 				EB274EEF21AAC46E00906077 /* AppComponent.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
+				E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */,
 				EBADFBB820B079670012909E /* FavoriteStation.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,
 				EBADFBAE20B079350012909E /* SettingsTableViewController.swift in Sources */,
