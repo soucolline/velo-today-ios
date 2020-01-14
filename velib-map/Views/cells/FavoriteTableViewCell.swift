@@ -18,7 +18,7 @@ class FavoriteTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    _ = self.labelsStack.subviews.map {
+    self.labelsStack.subviews.forEach {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }

@@ -93,19 +93,27 @@ extension MapViewController: MapViewDelegate {
   }
   
   func onFetchStationsSuccess(stations: [Station]) {
-    _ = stations.map { self.mapView.addAnnotation($0) }
+    DispatchQueue.main.async {
+      stations.forEach { self.mapView.addAnnotation($0) }
+    }
   }
   
   func onFetchStationsErrorNotFound() {
-    self.present(PopupManager.showErrorPopup(message: "Impossible de trouver de stations, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Impossible de trouver de stations, veuillez réessayer"), animated: true)
+    }
   }
   
   func onFetchStationsErrorServerError() {
-    self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    }
   }
   
   func onFetchStationsErrorCouldNotDecodeData() {
-    self.present(PopupManager.showErrorPopup(message: "Impossible de décoder les données"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Impossible de décoder les données"), animated: true)
+    }
   }
   
 }
@@ -143,8 +151,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let location = manager.location
-      else { return }
+    guard let location = manager.location else { return }
     
     self.centerMapOnLocation(location: location)
     self.locationManager.stopUpdatingLocation()

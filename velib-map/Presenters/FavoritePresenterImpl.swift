@@ -51,13 +51,16 @@ class FavoritePresenterImpl: FavoritePresenter {
       return
     }
 
-    self.service.fetchAllStations(from: favoriteStationsIds).then { stations in
-      self.stations = stations.sorted { return $0.code > $1.code }
+    self.service.fetchAllStations(from: favoriteStationsIds) { result in
+      switch result {
+      case .success(let stations):
+        self.stations = stations.sorted { return $0.code > $1.code }
         self.delegate?.onFetchStationsSuccess()
         self.delegate?.onDismissLoading()
-    }.catch { _ in
-      self.delegate?.onDismissLoading()
-      self.delegate?.onFetchStationsError()
+      case .failure:
+        self.delegate?.onDismissLoading()
+        self.delegate?.onFetchStationsError()
+      }
     }
   }
   

@@ -74,7 +74,7 @@ class DetailsViewController: UIViewController {
   func setupBtns() {
     guard let station = self.presenter.getCurrentStation() else { return }
     
-    _ = self.stackViewBtns.arrangedSubviews.map {
+    self.stackViewBtns.arrangedSubviews.forEach {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
