@@ -12,7 +12,6 @@
 		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
 		E94D2BA422DB958200A80A76 /* APIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */; };
 		E94D2BA722DB966500A80A76 /* fetchAll.json in Resources */ = {isa = PBXBuildFile; fileRef = E94D2BA622DB966500A80A76 /* fetchAll.json */; };
-		E94D2BA922DB9C0D00A80A76 /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA822DB9C0D00A80A76 /* MapPresenterTests.swift */; };
 		E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1123CE12CC00FFCDBD /* FavoriteRepository.swift */; };
 		E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */; };
 		E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */; };
@@ -35,7 +34,6 @@
 		EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAC20B079350012909E /* DetailsViewController.swift */; };
 		EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAD20B079350012909E /* FavoriteTableViewController.swift */; };
 		EBADFBB320B0793E0012909E /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBB220B0793E0012909E /* FavoriteTableViewCell.swift */; };
-		EBADFBB820B079670012909E /* FavoriteStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBB420B079670012909E /* FavoriteStation.swift */; };
 		EBADFBB920B079670012909E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBB520B079670012909E /* Station.swift */; };
 		EBADFBBA20B079670012909E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBB620B079670012909E /* APIError.swift */; };
 		EBADFBBB20B079670012909E /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBB720B079670012909E /* MapStyle.swift */; };
@@ -71,7 +69,6 @@
 		E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorkerTests.swift; sourceTree = "<group>"; };
 		E94D2BA622DB966500A80A76 /* fetchAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fetchAll.json; sourceTree = "<group>"; };
-		E94D2BA822DB9C0D00A80A76 /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
 		E9C2FF1123CE12CC00FFCDBD /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteRepository.swift; path = Models/Repositories/FavoriteRepository.swift; sourceTree = "<group>"; };
 		E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = di/AppComponent.swift; sourceTree = "<group>"; };
 		E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppAssembly.swift; path = di/AppAssembly.swift; sourceTree = "<group>"; };
@@ -95,7 +92,6 @@
 		EBADFBAC20B079350012909E /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = Views/DetailsViewController.swift; sourceTree = "<group>"; };
 		EBADFBAD20B079350012909E /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewController.swift; path = Views/FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		EBADFBB220B0793E0012909E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = Views/cells/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		EBADFBB420B079670012909E /* FavoriteStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteStation.swift; path = Models/DataModels/FavoriteStation.swift; sourceTree = "<group>"; };
 		EBADFBB520B079670012909E /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Station.swift; path = Models/DataModels/Station.swift; sourceTree = "<group>"; };
 		EBADFBB620B079670012909E /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = Models/DataModels/APIError.swift; sourceTree = "<group>"; };
 		EBADFBB720B079670012909E /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapStyle.swift; path = Models/DataModels/MapStyle.swift; sourceTree = "<group>"; };
@@ -164,7 +160,6 @@
 			children = (
 				E94D2BA522DB963100A80A76 /* Stubs */,
 				E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */,
-				E94D2BA822DB9C0D00A80A76 /* MapPresenterTests.swift */,
 				E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */,
 				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
 				E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */,
@@ -232,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				EBADFBB620B079670012909E /* APIError.swift */,
-				EBADFBB420B079670012909E /* FavoriteStation.swift */,
 				EBADFBB720B079670012909E /* MapStyle.swift */,
 				EBADFBB520B079670012909E /* Station.swift */,
 			);
@@ -444,8 +438,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys-framework/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLogger/ZLogger.framework",
@@ -454,8 +446,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLogger.framework",
@@ -495,15 +485,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-velib-mapTests/Pods-velib-mapTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys-framework/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,7 +556,6 @@
 			files = (
 				E94D2BA422DB958200A80A76 /* APIWorkerTests.swift in Sources */,
 				E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */,
-				E94D2BA922DB9C0D00A80A76 /* MapPresenterTests.swift in Sources */,
 				E9C2FF2123CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift in Sources */,
 				E9C2FF1F23CE291100FFCDBD /* FavoriteRepositoryTests.swift in Sources */,
 			);
@@ -594,7 +579,6 @@
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
 				E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */,
-				EBADFBB820B079670012909E /* FavoriteStation.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,
 				E9C2FF1D23CE270700FFCDBD /* NetworkAssembly.swift in Sources */,
 				EBADFBAE20B079350012909E /* SettingsTableViewController.swift in Sources */,

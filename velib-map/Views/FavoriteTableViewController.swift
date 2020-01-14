@@ -49,17 +49,23 @@ class FavoriteTableViewController: UITableViewController {
 extension FavoriteTableViewController: FavoriteViewDeletage {
   
   func onFetchStationsSuccess() {
-    self.tableView.reloadData()
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+    }
   }
   
   func onFetchStationsEmptyError() {
-    self.tableView.reloadData()
-    SVProgressHUD.setMinimumDismissTimeInterval(100.0)
-    SVProgressHUD.showInfo(withStatus: "Vous n'avez pas encore de favoris")
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      SVProgressHUD.setMinimumDismissTimeInterval(100.0)
+      SVProgressHUD.showInfo(withStatus: "Vous n'avez pas encore de favoris")
+    }
   }
   
   func onFetchStationsError() {
-    self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    }
   }
   
 }
