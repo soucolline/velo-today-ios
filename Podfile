@@ -9,7 +9,6 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'SVProgressHUD', '= 2.2.5'
-  pod 'CoreStore', '= 7.0.1'
   pod 'PromisesSwift', '= 1.2.8'
   pod 'SwiftLint', '= 0.38.0'
   pod 'ZLogger', '= 1.1.0'

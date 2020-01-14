@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Swinject
 
 class MapViewController: UIViewController {
   
-  @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var reloadBtn: UIBarButtonItem!
-  
-  var presenter: MapPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(MapPresenter.self))!
+  @IBOutlet private var mapView: MKMapView!
+  @IBOutlet private var reloadBtn: UIBarButtonItem!
+
+  private var presenter: MapPresenter = Assembler.inject(MapPresenter.self)
+
   var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -71,7 +73,7 @@ class MapViewController: UIViewController {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  @IBAction func reloadPins(_ sender: UIBarButtonItem) {
+  @IBAction private func reloadPins(_ sender: UIBarButtonItem) {
     self.presenter.reloadPins()
   }
   

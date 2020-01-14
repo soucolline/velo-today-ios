@@ -17,7 +17,7 @@ class PreferencesRepository {
   }
   
   func getMapStyle() -> MapStyle {
-    if let identifier = self.defaults.string(forKey: K.Preferences.mapStyle),
+    if let identifier = self.defaults.string(forKey: Const.mapStyle),
        let mapStyle = MapStyle(rawValue: identifier) {
       return mapStyle
     } else {
@@ -26,7 +26,10 @@ class PreferencesRepository {
   }
   
   func setMapStyle(identifier: String) {
-    self.defaults.set(identifier, forKey: K.Preferences.mapStyle)
+    self.defaults.set(identifier, forKey: Const.mapStyle)
   }
-  
+
+  private struct Const {
+    static let mapStyle = "mapStyle"
+  }
 }

@@ -33,7 +33,7 @@ class SettingsTableViewController: UITableViewController {
   }
   
   func changeMapStyle(style: String?) {
-    guard let style = style, style != "" else { return }
+    guard let style = style, !style.isEmpty else { return }
     
     let repository = PreferencesRepository(with: UserDefaults.standard)
     repository.setMapStyle(identifier: style)

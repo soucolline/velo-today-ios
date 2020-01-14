@@ -9,22 +9,22 @@
 import UIKit
 import MapKit
 import CoreLocation
-import CoreStore
 import ZLogger
+import Swinject
 
 class DetailsViewController: UIViewController {
   
-  @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var stackViewBtns: UIStackView!
-  @IBOutlet weak var bikesLabel: UILabel!
-  @IBOutlet weak var electricBikesLabel: UILabel!
-  @IBOutlet weak var standsLabel: UILabel!
-  @IBOutlet weak var favBtn: UIButton!
-  @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
+  @IBOutlet private var mapView: MKMapView!
+  @IBOutlet private var stackViewBtns: UIStackView!
+  @IBOutlet private var bikesLabel: UILabel!
+  @IBOutlet private var electricBikesLabel: UILabel!
+  @IBOutlet private var standsLabel: UILabel!
+  @IBOutlet private var favBtn: UIButton!
+  @IBOutlet private var mapHeightConstraint: NSLayoutConstraint!
   
   var currentStation: Station?
-  
-  var presenter: DetailsPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(DetailsPresenter.self))!
+
+  private let presenter: DetailsPresenter = Assembler.inject(DetailsPresenter.self)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -89,7 +89,7 @@ class DetailsViewController: UIViewController {
     self.favBtn.setTitle(title, for: .normal)
   }
   
-  @IBAction func toggleFavorite(_ sender: UIButton) {
+  @IBAction private func toggleFavorite(_ sender: UIButton) {
     self.presenter.isFavoriteStation()
       ? self.presenter.removeFavorite()
       : self.presenter.addFavorite()

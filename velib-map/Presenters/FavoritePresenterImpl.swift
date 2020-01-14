@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreStore
 
 protocol FavoriteViewDeletage: class, Loadable {
   func onFetchStationsSuccess()
@@ -27,13 +26,13 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   private weak var delegate: FavoriteViewDeletage?
   private let service: MapService
-  private let dataStack: DataStack
+  private let favoriteRepository: FavoriteRepository
   
   private var stations: [Station]?
   
-  init(with service: MapService, dataStack: DataStack) {
+  init(with service: MapService, favoriteRepository: FavoriteRepository) {
     self.service = service
-    self.dataStack = dataStack
+    self.favoriteRepository = favoriteRepository
   }
   
   func setView(view: FavoriteViewDeletage) {
@@ -42,18 +41,20 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   func fetchFavoriteStations() {
     self.delegate?.onShowLoading()
-    
-    guard let favoriteStations = try? self.dataStack.fetchAll(From<FavoriteStation>()), !favoriteStations.isEmpty else {
+
+    let favoriteStationsIds = self.favoriteRepository.getFavoriteStationsIds()
+
+    guard !favoriteStationsIds.isEmpty else {
       self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
       return
     }
-    
-    self.service.fetchAllStations(favoriteStations: favoriteStations).then { stations in
+
+    self.service.fetchAllStations(from: favoriteStationsIds).then { stations in
       self.stations = stations.sorted { return $0.code > $1.code }
-      self.delegate?.onFetchStationsSuccess()
-      self.delegate?.onDismissLoading()
+        self.delegate?.onFetchStationsSuccess()
+        self.delegate?.onDismissLoading()
     }.catch { _ in
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsError()

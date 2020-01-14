@@ -8,13 +8,14 @@
 
 import UIKit
 import SVProgressHUD
+import Swinject
 
 class FavoriteTableViewController: UITableViewController {
   
   var loaderMessage = "Chargement de vos stations préférées"
-    
-  var presenter: FavoritePresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(FavoritePresenter.self))!
-  
+
+  private let presenter: FavoritePresenter = Assembler.inject(FavoritePresenter.self)
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Favoris"
