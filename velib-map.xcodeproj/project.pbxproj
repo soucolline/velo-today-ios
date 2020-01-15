@@ -40,7 +40,6 @@
 		EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBC20B0798A0012909E /* Loadable.swift */; };
 		EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBD20B0798A0012909E /* PopupManager.swift */; };
 		EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBC120B079B60012909E /* AppDelegate.swift */; };
-		EBADFBCC20B07ABB0012909E /* velibMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */; };
 		EBC4DFF820B0332300E5966C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC4DFF720B0332300E5966C /* Constants.swift */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 		EE1662C48282059EFFC2F4A7 /* Pods_velib_mapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */; };
@@ -98,7 +97,6 @@
 		EBADFBBC20B0798A0012909E /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loadable.swift; path = Utils/Loadable.swift; sourceTree = "<group>"; };
 		EBADFBBD20B0798A0012909E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupManager.swift; path = Utils/PopupManager.swift; sourceTree = "<group>"; };
 		EBADFBC120B079B60012909E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SupportingFiles/AppDelegate.swift; sourceTree = "<group>"; };
-		EBADFBCA20B07AB80012909E /* velibMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = velibMap.xcdatamodel; sourceTree = "<group>"; };
 		EBADFBD220B080A20012909E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
 		EBC4DFF720B0332300E5966C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = utils/Constants.swift; sourceTree = "<group>"; };
 		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBADFBC120B079B60012909E /* AppDelegate.swift */,
 				EBADFBD220B080A20012909E /* Info.plist */,
-				EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -587,7 +584,6 @@
 				EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */,
 				EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */,
 				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
-				EBADFBCC20B07ABB0012909E /* velibMap.xcdatamodeld in Sources */,
 				EBADFBB320B0793E0012909E /* FavoriteTableViewCell.swift in Sources */,
 				E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */,
 				E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */,
@@ -857,20 +853,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EBADFBC920B07AB80012909E /* velibMap.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EBADFBCA20B07AB80012909E /* velibMap.xcdatamodel */,
-			);
-			currentVersion = EBADFBCA20B07AB80012909E /* velibMap.xcdatamodel */;
-			name = velibMap.xcdatamodeld;
-			path = SupportingFiles/velibMap.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = EBA372ED1EA3A0CC00E214DD /* Project object */;
 }
