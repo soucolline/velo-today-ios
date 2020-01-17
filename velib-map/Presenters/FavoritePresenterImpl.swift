@@ -65,11 +65,11 @@ class FavoritePresenterImpl: FavoritePresenter {
   }
   
   func getStation(at index: Int) -> Station? {
-    return self.stations?[index]
+    self.stations?[index]
   }
   
   func getStationsCount() -> Int {
-    return self.stations?.count ?? 0
+    self.stations?.count ?? 0
   }
   
 }

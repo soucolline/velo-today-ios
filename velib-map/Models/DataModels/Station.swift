@@ -59,5 +59,23 @@ final class Station: NSObject, MKAnnotation, Codable {
       self.coordinate = coordinates
     }
   }
+
+  init(
+    freeDocks: Int,
+    code: String,
+    name: String,
+    totalDocks: Int,
+    freeBikes: Int,
+    freeElectricBikes: Int,
+    geo: [Double]
+  ) {
+    self.freeDocks = freeDocks
+    self.code = code
+    self.name = name
+    self.totalDocks = totalDocks
+    self.freeBikes = freeBikes
+    self.freeElectricBikes = freeElectricBikes
+    self.geo = geo
+  }
   
 }
