@@ -72,11 +72,11 @@ class MapPresenterImpl: MapPresenter {
   }
   
   func getMapStyle() -> MapStyle {
-    return self.repository.getMapStyle()
+    self.repository.getMapStyle()
   }
   
   func getCurrentStation() -> Station? {
-    return self.currentStation
+    self.currentStation
   }
   
 }

@@ -20,6 +20,7 @@
 		E9C2FF1D23CE270700FFCDBD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */; };
 		E9C2FF1F23CE291100FFCDBD /* FavoriteRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */; };
 		E9C2FF2123CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */; };
+		E9C2FF2323D2431600FFCDBD /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkAssembly.swift; path = di/NetworkAssembly.swift; sourceTree = "<group>"; };
 		E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryTests.swift; sourceTree = "<group>"; };
 		E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesRepositoryTests.swift; sourceTree = "<group>"; };
+		E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
 				E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */,
 				E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */,
+				E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */,
 			);
 			path = "velib-mapTests";
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */,
 				E9C2FF2123CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift in Sources */,
 				E9C2FF1F23CE291100FFCDBD /* FavoriteRepositoryTests.swift in Sources */,
+				E9C2FF2323D2431600FFCDBD /* MapPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
