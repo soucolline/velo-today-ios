@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="TodayExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJT-5g-cTJ">
+                                <rect key="frame" x="90" y="82.5" width="80" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y3c-9r-Sw5">
+                                <rect key="frame" x="10" y="55.5" width="70" height="70"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgk-vC-azC">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x velos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-Eg-Nb3">
+                                                <rect key="frame" x="14" y="7" width="42" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="13u-Eg-Nb3" firstAttribute="centerX" secondItem="Cgk-vC-azC" secondAttribute="centerX" id="EzV-fs-aOY"/>
+                                            <constraint firstAttribute="height" constant="30" id="PVc-f5-ajb"/>
+                                            <constraint firstItem="13u-Eg-Nb3" firstAttribute="centerY" secondItem="Cgk-vC-azC" secondAttribute="centerY" id="RHt-Gh-gnp"/>
+                                            <constraint firstAttribute="width" constant="70" id="sLE-OE-GMh"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDk-Qp-B2n">
+                                        <rect key="frame" x="0.0" y="40" width="70" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x places" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMq-Q3-z9d">
+                                                <rect key="frame" x="10" y="7" width="50" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="CxG-vQ-ATG"/>
+                                            <constraint firstItem="MMq-Q3-z9d" firstAttribute="centerY" secondItem="bDk-Qp-B2n" secondAttribute="centerY" id="KI7-C1-8R1"/>
+                                            <constraint firstAttribute="height" constant="30" id="vKs-ej-rAt"/>
+                                            <constraint firstItem="MMq-Q3-z9d" firstAttribute="centerX" secondItem="bDk-Qp-B2n" secondAttribute="centerX" id="xDk-cU-dGP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oJT-5g-cTJ" firstAttribute="centerY" secondItem="Y3c-9r-Sw5" secondAttribute="centerY" id="CuS-i0-eOZ"/>
+                            <constraint firstItem="Y3c-9r-Sw5" firstAttribute="centerY" secondItem="ssy-KU-ocm" secondAttribute="centerY" id="MX4-CG-0iU"/>
+                            <constraint firstItem="Y3c-9r-Sw5" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="10" id="QWC-ua-ixb"/>
+                            <constraint firstItem="oJT-5g-cTJ" firstAttribute="leading" secondItem="Y3c-9r-Sw5" secondAttribute="trailing" constant="10" id="hLg-4d-Z5J"/>
+                            <constraint firstItem="oJT-5g-cTJ" firstAttribute="leading" secondItem="Y3c-9r-Sw5" secondAttribute="trailing" constant="10" id="oe6-fo-8OQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="137"/>
+                    <connections>
+                        <outlet property="bikesLabel" destination="13u-Eg-Nb3" id="sHF-3W-tob"/>
+                        <outlet property="nameLabel" destination="oJT-5g-cTJ" id="5NU-Pc-bWo"/>
+                        <outlet property="standsLabel" destination="MMq-Q3-z9d" id="zCC-Up-Jic"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="139"/>
+        </scene>
+    </scenes>
+</document>
