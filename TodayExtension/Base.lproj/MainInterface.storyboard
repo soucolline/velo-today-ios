@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJT-5g-cTJ">
-                                <rect key="frame" x="90" y="82.5" width="80" height="16"/>
+                                <rect key="frame" x="90" y="82.5" width="220" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,6 +67,7 @@
                             <constraint firstItem="oJT-5g-cTJ" firstAttribute="centerY" secondItem="Y3c-9r-Sw5" secondAttribute="centerY" id="CuS-i0-eOZ"/>
                             <constraint firstItem="Y3c-9r-Sw5" firstAttribute="centerY" secondItem="ssy-KU-ocm" secondAttribute="centerY" id="MX4-CG-0iU"/>
                             <constraint firstItem="Y3c-9r-Sw5" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="10" id="QWC-ua-ixb"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="oJT-5g-cTJ" secondAttribute="trailing" constant="10" id="YnX-7F-HpS"/>
                             <constraint firstItem="oJT-5g-cTJ" firstAttribute="leading" secondItem="Y3c-9r-Sw5" secondAttribute="trailing" constant="10" id="hLg-4d-Z5J"/>
                             <constraint firstItem="oJT-5g-cTJ" firstAttribute="leading" secondItem="Y3c-9r-Sw5" secondAttribute="trailing" constant="10" id="oe6-fo-8OQ"/>
                         </constraints>

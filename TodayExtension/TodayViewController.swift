@@ -21,6 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.setupInteraction()
     self.showLoadingView()
     self.downloadStationInfo()
   }
@@ -28,6 +29,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
     self.downloadStationInfo()
     completionHandler(NCUpdateResult.newData)
+  }
+
+  private func setupInteraction() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openApp))
+    self.view.addGestureRecognizer(tapGesture)
   }
 
   private func showLoadingView() {
@@ -61,5 +67,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     self.bikesLabel.text = "\(bikes) vélo\(bikes > 0 ? "s" : "")"
     self.standsLabel.text = "\(stands) place\(stands > 0 ? "s" : "")"
     self.nameLabel.text = name
+  }
+
+  @objc private func openApp() {
+    self.extensionContext?.open(URL(string: "velib-map://")!)
   }
 }

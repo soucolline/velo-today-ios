@@ -26,7 +26,7 @@
 		E9C2FF2E23DCA86800FFCDBD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */; };
 		E9C2FF3123DCA86800FFCDBD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF3023DCA86800FFCDBD /* TodayViewController.swift */; };
 		E9C2FF3423DCA86800FFCDBD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2FF3223DCA86800FFCDBD /* MainInterface.storyboard */; };
-		E9C2FF3823DCA86800FFCDBD /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9C2FF2C23DCA86800FFCDBD /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E9C2FF3823DCA86800FFCDBD /* Velo today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9C2FF2C23DCA86800FFCDBD /* Velo today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E9C2FF4023DCB52100FFCDBD /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF3F23DCB52100FFCDBD /* Station.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
@@ -77,7 +77,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E9C2FF3823DCA86800FFCDBD /* TodayExtension.appex in Embed App Extensions */,
+				E9C2FF3823DCA86800FFCDBD /* Velo today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +108,7 @@
 		E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
 		E9C2FF2423D249E500FFCDBD /* DetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterTests.swift; sourceTree = "<group>"; };
 		E9C2FF2623D2509600FFCDBD /* FavoritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenterTests.swift; sourceTree = "<group>"; };
-		E9C2FF2C23DCA86800FFCDBD /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9C2FF2C23DCA86800FFCDBD /* Velo today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Velo today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3023DCA86800FFCDBD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E9C2FF3323DCA86800FFCDBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 			children = (
 				EBA372F51EA3A0CC00E214DD /* velib-map.app */,
 				E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */,
-				E9C2FF2C23DCA86800FFCDBD /* TodayExtension.appex */,
+				E9C2FF2C23DCA86800FFCDBD /* Velo today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 			);
 			name = TodayExtension;
 			productName = TodayExtension;
-			productReference = E9C2FF2C23DCA86800FFCDBD /* TodayExtension.appex */;
+			productReference = E9C2FF2C23DCA86800FFCDBD /* Velo today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		EBA372F41EA3A0CC00E214DD /* velib-map */ = {
@@ -806,12 +806,12 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map.TodayExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Velo today";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -829,11 +829,11 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map.TodayExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Velo today";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
