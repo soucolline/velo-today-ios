@@ -21,11 +21,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.showLoadingView()
     self.downloadStationInfo()
   }
 
   func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+    self.downloadStationInfo()
     completionHandler(NCUpdateResult.newData)
+  }
+
+  private func showLoadingView() {
+    self.bikesLabel.text = ""
+    self.bikesLabel.textColor = UIColor.white
+    self.standsLabel.text = ""
+    self.standsLabel.textColor = UIColor.white
+    self.nameLabel.text = "Chargment en cours"
   }
 
   private func downloadStationInfo() {
@@ -51,39 +61,5 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     self.bikesLabel.text = "\(bikes) vélo\(bikes > 0 ? "s" : "")"
     self.standsLabel.text = "\(stands) place\(stands > 0 ? "s" : "")"
     self.nameLabel.text = name
-  }
-
-}
-
-struct FetchStationObjectResponseRoot: Decodable {
-  let records: [FetchStationObjectResponse]
-}
-
-struct FetchStationObjectResponse: Codable {
-
-  let station: Station
-
-  enum CodingKeys: String, CodingKey {
-    case station = "fields"
-  }
-
-}
-struct Station: Codable {
-  let freeDocks: Int
-  let code: String
-  let name: String
-  let totalDocks: Int
-  let freeBikes: Int
-  let freeElectricBikes: Int
-  let geo: [Double]
-
-  enum CodingKeys: String, CodingKey {
-    case freeDocks = "nbfreeedock"
-    case code = "station_code"
-    case name = "station_name"
-    case totalDocks = "nbedock"
-    case freeBikes = "nbbike"
-    case freeElectricBikes = "nbebike"
-    case geo
   }
 }

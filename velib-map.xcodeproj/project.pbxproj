@@ -27,6 +27,7 @@
 		E9C2FF3123DCA86800FFCDBD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF3023DCA86800FFCDBD /* TodayViewController.swift */; };
 		E9C2FF3423DCA86800FFCDBD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2FF3223DCA86800FFCDBD /* MainInterface.storyboard */; };
 		E9C2FF3823DCA86800FFCDBD /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9C2FF2C23DCA86800FFCDBD /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E9C2FF4023DCB52100FFCDBD /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF3F23DCB52100FFCDBD /* Station.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
@@ -114,6 +115,7 @@
 		E9C2FF3523DCA86800FFCDBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9C2FF3E23DCABA000FFCDBD /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		E9C2FF3F23DCB52100FFCDBD /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				E9C2FF3E23DCABA000FFCDBD /* TodayExtension.entitlements */,
 				E9C2FF3023DCA86800FFCDBD /* TodayViewController.swift */,
+				E9C2FF3F23DCB52100FFCDBD /* Station.swift */,
 				E9C2FF3223DCA86800FFCDBD /* MainInterface.storyboard */,
 				E9C2FF3523DCA86800FFCDBD /* Info.plist */,
 			);
@@ -662,6 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C2FF4023DCB52100FFCDBD /* Station.swift in Sources */,
 				E9C2FF3123DCA86800FFCDBD /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
