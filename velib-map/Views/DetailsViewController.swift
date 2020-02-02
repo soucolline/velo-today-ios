@@ -20,7 +20,6 @@ class DetailsViewController: UIViewController {
   @IBOutlet private var electricBikesLabel: UILabel!
   @IBOutlet private var standsLabel: UILabel!
   @IBOutlet private var favBtn: UIButton!
-  @IBOutlet private var mapHeightConstraint: NSLayoutConstraint!
   
   var currentStation: Station?
 
@@ -39,8 +38,6 @@ class DetailsViewController: UIViewController {
   }
   
   private func setupUI() {
-    self.mapHeightConstraint.constant = self.setMapHeight()
-    
     if let station = self.presenter.getCurrentStation() {
       self.mapView.addAnnotation(station)
     }
@@ -54,11 +51,6 @@ class DetailsViewController: UIViewController {
     self.presenter.isFavoriteStation()
       ? self.updateFavBtn(with: K.Colors.red, andTitle: K.Strings.removeFavorite)
       : self.updateFavBtn(with: K.Colors.green, andTitle: K.Strings.addFavorite)
-  }
-  
-  func setMapHeight() -> CGFloat {
-    let screenHeight = UIScreen.main.bounds.height
-    return screenHeight == 568.0 ? screenHeight / 3 : screenHeight / 2
   }
   
   func centerMap(on location: CLLocation) {
