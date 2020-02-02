@@ -12,7 +12,7 @@ import Swinject
 class AppAssembly: Assembly {
   func assemble(container: Container) {
     container.register(UserDefaults.self) { _ in
-      UserDefaults.standard
+      UserDefaults(suiteName: "group.com.zlatan.velib-map") ?? UserDefaults.standard
     }.inObjectScope(.container)
   }
 }

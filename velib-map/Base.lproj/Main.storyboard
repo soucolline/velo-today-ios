@@ -55,10 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-7Y-AX6">
-                                <rect key="frame" x="0.0" y="88" width="375" height="304"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="304" id="ich-bU-x56"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="88" width="375" height="371"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jEj-Py-zBB">
                                 <rect key="frame" x="57.666666666666657" y="529" width="260" height="170"/>
@@ -120,7 +117,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h56-CB-O4L">
-                                <rect key="frame" x="0.0" y="392" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="459" width="375" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qmU-Cf-lPs"/>
@@ -142,6 +139,7 @@
                             <constraint firstItem="nor-gm-SQg" firstAttribute="bottom" secondItem="jEj-Py-zBB" secondAttribute="bottom" constant="30" id="fIy-OI-m5c"/>
                             <constraint firstItem="h56-CB-O4L" firstAttribute="top" secondItem="Ltf-7Y-AX6" secondAttribute="bottom" id="hkb-s8-RHZ"/>
                             <constraint firstItem="Ltf-7Y-AX6" firstAttribute="top" secondItem="nor-gm-SQg" secondAttribute="top" id="kgl-de-mtX"/>
+                            <constraint firstItem="jEj-Py-zBB" firstAttribute="top" secondItem="h56-CB-O4L" secondAttribute="bottom" constant="30" id="pk1-Re-Hhl"/>
                             <constraint firstItem="h56-CB-O4L" firstAttribute="leading" secondItem="nor-gm-SQg" secondAttribute="leading" id="pvZ-W5-ykD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nor-gm-SQg"/>
@@ -150,7 +148,6 @@
                         <outlet property="bikesLabel" destination="kjU-H7-SdD" id="Ykz-Hw-XGE"/>
                         <outlet property="electricBikesLabel" destination="THr-ky-hjo" id="Q9L-b7-24E"/>
                         <outlet property="favBtn" destination="h56-CB-O4L" id="bYo-Y8-2Nb"/>
-                        <outlet property="mapHeightConstraint" destination="ich-bU-x56" id="P4r-QX-oOm"/>
                         <outlet property="mapView" destination="Ltf-7Y-AX6" id="3ya-Tj-t8o"/>
                         <outlet property="stackViewBtns" destination="jEj-Py-zBB" id="JTL-Gx-fTE"/>
                         <outlet property="standsLabel" destination="Aa1-cy-a3Z" id="ugU-6l-0jm"/>
