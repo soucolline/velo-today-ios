@@ -14,6 +14,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   @IBOutlet private var bikesLabel: UILabel!
   @IBOutlet private var standsLabel: UILabel!
   @IBOutlet private var nameLabel: UILabel!
+  @IBOutlet private var stationView: UIView!
+  @IBOutlet private var noStationView: UIView!
 
   private let userDefaults = UserDefaults(suiteName: "group.com.zlatan.velib-map")!
   private let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -37,6 +39,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   }
 
   private func showLoadingView() {
+    self.noStationView.isHidden = true
     self.bikesLabel.text = ""
     self.bikesLabel.textColor = UIColor.white
     self.standsLabel.text = ""
@@ -45,7 +48,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   }
 
   private func downloadStationInfo() {
-    let id = (self.userDefaults.array(forKey: "favoriteStationsCode") as! [String]).first!
+    guard let id = (self.userDefaults.array(forKey: "favoriteStationsCode") as? [String])?.first else {
+      self.showNoStationView()
+      return
+    }
+    
     let url = URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&q=station_code%3D+\(id)")!
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
@@ -57,6 +64,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.showStationDetails(from: resources.records.first!.station)
       }
     }.resume()
+  }
+
+  private func showNoStationView() {
+    self.noStationView.isHidden = false
+    self.stationView.isHidden = true
+  }
+
+  private func showStationView() {
+    self.noStationView.isHidden = true
+    self.stationView.isHidden = false
   }
 
   private func showStationDetails(from station: Station) {
