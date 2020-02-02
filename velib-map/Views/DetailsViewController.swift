@@ -9,21 +9,21 @@
 import UIKit
 import MapKit
 import CoreLocation
-import CoreStore
 import ZLogger
+import Swinject
 
 class DetailsViewController: UIViewController {
   
-  @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var stackViewBtns: UIStackView!
-  @IBOutlet weak var bikesLabel: UILabel!
-  @IBOutlet weak var standsLabel: UILabel!
-  @IBOutlet weak var favBtn: UIButton!
-  @IBOutlet weak var mapHeightConstraint: NSLayoutConstraint!
+  @IBOutlet private var mapView: MKMapView!
+  @IBOutlet private var stackViewBtns: UIStackView!
+  @IBOutlet private var bikesLabel: UILabel!
+  @IBOutlet private var electricBikesLabel: UILabel!
+  @IBOutlet private var standsLabel: UILabel!
+  @IBOutlet private var favBtn: UIButton!
   
   var currentStation: Station?
-  
-  var presenter: DetailsPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(DetailsPresenter.self))!
+
+  private let presenter: DetailsPresenter = Assembler.inject(DetailsPresenter.self)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,8 +38,6 @@ class DetailsViewController: UIViewController {
   }
   
   private func setupUI() {
-    self.mapHeightConstraint.constant = self.setMapHeight()
-    
     if let station = self.presenter.getCurrentStation() {
       self.mapView.addAnnotation(station)
     }
@@ -55,11 +53,6 @@ class DetailsViewController: UIViewController {
       : self.updateFavBtn(with: K.Colors.green, andTitle: K.Strings.addFavorite)
   }
   
-  func setMapHeight() -> CGFloat {
-    let screenHeight = UIScreen.main.bounds.height
-    return screenHeight == 568.0 ? screenHeight / 3 : screenHeight / 2
-  }
-  
   func centerMap(on location: CLLocation) {
     let regionRadius: CLLocationDistance = 1000
     let coordinateRegion = MKCoordinateRegion(
@@ -73,12 +66,13 @@ class DetailsViewController: UIViewController {
   func setupBtns() {
     guard let station = self.presenter.getCurrentStation() else { return }
     
-    _ = self.stackViewBtns.arrangedSubviews.map {
+    self.stackViewBtns.arrangedSubviews.forEach {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 5.0
     }
     
     self.bikesLabel.text = "\(station.freeBikes) vélos disponibles"
+    self.electricBikesLabel.text = "\(station.freeElectricBikes) vélos eléctriques disponibles"
     self.standsLabel.text = "\(station.freeDocks) stands disponibles"
   }
   
@@ -87,7 +81,7 @@ class DetailsViewController: UIViewController {
     self.favBtn.setTitle(title, for: .normal)
   }
   
-  @IBAction func toggleFavorite(_ sender: UIButton) {
+  @IBAction private func toggleFavorite(_ sender: UIButton) {
     self.presenter.isFavoriteStation()
       ? self.presenter.removeFavorite()
       : self.presenter.addFavorite()

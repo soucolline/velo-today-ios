@@ -31,10 +31,6 @@ struct K {
     static let favoriteToDetailSegue = "favoriteToDetailSegue"
   }
   
-  struct Preferences {
-    static let mapStyle = "mapStyle"
-  }
-  
   struct Identifiers {
     static let velibPin = "velibPin"
     static let favoriteCell = "favoriteCell"

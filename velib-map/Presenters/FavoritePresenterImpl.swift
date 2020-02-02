@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreStore
 
 protocol FavoriteViewDeletage: class, Loadable {
   func onFetchStationsSuccess()
@@ -27,13 +26,13 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   private weak var delegate: FavoriteViewDeletage?
   private let service: MapService
-  private let dataStack: DataStack
+  private let favoriteRepository: FavoriteRepository
   
   private var stations: [Station]?
   
-  init(with service: MapService, dataStack: DataStack) {
+  init(with service: MapService, favoriteRepository: FavoriteRepository) {
     self.service = service
-    self.dataStack = dataStack
+    self.favoriteRepository = favoriteRepository
   }
   
   func setView(view: FavoriteViewDeletage) {
@@ -42,30 +41,35 @@ class FavoritePresenterImpl: FavoritePresenter {
   
   func fetchFavoriteStations() {
     self.delegate?.onShowLoading()
-    
-    guard let favoriteStations = try? self.dataStack.fetchAll(From<FavoriteStation>()), !favoriteStations.isEmpty else {
+
+    let favoriteStationsIds = self.favoriteRepository.getFavoriteStationsIds()
+
+    guard !favoriteStationsIds.isEmpty else {
       self.stations = nil
       self.delegate?.onDismissLoading()
       self.delegate?.onFetchStationsEmptyError()
       return
     }
-    
-    self.service.fetchAllStations(favoriteStations: favoriteStations).then { stations in
-      self.stations = stations.sorted { return $0.code > $1.code }
-      self.delegate?.onFetchStationsSuccess()
-      self.delegate?.onDismissLoading()
-    }.catch { _ in
-      self.delegate?.onDismissLoading()
-      self.delegate?.onFetchStationsError()
+
+    self.service.fetchAllStations(from: favoriteStationsIds) { result in
+      switch result {
+      case .success(let stations):
+        self.stations = stations.sorted { return $0.code > $1.code }
+        self.delegate?.onFetchStationsSuccess()
+        self.delegate?.onDismissLoading()
+      case .failure:
+        self.delegate?.onDismissLoading()
+        self.delegate?.onFetchStationsError()
+      }
     }
   }
   
   func getStation(at index: Int) -> Station? {
-    return self.stations?[index]
+    self.stations?[index]
   }
   
   func getStationsCount() -> Int {
-    return self.stations?.count ?? 0
+    self.stations?.count ?? 0
   }
   
 }

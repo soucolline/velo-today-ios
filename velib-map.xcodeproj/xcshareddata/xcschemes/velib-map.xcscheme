@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1130"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -26,9 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EBA372F41EA3A0CC00E214DD"
+            BuildableName = "velib-map.app"
+            BlueprintName = "velib-map"
+            ReferencedContainer = "container:velib-map.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -40,7 +49,8 @@
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E94D2B9522DB94AB00A80A76"
@@ -50,17 +60,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBA372F41EA3A0CC00E214DD"
-            BuildableName = "velib-map.app"
-            BlueprintName = "velib-map"
-            ReferencedContainer = "container:velib-map.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -82,8 +81,6 @@
             ReferencedContainer = "container:velib-map.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

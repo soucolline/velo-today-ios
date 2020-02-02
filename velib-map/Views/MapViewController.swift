@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Swinject
 
 class MapViewController: UIViewController {
   
-  @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var reloadBtn: UIBarButtonItem!
-  
-  var presenter: MapPresenter = ((UIApplication.shared.delegate as? AppDelegate)?.container.resolve(MapPresenter.self))!
+  @IBOutlet private var mapView: MKMapView!
+  @IBOutlet private var reloadBtn: UIBarButtonItem!
+
+  private var presenter: MapPresenter = Assembler.inject(MapPresenter.self)
+
   var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -71,7 +73,7 @@ class MapViewController: UIViewController {
     self.mapView.setRegion(coordinateRegion, animated: true)
   }
   
-  @IBAction func reloadPins(_ sender: UIBarButtonItem) {
+  @IBAction private func reloadPins(_ sender: UIBarButtonItem) {
     self.presenter.reloadPins()
   }
   
@@ -91,19 +93,27 @@ extension MapViewController: MapViewDelegate {
   }
   
   func onFetchStationsSuccess(stations: [Station]) {
-    _ = stations.map { self.mapView.addAnnotation($0) }
+    DispatchQueue.main.async {
+      stations.forEach { self.mapView.addAnnotation($0) }
+    }
   }
   
   func onFetchStationsErrorNotFound() {
-    self.present(PopupManager.showErrorPopup(message: "Impossible de trouver de stations, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Impossible de trouver de stations, veuillez réessayer"), animated: true)
+    }
   }
   
   func onFetchStationsErrorServerError() {
-    self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    }
   }
   
   func onFetchStationsErrorCouldNotDecodeData() {
-    self.present(PopupManager.showErrorPopup(message: "Impossible de décoder les données"), animated: true)
+    DispatchQueue.main.async {
+      self.present(PopupManager.showErrorPopup(message: "Impossible de décoder les données"), animated: true)
+    }
   }
   
 }
@@ -125,7 +135,7 @@ extension MapViewController: MKMapViewDelegate {
       pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
     }
     
-    pin.image = UIImage(named: "pin-\(annotation.freeBikes)")
+    pin.image = UIImage(named: "pin-\(annotation.freeBikes + annotation.freeElectricBikes)")
     
     return pin
   }
@@ -141,8 +151,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let location = manager.location
-      else { return }
+    guard let location = manager.location else { return }
     
     self.centerMapOnLocation(location: location)
     self.locationManager.stopUpdatingLocation()

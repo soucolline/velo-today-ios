@@ -49,32 +49,34 @@ class MapPresenterImpl: MapPresenter {
     self.delegate?.onCleanMap(with: self.stations)
     
     self.stations.removeAll()
-    
-    self.service.fetchPins().then { stations in
-      self.stations = stations
-      self.delegate?.onFetchStationsSuccess(stations: self.stations)
-      self.delegate?.onDismissLoading()
-    }.catch { error in
-      self.delegate?.onDismissLoading()
-      
-      switch error {
-      case APIError.notFound:
-        self.delegate?.onFetchStationsErrorNotFound()
-      case APIError.internalServerError, APIError.unknown:
-        self.delegate?.onFetchStationsErrorServerError()
-      case APIError.couldNotDecodeJSON:
-        self.delegate?.onFetchStationsErrorCouldNotDecodeData()
-      default: ()
+
+    self.service.fetchPins { result in
+      switch result {
+      case .success(let stations):
+        self.stations = stations
+        self.delegate?.onFetchStationsSuccess(stations: self.stations)
+        self.delegate?.onDismissLoading()
+      case .failure(let error):
+        self.delegate?.onDismissLoading()
+        switch error {
+        case APIError.notFound:
+          self.delegate?.onFetchStationsErrorNotFound()
+        case APIError.internalServerError, APIError.unknown:
+          self.delegate?.onFetchStationsErrorServerError()
+        case APIError.couldNotDecodeJSON:
+          self.delegate?.onFetchStationsErrorCouldNotDecodeData()
+        default: ()
+        }
       }
     }
   }
   
   func getMapStyle() -> MapStyle {
-    return self.repository.getMapStyle()
+    self.repository.getMapStyle()
   }
   
   func getCurrentStation() -> Station? {
-    return self.currentStation
+    self.currentStation
   }
   
 }
