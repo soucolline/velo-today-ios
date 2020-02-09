@@ -122,8 +122,8 @@ extension DetailsViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? Station else { return nil }
     
-    let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: K.Identifiers.velibPin)
-    pin.image = UIImage(named: "pin")
+    let pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: K.Identifiers.velibPin)
+    pin.markerTintColor = K.Colors.orange
     
     return pin
   }

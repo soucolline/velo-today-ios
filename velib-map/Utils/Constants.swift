@@ -19,6 +19,7 @@ struct K {
   struct Colors {
     static let green = UIColor.systemGreen
     static let red = UIColor.systemRed
+    static let orange = UIColor.systemOrange
   }
   
   struct Strings {
@@ -34,6 +35,7 @@ struct K {
   struct Identifiers {
     static let velibPin = "velibPin"
     static let favoriteCell = "favoriteCell"
+    static let mapCluster = "mapCluster"
   }
   
 }

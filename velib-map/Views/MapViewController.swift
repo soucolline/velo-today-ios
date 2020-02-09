@@ -51,7 +51,7 @@ class MapViewController: UIViewController {
     super.viewWillAppear(animated)
     self.setMapStyle()
   }
-  
+
   func setMapStyle() {
     switch self.presenter.getMapStyle() {
     case .normal:
@@ -124,18 +124,20 @@ extension MapViewController: MKMapViewDelegate {
     guard let annotation = annotation as? Station else { return nil }
     
     let identifier = K.Identifiers.velibPin
-    let pin: MKAnnotationView
+    let pin: MKMarkerAnnotationView
     
-    if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+    if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
       deqeuedView.annotation = annotation
       pin = deqeuedView
     } else {
-      pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       pin.canShowCallout = true
       pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
     }
-    
-    pin.image = UIImage(named: "pin-\(annotation.freeBikes + annotation.freeElectricBikes)")
+
+    pin.glyphText = "\(annotation.totalBikes)"
+    pin.markerTintColor = K.Colors.orange
+    pin.clusteringIdentifier = K.Identifiers.mapCluster
     
     return pin
   }
