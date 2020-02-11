@@ -31,6 +31,10 @@ final class Station: NSObject, MKAnnotation, Codable {
       return nil
     }
   }()
+
+  lazy var totalBikes: Int = {
+    self.freeBikes + self.freeElectricBikes
+  }()
   
   enum CodingKeys: String, CodingKey {
     case freeDocks = "nbfreeedock"
