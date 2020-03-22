@@ -135,7 +135,7 @@ extension MapViewController: MKMapViewDelegate {
       pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
     }
 
-    pin.glyphText = "\(annotation.totalBikes)"
+    pin.glyphText = "\(annotation.freeBikes)"
     pin.markerTintColor = K.Colors.orange
     pin.clusteringIdentifier = K.Identifiers.mapCluster
     

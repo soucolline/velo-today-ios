@@ -15,7 +15,7 @@ import XCTest
 class DetailsPresenterTests: XCTestCase {
   private var mockDetailsView: MockDetailsViewDelegate!
   private var mockFavoriteRepository: MockFavoriteRepository!
-  private let expectedStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeElectricBikes: 4, geo: [1, 2])
+  private let expectedStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
 
   private var presenter: DetailsPresenter!
 

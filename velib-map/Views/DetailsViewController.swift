@@ -71,7 +71,7 @@ class DetailsViewController: UIViewController {
       $0.layer.cornerRadius = 5.0
     }
     
-    self.bikesLabel.text = "\(station.freeBikes) vélos disponibles"
+    self.bikesLabel.text = "\(station.freeMechanicalBikes) vélos disponibles"
     self.electricBikesLabel.text = "\(station.freeElectricBikes) vélos eléctriques disponibles"
     self.standsLabel.text = "\(station.freeDocks) stands disponibles"
   }

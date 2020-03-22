@@ -21,9 +21,9 @@ class FavoritePresenterTests: XCTestCase {
   private var presenter: FavoritePresenter!
 
   private let expectedStations = [
-    Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeElectricBikes: 4, geo: [1, 2]),
-    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 6, freeBikes: 34, freeElectricBikes: 24, geo: [32, 222]),
-    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 3", totalDocks: 43, freeBikes: 23, freeElectricBikes: 334, geo: [10, 20])
+    Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2]),
+    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 6, freeBikes: 34, freeMechanicalBikes: 4, freeElectricBikes: 24, geo: [32, 222]),
+    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 3", totalDocks: 43, freeBikes: 23, freeMechanicalBikes: 4, freeElectricBikes: 334, geo: [10, 20])
   ]
 
   override func setUp() {
