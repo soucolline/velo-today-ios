@@ -17,6 +17,7 @@ final class Station: NSObject, MKAnnotation, Codable {
   let name: String
   let totalDocks: Int
   let freeBikes: Int
+  let freeMechanicalBikes: Int
   let freeElectricBikes: Int
   let geo: [Double]
   
@@ -31,19 +32,16 @@ final class Station: NSObject, MKAnnotation, Codable {
       return nil
     }
   }()
-
-  lazy var totalBikes: Int = {
-    self.freeBikes + self.freeElectricBikes
-  }()
   
   enum CodingKeys: String, CodingKey {
-    case freeDocks = "nbfreeedock"
-    case code = "station_code"
-    case name = "station_name"
-    case totalDocks = "nbedock"
-    case freeBikes = "nbbike"
-    case freeElectricBikes = "nbebike"
-    case geo
+    case freeDocks = "numdocksavailable"
+    case code = "stationcode"
+    case name
+    case totalDocks = "capacity"
+    case freeBikes = "numbikesavailable"
+    case freeMechanicalBikes = "mechanical"
+    case freeElectricBikes = "ebike"
+    case geo = "coordonnees_geo"
   }
   
   init(from decoder: Decoder) throws {
@@ -53,11 +51,12 @@ final class Station: NSObject, MKAnnotation, Codable {
     self.name = try values.decode(String.self, forKey: .name)
     self.totalDocks = try values.decode(Int.self, forKey: .totalDocks)
     self.freeBikes = try values.decode(Int.self, forKey: .freeBikes)
+    self.freeMechanicalBikes = try values.decode(Int.self, forKey: .freeMechanicalBikes)
     self.freeElectricBikes = try values.decode(Int.self, forKey: .freeElectricBikes)
     self.geo = try values.decode(Array<Double>.self, forKey: .geo)
     
     self.title = self.name
-    self.subtitle = "\(self.freeBikes + self.freeElectricBikes) vélos - \(self.freeDocks) places"
+    self.subtitle = "\(self.freeBikes) vélos - \(self.freeDocks) places"
     super.init()
     if let coordinates = self.location?.coordinate {
       self.coordinate = coordinates
@@ -70,6 +69,7 @@ final class Station: NSObject, MKAnnotation, Codable {
     name: String,
     totalDocks: Int,
     freeBikes: Int,
+    freeMechanicalBikes: Int,
     freeElectricBikes: Int,
     geo: [Double]
   ) {
@@ -78,6 +78,7 @@ final class Station: NSObject, MKAnnotation, Codable {
     self.name = name
     self.totalDocks = totalDocks
     self.freeBikes = freeBikes
+    self.freeMechanicalBikes = freeMechanicalBikes
     self.freeElectricBikes = freeElectricBikes
     self.geo = geo
   }

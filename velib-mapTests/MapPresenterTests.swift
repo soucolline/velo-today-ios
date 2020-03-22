@@ -53,8 +53,8 @@ class MapPresenterTests: XCTestCase {
 
   func testReloadPinsSuccess() {
     let expectedStations = [
-      Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeElectricBikes: 4, geo: [1, 2]),
-      Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 2, freeBikes: 3, freeElectricBikes: 4, geo: [1, 2])
+      Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2]),
+      Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
     ]
     let fetchPinsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
 
@@ -138,7 +138,7 @@ class MapPresenterTests: XCTestCase {
   }
 
   func testGetCurrentStation() {
-    let expectedCurrentStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeElectricBikes: 4, geo: [1, 2])
+    let expectedCurrentStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
 
     self.presenter.currentStation = expectedCurrentStation
 

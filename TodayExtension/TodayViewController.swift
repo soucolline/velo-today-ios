@@ -53,7 +53,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
       return
     }
     
-    let url = URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&q=station_code%3D+\(id)")!
+    let url = URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=\(id)")!
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
 
@@ -77,7 +77,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   }
 
   private func showStationDetails(from station: Station) {
-    let bikes = station.freeBikes + station.freeElectricBikes
+    let bikes = station.freeBikes
     let stands = station.freeDocks
     let name = station.name
 
