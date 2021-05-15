@@ -311,6 +311,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="v1W-UK-eaW"/>
                     <connections>
+                        <outlet property="tableView" destination="UHr-2s-j9c" id="Rhc-rH-t5J"/>
                         <segue destination="WZn-vt-Mh5" kind="show" identifier="favoriteToDetailSegue" id="iFf-5S-xXS"/>
                     </connections>
                 </tableViewController>
