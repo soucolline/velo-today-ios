@@ -15,20 +15,22 @@ class PresenterAssembly: Assembly {
     container.register(MapPresenter.self) { resolver in
       MapPresenterImpl(
         service: resolver.resolve(MapService.self)!,
-        repository: resolver.resolve(PreferencesRepository.self)!
+        repository: resolver.resolve(PreferencesRepository.self)!,
+        networkScheduler: resolver.resolve(NetworkScheduler.self)!
       )
     }
 
     container.register(DetailsPresenter.self) { resolver in
       DetailsPresenterImpl(
-        with: resolver.resolve(FavoriteRepository.self)!
+        favoriteRepository: resolver.resolve(FavoriteRepository.self)!
       )
     }
 
     container.register(FavoritePresenter.self) { resolver in
       FavoritePresenterImpl(
-        with: resolver.resolve(MapService.self)!,
-        favoriteRepository: resolver.resolve(FavoriteRepository.self)!
+        mapService: resolver.resolve(MapService.self)!,
+        favoriteRepository: resolver.resolve(FavoriteRepository.self)!,
+        networkScheduler: resolver.resolve(NetworkScheduler.self)!
       )
     }
 

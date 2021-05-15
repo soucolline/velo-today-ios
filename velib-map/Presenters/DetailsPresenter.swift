@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-protocol DetailsViewDelegate: AnyObject {
+protocol DetailsView: AnyObject {
   func onAddFavoriteSuccess(numberOfFavoriteStations: Int)
   func onRemoveFavoriteSuccess(numberOfFavoriteStations: Int)
   
@@ -18,7 +18,7 @@ protocol DetailsViewDelegate: AnyObject {
 }
 
 protocol DetailsPresenter {
-  func setView(view: DetailsViewDelegate)
+  func attach(_ view: DetailsView)
   func setData(currentStation: Station?)
   
   func addFavorite()
@@ -32,18 +32,19 @@ protocol DetailsPresenter {
 }
 
 class DetailsPresenterImpl: DetailsPresenter {
-  
-  private weak var delegate: DetailsViewDelegate?
   private let favoriteRepository: FavoriteRepository
+
   private var currentStation: Station?
   private var isFavStation = false
+
+  private weak var view: DetailsView?
   
-  init(with favoriteRepository: FavoriteRepository) {
+  init(favoriteRepository: FavoriteRepository) {
     self.favoriteRepository = favoriteRepository
   }
-  
-  func setView(view: DetailsViewDelegate) {
-    self.delegate = view
+
+  func attach(_ view: DetailsView) {
+    self.view = view
   }
   
   func setData(currentStation: Station?) {
@@ -58,24 +59,24 @@ class DetailsPresenterImpl: DetailsPresenter {
   
   func addFavorite() {
     guard let station = self.currentStation else {
-      self.delegate?.onAddFavoriteError()
+      self.view?.onAddFavoriteError()
       return
     }
 
     self.favoriteRepository.addFavoriteStation(for: station.code)
     self.isFavStation = true
-    self.delegate?.onAddFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
+    self.view?.onAddFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
   }
   
   func removeFavorite() {
     guard let station = self.currentStation else {
-      self.delegate?.onRemoveFavoriteError()
+      self.view?.onRemoveFavoriteError()
       return
     }
 
     self.favoriteRepository.removeFavoriteStations(for: station.code)
     self.isFavStation = false
-    self.delegate?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
+    self.view?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
   }
   
   func getCurrentStation() -> Station? {

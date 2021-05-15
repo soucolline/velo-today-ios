@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-protocol MapViewDelegate: AnyObject, Loadable {
+protocol MapView: AnyObject, Loadable {
   func onCleanMap(with stations: [Station])
   
   func onFetchStationsSuccess(stations: [Station])
@@ -21,7 +21,7 @@ protocol MapViewDelegate: AnyObject, Loadable {
 protocol MapPresenter {
   var currentStation: Station? { get set }
   
-  func setView(view: MapViewDelegate)
+  func attach(_ view: MapView)
   func reloadPins()
   func getMapStyle() -> MapStyle
   func getCurrentStation() -> Station?
@@ -29,51 +29,53 @@ protocol MapPresenter {
 
 class MapPresenterImpl: MapPresenter {
   
-  private weak var delegate: MapViewDelegate?
+  private weak var view: MapView?
   private let service: MapService
   private let repository: PreferencesRepository
+  private let networkScheduler: NetworkScheduler
   
   var stations: [Station] = [Station]()
   var currentStation: Station?
   private var cancellable: AnyCancellable?
   
-  init(service: MapService, repository: PreferencesRepository) {
+  init(service: MapService, repository: PreferencesRepository, networkScheduler: NetworkScheduler) {
     self.service = service
     self.repository = repository
+    self.networkScheduler = networkScheduler
   }
   
-  func setView(view: MapViewDelegate) {
-    self.delegate = view
+  func attach(_ view: MapView) {
+    self.view = view
   }
   
   func reloadPins() {
-    self.delegate?.onShowLoading()
-    self.delegate?.onCleanMap(with: self.stations)
+    self.view?.onShowLoading()
+    self.view?.onCleanMap(with: self.stations)
     
     self.stations.removeAll()
 
     self.cancellable = self.service.fetchPins()
-      .subscribe(on: DispatchQueue.global())
-      .receive(on: DispatchQueue.main)
+      .subscribe(on: self.networkScheduler.concurent)
+      .receive(on: self.networkScheduler.main)
       .sink(receiveCompletion: { completion in
         switch completion {
           case .finished: break
           case .failure(let error):
-            self.delegate?.onDismissLoading()
+            self.view?.onDismissLoading()
             switch error {
             case APIError.notFound:
-              self.delegate?.onFetchStationsErrorNotFound()
+              self.view?.onFetchStationsErrorNotFound()
             case APIError.internalServerError, APIError.unknown:
-              self.delegate?.onFetchStationsErrorServerError()
+              self.view?.onFetchStationsErrorServerError()
             case APIError.couldNotDecodeJSON:
-              self.delegate?.onFetchStationsErrorCouldNotDecodeData()
+              self.view?.onFetchStationsErrorCouldNotDecodeData()
             default: ()
             }
         }
       }, receiveValue: { stations in
         self.stations = stations
-        self.delegate?.onFetchStationsSuccess(stations: self.stations)
-        self.delegate?.onDismissLoading()
+        self.view?.onFetchStationsSuccess(stations: self.stations)
+        self.view?.onDismissLoading()
       })
   }
   

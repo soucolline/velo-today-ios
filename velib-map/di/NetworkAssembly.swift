@@ -30,5 +30,9 @@ class NetworkAssembly: Assembly {
         urlFactory: resolver.resolve(URLFactory.self)!
       )
     }
+
+    container.register(NetworkScheduler.self) { _ in
+      NetworkSchedulerImpl()
+    }
   }
 }

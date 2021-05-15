@@ -43,7 +43,7 @@ class MapViewController: UIViewController {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     self.locationManager.requestLocation()
     
-    self.presenter.setView(view: self)
+    self.presenter.attach(self)
     self.presenter.reloadPins()
   }
   
@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
   
 }
 
-extension MapViewController: MapViewDelegate {
+extension MapViewController: MapView {
   
   func onCleanMap(with stations: [Station]) {
     self.mapView.removeAnnotations(stations)

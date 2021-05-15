@@ -20,7 +20,7 @@ class FavoriteTableViewController: UITableViewController {
     super.viewDidLoad()
     self.title = "Favoris"
     
-    self.presenter.setView(view: self)
+    self.presenter.attach(self)
     
     self.tableView.tableFooterView = UIView(frame: .zero) // Hide empty cells
   }
@@ -46,7 +46,7 @@ class FavoriteTableViewController: UITableViewController {
  
 }
 
-extension FavoriteTableViewController: FavoriteViewDeletage {
+extension FavoriteTableViewController: FavoriteView {
   
   func onFetchStationsSuccess() {
     DispatchQueue.main.async {
