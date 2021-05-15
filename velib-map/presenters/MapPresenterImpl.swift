@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol MapViewDelegate: class, Loadable {
+protocol MapViewDelegate: AnyObject, Loadable {
   func onCleanMap(with stations: [Station])
   
   func onFetchStationsSuccess(stations: [Station])
@@ -34,6 +35,7 @@ class MapPresenterImpl: MapPresenter {
   
   var stations: [Station] = [Station]()
   var currentStation: Station?
+  private var cancellable: AnyCancellable?
   
   init(service: MapService, repository: PreferencesRepository) {
     self.service = service
@@ -50,25 +52,29 @@ class MapPresenterImpl: MapPresenter {
     
     self.stations.removeAll()
 
-    self.service.fetchPins { result in
-      switch result {
-      case .success(let stations):
+    self.cancellable = self.service.fetchPins()
+      .subscribe(on: DispatchQueue.global())
+      .receive(on: DispatchQueue.main)
+      .sink(receiveCompletion: { completion in
+        switch completion {
+          case .finished: break
+          case .failure(let error):
+            self.delegate?.onDismissLoading()
+            switch error {
+            case APIError.notFound:
+              self.delegate?.onFetchStationsErrorNotFound()
+            case APIError.internalServerError, APIError.unknown:
+              self.delegate?.onFetchStationsErrorServerError()
+            case APIError.couldNotDecodeJSON:
+              self.delegate?.onFetchStationsErrorCouldNotDecodeData()
+            default: ()
+            }
+        }
+      }, receiveValue: { stations in
         self.stations = stations
         self.delegate?.onFetchStationsSuccess(stations: self.stations)
         self.delegate?.onDismissLoading()
-      case .failure(let error):
-        self.delegate?.onDismissLoading()
-        switch error {
-        case APIError.notFound:
-          self.delegate?.onFetchStationsErrorNotFound()
-        case APIError.internalServerError, APIError.unknown:
-          self.delegate?.onFetchStationsErrorServerError()
-        case APIError.couldNotDecodeJSON:
-          self.delegate?.onFetchStationsErrorCouldNotDecodeData()
-        default: ()
-        }
-      }
-    }
+      })
   }
   
   func getMapStyle() -> MapStyle {

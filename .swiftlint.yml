@@ -1,5 +1,6 @@
 disabled_rules:
   - trailing_whitespace
+  - switch_case_alignment
 opt_in_rules:
   - empty_count
   - empty_string
@@ -11,6 +12,7 @@ opt_in_rules:
   - unused_declaration
   - strong_iboutlet
   - force_unwrapping
+  - implicit_return
 
 included:
   - velib-map

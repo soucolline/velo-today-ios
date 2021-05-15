@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-protocol DetailsViewDelegate: class {
+protocol DetailsViewDelegate: AnyObject {
   func onAddFavoriteSuccess(numberOfFavoriteStations: Int)
   func onRemoveFavoriteSuccess(numberOfFavoriteStations: Int)
   

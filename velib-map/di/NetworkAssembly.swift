@@ -26,7 +26,8 @@ class NetworkAssembly: Assembly {
 
     container.register(MapService.self) { resolver in
       MapService(
-        with: resolver.resolve(APIWorker.self)!
+        apiWorker: resolver.resolve(APIWorker.self)!,
+        urlFactory: resolver.resolve(URLFactory.self)!
       )
     }
   }

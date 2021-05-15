@@ -21,11 +21,11 @@ class MapViewController: UIViewController {
   var loaderMessage = "Chargement des stations"
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
+    .lightContent
   }
   
   override var prefersStatusBarHidden: Bool {
-    return false
+    false
   }
   
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)

@@ -14,6 +14,7 @@ enum APIError: Error {
   case couldNotDecodeJSON
   case noData
   case unknown
+  case urlNotValid
   case customError(String)
   
   var localizedDescription: String {
@@ -28,6 +29,8 @@ enum APIError: Error {
       return "Could not parse JSON"
     case .unknown:
       return "An unknown error happened"
+      case .urlNotValid:
+        return "Could not find the URL"
     case .customError(let message):
       return message
     }

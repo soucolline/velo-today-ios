@@ -28,6 +28,9 @@
 		E9C2FF3423DCA86800FFCDBD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2FF3223DCA86800FFCDBD /* MainInterface.storyboard */; };
 		E9C2FF3823DCA86800FFCDBD /* Velo today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9C2FF2C23DCA86800FFCDBD /* Velo today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E9C2FF4023DCB52100FFCDBD /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF3F23DCB52100FFCDBD /* Station.swift */; };
+		E9F1DD7B26502537003858AE /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7A26502537003858AE /* URLFactory.swift */; };
+		E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */; };
+		E9F1DD7F26502AB3003858AE /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7E26502AB3003858AE /* SettingsPresenter.swift */; };
 		EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
@@ -37,7 +40,7 @@
 		EBADFBA620B078DF0012909E /* DetailsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA420B078DF0012909E /* DetailsPresenterImpl.swift */; };
 		EBADFBA720B078DF0012909E /* FavoritePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA520B078DF0012909E /* FavoritePresenterImpl.swift */; };
 		EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBA820B0790C0012909E /* PreferencesRepository.swift */; };
-		EBADFBAE20B079350012909E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAA20B079340012909E /* SettingsTableViewController.swift */; };
+		EBADFBAE20B079350012909E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAA20B079340012909E /* SettingsViewController.swift */; };
 		EBADFBAF20B079350012909E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAB20B079340012909E /* MapViewController.swift */; };
 		EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAC20B079350012909E /* DetailsViewController.swift */; };
 		EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBAD20B079350012909E /* FavoriteTableViewController.swift */; };
@@ -116,6 +119,9 @@
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9C2FF3E23DCABA000FFCDBD /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		E9C2FF3F23DCB52100FFCDBD /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		E9F1DD7A26502537003858AE /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
+		E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAssembly.swift; sourceTree = "<group>"; };
+		E9F1DD7E26502AB3003858AE /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapPresenterImpl.swift; path = presenters/MapPresenterImpl.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,7 +132,7 @@
 		EBADFBA420B078DF0012909E /* DetailsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsPresenterImpl.swift; path = Presenters/DetailsPresenterImpl.swift; sourceTree = "<group>"; };
 		EBADFBA520B078DF0012909E /* FavoritePresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritePresenterImpl.swift; path = Presenters/FavoritePresenterImpl.swift; sourceTree = "<group>"; };
 		EBADFBA820B0790C0012909E /* PreferencesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesRepository.swift; path = Models/Repositories/PreferencesRepository.swift; sourceTree = "<group>"; };
-		EBADFBAA20B079340012909E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Views/SettingsTableViewController.swift; sourceTree = "<group>"; };
+		EBADFBAA20B079340012909E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/SettingsViewController.swift; sourceTree = "<group>"; };
 		EBADFBAB20B079340012909E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Views/MapViewController.swift; sourceTree = "<group>"; };
 		EBADFBAC20B079350012909E /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = Views/DetailsViewController.swift; sourceTree = "<group>"; };
 		EBADFBAD20B079350012909E /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewController.swift; path = Views/FavoriteTableViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 				E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */,
 				E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */,
 				E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */,
+				E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */,
 			);
 			name = di;
 			sourceTree = "<group>";
@@ -257,6 +264,14 @@
 				E9C2FF3523DCA86800FFCDBD /* Info.plist */,
 			);
 			path = TodayExtension;
+			sourceTree = "<group>";
+		};
+		E9F1DD792650251F003858AE /* factories */ = {
+			isa = PBXGroup;
+			children = (
+				E9F1DD7A26502537003858AE /* URLFactory.swift */,
+			);
+			name = factories;
 			sourceTree = "<group>";
 		};
 		EB1FFF0820A72A8F00AA9F79 /* Utils */ = {
@@ -322,6 +337,7 @@
 				EB11656F20A6D9A40086F8D7 /* MapPresenterImpl.swift */,
 				EBADFBA420B078DF0012909E /* DetailsPresenterImpl.swift */,
 				EBADFBA520B078DF0012909E /* FavoritePresenterImpl.swift */,
+				E9F1DD7E26502AB3003858AE /* SettingsPresenter.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -356,6 +372,7 @@
 				2493F9BA1EA3A64B007D006D /* Models */,
 				EB5D021120A6D8BF005AED49 /* Presenters */,
 				EBD5F85620A6D8860056B1E0 /* Views */,
+				E9F1DD792650251F003858AE /* factories */,
 				EB1FFF0820A72A8F00AA9F79 /* Utils */,
 				E99F3E6F22DB86A800476528 /* Workers */,
 				EB54F9B520B07595008221A0 /* SupportingFiles */,
@@ -370,7 +387,7 @@
 				EBADFBAC20B079350012909E /* DetailsViewController.swift */,
 				EBADFBAD20B079350012909E /* FavoriteTableViewController.swift */,
 				EBADFBAB20B079340012909E /* MapViewController.swift */,
-				EBADFBAA20B079340012909E /* SettingsTableViewController.swift */,
+				EBADFBAA20B079340012909E /* SettingsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -453,7 +470,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Thomas Guilleminot";
 				TargetAttributes = {
 					E94D2B9522DB94AB00A80A76 = {
@@ -678,6 +695,7 @@
 				EBADFBA720B078DF0012909E /* FavoritePresenterImpl.swift in Sources */,
 				E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */,
 				E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */,
+				E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */,
 				E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */,
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
 				EBADFBBB20B079670012909E /* MapStyle.swift in Sources */,
@@ -686,17 +704,19 @@
 				EBADFBBA20B079670012909E /* APIError.swift in Sources */,
 				EBADFBAF20B079350012909E /* MapViewController.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
+				E9F1DD7F26502AB3003858AE /* SettingsPresenter.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
 				E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,
 				E9C2FF1D23CE270700FFCDBD /* NetworkAssembly.swift in Sources */,
-				EBADFBAE20B079350012909E /* SettingsTableViewController.swift in Sources */,
+				EBADFBAE20B079350012909E /* SettingsViewController.swift in Sources */,
 				EBADFBA320B078C60012909E /* MapService.swift in Sources */,
 				EBADFBB920B079670012909E /* Station.swift in Sources */,
 				EB11657020A6D9A40086F8D7 /* MapPresenterImpl.swift in Sources */,
 				EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */,
 				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
 				EBADFBB320B0793E0012909E /* FavoriteTableViewCell.swift in Sources */,
+				E9F1DD7B26502537003858AE /* URLFactory.swift in Sources */,
 				E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */,
 				E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */,
 				EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */,
@@ -759,7 +779,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "velib-mapTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -784,7 +804,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "velib-mapTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-mapTests";
@@ -807,7 +827,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.8.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -832,7 +852,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.8.1;
 				MTL_FAST_MATH = YES;
@@ -870,6 +890,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -894,7 +915,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -929,6 +950,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -947,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -959,13 +981,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
@@ -981,13 +1003,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";

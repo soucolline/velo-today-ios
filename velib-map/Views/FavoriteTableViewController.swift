@@ -73,15 +73,15 @@ extension FavoriteTableViewController: FavoriteViewDeletage {
 extension FavoriteTableViewController {
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.presenter.getStationsCount()
+    self.presenter.getStationsCount()
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
+    100
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

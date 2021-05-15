@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol FavoriteViewDeletage: class, Loadable {
+protocol FavoriteViewDeletage: AnyObject, Loadable {
   func onFetchStationsSuccess()
   func onFetchStationsEmptyError()
   func onFetchStationsError()
@@ -29,6 +30,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   private let favoriteRepository: FavoriteRepository
   
   private var stations: [Station]?
+  private var cancellable: AnyCancellable?
   
   init(with service: MapService, favoriteRepository: FavoriteRepository) {
     self.service = service
@@ -51,17 +53,21 @@ class FavoritePresenterImpl: FavoritePresenter {
       return
     }
 
-    self.service.fetchAllStations(from: favoriteStationsIds) { result in
-      switch result {
-      case .success(let stations):
+    self.cancellable = self.service.fetchAllStations(from: favoriteStationsIds)
+      .subscribe(on: DispatchQueue.global())
+      .receive(on: DispatchQueue.main)
+      .sink(receiveCompletion: { completion in
+        switch completion {
+          case .finished: break
+          case .failure:
+            self.delegate?.onDismissLoading()
+            self.delegate?.onFetchStationsError()
+        }
+      }, receiveValue: { stations in
         self.stations = stations.sorted { return $0.code > $1.code }
         self.delegate?.onFetchStationsSuccess()
         self.delegate?.onDismissLoading()
-      case .failure:
-        self.delegate?.onDismissLoading()
-        self.delegate?.onFetchStationsError()
-      }
-    }
+      })
   }
   
   func getStation(at index: Int) -> Station? {

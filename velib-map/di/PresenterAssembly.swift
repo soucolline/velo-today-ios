@@ -31,5 +31,11 @@ class PresenterAssembly: Assembly {
         favoriteRepository: resolver.resolve(FavoriteRepository.self)!
       )
     }
+
+    container.register(SettingsPresenter.self) { resolver in
+      SettingsPresenterImpl(
+        preferencesRepository: resolver.resolve(PreferencesRepository.self)!
+      )
+    }
   }
 }
