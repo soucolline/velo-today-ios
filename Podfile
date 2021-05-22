@@ -1,5 +1,5 @@
 source 'https://cdn.cocoapods.org/'
-platform :ios, '10.0'
+platform :ios, '13.0'
 
 inhibit_all_warnings!
 
@@ -9,7 +9,7 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'SVProgressHUD', '= 2.2.5'
-  pod 'SwiftLint', '= 0.38.0'
+  pod 'SwiftLint', '= 0.43.1'
   pod 'ZLogger', '= 1.1.0'
   pod 'Swinject', '= 2.7.1'
   pod 'Bugsnag'
@@ -17,7 +17,7 @@ end
 
 target 'velib-mapTests' do
   use_frameworks!
-  pod 'Cuckoo', '= 1.3.0'
+  pod 'Cuckoo', '= 1.5.0'
 end
 
 plugin 'cocoapods-keys', {

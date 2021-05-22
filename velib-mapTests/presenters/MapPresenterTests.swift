@@ -9,21 +9,25 @@
 import Foundation
 import Cuckoo
 import XCTest
+import Combine
 
 @testable import velib_map
 
 class MapPresenterTests: XCTestCase {
-  private var mockMapView: MockMapViewDelegate!
+  private let mockMapView = MockMapView()
+  private let mockURLFactory = MockURLFactory()
   private var mockApiWorker: MockAPIWorker!
   private var mockMapService: MockMapService!
+  private let testNetworkScheduler = TestNetworkScheduler()
   private var mockPreferencesRepository: MockPreferencesRepository!
 
   private var presenter: MapPresenter!
 
+  private let expectedStations = StubFixtures.StationsUtils.create()
+
   override func setUp() {
-    self.mockMapView = MockMapViewDelegate()
     self.mockApiWorker = MockAPIWorker()
-    self.mockMapService = MockMapService(with: self.mockApiWorker)
+    self.mockMapService = MockMapService(apiWorker: mockApiWorker, urlFactory: mockURLFactory)
     self.mockPreferencesRepository = MockPreferencesRepository(with: UserDefaults.standard)
 
     stub(self.mockMapView) { stub in
@@ -36,15 +40,16 @@ class MapPresenterTests: XCTestCase {
       when(stub).onFetchStationsErrorCouldNotDecodeData().thenDoNothing()
     }
 
-    stub(self.mockMapService) { stub in
-      when(stub).fetchPins(completion: any()).thenDoNothing()
+    stub(mockMapService) { stub in
+      when(stub).fetchPins().thenReturn(Just(expectedStations).setFailureType(to: APIError.self).eraseToAnyPublisher())
     }
 
     self.presenter = MapPresenterImpl(
-      service: self.mockMapService,
-      repository: self.mockPreferencesRepository
+      service: mockMapService,
+      repository: mockPreferencesRepository,
+      networkScheduler: testNetworkScheduler
     )
-    self.presenter.setView(view: self.mockMapView)
+    self.presenter.attach(mockMapView)
   }
 
   override func tearDown() {
@@ -52,37 +57,31 @@ class MapPresenterTests: XCTestCase {
   }
 
   func testReloadPinsSuccess() {
-    let expectedStations = [
-      Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2]),
-      Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
-    ]
-    let fetchPinsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
-
     self.presenter.reloadPins()
 
-    verify(self.mockMapView).onShowLoading()
-    verify(self.mockMapView).onCleanMap(with: any())
-    verify(self.mockMapService).fetchPins(completion: fetchPinsArgumentCaptor.capture())
-    fetchPinsArgumentCaptor.value!(.success(expectedStations))
-    verify(self.mockMapView).onFetchStationsSuccess(stations: ParameterMatcher(matchesFunction: { stations in
-      stations == expectedStations
+    verify(mockMapView).onShowLoading()
+    verify(mockMapView).onCleanMap(with: any())
+    verify(mockMapService).fetchPins()
+    verify(mockMapView).onFetchStationsSuccess(stations: ParameterMatcher(matchesFunction: { stations in
+      stations == self.expectedStations
     }))
-    verify(self.mockMapView).onDismissLoading()
+    verify(mockMapView).onDismissLoading()
 
-    verifyNoMoreInteractions(self.mockMapView)
-    verifyNoMoreInteractions(self.mockMapService)
-    verifyNoMoreInteractions(self.mockPreferencesRepository)
+    verifyNoMoreInteractions(mockMapView)
+    verifyNoMoreInteractions(mockMapService)
+    verifyNoMoreInteractions(mockPreferencesRepository)
   }
 
   func testReloadPinsFailureNotFound() {
-    let fetchPinsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
+    stub(mockMapService) { stub in
+      when(stub).fetchPins().thenReturn(Result.failure(APIError.notFound).publisher.eraseToAnyPublisher())
+    }
 
     self.presenter.reloadPins()
 
     verify(self.mockMapView).onShowLoading()
     verify(self.mockMapView).onCleanMap(with: any())
-    verify(self.mockMapService).fetchPins(completion: fetchPinsArgumentCaptor.capture())
-    fetchPinsArgumentCaptor.value!(.failure(APIError.notFound))
+    verify(self.mockMapService).fetchPins()
     verify(self.mockMapView).onDismissLoading()
     verify(self.mockMapView).onFetchStationsErrorNotFound()
 
@@ -92,14 +91,15 @@ class MapPresenterTests: XCTestCase {
   }
 
   func testReloadPinsFailureServerError() {
-    let fetchPinsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
+    stub(mockMapService) { stub in
+      when(stub).fetchPins().thenReturn(Result.failure(APIError.unknown).publisher.eraseToAnyPublisher())
+    }
 
     self.presenter.reloadPins()
 
     verify(self.mockMapView).onShowLoading()
     verify(self.mockMapView).onCleanMap(with: any())
-    verify(self.mockMapService).fetchPins(completion: fetchPinsArgumentCaptor.capture())
-    fetchPinsArgumentCaptor.value!(.failure(APIError.unknown))
+    verify(self.mockMapService).fetchPins()
     verify(self.mockMapView).onDismissLoading()
     verify(self.mockMapView).onFetchStationsErrorServerError()
 
@@ -109,14 +109,15 @@ class MapPresenterTests: XCTestCase {
   }
 
   func testReloadPinsFailureCouldNotDecodeData() {
-    let fetchPinsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
+    stub(mockMapService) { stub in
+      when(stub).fetchPins().thenReturn(Result.failure(APIError.couldNotDecodeJSON).publisher.eraseToAnyPublisher())
+    }
 
     self.presenter.reloadPins()
 
     verify(self.mockMapView).onShowLoading()
     verify(self.mockMapView).onCleanMap(with: any())
-    verify(self.mockMapService).fetchPins(completion: fetchPinsArgumentCaptor.capture())
-    fetchPinsArgumentCaptor.value!(.failure(APIError.couldNotDecodeJSON))
+    verify(self.mockMapService).fetchPins()
     verify(self.mockMapView).onDismissLoading()
     verify(self.mockMapView).onFetchStationsErrorCouldNotDecodeData()
 
@@ -138,7 +139,7 @@ class MapPresenterTests: XCTestCase {
   }
 
   func testGetCurrentStation() {
-    let expectedCurrentStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
+    let expectedCurrentStation = StubFixtures.StationsUtils.create().first!
 
     self.presenter.currentStation = expectedCurrentStation
 

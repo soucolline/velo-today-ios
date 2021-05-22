@@ -72,3 +72,6 @@ velib-mapTests/GeneratedMocks.swift
 
 # Secrets
 .env.default
+
+# UserDefaults from tests
+velib-mapTests/repositories/FavoriteRepositoryTests.swift.plist

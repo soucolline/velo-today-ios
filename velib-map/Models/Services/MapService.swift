@@ -7,50 +7,42 @@
 //
 
 import Foundation
+import Combine
 
 class MapService {
   
   private let apiWorker: APIWorker
+  private let urlFactory: URLFactory
   
-  init(with apiWorker: APIWorker) {
+  init(apiWorker: APIWorker, urlFactory: URLFactory) {
     self.apiWorker = apiWorker
+    self.urlFactory = urlFactory
   }
 
-  func fetchPins(completion: @escaping (Result<[Station], APIError>) -> Void) {
-    var stations = [Station]()
-    guard let url = URL(string: K.Api.baseUrl) else { return }
+  func fetchPins() -> AnyPublisher<[Station], APIError> {
+    let url = self.urlFactory.createFetchPinsUrl()
 
-    self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
-      switch result {
-      case .success(let response):
-        response.records.forEach { stations.append($0.station) }
-        completion(.success(stations))
-      case .failure(let error):
-        completion(.failure(APIError.customError(error.localizedDescription)))
+    return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])
+      .map { response in
+        response.records.map { $0.station }
       }
-    }
+      .eraseToAnyPublisher()
   }
 
-  func fetchAllStations(from ids: [String], completion: @escaping (Result<[Station], APIError>) -> Void) {
-    var fetchedStations = [Station]()
+  func fetchAllStations(from ids: [String]) -> AnyPublisher<[Station], APIError> {
+    let publishers: [AnyPublisher<Station, APIError>] = ids.map { id -> AnyPublisher<Station, APIError> in
+      let url = self.urlFactory.createFetchStation(from: id)
 
-    ids.forEach { id in
-      guard let url = URL(string: K.Api.baseUrl + K.Api.stationQuery + "\(id)") else { return }
-
-      self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:]) { result in
-        switch result {
-        case .success(let response):
-          response.records.forEach { fetchedStations.append($0.station) }
-
-          if fetchedStations.count == ids.count {
-            completion(.success(fetchedStations))
-          }
-
-        case .failure(let error):
-          completion(.failure(APIError.customError(error.localizedDescription)))
+      return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])
+        .compactMap { response in
+          response.records.first?.station
         }
-      }
+        .eraseToAnyPublisher()
     }
+
+    return Publishers.MergeMany(publishers)
+      .collect()
+      .eraseToAnyPublisher()
   }
   
 }

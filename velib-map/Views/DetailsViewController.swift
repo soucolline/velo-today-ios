@@ -28,7 +28,7 @@ class DetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.presenter.setView(view: self)
+    self.presenter.attach(self)
     self.presenter.setData(currentStation: self.currentStation)
     
     self.title = self.presenter.getCurrentStationTitle()
@@ -89,7 +89,7 @@ class DetailsViewController: UIViewController {
   
 }
 
-extension DetailsViewController: DetailsViewDelegate {
+extension DetailsViewController: DetailsView {
   
   func onAddFavoriteSuccess(numberOfFavoriteStations: Int) {
     ZLogger.info(message: "number of favorite stations ==> \(numberOfFavoriteStations)")
