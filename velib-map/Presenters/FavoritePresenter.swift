@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import Combine
 
-protocol FavoriteViewDeletage: class, Loadable {
+protocol FavoriteView: AnyObject, Loadable {
   func onFetchStationsSuccess()
   func onFetchStationsEmptyError()
   func onFetchStationsError()
 }
 
 protocol FavoritePresenter {
-  func setView(view: FavoriteViewDeletage)
+  func attach(_ view: FavoriteView)
   
   func fetchFavoriteStations()
   func getStation(at index: Int) -> Station?
@@ -23,45 +24,56 @@ protocol FavoritePresenter {
 }
 
 class FavoritePresenterImpl: FavoritePresenter {
-  
-  private weak var delegate: FavoriteViewDeletage?
   private let service: MapService
   private let favoriteRepository: FavoriteRepository
+  private let networkScheduler: NetworkScheduler
   
   private var stations: [Station]?
+  private var cancellable: AnyCancellable?
+
+  private weak var view: FavoriteView?
   
-  init(with service: MapService, favoriteRepository: FavoriteRepository) {
+  init(
+    mapService service: MapService,
+    favoriteRepository: FavoriteRepository,
+    networkScheduler: NetworkScheduler
+  ) {
     self.service = service
     self.favoriteRepository = favoriteRepository
+    self.networkScheduler = networkScheduler
   }
   
-  func setView(view: FavoriteViewDeletage) {
-    self.delegate = view
+  func attach(_ view: FavoriteView) {
+    self.view = view
   }
   
   func fetchFavoriteStations() {
-    self.delegate?.onShowLoading()
+    self.view?.onShowLoading()
 
     let favoriteStationsIds = self.favoriteRepository.getFavoriteStationsIds()
 
     guard !favoriteStationsIds.isEmpty else {
       self.stations = nil
-      self.delegate?.onDismissLoading()
-      self.delegate?.onFetchStationsEmptyError()
+      self.view?.onDismissLoading()
+      self.view?.onFetchStationsEmptyError()
       return
     }
 
-    self.service.fetchAllStations(from: favoriteStationsIds) { result in
-      switch result {
-      case .success(let stations):
+    self.cancellable = self.service.fetchAllStations(from: favoriteStationsIds)
+      .subscribe(on: networkScheduler.concurent)
+      .receive(on: networkScheduler.main)
+      .sink(receiveCompletion: { completion in
+        switch completion {
+          case .finished: break
+          case .failure:
+            self.view?.onDismissLoading()
+            self.view?.onFetchStationsError()
+        }
+      }, receiveValue: { stations in
         self.stations = stations.sorted { return $0.code > $1.code }
-        self.delegate?.onFetchStationsSuccess()
-        self.delegate?.onDismissLoading()
-      case .failure:
-        self.delegate?.onDismissLoading()
-        self.delegate?.onFetchStationsError()
-      }
-    }
+        self.view?.onFetchStationsSuccess()
+        self.view?.onDismissLoading()
+      })
   }
   
   func getStation(at index: Int) -> Station? {

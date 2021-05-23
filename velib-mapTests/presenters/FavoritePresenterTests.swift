@@ -9,30 +9,27 @@
 import Foundation
 import Cuckoo
 import XCTest
+import Combine
 
 @testable import velib_map
 
 class FavoritePresenterTests: XCTestCase {
-  private var mockFavoriteView: MockFavoriteViewDeletage!
-  private var mockApiWorker: MockAPIWorker!
+  private let mockFavoriteView = MockFavoriteView()
+  private var mockApiWorker = MockAPIWorker()
   private var mockMapService: MockMapService!
+  private let mockURLFactory = MockURLFactory()
   private var mockFavoriteRepository: MockFavoriteRepository!
+  private let testNetworkScheduler = TestNetworkScheduler()
 
   private var presenter: FavoritePresenter!
 
-  private let expectedStations = [
-    Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2]),
-    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 2", totalDocks: 6, freeBikes: 34, freeMechanicalBikes: 4, freeElectricBikes: 24, geo: [32, 222]),
-    Station(freeDocks: 1, code: "sdsjhdsk", name: "test 3", totalDocks: 43, freeBikes: 23, freeMechanicalBikes: 4, freeElectricBikes: 334, geo: [10, 20])
-  ]
+  private let expectedStations = StubFixtures.StationsUtils.create()
 
   override func setUp() {
-    self.mockFavoriteView = MockFavoriteViewDeletage()
-    self.mockApiWorker = MockAPIWorker()
-    self.mockMapService = MockMapService(with: self.mockApiWorker)
+    self.mockMapService = MockMapService(apiWorker: mockApiWorker, urlFactory: mockURLFactory)
     self.mockFavoriteRepository = MockFavoriteRepository(with: UserDefaults.standard)
 
-    stub(self.mockFavoriteView) { stub in
+    stub(mockFavoriteView) { stub in
       when(stub).onFetchStationsSuccess().thenDoNothing()
       when(stub).onFetchStationsEmptyError().thenDoNothing()
       when(stub).onFetchStationsError().thenDoNothing()
@@ -40,19 +37,19 @@ class FavoritePresenterTests: XCTestCase {
       when(stub).onDismissLoading().thenDoNothing()
     }
 
-    stub(self.mockMapService) { stub in
-      when(stub).fetchAllStations(from: any(), completion: any()).thenDoNothing()
+    stub(mockMapService) { stub in
+      when(stub).fetchAllStations(from: any()).thenReturn(Just(expectedStations).setFailureType(to: APIError.self).eraseToAnyPublisher())
     }
 
     self.presenter = FavoritePresenterImpl(
-      with: self.mockMapService,
-      favoriteRepository: self.mockFavoriteRepository
+      mapService: mockMapService,
+      favoriteRepository: mockFavoriteRepository,
+      networkScheduler: testNetworkScheduler
     )
-    self.presenter.setView(view: self.mockFavoriteView)
+    self.presenter.attach(mockFavoriteView)
   }
 
   func testFetchFavoriteStationsSuccess() {
-    let fetchAllStationsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
     let expectedStationsIds = [self.expectedStations.first!.code, self.expectedStations.last!.code]
 
     stub(self.mockFavoriteRepository) { stub in
@@ -63,8 +60,7 @@ class FavoritePresenterTests: XCTestCase {
 
     verify(self.mockFavoriteRepository).getFavoriteStationsIds()
     verify(self.mockFavoriteView).onShowLoading()
-    verify(self.mockMapService).fetchAllStations(from: any(), completion: fetchAllStationsArgumentCaptor.capture())
-    fetchAllStationsArgumentCaptor.value!(.success(expectedStations))
+    verify(self.mockMapService).fetchAllStations(from: expectedStationsIds)
     verify(self.mockFavoriteView).onFetchStationsSuccess()
     verify(self.mockFavoriteView).onDismissLoading()
 
@@ -91,19 +87,21 @@ class FavoritePresenterTests: XCTestCase {
   }
 
   func testFetchFavoriteStationsFailure() {
-    let fetchAllStationsArgumentCaptor = ArgumentCaptor<(Result<[Station], APIError>) -> Void>()
     let expectedStationsIds = [self.expectedStations.first!.code, self.expectedStations.last!.code]
 
     stub(self.mockFavoriteRepository) { stub in
       when(stub).getFavoriteStationsIds().thenReturn(expectedStationsIds)
     }
 
+    stub(mockMapService) { stub in
+      when(stub).fetchAllStations(from: any()).thenReturn(Result.failure(APIError.internalServerError).publisher.eraseToAnyPublisher())
+    }
+
     self.presenter.fetchFavoriteStations()
 
     verify(self.mockFavoriteRepository).getFavoriteStationsIds()
     verify(self.mockFavoriteView).onShowLoading()
-    verify(self.mockMapService).fetchAllStations(from: any(), completion: fetchAllStationsArgumentCaptor.capture())
-    fetchAllStationsArgumentCaptor.value!(.failure(APIError.notFound))
+    verify(self.mockMapService).fetchAllStations(from: expectedStationsIds)
     verify(self.mockFavoriteView).onDismissLoading()
     verify(self.mockFavoriteView).onFetchStationsError()
 

@@ -19,7 +19,8 @@ extension Assembler {
       AppAssembly(),
       PresenterAssembly(),
       RepositoryAssembly(),
-      NetworkAssembly()
+      NetworkAssembly(),
+      FactoryAssembly()
     ], container: container)
     return assembler
   }()

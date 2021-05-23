@@ -13,14 +13,13 @@ import XCTest
 @testable import velib_map
 
 class DetailsPresenterTests: XCTestCase {
-  private var mockDetailsView: MockDetailsViewDelegate!
+  private var mockDetailsView = MockDetailsView()
   private var mockFavoriteRepository: MockFavoriteRepository!
-  private let expectedStation = Station(freeDocks: 1, code: "sdhjsk", name: "test 1", totalDocks: 2, freeBikes: 3, freeMechanicalBikes: 4, freeElectricBikes: 4, geo: [1, 2])
+  private let expectedStation = StubFixtures.StationsUtils.create().first!
 
   private var presenter: DetailsPresenter!
 
   override func setUp() {
-    self.mockDetailsView = MockDetailsViewDelegate()
     self.mockFavoriteRepository = MockFavoriteRepository(with: UserDefaults.standard)
 
     stub(self.mockDetailsView) { stub in
@@ -34,8 +33,8 @@ class DetailsPresenterTests: XCTestCase {
       when(stub).isFavoriteStation(from: any()).thenReturn(true)
     }
 
-    self.presenter = DetailsPresenterImpl(with: self.mockFavoriteRepository)
-    self.presenter.setView(view: self.mockDetailsView)
+    self.presenter = DetailsPresenterImpl(favoriteRepository: mockFavoriteRepository)
+    self.presenter.attach(mockDetailsView)
   }
 
   func testSetDataWithStation() {
