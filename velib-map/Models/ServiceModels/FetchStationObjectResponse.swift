@@ -16,7 +16,7 @@ struct FetchStationObjectResponseRoot: TaskExecutable {
 
 struct FetchStationObjectResponse: Codable {
   
-  let station: Station
+  let station: StationResponse
   
   enum CodingKeys: String, CodingKey {
     case station = "fields"

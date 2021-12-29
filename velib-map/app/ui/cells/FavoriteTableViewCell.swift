@@ -24,7 +24,7 @@ class FavoriteTableViewCell: UITableViewCell {
     }
   }
   
-  func feed(with station: Station) {
+  func feed(with station: UIStation) {
     let bikes = station.freeBikes
     let stands = station.freeDocks
     let name = station.name

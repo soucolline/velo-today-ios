@@ -10,21 +10,21 @@ import Foundation
 import Combine
 
 protocol MapView: AnyObject, Loadable {
-  func onCleanMap(with stations: [Station])
+  func onCleanMap(with stations: [UIStation])
   
-  func onFetchStationsSuccess(stations: [Station])
+  func onFetchStationsSuccess(stations: [UIStation])
   func onFetchStationsErrorNotFound()
   func onFetchStationsErrorServerError()
   func onFetchStationsErrorCouldNotDecodeData()
 }
 
 protocol MapPresenter {
-  var currentStation: Station? { get set }
+  var currentStation: UIStation? { get set }
   
   func attach(_ view: MapView)
   func reloadPins()
   func getMapStyleForDisplay() -> MapStyle
-  func getCurrentStation() -> Station?
+  func getCurrentStation() -> UIStation?
 }
 
 class MapPresenterImpl: MapPresenter {
@@ -35,8 +35,8 @@ class MapPresenterImpl: MapPresenter {
   private weak var view: MapView?
   private var cancellable: AnyCancellable?
 
-  var stations: [Station] = [Station]()
-  var currentStation: Station?
+  var stations: [UIStation] = [UIStation]()
+  var currentStation: UIStation?
   
   init(
     getAllStations: GetAllStationsUseCase,
@@ -87,7 +87,7 @@ class MapPresenterImpl: MapPresenter {
     self.getMapStyle.invoke()
   }
   
-  func getCurrentStation() -> Station? {
+  func getCurrentStation() -> UIStation? {
     self.currentStation
   }
   

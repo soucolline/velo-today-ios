@@ -19,12 +19,12 @@ protocol DetailsView: AnyObject {
 
 protocol DetailsPresenter {
   func attach(_ view: DetailsView)
-  func setData(currentStation: Station?)
+  func setData(currentStation: UIStation?)
   
   func addFavorite()
   func removeFavorite()
   
-  func getCurrentStation() -> Station?
+  func getCurrentStation() -> UIStation?
   func getCurrentStationTitle() -> String
   func getCurrentStationLocation() -> CLLocation?
   
@@ -37,7 +37,7 @@ class DetailsPresenterImpl: DetailsPresenter {
   private let getNumberOfFavoriteStation: GetNumberOfFavoriteStationUseCase
   private let isFavoriteStation: IsFavoriteStationUseCase
 
-  private var currentStation: Station?
+  private var currentStation: UIStation?
   private var isFavStation = false
 
   private weak var view: DetailsView?
@@ -58,7 +58,7 @@ class DetailsPresenterImpl: DetailsPresenter {
     self.view = view
   }
   
-  func setData(currentStation: Station?) {
+  func setData(currentStation: UIStation?) {
     self.currentStation = currentStation
 
     if let code = self.currentStation?.code {
@@ -90,7 +90,7 @@ class DetailsPresenterImpl: DetailsPresenter {
     self.view?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.getNumberOfFavoriteStation.invoke())
   }
   
-  func getCurrentStation() -> Station? {
+  func getCurrentStation() -> UIStation? {
     self.currentStation
   }
   

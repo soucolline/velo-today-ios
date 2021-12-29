@@ -21,7 +21,7 @@ class DetailsViewController: UIViewController {
   @IBOutlet private var standsLabel: UILabel!
   @IBOutlet private var favBtn: UIButton!
   
-  var currentStation: Station?
+  var currentStation: UIStation?
 
   private let presenter: DetailsPresenter = Assembler.inject(DetailsPresenter.self)
   
@@ -120,7 +120,7 @@ extension DetailsViewController: DetailsView {
 extension DetailsViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let annotation = annotation as? Station else { return nil }
+    guard let annotation = annotation as? UIStation else { return nil }
     
     let pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: K.Identifiers.velibPin)
     pin.markerTintColor = K.Colors.orange

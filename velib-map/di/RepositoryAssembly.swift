@@ -12,18 +12,6 @@ import Swinject
 // swiftlint:disable force_unwrapping
 class RepositoryAssembly: Assembly {
   func assemble(container: Container) {
-    container.register(PreferencesRepository.self) { resolver in
-      PreferencesRepository(
-        with: resolver.resolve(UserDefaults.self)!
-      )
-    }
-
-    container.register(FavoriteRepository.self) { resolver in
-      FavoriteRepository(
-        with: resolver.resolve(UserDefaults.self)!
-      )
-    }
-
     container.register(StationRepository.self) { resolver in
       StationRepositoryImpl(
         stationRemoteDataSource: resolver.resolve(StationRemoteDataSource.self)!,

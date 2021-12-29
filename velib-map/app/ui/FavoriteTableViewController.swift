@@ -53,7 +53,7 @@ class FavoriteTableViewController: UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == K.SegueIdentifiers.favoriteToDetailSegue {
-      if let station = sender as? Station {
+      if let station = sender as? UIStation {
         let vc = segue.destination as? DetailsViewController
         vc?.currentStation = station
       }

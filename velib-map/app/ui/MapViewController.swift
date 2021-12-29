@@ -88,11 +88,11 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MapView {
   
-  func onCleanMap(with stations: [Station]) {
+  func onCleanMap(with stations: [UIStation]) {
     self.mapView.removeAnnotations(stations)
   }
   
-  func onFetchStationsSuccess(stations: [Station]) {
+  func onFetchStationsSuccess(stations: [UIStation]) {
     DispatchQueue.main.async {
       stations.forEach { self.mapView.addAnnotation($0) }
     }
@@ -121,7 +121,7 @@ extension MapViewController: MapView {
 extension MapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let annotation = annotation as? Station else { return nil }
+    guard let annotation = annotation as? UIStation else { return nil }
     
     let identifier = K.Identifiers.velibPin
     let pin: MKMarkerAnnotationView
@@ -143,7 +143,7 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    let station = view.annotation as? Station
+    let station = view.annotation as? UIStation
     self.presenter.currentStation = station
     self.performSegue(withIdentifier: K.SegueIdentifiers.detailSegue, sender: self)
   }

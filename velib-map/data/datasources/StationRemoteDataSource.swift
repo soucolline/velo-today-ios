@@ -10,8 +10,8 @@ import Foundation
 import Combine
 
 protocol StationRemoteDataSource {
-  func fetchPins() -> AnyPublisher<[Station], APIError>
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[Station], APIError>
+  func fetchPins() -> AnyPublisher<[StationResponse], APIError>
+  func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError>
 }
 
 class StationRemoteDataSourceImpl: StationRemoteDataSource {
@@ -23,7 +23,7 @@ class StationRemoteDataSourceImpl: StationRemoteDataSource {
     self.urlFactory = urlFactory
   }
 
-  func fetchPins() -> AnyPublisher<[Station], APIError> {
+  func fetchPins() -> AnyPublisher<[StationResponse], APIError> {
     let url = self.urlFactory.createFetchPinsUrl()
 
     return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])
@@ -33,8 +33,8 @@ class StationRemoteDataSourceImpl: StationRemoteDataSource {
       .eraseToAnyPublisher()
   }
 
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[Station], APIError> {
-    let publishers: [AnyPublisher<Station, APIError>] = ids.map { id -> AnyPublisher<Station, APIError> in
+  func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError> {
+    let publishers: [AnyPublisher<StationResponse, APIError>] = ids.map { id -> AnyPublisher<StationResponse, APIError> in
       let url = self.urlFactory.createFetchStation(from: id)
 
       return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])

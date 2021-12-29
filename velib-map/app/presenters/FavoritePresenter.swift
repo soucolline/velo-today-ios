@@ -19,7 +19,7 @@ protocol FavoritePresenter {
   func attach(_ view: FavoriteView)
   
   func fetchFavoriteStations()
-  func getStation(at index: Int) -> Station?
+  func getStation(at index: Int) -> UIStation?
   func getStationsCount() -> Int
 }
 
@@ -28,7 +28,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   private let getFavoriteStationsIds: GetFavoriteStationsIds
   private let networkScheduler: NetworkScheduler
   
-  private var stations: [Station]?
+  private var stations: [UIStation]?
   private var cancellable: AnyCancellable?
 
   private weak var view: FavoriteView?
@@ -76,7 +76,7 @@ class FavoritePresenterImpl: FavoritePresenter {
       })
   }
   
-  func getStation(at index: Int) -> Station? {
+  func getStation(at index: Int) -> UIStation? {
     self.stations?[index]
   }
   

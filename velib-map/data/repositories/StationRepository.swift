@@ -10,8 +10,8 @@ import Foundation
 import Combine
 
 protocol StationRepository {
-  func fetchPins() -> AnyPublisher<[Station], APIError>
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[Station], APIError>
+  func fetchPins() -> AnyPublisher<[DomainStation], APIError>
+  func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError>
 
   func getFavoriteStationsIds() -> [String]
   func addFavoriteStation(for code: String)
@@ -32,12 +32,16 @@ class StationRepositoryImpl: StationRepository {
     self.favoriteLocalDataSource = favoriteLocalDataSource
   }
 
-  func fetchPins() -> AnyPublisher<[Station], APIError> {
+  func fetchPins() -> AnyPublisher<[DomainStation], APIError> {
     stationRemoteDataSource.fetchPins()
+      .map { $0.map { try! $0.toDomain() } }
+      .eraseToAnyPublisher()
   }
 
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[Station], APIError> {
+  func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError> {
     stationRemoteDataSource.fetchAllStations(from: ids)
+      .map { $0.map { try! $0.toDomain() } }
+      .eraseToAnyPublisher()
   }
 
   func getFavoriteStationsIds() -> [String] {
