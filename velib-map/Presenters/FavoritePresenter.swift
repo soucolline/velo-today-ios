@@ -24,8 +24,8 @@ protocol FavoritePresenter {
 }
 
 class FavoritePresenterImpl: FavoritePresenter {
-  private let service: MapService
-  private let favoriteRepository: FavoriteRepository
+  private let getSpecificStations: GetSpecificStationsUseCase
+  private let getFavoriteStationsIds: GetFavoriteStationsIds
   private let networkScheduler: NetworkScheduler
   
   private var stations: [Station]?
@@ -34,12 +34,12 @@ class FavoritePresenterImpl: FavoritePresenter {
   private weak var view: FavoriteView?
   
   init(
-    mapService service: MapService,
-    favoriteRepository: FavoriteRepository,
+    getSpecificStations: GetSpecificStationsUseCase,
+    getFavoriteStationsIds: GetFavoriteStationsIds,
     networkScheduler: NetworkScheduler
   ) {
-    self.service = service
-    self.favoriteRepository = favoriteRepository
+    self.getSpecificStations = getSpecificStations
+    self.getFavoriteStationsIds = getFavoriteStationsIds
     self.networkScheduler = networkScheduler
   }
   
@@ -50,7 +50,7 @@ class FavoritePresenterImpl: FavoritePresenter {
   func fetchFavoriteStations() {
     self.view?.onShowLoading()
 
-    let favoriteStationsIds = self.favoriteRepository.getFavoriteStationsIds()
+    let favoriteStationsIds = self.getFavoriteStationsIds.invoke()
 
     guard !favoriteStationsIds.isEmpty else {
       self.stations = nil
@@ -59,7 +59,7 @@ class FavoritePresenterImpl: FavoritePresenter {
       return
     }
 
-    self.cancellable = self.service.fetchAllStations(from: favoriteStationsIds)
+    self.cancellable = self.getSpecificStations.invoke(ids: favoriteStationsIds)
       .subscribe(on: networkScheduler.concurent)
       .receive(on: networkScheduler.main)
       .sink(receiveCompletion: { completion in
@@ -70,7 +70,7 @@ class FavoritePresenterImpl: FavoritePresenter {
             self.view?.onFetchStationsError()
         }
       }, receiveValue: { stations in
-        self.stations = stations.sorted { return $0.code > $1.code }
+        self.stations = stations.sorted { $0.code > $1.code }
         self.view?.onFetchStationsSuccess()
         self.view?.onDismissLoading()
       })

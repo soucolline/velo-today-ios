@@ -19,12 +19,17 @@ protocol SettingsPresenter {
 }
 
 class SettingsPresenterImpl: SettingsPresenter {
-  private let preferencesRepository: PreferencesRepository
+  private let getMapStyle: GetMapStyleUseCase
+  private let setMapStyle: SetMapStyleUseCase
 
-  weak var view: SettingsView?
+  private weak var view: SettingsView?
 
-  init(preferencesRepository: PreferencesRepository) {
-    self.preferencesRepository = preferencesRepository
+  init(
+    getMapStyle: GetMapStyleUseCase,
+    setMapStyle: SetMapStyleUseCase
+  ) {
+    self.getMapStyle = getMapStyle
+    self.setMapStyle = setMapStyle
   }
 
   func attach(_ view: SettingsView) {
@@ -32,10 +37,10 @@ class SettingsPresenterImpl: SettingsPresenter {
   }
 
   func setup() {
-    self.view?.onUpdateSegmentControl(for: self.preferencesRepository.getMapStyle())
+    self.view?.onUpdateSegmentControl(for: self.getMapStyle.invoke())
   }
 
   func setMapStyle(style: MapStyle) {
-    self.preferencesRepository.setMapStyle(identifier: style.rawValue)
+    setMapStyle.invoke(identifier: style.rawValue)
   }
 }

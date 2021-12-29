@@ -28,6 +28,9 @@
 		E9E7CBBC277CE75800E1EB4A /* AddFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */; };
 		E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */; };
 		E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */; };
+		E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */; };
+		E9E7CBC4277D0C7800E1EB4A /* GetFavoriteStationsIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */; };
+		E9E7CBC6277D0DBF00E1EB4A /* SetMapStyleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */; };
 		E9F0F76D2650631300508CC4 /* URLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */; };
 		E9F0F7702650640000508CC4 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76F2650640000508CC4 /* MapServiceTests.swift */; };
 		E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */; };
@@ -129,6 +132,9 @@
 		E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddFavoriteStationUseCase.swift; path = domain/usecases/AddFavoriteStationUseCase.swift; sourceTree = "<group>"; };
 		E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoveFavoriteStationUseCase.swift; path = domain/usecases/RemoveFavoriteStationUseCase.swift; sourceTree = "<group>"; };
 		E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetNumberOfFavoriteStationsUseCase.swift; path = domain/usecases/GetNumberOfFavoriteStationsUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetSpecificStationsUseCase.swift; path = domain/usecases/GetSpecificStationsUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetFavoriteStationsIds.swift; path = domain/usecases/GetFavoriteStationsIds.swift; sourceTree = "<group>"; };
+		E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetMapStyleUseCase.swift; path = domain/usecases/SetMapStyleUseCase.swift; sourceTree = "<group>"; };
 		E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactoryTests.swift; sourceTree = "<group>"; };
 		E9F0F76F2650640000508CC4 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAssembly.swift; sourceTree = "<group>"; };
@@ -304,11 +310,14 @@
 			isa = PBXGroup;
 			children = (
 				E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */,
+				E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */,
 				E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */,
+				E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */,
 				E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */,
 				E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */,
 				E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */,
 				E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */,
+				E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */,
 			);
 			name = usecases;
 			sourceTree = "<group>";
@@ -777,6 +786,7 @@
 				E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */,
 				EBADFBAF20B079350012909E /* MapViewController.swift in Sources */,
 				E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */,
+				E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
 				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
 				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,
@@ -795,6 +805,8 @@
 				E9E7CBB8277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift in Sources */,
 				EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */,
 				E9F1DD992650610A003858AE /* SettingsPresenter.swift in Sources */,
+				E9E7CBC4277D0C7800E1EB4A /* GetFavoriteStationsIds.swift in Sources */,
+				E9E7CBC6277D0DBF00E1EB4A /* SetMapStyleUseCase.swift in Sources */,
 				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
 				EBADFBB320B0793E0012909E /* FavoriteTableViewCell.swift in Sources */,
 				E9F1DD8A26503BCD003858AE /* URLFactory.swift in Sources */,

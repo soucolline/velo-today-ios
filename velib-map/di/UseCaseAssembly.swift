@@ -47,5 +47,29 @@ class UseCaseAssembly: Assembly {
         stationRepository: resolver.resolve(StationRepository.self)!
       )
     }
+
+    container.register(GetSpecificStationsUseCase.self) { resolver in
+      GetSpecificStationsUseCase(
+        stationRepository: resolver.resolve(StationRepository.self)!
+      )
+    }
+
+    container.register(GetFavoriteStationsIds.self) { resolver in
+      GetFavoriteStationsIds(
+        stationRepository: resolver.resolve(StationRepository.self)!
+      )
+    }
+
+    container.register(GetMapStyleUseCase.self) { resolver in
+      GetMapStyleUseCase(
+        mapRepository: resolver.resolve(MapRepository.self)!
+      )
+    }
+
+    container.register(SetMapStyleUseCase.self) { resolver in
+      SetMapStyleUseCase(
+        mapRepository: resolver.resolve(MapRepository.self)!
+      )
+    }
   }
 }

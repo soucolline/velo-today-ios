@@ -31,15 +31,16 @@ class PresenterAssembly: Assembly {
 
     container.register(FavoritePresenter.self) { resolver in
       FavoritePresenterImpl(
-        mapService: resolver.resolve(MapService.self)!,
-        favoriteRepository: resolver.resolve(FavoriteRepository.self)!,
+        getSpecificStations: resolver.resolve(GetSpecificStationsUseCase.self)!,
+        getFavoriteStationsIds: resolver.resolve(GetFavoriteStationsIds.self)!,
         networkScheduler: resolver.resolve(NetworkScheduler.self)!
       )
     }
 
     container.register(SettingsPresenter.self) { resolver in
       SettingsPresenterImpl(
-        preferencesRepository: resolver.resolve(PreferencesRepository.self)!
+        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!,
+        setMapStyle: resolver.resolve(SetMapStyleUseCase.self)!
       )
     }
   }
