@@ -23,24 +23,28 @@ protocol MapPresenter {
   
   func attach(_ view: MapView)
   func reloadPins()
-  func getMapStyle() -> MapStyle
+  func getMapStyleForDisplay() -> MapStyle
   func getCurrentStation() -> Station?
 }
 
 class MapPresenterImpl: MapPresenter {
-  
-  private weak var view: MapView?
-  private let service: MapService
-  private let repository: PreferencesRepository
+  private let getAllStations: GetAllStationsUseCase
+  private let getMapStyle: GetMapStyleUseCase
   private let networkScheduler: NetworkScheduler
-  
+
+  private weak var view: MapView?
+  private var cancellable: AnyCancellable?
+
   var stations: [Station] = [Station]()
   var currentStation: Station?
-  private var cancellable: AnyCancellable?
   
-  init(service: MapService, repository: PreferencesRepository, networkScheduler: NetworkScheduler) {
-    self.service = service
-    self.repository = repository
+  init(
+    getAllStations: GetAllStationsUseCase,
+    getMapStyle: GetMapStyleUseCase,
+    networkScheduler: NetworkScheduler
+  ) {
+    self.getAllStations = getAllStations
+    self.getMapStyle = getMapStyle
     self.networkScheduler = networkScheduler
   }
   
@@ -54,7 +58,7 @@ class MapPresenterImpl: MapPresenter {
     
     self.stations.removeAll()
 
-    self.cancellable = self.service.fetchPins()
+    self.cancellable = self.getAllStations.invoke()
       .subscribe(on: self.networkScheduler.concurent)
       .receive(on: self.networkScheduler.main)
       .sink(receiveCompletion: { completion in
@@ -79,8 +83,8 @@ class MapPresenterImpl: MapPresenter {
       })
   }
   
-  func getMapStyle() -> MapStyle {
-    self.repository.getMapStyle()
+  func getMapStyleForDisplay() -> MapStyle {
+    self.getMapStyle.invoke()
   }
   
   func getCurrentStation() -> Station? {

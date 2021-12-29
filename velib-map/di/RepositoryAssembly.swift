@@ -23,5 +23,18 @@ class RepositoryAssembly: Assembly {
         with: resolver.resolve(UserDefaults.self)!
       )
     }
+
+    container.register(StationRepository.self) { resolver in
+      StationRepositoryImpl(
+        stationRemoteDataSource: resolver.resolve(StationRemoteDataSource.self)!,
+        favoriteLocalDataSource: resolver.resolve(FavoriteLocalDataSource.self)!
+      )
+    }
+
+    container.register(MapRepository.self) { resolver in
+      MapRepositoryImpl(
+        userDefaults: resolver.resolve(UserDefaults.self)!
+      )
+    }
   }
 }

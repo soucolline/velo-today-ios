@@ -14,15 +14,18 @@ class PresenterAssembly: Assembly {
   func assemble(container: Container) {
     container.register(MapPresenter.self) { resolver in
       MapPresenterImpl(
-        service: resolver.resolve(MapService.self)!,
-        repository: resolver.resolve(PreferencesRepository.self)!,
+        getAllStations: resolver.resolve(GetAllStationsUseCase.self)!,
+        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!,
         networkScheduler: resolver.resolve(NetworkScheduler.self)!
       )
     }
 
     container.register(DetailsPresenter.self) { resolver in
       DetailsPresenterImpl(
-        favoriteRepository: resolver.resolve(FavoriteRepository.self)!
+        addFavoriteStation: resolver.resolve(AddFavoriteStationUseCase.self)!,
+        removeFavoriteStation: resolver.resolve(RemoveFavoriteStationUseCase.self)!,
+        getNumberOfFavoriteStation: resolver.resolve(GetNumberOfFavoriteStationUseCase.self)!,
+        isFavoriteStation: resolver.resolve(IsFavoriteStationUseCase.self)!
       )
     }
 

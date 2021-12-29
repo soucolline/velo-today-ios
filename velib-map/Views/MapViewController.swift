@@ -53,7 +53,7 @@ class MapViewController: UIViewController {
   }
 
   func setMapStyle() {
-    switch self.presenter.getMapStyle() {
+    switch self.presenter.getMapStyleForDisplay() {
     case .normal:
       self.mapView.mapType = .standard
     case .hybrid:

@@ -9,15 +9,15 @@ target 'velib-map' do
 
   # Pods for velib-map
   pod 'SVProgressHUD', '= 2.2.5'
-  pod 'SwiftLint', '= 0.43.1'
+  pod 'SwiftLint', '= 0.45.1'
   pod 'ZLogger', '= 1.1.0'
-  pod 'Swinject', '= 2.7.1'
+  pod 'Swinject', '= 2.8.1'
   pod 'Bugsnag'
 end
 
 target 'velib-mapTests' do
   use_frameworks!
-  pod 'Cuckoo', '= 1.5.0'
+  pod 'Cuckoo', '= 1.5.2'
 end
 
 plugin 'cocoapods-keys', {
@@ -25,3 +25,12 @@ plugin 'cocoapods-keys', {
   :keys => [
   "BugsnagApiKey"
 ]}
+
+post_install do |pi|
+    pi.pods_project.targets.each do |t|
+      t.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      end
+    end
+end

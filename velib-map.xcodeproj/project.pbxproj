@@ -16,6 +16,18 @@
 		E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */; };
 		E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */; };
 		E9C2FF1D23CE270700FFCDBD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */; };
+		E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */; };
+		E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */; };
+		E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */; };
+		E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */; };
+		E9E7CBB0277CD97900E1EB4A /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */; };
+		E9E7CBB2277CDA0100E1EB4A /* DataSourceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */; };
+		E9E7CBB4277CDAFC00E1EB4A /* GetMapStyleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */; };
+		E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */; };
+		E9E7CBB8277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */; };
+		E9E7CBBC277CE75800E1EB4A /* AddFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */; };
+		E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */; };
+		E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */; };
 		E9F0F76D2650631300508CC4 /* URLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */; };
 		E9F0F7702650640000508CC4 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76F2650640000508CC4 /* MapServiceTests.swift */; };
 		E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */; };
@@ -105,6 +117,18 @@
 		E9C2FF2623D2509600FFCDBD /* FavoritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenterTests.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
+		E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRepository.swift; path = data/repositories/StationRepository.swift; sourceTree = "<group>"; };
+		E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteLocalDataSource.swift; path = data/datasources/FavoriteLocalDataSource.swift; sourceTree = "<group>"; };
+		E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRemoteDataSource.swift; path = data/datasources/StationRemoteDataSource.swift; sourceTree = "<group>"; };
+		E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetAllStationsUseCase.swift; path = domain/usecases/GetAllStationsUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UseCaseAssembly.swift; path = di/UseCaseAssembly.swift; sourceTree = "<group>"; };
+		E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSourceAssembly.swift; path = di/DataSourceAssembly.swift; sourceTree = "<group>"; };
+		E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMapStyleUseCase.swift; path = domain/usecases/GetMapStyleUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapRepository.swift; path = data/repositories/MapRepository.swift; sourceTree = "<group>"; };
+		E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsFavoriteStationUseCase.swift; path = domain/usecases/IsFavoriteStationUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddFavoriteStationUseCase.swift; path = domain/usecases/AddFavoriteStationUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoveFavoriteStationUseCase.swift; path = domain/usecases/RemoveFavoriteStationUseCase.swift; sourceTree = "<group>"; };
+		E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetNumberOfFavoriteStationsUseCase.swift; path = domain/usecases/GetNumberOfFavoriteStationsUseCase.swift; sourceTree = "<group>"; };
 		E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactoryTests.swift; sourceTree = "<group>"; };
 		E9F0F76F2650640000508CC4 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAssembly.swift; sourceTree = "<group>"; };
@@ -231,12 +255,62 @@
 			children = (
 				E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */,
 				E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */,
+				E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */,
 				E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */,
+				E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */,
 				E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */,
 				E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */,
 				E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */,
 			);
 			name = di;
+			sourceTree = "<group>";
+		};
+		E9E7CB97277CD59D00E1EB4A /* data */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CB9B277CD64400E1EB4A /* repositories */,
+				E9E7CB98277CD5A600E1EB4A /* datasources */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		E9E7CB98277CD5A600E1EB4A /* datasources */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */,
+				E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */,
+			);
+			name = datasources;
+			sourceTree = "<group>";
+		};
+		E9E7CB9B277CD64400E1EB4A /* repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */,
+				E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */,
+			);
+			name = repositories;
+			sourceTree = "<group>";
+		};
+		E9E7CBA0277CD7F500E1EB4A /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBA1277CD7FB00E1EB4A /* usecases */,
+			);
+			name = domain;
+			sourceTree = "<group>";
+		};
+		E9E7CBA1277CD7FB00E1EB4A /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */,
+				E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */,
+				E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */,
+				E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */,
+				E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */,
+				E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */,
+			);
+			name = usecases;
 			sourceTree = "<group>";
 		};
 		E9F0F76B2650630500508CC4 /* factories */ = {
@@ -390,6 +464,8 @@
 		EBA372F71EA3A0CC00E214DD /* velib-map */ = {
 			isa = PBXGroup;
 			children = (
+				E9E7CBA0277CD7F500E1EB4A /* domain */,
+				E9E7CB97277CD59D00E1EB4A /* data */,
 				E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */,
 				E9C2FF1323CE25AD00FFCDBD /* di */,
 				2493F9BA1EA3A64B007D006D /* Models */,
@@ -684,28 +760,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E7CBB0277CD97900E1EB4A /* UseCaseAssembly.swift in Sources */,
 				EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */,
 				EBADFBA720B078DF0012909E /* FavoritePresenter.swift in Sources */,
 				E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */,
 				E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */,
+				E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */,
 				E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */,
+				E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */,
 				E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */,
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
 				EBADFBBB20B079670012909E /* MapStyle.swift in Sources */,
 				E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */,
 				EBADFBA620B078DF0012909E /* DetailsPresenter.swift in Sources */,
 				EBADFBBA20B079670012909E /* APIError.swift in Sources */,
+				E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */,
 				EBADFBAF20B079350012909E /* MapViewController.swift in Sources */,
+				E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
+				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
+				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,
 				EBADFBB020B079350012909E /* DetailsViewController.swift in Sources */,
 				E9C2FF1223CE12CC00FFCDBD /* FavoriteRepository.swift in Sources */,
+				E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */,
 				E9F1DD8F26504544003858AE /* NetworkSchedulers.swift in Sources */,
+				E9E7CBBC277CE75800E1EB4A /* AddFavoriteStationUseCase.swift in Sources */,
 				EBADFBA920B0790C0012909E /* PreferencesRepository.swift in Sources */,
 				E9C2FF1D23CE270700FFCDBD /* NetworkAssembly.swift in Sources */,
 				EBADFBAE20B079350012909E /* SettingsViewController.swift in Sources */,
 				EBADFBA320B078C60012909E /* MapService.swift in Sources */,
 				EBADFBB920B079670012909E /* Station.swift in Sources */,
 				EB11657020A6D9A40086F8D7 /* MapPresenter.swift in Sources */,
+				E9E7CBB4277CDAFC00E1EB4A /* GetMapStyleUseCase.swift in Sources */,
+				E9E7CBB8277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift in Sources */,
 				EBADFBB120B079350012909E /* FavoriteTableViewController.swift in Sources */,
 				E9F1DD992650610A003858AE /* SettingsPresenter.swift in Sources */,
 				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
@@ -713,6 +800,7 @@
 				E9F1DD8A26503BCD003858AE /* URLFactory.swift in Sources */,
 				E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */,
 				E94D2B9122DB8F8E00A80A76 /* APIWorker.swift in Sources */,
+				E9E7CBB2277CDA0100E1EB4A /* DataSourceAssembly.swift in Sources */,
 				EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

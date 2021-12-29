@@ -48,7 +48,7 @@ class DetailsViewController: UIViewController {
     
     self.setupBtns()
     
-    self.presenter.isFavoriteStation()
+    self.presenter.getIsFavoriteStation()
       ? self.updateFavBtn(with: K.Colors.red, andTitle: K.Strings.removeFavorite)
       : self.updateFavBtn(with: K.Colors.green, andTitle: K.Strings.addFavorite)
   }
@@ -82,7 +82,7 @@ class DetailsViewController: UIViewController {
   }
   
   @IBAction private func toggleFavorite(_ sender: UIButton) {
-    self.presenter.isFavoriteStation()
+    self.presenter.getIsFavoriteStation()
       ? self.presenter.removeFavorite()
       : self.presenter.addFavorite()
   }

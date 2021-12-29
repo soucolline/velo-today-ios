@@ -17,8 +17,10 @@ extension Assembler {
     let container = Container()
     let assembler = Assembler([
       AppAssembly(),
+      DataSourceAssembly(),
       PresenterAssembly(),
       RepositoryAssembly(),
+      UseCaseAssembly(),
       NetworkAssembly(),
       FactoryAssembly()
     ], container: container)

@@ -28,19 +28,30 @@ protocol DetailsPresenter {
   func getCurrentStationTitle() -> String
   func getCurrentStationLocation() -> CLLocation?
   
-  func isFavoriteStation() -> Bool
+  func getIsFavoriteStation() -> Bool
 }
 
 class DetailsPresenterImpl: DetailsPresenter {
-  private let favoriteRepository: FavoriteRepository
+  private let addFavoriteStation: AddFavoriteStationUseCase
+  private let removeFavoriteStation: RemoveFavoriteStationUseCase
+  private let getNumberOfFavoriteStation: GetNumberOfFavoriteStationUseCase
+  private let isFavoriteStation: IsFavoriteStationUseCase
 
   private var currentStation: Station?
   private var isFavStation = false
 
   private weak var view: DetailsView?
   
-  init(favoriteRepository: FavoriteRepository) {
-    self.favoriteRepository = favoriteRepository
+  init(
+    addFavoriteStation: AddFavoriteStationUseCase,
+    removeFavoriteStation: RemoveFavoriteStationUseCase,
+    getNumberOfFavoriteStation: GetNumberOfFavoriteStationUseCase,
+    isFavoriteStation: IsFavoriteStationUseCase
+  ) {
+    self.addFavoriteStation = addFavoriteStation
+    self.removeFavoriteStation = removeFavoriteStation
+    self.getNumberOfFavoriteStation = getNumberOfFavoriteStation
+    self.isFavoriteStation = isFavoriteStation
   }
 
   func attach(_ view: DetailsView) {
@@ -51,7 +62,7 @@ class DetailsPresenterImpl: DetailsPresenter {
     self.currentStation = currentStation
 
     if let code = self.currentStation?.code {
-      self.isFavStation = self.favoriteRepository.isFavoriteStation(from: code)
+      self.isFavStation = self.isFavoriteStation.invoke(code: code)
     } else {
       self.isFavStation = false
     }
@@ -63,9 +74,9 @@ class DetailsPresenterImpl: DetailsPresenter {
       return
     }
 
-    self.favoriteRepository.addFavoriteStation(for: station.code)
+    self.addFavoriteStation.invoke(code: station.code)
     self.isFavStation = true
-    self.view?.onAddFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
+    self.view?.onAddFavoriteSuccess(numberOfFavoriteStations: self.getNumberOfFavoriteStation.invoke())
   }
   
   func removeFavorite() {
@@ -74,9 +85,9 @@ class DetailsPresenterImpl: DetailsPresenter {
       return
     }
 
-    self.favoriteRepository.removeFavoriteStations(for: station.code)
+    self.removeFavoriteStation.invoke(code: station.code)
     self.isFavStation = false
-    self.view?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.favoriteRepository.getNumberOfFavoriteStations())
+    self.view?.onRemoveFavoriteSuccess(numberOfFavoriteStations: self.getNumberOfFavoriteStation.invoke())
   }
   
   func getCurrentStation() -> Station? {
@@ -91,7 +102,7 @@ class DetailsPresenterImpl: DetailsPresenter {
     self.currentStation?.location
   }
   
-  func isFavoriteStation() -> Bool {
+  func getIsFavoriteStation() -> Bool {
     self.isFavStation
   }
 }
