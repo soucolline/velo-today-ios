@@ -12,7 +12,7 @@ import Moya
 
 protocol StationRemoteDataSource {
   func fetchPins() async throws -> [StationResponse]
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError>
+  func fetchAllStations(from ids: [String]) async throws -> [StationResponse]
 }
 
 class StationRemoteDataSourceImpl: StationRemoteDataSource {
@@ -32,19 +32,16 @@ class StationRemoteDataSourceImpl: StationRemoteDataSource {
     return response.records.map { $0.station }
   }
 
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError> {
-    let publishers: [AnyPublisher<StationResponse, APIError>] = ids.map { id -> AnyPublisher<StationResponse, APIError> in
-      let url = self.urlFactory.createFetchStation(from: id)
+  func fetchAllStations(from ids: [String]) async throws -> [StationResponse] {
+    var stations: [StationResponse] = []
 
-      return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])
-        .compactMap { response in
-          response.records.first?.station
-        }
-        .eraseToAnyPublisher()
+    for id in ids {
+      let response = try await provider.getAsync(route: StationRouter.getSpecificStation(id: id), typeOf: FetchStationObjectResponseRoot.self)
+      if let stationResponse = response.records.first?.station {
+        stations.append(stationResponse)
+      }
     }
 
-    return Publishers.MergeMany(publishers)
-      .collect()
-      .eraseToAnyPublisher()
+    return stations
   }
 }

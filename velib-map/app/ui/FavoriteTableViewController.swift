@@ -65,20 +65,26 @@ class FavoriteTableViewController: UIViewController {
 extension FavoriteTableViewController: FavoriteView {
   
   func onFetchStationsSuccess() {
-    self.tableView.reloadData()
-    self.refreshControl.endRefreshing()
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      self.refreshControl.endRefreshing()
+    }
   }
   
   func onFetchStationsEmptyError() {
-    self.tableView.reloadData()
-    self.refreshControl.endRefreshing()
-    SVProgressHUD.setMinimumDismissTimeInterval(100.0)
-    SVProgressHUD.showInfo(withStatus: "Vous n'avez pas encore de favoris")
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      self.refreshControl.endRefreshing()
+      SVProgressHUD.setMinimumDismissTimeInterval(100.0)
+      SVProgressHUD.showInfo(withStatus: "Vous n'avez pas encore de favoris")
+    }
   }
   
   func onFetchStationsError() {
-    self.refreshControl.endRefreshing()
-    self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    DispatchQueue.main.async {
+      self.refreshControl.endRefreshing()
+      self.present(PopupManager.showErrorPopup(message: "Une erreur est survenue, veuillez réessayer"), animated: true)
+    }
   }
   
 }

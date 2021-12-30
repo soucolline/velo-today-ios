@@ -11,7 +11,7 @@ import Combine
 
 protocol StationRepository {
   func fetchPins() async throws -> [DomainStation]
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError>
+  func fetchAllStations(from ids: [String]) async throws -> [DomainStation]
 
   func getFavoriteStationsIds() -> [String]
   func addFavoriteStation(for code: String)
@@ -36,10 +36,9 @@ class StationRepositoryImpl: StationRepository {
     try await stationRemoteDataSource.fetchPins().map { try $0.toDomain() }
   }
 
-  func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError> {
-    stationRemoteDataSource.fetchAllStations(from: ids)
-      .map { $0.map { try! $0.toDomain() } }
-      .eraseToAnyPublisher()
+  func fetchAllStations(from ids: [String]) async throws -> [DomainStation] {
+    try await stationRemoteDataSource.fetchAllStations(from: ids)
+      .map { try $0.toDomain() }
   }
 
   func getFavoriteStationsIds() -> [String] {

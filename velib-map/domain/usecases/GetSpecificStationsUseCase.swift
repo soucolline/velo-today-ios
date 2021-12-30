@@ -16,9 +16,8 @@ class GetSpecificStationsUseCase {
     self.stationRepository = stationRepository
   }
 
-  func invoke(ids: [String]) -> AnyPublisher<[UIStation], APIError> {
-    stationRepository.fetchAllStations(from: ids)
-      .map { $0.map { $0.toUIITem() } }
-      .eraseToAnyPublisher()
+  func invoke(ids: [String]) async throws -> [UIStation] {
+    try await stationRepository.fetchAllStations(from: ids)
+      .map { $0.toUIITem() }
   }
 }

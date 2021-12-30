@@ -59,21 +59,16 @@ class FavoritePresenterImpl: FavoritePresenter {
       return
     }
 
-    self.cancellable = self.getSpecificStations.invoke(ids: favoriteStationsIds)
-      .subscribe(on: networkScheduler.concurent)
-      .receive(on: networkScheduler.main)
-      .sink(receiveCompletion: { completion in
-        switch completion {
-          case .finished: break
-          case .failure:
-            self.view?.onDismissLoading()
-            self.view?.onFetchStationsError()
-        }
-      }, receiveValue: { stations in
-        self.stations = stations.sorted { $0.code > $1.code }
+    Task {
+      do {
+        self.stations = try await getSpecificStations.invoke(ids: favoriteStationsIds).sorted { $0.code > $1.code }
         self.view?.onFetchStationsSuccess()
         self.view?.onDismissLoading()
-      })
+      } catch {
+        self.view?.onDismissLoading()
+        self.view?.onFetchStationsError()
+      }
+    }
   }
   
   func getStation(at index: Int) -> UIStation? {

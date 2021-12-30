@@ -14,12 +14,17 @@ enum StationRouter: TargetType {
   case getAllStations
   case getSpecificStation(id: String)
 
-  var baseURL: URL { URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000")! }
+  var baseURL: URL {
+    switch self {
+      case .getAllStations: return URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000")!
+      case let .getSpecificStation(id): return URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&q=\(id)")!
+    }
+  }
 
   var path: String {
     switch self {
       case .getAllStations: return ""
-      case let .getSpecificStation(id): return "&q=\(id)"
+      case let .getSpecificStation(id): return ""
     }
   }
 
