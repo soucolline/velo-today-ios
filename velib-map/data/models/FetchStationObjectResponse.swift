@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias TaskExecutable = Codable
+
 struct FetchStationObjectResponseRoot: TaskExecutable {
   
   let records: [FetchStationObjectResponse]

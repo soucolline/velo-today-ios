@@ -31,8 +31,7 @@ class PresenterAssembly: Assembly {
     container.register(FavoritePresenter.self) { resolver in
       FavoritePresenterImpl(
         getSpecificStations: resolver.resolve(GetSpecificStationsUseCase.self)!,
-        getFavoriteStationsIds: resolver.resolve(GetFavoriteStationsIds.self)!,
-        networkScheduler: resolver.resolve(NetworkScheduler.self)!
+        getFavoriteStationsIds: resolver.resolve(GetFavoriteStationsIds.self)!
       )
     }
 

@@ -24,7 +24,7 @@ enum StationRouter: TargetType {
   var path: String {
     switch self {
       case .getAllStations: return ""
-      case let .getSpecificStation(id): return ""
+      case .getSpecificStation: return ""
     }
   }
 

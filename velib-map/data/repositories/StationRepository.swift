@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol StationRepository {
   func fetchPins() async throws -> [DomainStation]

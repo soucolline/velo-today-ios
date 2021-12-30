@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 import Moya
 
 protocol StationRemoteDataSource {
@@ -16,13 +15,9 @@ protocol StationRemoteDataSource {
 }
 
 class StationRemoteDataSourceImpl: StationRemoteDataSource {
-  private let apiWorker: APIWorker
-  private let urlFactory: URLFactory
   private let provider: MoyaProvider<StationRouter>
 
-  init(apiWorker: APIWorker, urlFactory: URLFactory, provider: MoyaProvider<StationRouter>) {
-    self.apiWorker = apiWorker
-    self.urlFactory = urlFactory
+  init(provider: MoyaProvider<StationRouter>) {
     self.provider = provider
   }
 

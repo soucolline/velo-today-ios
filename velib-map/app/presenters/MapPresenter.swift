@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol MapView: AnyObject, Loadable {
   func onCleanMap(with stations: [UIStation])
@@ -32,7 +31,6 @@ class MapPresenterImpl: MapPresenter {
   private let getMapStyle: GetMapStyleUseCase
 
   private weak var view: MapView?
-  private var cancellable: AnyCancellable?
 
   var stations: [UIStation] = [UIStation]()
   var currentStation: UIStation?

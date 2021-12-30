@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol FavoriteView: AnyObject, Loadable {
   func onFetchStationsSuccess()
@@ -26,21 +25,17 @@ protocol FavoritePresenter {
 class FavoritePresenterImpl: FavoritePresenter {
   private let getSpecificStations: GetSpecificStationsUseCase
   private let getFavoriteStationsIds: GetFavoriteStationsIds
-  private let networkScheduler: NetworkScheduler
   
   private var stations: [UIStation]?
-  private var cancellable: AnyCancellable?
 
   private weak var view: FavoriteView?
   
   init(
     getSpecificStations: GetSpecificStationsUseCase,
-    getFavoriteStationsIds: GetFavoriteStationsIds,
-    networkScheduler: NetworkScheduler
+    getFavoriteStationsIds: GetFavoriteStationsIds
   ) {
     self.getSpecificStations = getSpecificStations
     self.getFavoriteStationsIds = getFavoriteStationsIds
-    self.networkScheduler = networkScheduler
   }
   
   func attach(_ view: FavoriteView) {

@@ -21,8 +21,6 @@ extension Assembler {
       PresenterAssembly(),
       RepositoryAssembly(),
       UseCaseAssembly(),
-      NetworkAssembly(),
-      FactoryAssembly(),
       RouterAssembly()
     ], container: container)
     return assembler

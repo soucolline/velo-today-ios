@@ -21,8 +21,6 @@ class DataSourceAssembly: Assembly {
 
     container.register(StationRemoteDataSource.self) { resolver in
       StationRemoteDataSourceImpl(
-        apiWorker: resolver.resolve(APIWorker.self)!,
-        urlFactory: resolver.resolve(URLFactory.self)!,
         provider: resolver.resolve(MoyaProvider<StationRouter>.self)!
       )
     }
