@@ -8,6 +8,7 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
+  pod 'Moya', '= 15.0.0'
   pod 'SVProgressHUD', '= 2.2.5'
   pod 'SwiftLint', '= 0.45.1'
   pod 'ZLogger', '= 1.1.0'

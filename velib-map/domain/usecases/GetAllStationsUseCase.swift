@@ -16,9 +16,7 @@ class GetAllStationsUseCase {
     self.stationRepository = stationRepository
   }
 
-  func invoke() -> AnyPublisher<[UIStation], APIError> {
-    stationRepository.fetchPins()
-      .map { $0.map { $0.toUIITem() } }
-      .eraseToAnyPublisher()
+  func invoke() async throws -> [UIStation] {
+    try await stationRepository.fetchPins().map { $0.toUIITem() }
   }
 }

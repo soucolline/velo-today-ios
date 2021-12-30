@@ -43,6 +43,9 @@
 		E9E7CBE5277D14EF00E1EB4A /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */; };
 		E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */; };
 		E9E7CBE7277D14EF00E1EB4A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */; };
+		E9E7CBEC277DAE7400E1EB4A /* StationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */; };
+		E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */; };
+		E9E7CBF1277DBA7E00E1EB4A /* MoyaProviderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */; };
 		E9F0F76D2650631300508CC4 /* URLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */; };
 		E9F0F7702650640000508CC4 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76F2650640000508CC4 /* MapServiceTests.swift */; };
 		E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */; };
@@ -147,6 +150,9 @@
 		E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRouter.swift; path = data/router/StationRouter.swift; sourceTree = "<group>"; };
+		E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouterAssembly.swift; path = di/RouterAssembly.swift; sourceTree = "<group>"; };
+		E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoyaProviderExtensions.swift; path = data/network/MoyaProviderExtensions.swift; sourceTree = "<group>"; };
 		E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactoryTests.swift; sourceTree = "<group>"; };
 		E9F0F76F2650640000508CC4 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAssembly.swift; sourceTree = "<group>"; };
@@ -266,6 +272,7 @@
 				E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */,
 				E9C2FF1C23CE270700FFCDBD /* NetworkAssembly.swift */,
 				E9F1DD7C2650260B003858AE /* FactoryAssembly.swift */,
+				E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */,
 			);
 			name = di;
 			sourceTree = "<group>";
@@ -273,9 +280,11 @@
 		E9E7CB97277CD59D00E1EB4A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				E9E7CBEF277DBA5800E1EB4A /* network */,
 				E9E7CBC7277D0FD800E1EB4A /* models */,
 				E9E7CB9B277CD64400E1EB4A /* repositories */,
 				E9E7CB98277CD5A600E1EB4A /* datasources */,
+				E9E7CBE8277DAE3400E1EB4A /* router */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -387,6 +396,22 @@
 				E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */,
 			);
 			path = cells;
+			sourceTree = "<group>";
+		};
+		E9E7CBE8277DAE3400E1EB4A /* router */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */,
+			);
+			name = router;
+			sourceTree = "<group>";
+		};
+		E9E7CBEF277DBA5800E1EB4A /* network */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */,
+			);
+			name = network;
 			sourceTree = "<group>";
 		};
 		E9F0F76B2650630500508CC4 /* factories */ = {
@@ -656,7 +681,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys-framework/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLogger/ZLogger.framework",
@@ -664,7 +691,9 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLogger.framework",
@@ -798,8 +827,10 @@
 				E94D2B9022DB8F8E00A80A76 /* NetworkSession.swift in Sources */,
 				E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */,
 				E9E7CBE5277D14EF00E1EB4A /* FavoriteTableViewController.swift in Sources */,
+				E9E7CBEC277DAE7400E1EB4A /* StationRouter.swift in Sources */,
 				E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */,
 				E9F1DD7D2650260B003858AE /* FactoryAssembly.swift in Sources */,
+				E9E7CBF1277DBA7E00E1EB4A /* MoyaProviderExtensions.swift in Sources */,
 				E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */,
 				E9E7CBE3277D14EF00E1EB4A /* SettingsViewController.swift in Sources */,
 				E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */,
@@ -814,6 +845,7 @@
 				E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */,
 				E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */,
 				EBADFB9F20B078A80012909E /* FetchStationObjectResponse.swift in Sources */,
+				E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */,
 				E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */,
 				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
 				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,

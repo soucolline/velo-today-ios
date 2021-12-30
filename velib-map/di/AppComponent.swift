@@ -22,7 +22,8 @@ extension Assembler {
       RepositoryAssembly(),
       UseCaseAssembly(),
       NetworkAssembly(),
-      FactoryAssembly()
+      FactoryAssembly(),
+      RouterAssembly()
     ], container: container)
     return assembler
   }()

@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 protocol StationRepository {
-  func fetchPins() -> AnyPublisher<[DomainStation], APIError>
+  func fetchPins() async throws -> [DomainStation]
   func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError>
 
   func getFavoriteStationsIds() -> [String]
@@ -32,10 +32,8 @@ class StationRepositoryImpl: StationRepository {
     self.favoriteLocalDataSource = favoriteLocalDataSource
   }
 
-  func fetchPins() -> AnyPublisher<[DomainStation], APIError> {
-    stationRemoteDataSource.fetchPins()
-      .map { $0.map { try! $0.toDomain() } }
-      .eraseToAnyPublisher()
+  func fetchPins() async throws -> [DomainStation] {
+    try await stationRemoteDataSource.fetchPins().map { try $0.toDomain() }
   }
 
   func fetchAllStations(from ids: [String]) -> AnyPublisher<[DomainStation], APIError> {

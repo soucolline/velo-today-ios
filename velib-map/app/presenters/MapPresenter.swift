@@ -30,7 +30,6 @@ protocol MapPresenter {
 class MapPresenterImpl: MapPresenter {
   private let getAllStations: GetAllStationsUseCase
   private let getMapStyle: GetMapStyleUseCase
-  private let networkScheduler: NetworkScheduler
 
   private weak var view: MapView?
   private var cancellable: AnyCancellable?
@@ -40,12 +39,10 @@ class MapPresenterImpl: MapPresenter {
   
   init(
     getAllStations: GetAllStationsUseCase,
-    getMapStyle: GetMapStyleUseCase,
-    networkScheduler: NetworkScheduler
+    getMapStyle: GetMapStyleUseCase
   ) {
     self.getAllStations = getAllStations
     self.getMapStyle = getMapStyle
-    self.networkScheduler = networkScheduler
   }
   
   func attach(_ view: MapView) {
@@ -58,29 +55,24 @@ class MapPresenterImpl: MapPresenter {
     
     self.stations.removeAll()
 
-    self.cancellable = self.getAllStations.invoke()
-      .subscribe(on: self.networkScheduler.concurent)
-      .receive(on: self.networkScheduler.main)
-      .sink(receiveCompletion: { completion in
-        switch completion {
-          case .finished: break
-          case .failure(let error):
-            self.view?.onDismissLoading()
-            switch error {
-            case APIError.notFound:
-              self.view?.onFetchStationsErrorNotFound()
-            case APIError.internalServerError, APIError.unknown:
-              self.view?.onFetchStationsErrorServerError()
-            case APIError.couldNotDecodeJSON:
-              self.view?.onFetchStationsErrorCouldNotDecodeData()
-            default: ()
-            }
-        }
-      }, receiveValue: { stations in
-        self.stations = stations
+    Task {
+      do {
+        self.stations = try await getAllStations.invoke()
         self.view?.onFetchStationsSuccess(stations: self.stations)
         self.view?.onDismissLoading()
-      })
+      } catch let error {
+        self.view?.onDismissLoading()
+        switch error {
+        case APIError.notFound:
+          self.view?.onFetchStationsErrorNotFound()
+        case APIError.internalServerError, APIError.unknown:
+          self.view?.onFetchStationsErrorServerError()
+        case APIError.couldNotDecodeJSON:
+          self.view?.onFetchStationsErrorCouldNotDecodeData()
+        default: ()
+        }
+      }
+    }
   }
   
   func getMapStyleForDisplay() -> MapStyle {

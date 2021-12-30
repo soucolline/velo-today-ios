@@ -8,29 +8,28 @@
 
 import Foundation
 import Combine
+import Moya
 
 protocol StationRemoteDataSource {
-  func fetchPins() -> AnyPublisher<[StationResponse], APIError>
+  func fetchPins() async throws -> [StationResponse]
   func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError>
 }
 
 class StationRemoteDataSourceImpl: StationRemoteDataSource {
   private let apiWorker: APIWorker
   private let urlFactory: URLFactory
+  private let provider: MoyaProvider<StationRouter>
 
-  init(apiWorker: APIWorker, urlFactory: URLFactory) {
+  init(apiWorker: APIWorker, urlFactory: URLFactory, provider: MoyaProvider<StationRouter>) {
     self.apiWorker = apiWorker
     self.urlFactory = urlFactory
+    self.provider = provider
   }
 
-  func fetchPins() -> AnyPublisher<[StationResponse], APIError> {
-    let url = self.urlFactory.createFetchPinsUrl()
+  func fetchPins() async throws -> [StationResponse] {
+    let response = try await provider.getAsync(route: StationRouter.getAllStations, typeOf: FetchStationObjectResponseRoot.self)
 
-    return self.apiWorker.request(for: FetchStationObjectResponseRoot.self, at: url, method: .get, parameters: [:])
-      .map { response in
-        response.records.map { $0.station }
-      }
-      .eraseToAnyPublisher()
+    return response.records.map { $0.station }
   }
 
   func fetchAllStations(from ids: [String]) -> AnyPublisher<[StationResponse], APIError> {

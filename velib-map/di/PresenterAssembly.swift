@@ -15,8 +15,7 @@ class PresenterAssembly: Assembly {
     container.register(MapPresenter.self) { resolver in
       MapPresenterImpl(
         getAllStations: resolver.resolve(GetAllStationsUseCase.self)!,
-        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!,
-        networkScheduler: resolver.resolve(NetworkScheduler.self)!
+        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!
       )
     }
 
