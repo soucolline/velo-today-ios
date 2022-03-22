@@ -18,7 +18,7 @@ end
 
 target 'velib-mapTests' do
   use_frameworks!
-  pod 'Cuckoo', '= 1.5.2'
+  pod 'Cuckoo', '= 1.7.1'
 end
 
 plugin 'cocoapods-keys', {
