@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StationResponse: Codable {
+struct StationResponse: Codable, Equatable {
   let freeDocks: Int
   let code: String
   let name: String

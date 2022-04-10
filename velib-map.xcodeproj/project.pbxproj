@@ -57,6 +57,7 @@
 		E9E961112802195600C42BD6 /* GetFavoriteStationsIdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961102802195600C42BD6 /* GetFavoriteStationsIdsTests.swift */; };
 		E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */; };
 		E9E9611728021DC800C42BD6 /* MapRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */; };
+		E9E9611A2802229000C42BD6 /* FavoriteLocalDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
@@ -151,6 +152,7 @@
 		E9E961102802195600C42BD6 /* GetFavoriteStationsIdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteStationsIdsTests.swift; sourceTree = "<group>"; };
 		E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRepositoryTests.swift; sourceTree = "<group>"; };
 		E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryTests.swift; sourceTree = "<group>"; };
+		E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDataSourceTests.swift; sourceTree = "<group>"; };
 		E9F1DD81265037BE003858AE /* StubFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFixtures.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 		E9E9611228021A4400C42BD6 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				E9E961182802227C00C42BD6 /* datssources */,
 				E9E9611328021A4D00C42BD6 /* repositories */,
 			);
 			path = data;
@@ -410,6 +413,14 @@
 				E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */,
 			);
 			path = repositories;
+			sourceTree = "<group>";
+		};
+		E9E961182802227C00C42BD6 /* datssources */ = {
+			isa = PBXGroup;
+			children = (
+				E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */,
+			);
+			path = datssources;
 			sourceTree = "<group>";
 		};
 		EB1FFF0820A72A8F00AA9F79 /* utils */ = {
@@ -476,11 +487,11 @@
 			buildConfigurationList = E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */;
 			buildPhases = (
 				46EB20230320C47A5B222D37 /* [CP] Check Pods Manifest.lock */,
+				E946A9ED2801F83200F92C00 /* Cuckoo */,
 				E94D2B9222DB94AB00A80A76 /* Sources */,
 				E94D2B9322DB94AB00A80A76 /* Frameworks */,
 				E94D2B9422DB94AB00A80A76 /* Resources */,
 				57C3618FE8DC2659F21925CD /* [CP] Embed Pods Frameworks */,
-				E946A9ED2801F83200F92C00 /* Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -720,6 +731,7 @@
 				E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */,
 				E9E961092802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift in Sources */,
 				E9E9611728021DC800C42BD6 /* MapRepositoryTests.swift in Sources */,
+				E9E9611A2802229000C42BD6 /* FavoriteLocalDataSourceTests.swift in Sources */,
 				E9E9610D2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift in Sources */,
 				E9E961112802195600C42BD6 /* GetFavoriteStationsIdsTests.swift in Sources */,
 				E9E961052801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift in Sources */,

@@ -75,3 +75,4 @@ velib-mapTests/GeneratedMocks.swift
 
 # UserDefaults from tests
 velib-mapTests/data/repositories/MapRepositoryTests.swift.plist
+velib-mapTests/data/datssources/FavoriteLocalDataSourceTests.swift.plist
