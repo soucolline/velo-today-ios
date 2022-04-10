@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */; };
 		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
 		E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */; };
 		E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */; };
@@ -46,17 +47,18 @@
 		E9E7CBF5277DC6B400E1EB4A /* FetchStationObjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF2277DC6B400E1EB4A /* FetchStationObjectResponse.swift */; };
 		E9E7CBF6277DC6B400E1EB4A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF3277DC6B400E1EB4A /* APIError.swift */; };
 		E9E7CBF7277DC6B400E1EB4A /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF4277DC6B400E1EB4A /* MapStyle.swift */; };
-		E9F0F76D2650631300508CC4 /* URLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */; };
-		E9F0F7702650640000508CC4 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0F76F2650640000508CC4 /* MapServiceTests.swift */; };
-		E9F1DD802650313C003858AE /* APIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */; };
-		E9F1DD82265037BE003858AE /* StubFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD81265037BE003858AE /* StubFixtures.swift */; };
-		E9F1DD8426503A00003858AE /* FavoriteRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */; };
-		E9F1DD8626503A18003858AE /* PreferencesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */; };
-		E9F1DD8826503A35003858AE /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */; };
-		E9F1DD92265045D6003858AE /* TestNetworkScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD91265045D6003858AE /* TestNetworkScheduler.swift */; };
-		E9F1DD9326505C12003858AE /* DetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2423D249E500FFCDBD /* DetailsPresenterTests.swift */; };
-		E9F1DD9526505DC0003858AE /* FavoritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF2623D2509600FFCDBD /* FavoritePresenterTests.swift */; };
-		E9F1DD97265060A0003858AE /* SettingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1DD96265060A0003858AE /* SettingsPresenterTests.swift */; };
+		E9E961032801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961022801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift */; };
+		E9E961052801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961042801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift */; };
+		E9E961072801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961062801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift */; };
+		E9E961092802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961082802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift */; };
+		E9E9610B2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9610A2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift */; };
+		E9E9610D2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9610C2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift */; };
+		E9E9610F280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9610E280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift */; };
+		E9E961112802195600C42BD6 /* GetFavoriteStationsIdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961102802195600C42BD6 /* GetFavoriteStationsIdsTests.swift */; };
+		E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */; };
+		E9E9611728021DC800C42BD6 /* MapRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */; };
+		E9E9611A2802229000C42BD6 /* FavoriteLocalDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */; };
+		E9F9715C2802D53900D1DAA8 /* StationRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
@@ -97,19 +99,14 @@
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7BC9EA316703AE564588F1 /* Pods-velib-mapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-mapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-mapTests/Pods-velib-mapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_mapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllStationsUseCaseTests.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
-		E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorkerTests.swift; sourceTree = "<group>"; };
 		E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = di/AppComponent.swift; sourceTree = "<group>"; };
 		E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppAssembly.swift; path = di/AppAssembly.swift; sourceTree = "<group>"; };
 		E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PresenterAssembly.swift; path = di/PresenterAssembly.swift; sourceTree = "<group>"; };
 		E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepositoryAssembly.swift; path = di/RepositoryAssembly.swift; sourceTree = "<group>"; };
-		E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryTests.swift; sourceTree = "<group>"; };
-		E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesRepositoryTests.swift; sourceTree = "<group>"; };
-		E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
-		E9C2FF2423D249E500FFCDBD /* DetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterTests.swift; sourceTree = "<group>"; };
-		E9C2FF2623D2509600FFCDBD /* FavoritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenterTests.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRepository.swift; path = data/repositories/StationRepository.swift; sourceTree = "<group>"; };
@@ -146,11 +143,21 @@
 		E9E7CBF2277DC6B400E1EB4A /* FetchStationObjectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchStationObjectResponse.swift; path = data/models/FetchStationObjectResponse.swift; sourceTree = "<group>"; };
 		E9E7CBF3277DC6B400E1EB4A /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = data/models/APIError.swift; sourceTree = "<group>"; };
 		E9E7CBF4277DC6B400E1EB4A /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapStyle.swift; path = data/models/MapStyle.swift; sourceTree = "<group>"; };
-		E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactoryTests.swift; sourceTree = "<group>"; };
-		E9F0F76F2650640000508CC4 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
+		E9E961022801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpecificStationsUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E961042801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapStyleUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E961062801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapStyleUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E961082802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsFavoriteStationUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E9610A2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteStationUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E9610C2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFavoriteStationUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E9610E280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNumberOfFavoriteStationUseCaseTests.swift; sourceTree = "<group>"; };
+		E9E961102802195600C42BD6 /* GetFavoriteStationsIdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteStationsIdsTests.swift; sourceTree = "<group>"; };
+		E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRepositoryTests.swift; sourceTree = "<group>"; };
+		E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryTests.swift; sourceTree = "<group>"; };
+		E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDataSourceTests.swift; sourceTree = "<group>"; };
 		E9F1DD81265037BE003858AE /* StubFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFixtures.swift; sourceTree = "<group>"; };
-		E9F1DD91265045D6003858AE /* TestNetworkScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworkScheduler.swift; sourceTree = "<group>"; };
-		E9F1DD96265060A0003858AE /* SettingsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTests.swift; sourceTree = "<group>"; };
+		E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRouterTests.swift; sourceTree = "<group>"; };
+		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +193,8 @@
 		45F125794AA96C2A4D3B6D5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9F9715F2802D73600D1DAA8 /* Alamofire.framework */,
+				E9F9715D2802D72500D1DAA8 /* Moya.framework */,
 				3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */,
 				A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */,
 				E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */,
@@ -204,17 +213,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E946A9EE2801F8BC00F92C00 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */,
+				E9E961022801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift */,
+				E9E961042801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift */,
+				E9E961062801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift */,
+				E9E961082802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift */,
+				E9E9610A2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift */,
+				E9E9610C2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift */,
+				E9E9610E280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift */,
+				E9E961102802195600C42BD6 /* GetFavoriteStationsIdsTests.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
 		E94D2B9722DB94AB00A80A76 /* velib-mapTests */ = {
 			isa = PBXGroup;
 			children = (
 				E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */,
 				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
-				E9F1DD8526503A11003858AE /* repositories */,
-				E9F1DD8726503A2A003858AE /* presenters */,
-				E9F0F76E265063E400508CC4 /* services */,
-				E9F1DD83265039D2003858AE /* workers */,
-				E9F0F76B2650630500508CC4 /* factories */,
-				E9F1DD90265045C7003858AE /* utils */,
+				E9E9611228021A4400C42BD6 /* data */,
+				E946A9EE2801F8BC00F92C00 /* domain */,
 				E94D2BA522DB963100A80A76 /* fixtures */,
 			);
 			path = "velib-mapTests";
@@ -382,56 +403,39 @@
 			name = network;
 			sourceTree = "<group>";
 		};
-		E9F0F76B2650630500508CC4 /* factories */ = {
+		E9E9611228021A4400C42BD6 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				E9F0F76C2650631300508CC4 /* URLFactoryTests.swift */,
+				E9E961182802227C00C42BD6 /* datssources */,
+				E9E9611328021A4D00C42BD6 /* repositories */,
+				E9F9715A2802D52400D1DAA8 /* router */,
 			);
-			path = factories;
+			path = data;
 			sourceTree = "<group>";
 		};
-		E9F0F76E265063E400508CC4 /* services */ = {
+		E9E9611328021A4D00C42BD6 /* repositories */ = {
 			isa = PBXGroup;
 			children = (
-				E9F0F76F2650640000508CC4 /* MapServiceTests.swift */,
-			);
-			path = services;
-			sourceTree = "<group>";
-		};
-		E9F1DD83265039D2003858AE /* workers */ = {
-			isa = PBXGroup;
-			children = (
-				E94D2BA322DB958200A80A76 /* APIWorkerTests.swift */,
-			);
-			path = workers;
-			sourceTree = "<group>";
-		};
-		E9F1DD8526503A11003858AE /* repositories */ = {
-			isa = PBXGroup;
-			children = (
-				E9C2FF1E23CE291100FFCDBD /* FavoriteRepositoryTests.swift */,
-				E9C2FF2023CE2CDF00FFCDBD /* PreferencesRepositoryTests.swift */,
+				E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */,
+				E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
 		};
-		E9F1DD8726503A2A003858AE /* presenters */ = {
+		E9E961182802227C00C42BD6 /* datssources */ = {
 			isa = PBXGroup;
 			children = (
-				E9C2FF2223D2431600FFCDBD /* MapPresenterTests.swift */,
-				E9C2FF2423D249E500FFCDBD /* DetailsPresenterTests.swift */,
-				E9C2FF2623D2509600FFCDBD /* FavoritePresenterTests.swift */,
-				E9F1DD96265060A0003858AE /* SettingsPresenterTests.swift */,
+				E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */,
 			);
-			path = presenters;
+			path = datssources;
 			sourceTree = "<group>";
 		};
-		E9F1DD90265045C7003858AE /* utils */ = {
+		E9F9715A2802D52400D1DAA8 /* router */ = {
 			isa = PBXGroup;
 			children = (
-				E9F1DD91265045D6003858AE /* TestNetworkScheduler.swift */,
+				E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */,
 			);
-			path = utils;
+			path = router;
 			sourceTree = "<group>";
 		};
 		EB1FFF0820A72A8F00AA9F79 /* utils */ = {
@@ -498,6 +502,7 @@
 			buildConfigurationList = E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */;
 			buildPhases = (
 				46EB20230320C47A5B222D37 /* [CP] Check Pods Manifest.lock */,
+				E946A9ED2801F83200F92C00 /* Cuckoo */,
 				E94D2B9222DB94AB00A80A76 /* Sources */,
 				E94D2B9322DB94AB00A80A76 /* Frameworks */,
 				E94D2B9422DB94AB00A80A76 /* Resources */,
@@ -523,7 +528,6 @@
 				EBA372F31EA3A0CC00E214DD /* Resources */,
 				31C752DC11AE40A94B521CDD /* [CP] Embed Pods Frameworks */,
 				EB11657120A6DAF40086F8D7 /* SwiftLint */,
-				E94D2BA022DB951700A80A76 /* Cuckoo */,
 				E9C2FF3923DCA86800FFCDBD /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -693,7 +697,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E94D2BA022DB951700A80A76 /* Cuckoo */ = {
+		E946A9ED2801F83200F92C00 /* Cuckoo */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -707,10 +711,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(PROJECT_DIR)/velib-mapTests/GeneratedMocks.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/velib-mapTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/velib-map/Workers/NetworkSession.swift\" \\\n\"$INPUT_DIR/velib-map/Workers/APIWorker.swift\" \\\n\"$INPUT_DIR/velib-map/Presenters/MapPresenter.swift\" \\\n\"$INPUT_DIR/velib-map/Presenters/DetailsPresenter.swift\" \\\n\"$INPUT_DIR/velib-map/Presenters/FavoritePresenter.swift\" \\\n\"$INPUT_DIR/velib-map/Presenters/SettingsPresenter.swift\" \\\n\"$INPUT_DIR/velib-map/Models/Repositories/PreferencesRepository.swift\" \\\n\"$INPUT_DIR/velib-map/Models/Repositories/FavoriteRepository.swift\" \\\n\"$INPUT_DIR/velib-map/Models/Services/MapService.swift\" \\\n\"$INPUT_DIR/velib-map/factories/URLFactory.swift\" \\\n\"$INPUT_DIR/velib-map/Utils/Loadable.swift\" --exclude \"TaskExecutable\" \\\n\n\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n\n";
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/velib-mapTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/velib-map/data/repositories/StationRepository.swift\" \\\n\"$INPUT_DIR/velib-map/data/repositories/MapRepository.swift\" \\\n\"$INPUT_DIR/velib-map/data/datasources/StationRemoteDataSource.swift\" \\\n\"$INPUT_DIR/velib-map/data/datasources/FavoriteLocalDataSource.swift\" \\\n\"$INPUT_DIR/velib-map/Utils/Loadable.swift\" --exclude \"TaskExecutable\" \\\n\n\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n\n";
 		};
 		EB11657120A6DAF40086F8D7 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -733,18 +738,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9F1DD9526505DC0003858AE /* FavoritePresenterTests.swift in Sources */,
-				E9F1DD802650313C003858AE /* APIWorkerTests.swift in Sources */,
-				E9F1DD82265037BE003858AE /* StubFixtures.swift in Sources */,
-				E9F0F76D2650631300508CC4 /* URLFactoryTests.swift in Sources */,
+				E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */,
 				E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */,
-				E9F1DD8626503A18003858AE /* PreferencesRepositoryTests.swift in Sources */,
-				E9F1DD92265045D6003858AE /* TestNetworkScheduler.swift in Sources */,
-				E9F1DD8426503A00003858AE /* FavoriteRepositoryTests.swift in Sources */,
-				E9F1DD97265060A0003858AE /* SettingsPresenterTests.swift in Sources */,
-				E9F1DD8826503A35003858AE /* MapPresenterTests.swift in Sources */,
-				E9F0F7702650640000508CC4 /* MapServiceTests.swift in Sources */,
-				E9F1DD9326505C12003858AE /* DetailsPresenterTests.swift in Sources */,
+				E9E961032801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift in Sources */,
+				E9E9610B2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift in Sources */,
+				E9E9610F280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift in Sources */,
+				E9F9715C2802D53900D1DAA8 /* StationRouterTests.swift in Sources */,
+				E9E961072801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift in Sources */,
+				E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */,
+				E9E961092802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift in Sources */,
+				E9E9611728021DC800C42BD6 /* MapRepositoryTests.swift in Sources */,
+				E9E9611A2802229000C42BD6 /* FavoriteLocalDataSourceTests.swift in Sources */,
+				E9E9610D2802188700C42BD6 /* RemoveFavoriteStationUseCaseTests.swift in Sources */,
+				E9E961112802195600C42BD6 /* GetFavoriteStationsIdsTests.swift in Sources */,
+				E9E961052801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +846,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Cuckoo\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Keys-framework\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Moya\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "velib-mapTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

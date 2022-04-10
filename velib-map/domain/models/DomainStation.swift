@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DomainStation {
+struct DomainStation: Equatable {
   let freeDocks: Int
   let code: String
   let name: String
