@@ -58,6 +58,7 @@
 		E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611428021A6000C42BD6 /* StationRepositoryTests.swift */; };
 		E9E9611728021DC800C42BD6 /* MapRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */; };
 		E9E9611A2802229000C42BD6 /* FavoriteLocalDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */; };
+		E9F9715C2802D53900D1DAA8 /* StationRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */; };
 		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
@@ -154,6 +155,9 @@
 		E9E9611628021DC800C42BD6 /* MapRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryTests.swift; sourceTree = "<group>"; };
 		E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDataSourceTests.swift; sourceTree = "<group>"; };
 		E9F1DD81265037BE003858AE /* StubFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFixtures.swift; sourceTree = "<group>"; };
+		E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRouterTests.swift; sourceTree = "<group>"; };
+		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		45F125794AA96C2A4D3B6D5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9F9715F2802D73600D1DAA8 /* Alamofire.framework */,
+				E9F9715D2802D72500D1DAA8 /* Moya.framework */,
 				3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */,
 				A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */,
 				E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */,
@@ -402,6 +408,7 @@
 			children = (
 				E9E961182802227C00C42BD6 /* datssources */,
 				E9E9611328021A4D00C42BD6 /* repositories */,
+				E9F9715A2802D52400D1DAA8 /* router */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -421,6 +428,14 @@
 				E9E961192802229000C42BD6 /* FavoriteLocalDataSourceTests.swift */,
 			);
 			path = datssources;
+			sourceTree = "<group>";
+		};
+		E9F9715A2802D52400D1DAA8 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */,
+			);
+			path = router;
 			sourceTree = "<group>";
 		};
 		EB1FFF0820A72A8F00AA9F79 /* utils */ = {
@@ -727,6 +742,7 @@
 				E9E961032801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift in Sources */,
 				E9E9610B2802181D00C42BD6 /* AddFavoriteStationUseCaseTests.swift in Sources */,
 				E9E9610F280218DE00C42BD6 /* GetNumberOfFavoriteStationUseCaseTests.swift in Sources */,
+				E9F9715C2802D53900D1DAA8 /* StationRouterTests.swift in Sources */,
 				E9E961072801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift in Sources */,
 				E9E9611528021A6000C42BD6 /* StationRepositoryTests.swift in Sources */,
 				E9E961092802178100C42BD6 /* IsFavoriteStationUseCaseTests.swift in Sources */,
@@ -829,6 +845,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Cuckoo\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Keys-framework\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Moya\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "velib-mapTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
