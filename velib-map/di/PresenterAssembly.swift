@@ -14,29 +14,31 @@ class PresenterAssembly: Assembly {
   func assemble(container: Container) {
     container.register(MapPresenter.self) { resolver in
       MapPresenterImpl(
-        service: resolver.resolve(MapService.self)!,
-        repository: resolver.resolve(PreferencesRepository.self)!,
-        networkScheduler: resolver.resolve(NetworkScheduler.self)!
+        getAllStations: resolver.resolve(GetAllStationsUseCase.self)!,
+        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!
       )
     }
 
     container.register(DetailsPresenter.self) { resolver in
       DetailsPresenterImpl(
-        favoriteRepository: resolver.resolve(FavoriteRepository.self)!
+        addFavoriteStation: resolver.resolve(AddFavoriteStationUseCase.self)!,
+        removeFavoriteStation: resolver.resolve(RemoveFavoriteStationUseCase.self)!,
+        getNumberOfFavoriteStation: resolver.resolve(GetNumberOfFavoriteStationUseCase.self)!,
+        isFavoriteStation: resolver.resolve(IsFavoriteStationUseCase.self)!
       )
     }
 
     container.register(FavoritePresenter.self) { resolver in
       FavoritePresenterImpl(
-        mapService: resolver.resolve(MapService.self)!,
-        favoriteRepository: resolver.resolve(FavoriteRepository.self)!,
-        networkScheduler: resolver.resolve(NetworkScheduler.self)!
+        getSpecificStations: resolver.resolve(GetSpecificStationsUseCase.self)!,
+        getFavoriteStationsIds: resolver.resolve(GetFavoriteStationsIds.self)!
       )
     }
 
     container.register(SettingsPresenter.self) { resolver in
       SettingsPresenterImpl(
-        preferencesRepository: resolver.resolve(PreferencesRepository.self)!
+        getMapStyle: resolver.resolve(GetMapStyleUseCase.self)!,
+        setMapStyle: resolver.resolve(SetMapStyleUseCase.self)!
       )
     }
   }

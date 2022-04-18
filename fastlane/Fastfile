@@ -6,7 +6,7 @@ platform :ios do
     cocoapods
     run_tests(
       workspace: "velib-map.xcworkspace",
-      devices: "iPhone X",
+      devices: "iPhone 13 Pro",
       reinstall_app: true,
       scheme: "velib-map"
     )

@@ -74,4 +74,5 @@ velib-mapTests/GeneratedMocks.swift
 .env.default
 
 # UserDefaults from tests
-velib-mapTests/repositories/FavoriteRepositoryTests.swift.plist
+velib-mapTests/data/repositories/MapRepositoryTests.swift.plist
+velib-mapTests/data/datssources/FavoriteLocalDataSourceTests.swift.plist
