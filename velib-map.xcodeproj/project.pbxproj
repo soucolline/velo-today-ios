@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46BC289FBACC0067DA0A /* TabBarController.swift */; };
+		E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C1289FC26F0067DA0A /* Mocks.swift */; };
+		E92E46C5289FC26F0067DA0A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C2289FC26F0067DA0A /* Live.swift */; };
+		E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C3289FC26F0067DA0A /* Interface.swift */; };
 		E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */; };
 		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
@@ -103,6 +106,9 @@
 		4B7BC9EA316703AE564588F1 /* Pods-velib-mapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-mapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-mapTests/Pods-velib-mapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_mapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92E46BC289FBACC0067DA0A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E92E46C1289FC26F0067DA0A /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		E92E46C2289FC26F0067DA0A /* Live.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
+		E92E46C3289FC26F0067DA0A /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllStationsUseCaseTests.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +225,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E92E46C0289FC26F0067DA0A /* UserDefaultsClient */ = {
+			isa = PBXGroup;
+			children = (
+				E92E46C1289FC26F0067DA0A /* Mocks.swift */,
+				E92E46C2289FC26F0067DA0A /* Live.swift */,
+				E92E46C3289FC26F0067DA0A /* Interface.swift */,
+			);
+			path = UserDefaultsClient;
+			sourceTree = "<group>";
+		};
 		E946A9EE2801F8BC00F92C00 /* domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +274,7 @@
 		E9B4AE05289EEF8000260AEC /* TCA */ = {
 			isa = PBXGroup;
 			children = (
+				E92E46C0289FC26F0067DA0A /* UserDefaultsClient */,
 				E9B4AE08289EF01D00260AEC /* SettingsView.swift */,
 			);
 			path = TCA;
@@ -786,11 +803,13 @@
 				E9E7CBF1277DBA7E00E1EB4A /* MoyaProviderExtensions.swift in Sources */,
 				E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */,
 				E9E7CBE3277D14EF00E1EB4A /* SettingsViewController.swift in Sources */,
+				E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */,
 				E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */,
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
 				E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */,
 				E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */,
 				E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */,
+				E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */,
 				E9E7CBE4277D14EF00E1EB4A /* MapViewController.swift in Sources */,
 				E9E7CBC9277D0FF500E1EB4A /* StationResponse.swift in Sources */,
 				E9E7CBCE277D11A900E1EB4A /* DomainModelConvertible.swift in Sources */,
@@ -801,6 +820,7 @@
 				E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */,
 				E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */,
 				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
+				E92E46C5289FC26F0067DA0A /* Live.swift in Sources */,
 				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,
 				E9E7CBDA277D14C300E1EB4A /* MapPresenter.swift in Sources */,
 				E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */,

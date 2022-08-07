@@ -6,6 +6,7 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
+import ComposableArchitecture
 import Foundation
 import UIKit
 import SwiftUI
@@ -33,7 +34,19 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let tab3Item = UITabBarItem(title: "Réglages", image: UIImage(named: "settings"), tag: 3)
     tab3.tabBarItem = tab3Item
     
-    let tab4 = UIHostingController(rootView: SettingsViewTCA())
+    let tab4 = UIHostingController(
+      rootView: SettingsViewTCA(
+        store: Store(
+          initialState: AppState(),
+          reducer: appReducer,
+          environment: AppEnvironment(
+            userDefaultsClient: .live(),
+            getAppVersion: { Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }
+          )
+        )
+      )
+    )
+    
     let tab4Item = UITabBarItem(title: "Settings TCA", image: UIImage(named: "settings"), tag: 4)
     tab4.tabBarItem = tab4Item
     
