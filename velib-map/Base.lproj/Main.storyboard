@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bkd-Eo-Zgj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,13 +11,13 @@
         <!--Map View Controller-->
         <scene sceneID="s4A-S9-eiT">
             <objects>
-                <viewController id="u2X-Ga-dT5" customClass="MapViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="u2X-Ga-dT5" customClass="MapViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hPl-Jh-n5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Ck-SF-jqR">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gL2-mb-dv5"/>
@@ -52,14 +51,14 @@
             <objects>
                 <viewController id="WZn-vt-Mh5" customClass="DetailsViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nGh-IS-9Yf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-7Y-AX6">
-                                <rect key="frame" x="0.0" y="140" width="375" height="319"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="444"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jEj-Py-zBB">
-                                <rect key="frame" x="57.666666666666657" y="529" width="260" height="170"/>
+                                <rect key="frame" x="57.666666666666657" y="558" width="260" height="170"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-8Q-I7j">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="50"/>
@@ -118,7 +117,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h56-CB-O4L">
-                                <rect key="frame" x="0.0" y="459" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="488" width="375" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qmU-Cf-lPs"/>
@@ -161,38 +160,33 @@
         <!--Tab Bar Controller-->
         <scene sceneID="1Yc-PY-zUS">
             <objects>
-                <tabBarController id="bkd-Eo-Zgj" sceneMemberID="viewController">
+                <tabBarController id="bkd-Eo-Zgj" customClass="TabBarController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rcv-x7-1eV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="sAC-Tf-b3N" kind="relationship" relationship="viewControllers" id="HMc-2A-Oh1"/>
-                        <segue destination="mVJ-ga-Zlw" kind="relationship" relationship="viewControllers" id="mlP-V4-89H"/>
-                        <segue destination="0oQ-p4-4Mc" kind="relationship" relationship="viewControllers" id="0Q6-pF-gyC"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKs-C6-4fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2727" y="655"/>
+            <point key="canvasLocation" x="3399" y="796"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="mg1-g5-4QQ">
             <objects>
-                <viewController id="Vic-ue-0Q7" customClass="SettingsViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="Vic-ue-0Q7" customClass="SettingsViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAj-mi-4p2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type de carte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCT-qh-jk4">
-                                <rect key="frame" x="16" y="156" width="343" height="21"/>
+                                <rect key="frame" x="16" y="60" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-Oe-Z8h">
-                                <rect key="frame" x="16" y="185" width="343" height="32"/>
+                                <rect key="frame" x="16" y="89" width="343" height="32"/>
                                 <segments>
                                     <segment title="Normal"/>
                                     <segment title="Hybrid"/>
@@ -226,7 +220,7 @@
         <!--Favorite Table View Controller-->
         <scene sceneID="2Nc-Rp-gIJ">
             <objects>
-                <tableViewController id="GbV-Nz-Zkx" customClass="FavoriteTableViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavoriteTableViewController" id="GbV-Nz-Zkx" customClass="FavoriteTableViewController" customModule="velib_map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="UHr-2s-j9c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,71 +312,11 @@
             </objects>
             <point key="canvasLocation" x="4664.8000000000002" y="807.34632683658174"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="cBs-Uf-5dG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sAC-Tf-b3N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" image="bike" id="8LI-Tl-nTW"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PR8-It-jDM">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="u2X-Ga-dT5" kind="relationship" relationship="rootViewController" id="mg3-vR-iEK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GjE-j3-W6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3725.5999999999999" y="88.605697151424295"/>
-        </scene>
-        <!--Favoris-->
-        <scene sceneID="Rcu-RN-LXv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mVJ-ga-Zlw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favoris" image="star" id="Hl3-Tb-lvZ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3oR-DV-Y3Y">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GbV-Nz-Zkx" kind="relationship" relationship="rootViewController" id="nMy-Z5-Si9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J0v-HZ-wUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3725.5999999999999" y="807.34632683658174"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="0mY-oN-Lh6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0oQ-p4-4Mc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xhN-7H-ozc"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="nVz-4H-Icu">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Vic-ue-0Q7" kind="relationship" relationship="rootViewController" id="DO9-3o-j8m"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gvJ-fV-pbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3725.5999999999999" y="1543.1784107946028"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="upS-kF-3C3"/>
+        <segue reference="iFf-5S-xXS"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="bike" width="25" height="15"/>
-        <image name="settings" width="20" height="20"/>
-        <image name="star" width="20" height="19"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

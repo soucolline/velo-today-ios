@@ -8,9 +8,11 @@
 
 import UIKit
 import Swinject
+import SwiftUI
 
 class SettingsViewController: UIViewController {
   @IBOutlet private var segmentedControl: UISegmentedControl!
+  @IBOutlet private var containerView: UIView!
 
   private let presenter = Assembler.inject(SettingsPresenter.self)
   

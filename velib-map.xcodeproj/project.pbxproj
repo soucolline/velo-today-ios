@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46BC289FBACC0067DA0A /* TabBarController.swift */; };
 		E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */; };
 		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
@@ -101,6 +102,7 @@
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7BC9EA316703AE564588F1 /* Pods-velib-mapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-mapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-mapTests/Pods-velib-mapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_mapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E92E46BC289FBACC0067DA0A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllStationsUseCaseTests.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			children = (
 				E9E7CBE0277D14EF00E1EB4A /* cells */,
 				E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */,
+				E92E46BC289FBACC0067DA0A /* TabBarController.swift */,
 				E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */,
 				E9E7CBDE277D14EF00E1EB4A /* MapViewController.swift */,
 				E9E7CBDD277D14EF00E1EB4A /* SettingsViewController.swift */,
@@ -787,6 +790,7 @@
 				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
 				E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */,
 				E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */,
+				E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */,
 				E9E7CBE4277D14EF00E1EB4A /* MapViewController.swift in Sources */,
 				E9E7CBC9277D0FF500E1EB4A /* StationResponse.swift in Sources */,
 				E9E7CBCE277D11A900E1EB4A /* DomainModelConvertible.swift in Sources */,
@@ -1046,7 +1050,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1073,7 +1077,7 @@
 				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

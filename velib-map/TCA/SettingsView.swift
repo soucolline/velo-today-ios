@@ -9,14 +9,50 @@
 import ComposableArchitecture
 import SwiftUI
 
+struct AppState: Equatable {
+  
+}
+
+enum AppAction: Equatable {
+  case onAppear
+}
+
+struct AppEnvironment: Equatable {
+  
+}
+
+let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
+  switch action {
+  case .onAppear:
+    return .none
+  }
+}
+
 struct SettingsViewTCA: View {
-    var body: some View {
-        Text("Settings view")
+  @State private var selectedPicker = 0
+  
+  var body: some View {
+    NavigationView {
+      List {
+        Section(header: Text("Type de carte ")) {
+          Picker("toto", selection: $selectedPicker) {
+            Text("Value 1").tag(0)
+            Text("Value 2").tag(1)
+            Text("Value 3").tag(2)
+          }
+          .pickerStyle(.segmented)
+        }
+      }
+      .navigationTitle("Réglages")
+      .navigationBarTitleDisplayMode(.large)
     }
+  }
 }
 
 struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsViewTCA()
+  static var previews: some View {
+    NavigationView {
+      SettingsViewTCA()
     }
+  }
 }
