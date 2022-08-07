@@ -6,9 +6,11 @@
 //  Copyright © 2017 Thomas Guilleminot. All rights reserved.
 //
 
+import ComposableArchitecture
 import UIKit
 import SVProgressHUD
 import Swinject
+import SwiftUI
 
 class FavoriteTableViewController: UIViewController {
   @IBOutlet private var tableView: UITableView!
@@ -105,7 +107,18 @@ extension FavoriteTableViewController: UITableViewDelegate, UITableViewDataSourc
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let selectedStation = self.presenter.getStation(at: indexPath.row) {
-      self.performSegue(withIdentifier: K.SegueIdentifiers.favoriteToDetailSegue, sender: selectedStation)
+      let view = DetailsViewTCA(
+        store: Store(
+          initialState: DetailsState(station: selectedStation, isFavoriteStation: true),
+          reducer: detailsReducer,
+          environment: DetailsEnvironment(
+            userDefaultsClient: .live()
+          )
+        )
+      )
+      
+      self.navigationController?.pushViewController(UIHostingController(rootView: view), animated: true)
+      // self.performSegue(withIdentifier: K.SegueIdentifiers.favoriteToDetailSegue, sender: selectedStation)
     }
   }
   

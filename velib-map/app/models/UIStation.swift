@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-final class UIStation: NSObject, MKAnnotation {
+final class UIStation: NSObject, MKAnnotation, Identifiable {
   
   let freeDocks: Int
   let code: String

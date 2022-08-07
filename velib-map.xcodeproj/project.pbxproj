@@ -13,6 +13,8 @@
 		E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C3289FC26F0067DA0A /* Interface.swift */; };
 		E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */; };
 		E94D2BA222DB956900A80A76 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */; };
+		E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFD289FFE4800056BCE /* DetailsView.swift */; };
+		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4AE08289EF01D00260AEC /* SettingsView.swift */; };
 		E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */; };
@@ -113,6 +115,8 @@
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94D2BA122DB956900A80A76 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		E98B1AFD289FFE4800056BCE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E9B4AE08289EF01D00260AEC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = di/AppComponent.swift; sourceTree = "<group>"; };
 		E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppAssembly.swift; path = di/AppAssembly.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 			children = (
 				E92E46C0289FC26F0067DA0A /* UserDefaultsClient */,
 				E9B4AE08289EF01D00260AEC /* SettingsView.swift */,
+				E98B1AFD289FFE4800056BCE /* DetailsView.swift */,
+				E98B1AFF28A021E800056BCE /* App.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -820,9 +826,11 @@
 				E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */,
 				E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */,
 				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
+				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 				E92E46C5289FC26F0067DA0A /* Live.swift in Sources */,
 				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,
 				E9E7CBDA277D14C300E1EB4A /* MapPresenter.swift in Sources */,
+				E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */,
 				E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */,
 				E9E7CBD9277D14C300E1EB4A /* DetailsPresenter.swift in Sources */,
 				E9E7CBD8277D14C300E1EB4A /* UIStation.swift in Sources */,

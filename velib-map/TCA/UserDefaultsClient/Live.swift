@@ -10,6 +10,7 @@ extension UserDefaultsClient {
       doubleForKey: userDefaults.double(forKey:),
       integerForKey: userDefaults.integer(forKey:),
       stringForKey: userDefaults.string(forKey:),
+      arrayForKey: userDefaults.stringArray(forKey:),
       remove: { key in
         .fireAndForget {
           userDefaults.removeObject(forKey: key)
@@ -36,6 +37,11 @@ extension UserDefaultsClient {
         }
       },
       setString: { value, key in
+        .fireAndForget {
+          userDefaults.set(value, forKey: key)
+        }
+      },
+      setArray: { value, key in
         .fireAndForget {
           userDefaults.set(value, forKey: key)
         }

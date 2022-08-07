@@ -37,9 +37,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let tab4 = UIHostingController(
       rootView: SettingsViewTCA(
         store: Store(
-          initialState: AppState(),
-          reducer: appReducer,
-          environment: AppEnvironment(
+          initialState: .init(),
+          reducer: settingsReducer,
+          environment: SettingsEnvironment(
             userDefaultsClient: .live(),
             getAppVersion: { Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }
           )

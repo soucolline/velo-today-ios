@@ -9,23 +9,23 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct AppState: Equatable {
+struct SettingsState: Equatable {
   var mapStyle = MapStyle.normal
   var appVersion = "1.0.0"
   @BindableState var selectedPickerIndex = 0
 }
 
-enum AppAction: Equatable, BindableAction {
+enum SettingsAction: Equatable, BindableAction {
   case onAppear
-  case binding(BindingAction<AppState>)
+  case binding(BindingAction<SettingsState>)
 }
 
-struct AppEnvironment {
+struct SettingsEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var getAppVersion: () -> String
 }
 
-let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
+let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment> { state, action, environment in
   switch action {
   case .onAppear:
     guard let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") else {
@@ -57,7 +57,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
 .debug()
 
 struct SettingsViewTCA: View {
-  let store: Store<AppState, AppAction>
+  let store: Store<SettingsState, SettingsAction>
   
   var body: some View {
     WithViewStore(store) { viewStore in
@@ -97,9 +97,9 @@ struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsViewTCA(
       store: Store(
-        initialState: AppState(),
-        reducer: appReducer,
-        environment: AppEnvironment(
+        initialState: SettingsState(),
+        reducer: settingsReducer,
+        environment: SettingsEnvironment(
           userDefaultsClient: .noop,
           getAppVersion: { "1.234.567" }
         )

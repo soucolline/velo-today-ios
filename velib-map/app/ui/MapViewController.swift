@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Swinject
+import SwiftUI
 
 class MapViewController: UIViewController {
   
@@ -146,6 +147,7 @@ extension MapViewController: MKMapViewDelegate {
     let station = view.annotation as? UIStation
     self.presenter.currentStation = station
     self.performSegue(withIdentifier: K.SegueIdentifiers.detailSegue, sender: self)
+  //  self.navigationController?.pushViewController(UIHostingController(rootView: DetailsViewTCA()), animated: true)
   }
   
 }
