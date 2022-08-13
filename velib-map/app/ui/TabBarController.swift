@@ -50,6 +50,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let tab4Item = UITabBarItem(title: "Settings TCA", image: UIImage(named: "settings"), tag: 4)
     tab4.tabBarItem = tab4Item
     
-    self.viewControllers = [tab1, tab2, tab3, tab4]
+    let tab5 = UIHostingController(
+      rootView: FavoriteListView(
+        store: Store(
+          initialState: .init(),
+          reducer: favoriteReducer,
+          environment: .init(
+            userDefaultsClient: .live(),
+            apiClient: .live
+          )
+        )
+      )
+    )
+    
+    let tab5Item = UITabBarItem(title: "Favoris TCA", image: UIImage(named: "star"), tag: 5)
+    tab5.tabBarItem = tab5Item
+    
+    self.viewControllers = [tab1, tab2, tab3, tab4, tab5]
   }
 }

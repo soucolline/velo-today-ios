@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct DomainStation: Equatable {
+struct DomainStation: Equatable, Identifiable {
+  let id = UUID()
   let freeDocks: Int
   let code: String
   let name: String

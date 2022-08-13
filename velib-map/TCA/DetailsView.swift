@@ -23,7 +23,7 @@ struct DetailsState: Equatable {
   )
   
   var title = ""
-  var isFavoriteStation = true
+  var isFavoriteStation = false
   
   @BindableState var stationLocation =  MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 48.866667, longitude: 2.333333),
