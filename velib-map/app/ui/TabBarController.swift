@@ -62,10 +62,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         )
       )
     )
-    
+
     let tab5Item = UITabBarItem(title: "Favoris TCA", image: UIImage(named: "star"), tag: 5)
     tab5.tabBarItem = tab5Item
     
-    self.viewControllers = [tab1, tab2, tab3, tab4, tab5]
+    let tab6 = UIHostingController(
+      rootView: MapViewTCA(
+        store: Store(
+          initialState: .init(),
+          reducer: mapReducer,
+          environment: MapEnvironment(apiClient: .live)
+        )
+      )
+    )
+    
+    let tab6Item = UITabBarItem(title: "Map TCA", image: UIImage(named: "bike"), tag: 6)
+    tab6.tabBarItem = tab6Item
+    self.viewControllers = [tab1, tab2, tab3, tab5, tab6]
   }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 struct ApiClient {
   var fetchStation: @Sendable (String) async throws -> DomainStation
+  var fetchAllStations: @Sendable () async throws -> [DomainStation]
 }
 
 extension ApiClient {
@@ -26,6 +27,16 @@ extension ApiClient {
       }
       
       return station
+    },
+    
+    fetchAllStations: {
+      // swiftlint:disable force_unwrapping
+      let url = URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&")!
+      let (data, _) = try await URLSession.shared.data(from: url)
+      let responseEnvelope = try JSONDecoder().decode(FetchStationObjectResponseRoot.self, from: data)
+      let stations = try responseEnvelope.records.map({ try $0.station.toDomain()})
+      
+      return stations
     }
   )
 }
@@ -43,7 +54,8 @@ import XCTestDynamicOverlay
 
 extension ApiClient {
   static let unimplemented = Self(
-    fetchStation: XCTUnimplemented("\(Self.self) fetchStation unimplemented")
+    fetchStation: XCTUnimplemented("\(Self.self) fetchStation unimplemented"),
+    fetchAllStations: XCTUnimplemented("\(Self.self) fetchAllStations unimplemented")
   )
 }
 #endif
