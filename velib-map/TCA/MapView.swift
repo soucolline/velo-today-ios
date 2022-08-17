@@ -21,7 +21,7 @@ struct MapState: Equatable {
   )
 }
 
-enum MapAction {
+enum MapAction: Equatable {
   case fetchAllStations
   case fetchAllStationsResponse(TaskResult<[DomainStation]>)
 }
@@ -85,6 +85,7 @@ struct MapViewTCA: View {
           Button { viewStore.send(.fetchAllStations) } label: {  Image(systemName: "gobackward") }
         }
       }
+      .navigationViewStyle(.stack)
       .task {
         if viewStore.hasAlreadyLoadedStations == false {
           viewStore.send(.fetchAllStations)

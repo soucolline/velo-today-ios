@@ -28,13 +28,9 @@ struct SettingsEnvironment {
 let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment> { state, action, environment in
   switch action {
   case .onAppear:
-    guard let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") else {
-      return .none
-    }
+    let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
     
-    guard let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) else {
-      return .none
-    }
+    let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
     
     state.mapStyle = mapStyle
     state.selectedPickerIndex = mapStyle.pickerValue

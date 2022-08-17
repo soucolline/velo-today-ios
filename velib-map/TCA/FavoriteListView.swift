@@ -36,6 +36,7 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
     state.isFetchStationRequestInFlight = true
     
     guard let stationsIds = environment.userDefaultsClient.arrayForKey("favoriteStationsCode") else {
+      state.isFetchStationRequestInFlight = false
       return .none
     }
     
@@ -100,6 +101,7 @@ struct FavoriteListView: View {
         }
         .navigationTitle("Favoris")
       }
+      .navigationViewStyle(.stack)
       .refreshable {
         viewStore.send(.fetchFavoriteStations)
       }

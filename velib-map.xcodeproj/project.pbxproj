@@ -11,6 +11,7 @@
 		E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C1289FC26F0067DA0A /* Mocks.swift */; };
 		E92E46C5289FC26F0067DA0A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C2289FC26F0067DA0A /* Live.swift */; };
 		E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C3289FC26F0067DA0A /* Interface.swift */; };
+		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
 		E93163DB28A6D6A60019459F /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163DA28A6D6A60019459F /* FavoriteListView.swift */; };
 		E93163DD28A6DD9C0019459F /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163DC28A6DD9C0019459F /* ApiClient.swift */; };
 		E946A9F02801F8D100F92C00 /* GetAllStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */; };
@@ -77,7 +78,6 @@
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 		EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBC20B0798A0012909E /* Loadable.swift */; };
 		EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBD20B0798A0012909E /* PopupManager.swift */; };
-		EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBC120B079B60012909E /* AppDelegate.swift */; };
 		EBC4DFF820B0332300E5966C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC4DFF720B0332300E5966C /* Constants.swift */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 		EE1662C48282059EFFC2F4A7 /* Pods_velib_mapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */; };
@@ -116,6 +116,7 @@
 		E92E46C1289FC26F0067DA0A /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		E92E46C2289FC26F0067DA0A /* Live.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
 		E92E46C3289FC26F0067DA0A /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E93163DA28A6D6A60019459F /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
 		E93163DC28A6DD9C0019459F /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		E946A9EF2801F8D100F92C00 /* GetAllStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllStationsUseCaseTests.swift; sourceTree = "<group>"; };
@@ -189,7 +190,6 @@
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBADFBBC20B0798A0012909E /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loadable.swift; path = Utils/Loadable.swift; sourceTree = "<group>"; };
 		EBADFBBD20B0798A0012909E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupManager.swift; path = Utils/PopupManager.swift; sourceTree = "<group>"; };
-		EBADFBC120B079B60012909E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SupportingFiles/AppDelegate.swift; sourceTree = "<group>"; };
 		EBADFBD220B080A20012909E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
 		EBC4DFF720B0332300E5966C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = utils/Constants.swift; sourceTree = "<group>"; };
 		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
@@ -297,6 +297,7 @@
 				E9EC31F028AA2920006DB23A /* MapView.swift */,
 				E98B1AFF28A021E800056BCE /* App.swift */,
 				E93163DC28A6DD9C0019459F /* ApiClient.swift */,
+				E930259428AD7EF500F44210 /* TabBarView.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -507,7 +508,6 @@
 				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
-				EBADFBC120B079B60012909E /* AppDelegate.swift */,
 				EBADFBD220B080A20012909E /* Info.plist */,
 			);
 			name = SupportingFiles;
@@ -816,7 +816,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E7CBB0277CD97900E1EB4A /* UseCaseAssembly.swift in Sources */,
-				EBADFBC320B079B60012909E /* AppDelegate.swift in Sources */,
 				E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */,
 				E9E7CBE5277D14EF00E1EB4A /* FavoriteTableViewController.swift in Sources */,
 				E9E7CBEC277DAE7400E1EB4A /* StationRouter.swift in Sources */,
@@ -838,6 +837,7 @@
 				E9E7CBCE277D11A900E1EB4A /* DomainModelConvertible.swift in Sources */,
 				E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */,
 				E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */,
+				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
 				E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */,
 				E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */,
 				E9E7CBF6277DC6B400E1EB4A /* APIError.swift in Sources */,

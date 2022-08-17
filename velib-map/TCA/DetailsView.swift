@@ -84,7 +84,7 @@ struct DetailsViewTCA: View {
     WithViewStore(self.store) { viewStore in
       VStack(spacing: 0) {
         Map(coordinateRegion: viewStore.binding(\.$stationLocation), interactionModes: [], annotationItems: [viewStore.station]) {
-          MapMarker(coordinate: $0.coordinate)
+          MapMarker(coordinate: $0.coordinate, tint: .orange)
         }
         Button {
           viewStore.send(.favoriteButtonTapped)
