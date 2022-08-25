@@ -77,7 +77,7 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
 .binding()
 .debug()
 
-struct DetailsViewTCA: View {
+struct DetailsView: View {
   let store: Store<DetailsState, DetailsAction>
   
   var body: some View {
@@ -128,7 +128,7 @@ struct DetailsViewTCA: View {
 struct DetailsView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      DetailsViewTCA(
+      DetailsView(
         store: Store(
           initialState: .init(),
           reducer: detailsReducer,

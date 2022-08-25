@@ -31,7 +31,7 @@ struct StationResponse: Codable, Equatable {
 }
 
 extension StationResponse {
-  func toStation() throws -> Station {
+  func toStation() -> Station {
     Station(
       freeDocks: freeDocks,
       code: code,

@@ -79,7 +79,7 @@ struct TabBarView: View {
   
   var body: some View {
     TabView {
-      MapViewTCA(
+      MapView(
         store: self.store.scope(
           state: \.mapState,
           action: AppAction.map
@@ -99,7 +99,7 @@ struct TabBarView: View {
         Label("Favoris", systemImage: "star.circle.fill")
       }
       
-      SettingsViewTCA(
+      SettingsView(
         store: self.store.scope(
           state: \.settingsState,
           action: AppAction.settings

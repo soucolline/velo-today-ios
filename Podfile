@@ -12,15 +12,12 @@ target 'velib-map' do
   pod 'Bugsnag'
 end
 
-target 'velib-mapTests' do
-  use_frameworks!
-  pod 'Cuckoo', '= 1.7.1'
-end
-
 plugin 'cocoapods-keys', {
   :project => "velib-map",
   :keys => [
-  "BugsnagApiKey
+  "BugsnagApiKey"
+]}
+
 post_install do |pi|
     pi.pods_project.targets.each do |t|
       t.build_configurations.each do |config|

@@ -1,21 +1,16 @@
 PODS:
   - Bugsnag (5.22.2)
-  - Cuckoo (1.7.1):
-    - Cuckoo/Swift (= 1.7.1)
-  - Cuckoo/Swift (1.7.1)
   - Keys (1.0.1)
   - SwiftLint (0.45.1)
 
 DEPENDENCIES:
   - Bugsnag
-  - Cuckoo (= 1.7.1)
   - Keys (from `Pods/CocoaPodsKeys`)
   - SwiftLint (= 0.45.1)
 
 SPEC REPOS:
   trunk:
     - Bugsnag
-    - Cuckoo
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -24,10 +19,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bugsnag: 3e9e2b563f1e99ce447de123c65e851bd109fa9f
-  Cuckoo: 9e258d68137c411df47c6390f72901d5276b4f03
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
 
-PODFILE CHECKSUM: 66cccf6bf3a5f250300220fc9c537409f094ba0c
+PODFILE CHECKSUM: 999fa74ba9b27bcd0dab9a18b500a96a7a986929
 
 COCOAPODS: 1.11.3

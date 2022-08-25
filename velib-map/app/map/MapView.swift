@@ -43,14 +43,13 @@ let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, action, e
     return .none
     
   case .fetchAllStationsResponse(.failure(let error)):
-    print(error)
     state.hasAlreadyLoadedStations = true
     return .none
   }
 }
 .debug()
 
-struct MapViewTCA: View {
+struct MapView: View {
   let store: Store<MapState, MapAction>
   
   var body: some View {
@@ -60,7 +59,7 @@ struct MapViewTCA: View {
           Map(coordinateRegion: .constant(viewStore.coordinateRegion), interactionModes: [.all], annotationItems: viewStore.stations.map { $0.toStationPin() }) { item in
             MapAnnotation(coordinate: item.coordinate) {
               NavigationLink(
-                destination: DetailsViewTCA(
+                destination: DetailsView(
                   store: Store(
                     initialState: .init(station: item),
                     reducer: detailsReducer,
@@ -105,9 +104,9 @@ struct MapViewTCA: View {
   }
 }
 
-struct MapViewTCA_Previews: PreviewProvider {
+struct MapView_Previews: PreviewProvider {
   static var previews: some View {
-    MapViewTCA(
+    MapView(
       store: Store(
         initialState: MapState(),
         reducer: mapReducer,

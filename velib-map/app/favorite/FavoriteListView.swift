@@ -44,7 +44,12 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
       var stations: [Station] = []
       
       for id in stationsIds {
-        stations.append(try await environment.apiClient.fetchStation(id))
+        do {
+          let stationId = try await environment.apiClient.fetchStation(id)
+          stations.append(stationId)
+        } catch let error {
+          return .fetchFavoriteStationsResponse(TaskResult.failure(error))
+        }
       }
       
       return await .fetchFavoriteStationsResponse(TaskResult { [stations] in stations })
@@ -83,7 +88,7 @@ struct FavoriteListView: View {
           } else {
             ForEach(viewStore.stations) { station in
               NavigationLink(
-                destination: DetailsViewTCA(
+                destination: DetailsView(
                   store: Store(
                     initialState: DetailsState(
                       station: station.toStationPin(),

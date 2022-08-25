@@ -70,5 +70,9 @@ extension UserDefaultsClient {
     public mutating func override(integer: Int, forKey key: String) {
       self.integerForKey = { [self] in $0 == key ? integer : self.integerForKey(key) }
     }
+    
+    public mutating func override(array: [String]?, forKey key: String) {
+      self.arrayForKey = { [self] in $0 == key ? array : self.arrayForKey(key) }
+    }
   }
 #endif

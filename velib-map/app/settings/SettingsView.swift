@@ -52,7 +52,7 @@ let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment
 .binding()
 .debug()
 
-struct SettingsViewTCA: View {
+struct SettingsView: View {
   let store: Store<SettingsState, SettingsAction>
   
   var body: some View {
@@ -91,7 +91,7 @@ struct SettingsViewTCA: View {
 
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
-    SettingsViewTCA(
+    SettingsView(
       store: Store(
         initialState: SettingsState(),
         reducer: settingsReducer,

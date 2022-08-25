@@ -44,35 +44,7 @@ public struct UserDefaultsClient {
     self.arrayForKey(Const.favoriteStationsId) ?? []
   }
   
-  public var hasShownFirstLaunchOnboarding: Bool {
-    self.boolForKey(hasShownFirstLaunchOnboardingKey)
-  }
-
-  public func setHasShownFirstLaunchOnboarding(_ bool: Bool) -> Effect<Never, Never> {
-    self.setBool(bool, hasShownFirstLaunchOnboardingKey)
-  }
-
-  public var installationTime: Double {
-    self.doubleForKey(installationTimeKey)
-  }
-
-  public func setInstallationTime(_ double: Double) -> Effect<Never, Never> {
-    self.setDouble(double, installationTimeKey)
-  }
-
-  public func incrementMultiplayerOpensCount() -> Effect<Int, Never> {
-    let incremented = self.integerForKey(multiplayerOpensCount) + 1
-    return .concatenate(
-      self.setInteger(incremented, multiplayerOpensCount).fireAndForget(),
-      .init(value: incremented)
-    )
-  }
-  
   private struct Const {
     static let favoriteStationsId = "favoriteStationsCode"
   }
 }
-
-let hasShownFirstLaunchOnboardingKey = "hasShownFirstLaunchOnboardingKey"
-let installationTimeKey = "installationTimeKey"
-let multiplayerOpensCount = "multiplayerOpensCount"
