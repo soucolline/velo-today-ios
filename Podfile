@@ -8,11 +8,7 @@ target 'velib-map' do
   use_frameworks!
 
   # Pods for velib-map
-  pod 'Moya', '= 15.0.0'
-  pod 'SVProgressHUD', '= 2.2.5'
   pod 'SwiftLint', '= 0.45.1'
-  pod 'ZLogger', '= 1.1.0'
-  pod 'Swinject', '= 2.8.1'
   pod 'Bugsnag'
 end
 
@@ -24,9 +20,7 @@ end
 plugin 'cocoapods-keys', {
   :project => "velib-map",
   :keys => [
-  "BugsnagApiKey"
-]}
-
+  "BugsnagApiKey
 post_install do |pi|
     pi.pods_project.targets.each do |t|
       t.build_configurations.each do |config|

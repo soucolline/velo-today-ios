@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46BC289FBACC0067DA0A /* TabBarController.swift */; };
 		E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C1289FC26F0067DA0A /* Mocks.swift */; };
 		E92E46C5289FC26F0067DA0A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C2289FC26F0067DA0A /* Live.swift */; };
 		E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C3289FC26F0067DA0A /* Interface.swift */; };
@@ -20,44 +19,9 @@
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4AE08289EF01D00260AEC /* SettingsView.swift */; };
-		E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */; };
-		E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */; };
-		E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */; };
-		E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */; };
-		E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */; };
-		E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */; };
-		E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */; };
-		E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */; };
-		E9E7CBB0277CD97900E1EB4A /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */; };
-		E9E7CBB2277CDA0100E1EB4A /* DataSourceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */; };
-		E9E7CBB4277CDAFC00E1EB4A /* GetMapStyleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */; };
-		E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */; };
-		E9E7CBB8277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */; };
-		E9E7CBBC277CE75800E1EB4A /* AddFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */; };
-		E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */; };
-		E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */; };
-		E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */; };
-		E9E7CBC4277D0C7800E1EB4A /* GetFavoriteStationsIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */; };
-		E9E7CBC6277D0DBF00E1EB4A /* SetMapStyleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */; };
 		E9E7CBC9277D0FF500E1EB4A /* StationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBC8277D0FF500E1EB4A /* StationResponse.swift */; };
-		E9E7CBCC277D10B700E1EB4A /* DomainStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBCB277D10B700E1EB4A /* DomainStation.swift */; };
-		E9E7CBCE277D11A900E1EB4A /* DomainModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBCD277D11A900E1EB4A /* DomainModelConvertible.swift */; };
-		E9E7CBD8277D14C300E1EB4A /* UIStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD2277D14C200E1EB4A /* UIStation.swift */; };
-		E9E7CBD9277D14C300E1EB4A /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD4277D14C200E1EB4A /* DetailsPresenter.swift */; };
-		E9E7CBDA277D14C300E1EB4A /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD5277D14C200E1EB4A /* MapPresenter.swift */; };
-		E9E7CBDB277D14C300E1EB4A /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD6277D14C200E1EB4A /* FavoritePresenter.swift */; };
-		E9E7CBDC277D14C300E1EB4A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD7277D14C200E1EB4A /* SettingsPresenter.swift */; };
-		E9E7CBE3277D14EF00E1EB4A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBDD277D14EF00E1EB4A /* SettingsViewController.swift */; };
-		E9E7CBE4277D14EF00E1EB4A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBDE277D14EF00E1EB4A /* MapViewController.swift */; };
-		E9E7CBE5277D14EF00E1EB4A /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */; };
-		E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */; };
-		E9E7CBE7277D14EF00E1EB4A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */; };
-		E9E7CBEC277DAE7400E1EB4A /* StationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */; };
-		E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */; };
-		E9E7CBF1277DBA7E00E1EB4A /* MoyaProviderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */; };
-		E9E7CBF5277DC6B400E1EB4A /* FetchStationObjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF2277DC6B400E1EB4A /* FetchStationObjectResponse.swift */; };
-		E9E7CBF6277DC6B400E1EB4A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF3277DC6B400E1EB4A /* APIError.swift */; };
-		E9E7CBF7277DC6B400E1EB4A /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBF4277DC6B400E1EB4A /* MapStyle.swift */; };
+		E9E7CBCC277D10B700E1EB4A /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBCB277D10B700E1EB4A /* Station.swift */; };
+		E9E7CBD8277D14C300E1EB4A /* StationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */; };
 		E9E961032801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961022801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift */; };
 		E9E961052801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961042801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift */; };
 		E9E961072801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E961062801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift */; };
@@ -73,12 +37,10 @@
 		E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */; };
 		E9EC31F128AA2920006DB23A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31F028AA2920006DB23A /* MapView.swift */; };
 		E9F9715C2802D53900D1DAA8 /* StationRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */; };
-		EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FC1EA3A0CC00E214DD /* Main.storyboard */; };
+		E9FD3B2428B76AC500BB7B7C /* FetchStationObjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD3B2328B76AC500BB7B7C /* FetchStationObjectResponse.swift */; };
+		E9FD3B2628B76AD100BB7B7C /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD3B2528B76AD100BB7B7C /* MapStyle.swift */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
-		EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBC20B0798A0012909E /* Loadable.swift */; };
-		EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADFBBD20B0798A0012909E /* PopupManager.swift */; };
-		EBC4DFF820B0332300E5966C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC4DFF720B0332300E5966C /* Constants.swift */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
 		EE1662C48282059EFFC2F4A7 /* Pods_velib_mapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */; };
 /* End PBXBuildFile section */
@@ -112,7 +74,6 @@
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7BC9EA316703AE564588F1 /* Pods-velib-mapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-mapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-mapTests/Pods-velib-mapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A25D1DC61D66E5008F79A8B8 /* Pods_velib_mapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_mapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E92E46BC289FBACC0067DA0A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E92E46C1289FC26F0067DA0A /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		E92E46C2289FC26F0067DA0A /* Live.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
 		E92E46C3289FC26F0067DA0A /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
@@ -126,46 +87,11 @@
 		E98B1AFD289FFE4800056BCE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E9B4AE08289EF01D00260AEC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = di/AppComponent.swift; sourceTree = "<group>"; };
-		E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppAssembly.swift; path = di/AppAssembly.swift; sourceTree = "<group>"; };
-		E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PresenterAssembly.swift; path = di/PresenterAssembly.swift; sourceTree = "<group>"; };
-		E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepositoryAssembly.swift; path = di/RepositoryAssembly.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
-		E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRepository.swift; path = data/repositories/StationRepository.swift; sourceTree = "<group>"; };
-		E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteLocalDataSource.swift; path = data/datasources/FavoriteLocalDataSource.swift; sourceTree = "<group>"; };
-		E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRemoteDataSource.swift; path = data/datasources/StationRemoteDataSource.swift; sourceTree = "<group>"; };
-		E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetAllStationsUseCase.swift; path = domain/usecases/GetAllStationsUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UseCaseAssembly.swift; path = di/UseCaseAssembly.swift; sourceTree = "<group>"; };
-		E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSourceAssembly.swift; path = di/DataSourceAssembly.swift; sourceTree = "<group>"; };
-		E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMapStyleUseCase.swift; path = domain/usecases/GetMapStyleUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapRepository.swift; path = data/repositories/MapRepository.swift; sourceTree = "<group>"; };
-		E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsFavoriteStationUseCase.swift; path = domain/usecases/IsFavoriteStationUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddFavoriteStationUseCase.swift; path = domain/usecases/AddFavoriteStationUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoveFavoriteStationUseCase.swift; path = domain/usecases/RemoveFavoriteStationUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetNumberOfFavoriteStationsUseCase.swift; path = domain/usecases/GetNumberOfFavoriteStationsUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetSpecificStationsUseCase.swift; path = domain/usecases/GetSpecificStationsUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetFavoriteStationsIds.swift; path = domain/usecases/GetFavoriteStationsIds.swift; sourceTree = "<group>"; };
-		E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetMapStyleUseCase.swift; path = domain/usecases/SetMapStyleUseCase.swift; sourceTree = "<group>"; };
-		E9E7CBC8277D0FF500E1EB4A /* StationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StationResponse.swift; path = data/models/StationResponse.swift; sourceTree = "<group>"; };
-		E9E7CBCB277D10B700E1EB4A /* DomainStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DomainStation.swift; path = domain/models/DomainStation.swift; sourceTree = "<group>"; };
-		E9E7CBCD277D11A900E1EB4A /* DomainModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DomainModelConvertible.swift; path = data/models/DomainModelConvertible.swift; sourceTree = "<group>"; };
-		E9E7CBD2277D14C200E1EB4A /* UIStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStation.swift; sourceTree = "<group>"; };
-		E9E7CBD4277D14C200E1EB4A /* DetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
-		E9E7CBD5277D14C200E1EB4A /* MapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
-		E9E7CBD6277D14C200E1EB4A /* FavoritePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
-		E9E7CBD7277D14C200E1EB4A /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		E9E7CBDD277D14EF00E1EB4A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E9E7CBDE277D14EF00E1EB4A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
-		E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationRouter.swift; path = data/router/StationRouter.swift; sourceTree = "<group>"; };
-		E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouterAssembly.swift; path = di/RouterAssembly.swift; sourceTree = "<group>"; };
-		E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoyaProviderExtensions.swift; path = data/network/MoyaProviderExtensions.swift; sourceTree = "<group>"; };
-		E9E7CBF2277DC6B400E1EB4A /* FetchStationObjectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchStationObjectResponse.swift; path = data/models/FetchStationObjectResponse.swift; sourceTree = "<group>"; };
-		E9E7CBF3277DC6B400E1EB4A /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = data/models/APIError.swift; sourceTree = "<group>"; };
-		E9E7CBF4277DC6B400E1EB4A /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapStyle.swift; path = data/models/MapStyle.swift; sourceTree = "<group>"; };
+		E9E7CBC8277D0FF500E1EB4A /* StationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationResponse.swift; sourceTree = "<group>"; };
+		E9E7CBCB277D10B700E1EB4A /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationMarker.swift; sourceTree = "<group>"; };
 		E9E961022801FE0800C42BD6 /* GetSpecificStationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpecificStationsUseCaseTests.swift; sourceTree = "<group>"; };
 		E9E961042801FEDC00C42BD6 /* GetMapStyleUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapStyleUseCaseTests.swift; sourceTree = "<group>"; };
 		E9E961062801FF7800C42BD6 /* SetMapStyleUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapStyleUseCaseTests.swift; sourceTree = "<group>"; };
@@ -184,14 +110,12 @@
 		E9F9715B2802D53900D1DAA8 /* StationRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRouterTests.swift; sourceTree = "<group>"; };
 		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9FD3B2328B76AC500BB7B7C /* FetchStationObjectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchStationObjectResponse.swift; sourceTree = "<group>"; };
+		E9FD3B2528B76AD100BB7B7C /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapStyle.swift; sourceTree = "<group>"; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBA372FD1EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EBADFBBC20B0798A0012909E /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loadable.swift; path = Utils/Loadable.swift; sourceTree = "<group>"; };
-		EBADFBBD20B0798A0012909E /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupManager.swift; path = Utils/PopupManager.swift; sourceTree = "<group>"; };
 		EBADFBD220B080A20012909E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
-		EBC4DFF720B0332300E5966C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = utils/Constants.swift; sourceTree = "<group>"; };
 		FD0FBAEF8A1323275B26288F /* Pods-velib-map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.release.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,14 +163,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E92E46C0289FC26F0067DA0A /* UserDefaultsClient */ = {
+		E92E46C0289FC26F0067DA0A /* userDefaultsClient */ = {
 			isa = PBXGroup;
 			children = (
 				E92E46C1289FC26F0067DA0A /* Mocks.swift */,
 				E92E46C2289FC26F0067DA0A /* Live.swift */,
 				E92E46C3289FC26F0067DA0A /* Interface.swift */,
 			);
-			path = UserDefaultsClient;
+			path = userDefaultsClient;
 			sourceTree = "<group>";
 		};
 		E946A9EE2801F8BC00F92C00 /* domain */ = {
@@ -285,178 +209,6 @@
 			path = fixtures;
 			sourceTree = "<group>";
 		};
-		E9B4AE05289EEF8000260AEC /* TCA */ = {
-			isa = PBXGroup;
-			children = (
-				E92E46C0289FC26F0067DA0A /* UserDefaultsClient */,
-				E9B4AE08289EF01D00260AEC /* SettingsView.swift */,
-				E98B1AFD289FFE4800056BCE /* DetailsView.swift */,
-				E93163DA28A6D6A60019459F /* FavoriteListView.swift */,
-				E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */,
-				E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */,
-				E9EC31F028AA2920006DB23A /* MapView.swift */,
-				E98B1AFF28A021E800056BCE /* App.swift */,
-				E93163DC28A6DD9C0019459F /* ApiClient.swift */,
-				E930259428AD7EF500F44210 /* TabBarView.swift */,
-			);
-			path = TCA;
-			sourceTree = "<group>";
-		};
-		E9C2FF1323CE25AD00FFCDBD /* di */ = {
-			isa = PBXGroup;
-			children = (
-				E9C2FF1423CE25F200FFCDBD /* AppComponent.swift */,
-				E9C2FF1623CE266C00FFCDBD /* AppAssembly.swift */,
-				E9E7CBB1277CDA0100E1EB4A /* DataSourceAssembly.swift */,
-				E9C2FF1823CE26A900FFCDBD /* PresenterAssembly.swift */,
-				E9E7CBAF277CD97900E1EB4A /* UseCaseAssembly.swift */,
-				E9C2FF1A23CE26DD00FFCDBD /* RepositoryAssembly.swift */,
-				E9E7CBED277DB07A00E1EB4A /* RouterAssembly.swift */,
-			);
-			name = di;
-			sourceTree = "<group>";
-		};
-		E9E7CB97277CD59D00E1EB4A /* data */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBC7277D0FD800E1EB4A /* models */,
-				E9E7CB9B277CD64400E1EB4A /* repositories */,
-				E9E7CB98277CD5A600E1EB4A /* datasources */,
-				E9E7CBEF277DBA5800E1EB4A /* network */,
-				E9E7CBE8277DAE3400E1EB4A /* router */,
-			);
-			name = data;
-			sourceTree = "<group>";
-		};
-		E9E7CB98277CD5A600E1EB4A /* datasources */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBA9277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift */,
-				E9E7CBAA277CD8CD00E1EB4A /* StationRemoteDataSource.swift */,
-			);
-			name = datasources;
-			sourceTree = "<group>";
-		};
-		E9E7CB9B277CD64400E1EB4A /* repositories */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBA7277CD8C000E1EB4A /* StationRepository.swift */,
-				E9E7CBB5277CDB4300E1EB4A /* MapRepository.swift */,
-			);
-			name = repositories;
-			sourceTree = "<group>";
-		};
-		E9E7CBA0277CD7F500E1EB4A /* domain */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBCA277D10A300E1EB4A /* models */,
-				E9E7CBA1277CD7FB00E1EB4A /* usecases */,
-			);
-			name = domain;
-			sourceTree = "<group>";
-		};
-		E9E7CBA1277CD7FB00E1EB4A /* usecases */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBAD277CD8EA00E1EB4A /* GetAllStationsUseCase.swift */,
-				E9E7CBC1277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift */,
-				E9E7CBB3277CDAFC00E1EB4A /* GetMapStyleUseCase.swift */,
-				E9E7CBC5277D0DBF00E1EB4A /* SetMapStyleUseCase.swift */,
-				E9E7CBB7277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift */,
-				E9E7CBBB277CE75800E1EB4A /* AddFavoriteStationUseCase.swift */,
-				E9E7CBBD277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift */,
-				E9E7CBBF277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift */,
-				E9E7CBC3277D0C7800E1EB4A /* GetFavoriteStationsIds.swift */,
-			);
-			name = usecases;
-			sourceTree = "<group>";
-		};
-		E9E7CBC7277D0FD800E1EB4A /* models */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBF3277DC6B400E1EB4A /* APIError.swift */,
-				E9E7CBF2277DC6B400E1EB4A /* FetchStationObjectResponse.swift */,
-				E9E7CBF4277DC6B400E1EB4A /* MapStyle.swift */,
-				E9E7CBC8277D0FF500E1EB4A /* StationResponse.swift */,
-				E9E7CBCD277D11A900E1EB4A /* DomainModelConvertible.swift */,
-			);
-			name = models;
-			sourceTree = "<group>";
-		};
-		E9E7CBCA277D10A300E1EB4A /* models */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBCB277D10B700E1EB4A /* DomainStation.swift */,
-			);
-			name = models;
-			sourceTree = "<group>";
-		};
-		E9E7CBCF277D14C200E1EB4A /* app */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBD1277D14C200E1EB4A /* models */,
-				E9E7CBD0277D14C200E1EB4A /* ui */,
-				E9E7CBD3277D14C200E1EB4A /* presenters */,
-			);
-			path = app;
-			sourceTree = "<group>";
-		};
-		E9E7CBD0277D14C200E1EB4A /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBE0277D14EF00E1EB4A /* cells */,
-				E9E7CBE2277D14EF00E1EB4A /* DetailsViewController.swift */,
-				E92E46BC289FBACC0067DA0A /* TabBarController.swift */,
-				E9E7CBDF277D14EF00E1EB4A /* FavoriteTableViewController.swift */,
-				E9E7CBDE277D14EF00E1EB4A /* MapViewController.swift */,
-				E9E7CBDD277D14EF00E1EB4A /* SettingsViewController.swift */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
-		E9E7CBD1277D14C200E1EB4A /* models */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBD2277D14C200E1EB4A /* UIStation.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		E9E7CBD3277D14C200E1EB4A /* presenters */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBD4277D14C200E1EB4A /* DetailsPresenter.swift */,
-				E9E7CBD5277D14C200E1EB4A /* MapPresenter.swift */,
-				E9E7CBD6277D14C200E1EB4A /* FavoritePresenter.swift */,
-				E9E7CBD7277D14C200E1EB4A /* SettingsPresenter.swift */,
-			);
-			path = presenters;
-			sourceTree = "<group>";
-		};
-		E9E7CBE0277D14EF00E1EB4A /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBE1277D14EF00E1EB4A /* FavoriteTableViewCell.swift */,
-			);
-			path = cells;
-			sourceTree = "<group>";
-		};
-		E9E7CBE8277DAE3400E1EB4A /* router */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBEB277DAE7400E1EB4A /* StationRouter.swift */,
-			);
-			name = router;
-			sourceTree = "<group>";
-		};
-		E9E7CBEF277DBA5800E1EB4A /* network */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7CBF0277DBA7E00E1EB4A /* MoyaProviderExtensions.swift */,
-			);
-			name = network;
-			sourceTree = "<group>";
-		};
 		E9E9611228021A4400C42BD6 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,20 +244,71 @@
 			path = router;
 			sourceTree = "<group>";
 		};
-		EB1FFF0820A72A8F00AA9F79 /* utils */ = {
+		E9FD3B1828B766AD00BB7B7C /* favorite */ = {
 			isa = PBXGroup;
 			children = (
-				EBC4DFF720B0332300E5966C /* Constants.swift */,
-				EBADFBBC20B0798A0012909E /* Loadable.swift */,
-				EBADFBBD20B0798A0012909E /* PopupManager.swift */,
+				E93163DA28A6D6A60019459F /* FavoriteListView.swift */,
+				E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */,
+				E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */,
 			);
-			name = utils;
+			path = favorite;
+			sourceTree = "<group>";
+		};
+		E9FD3B1928B768FB00BB7B7C /* apiClient */ = {
+			isa = PBXGroup;
+			children = (
+				E93163DC28A6DD9C0019459F /* ApiClient.swift */,
+				E9FD3B2328B76AC500BB7B7C /* FetchStationObjectResponse.swift */,
+				E9E7CBC8277D0FF500E1EB4A /* StationResponse.swift */,
+			);
+			path = apiClient;
+			sourceTree = "<group>";
+		};
+		E9FD3B1A28B7690800BB7B7C /* details */ = {
+			isa = PBXGroup;
+			children = (
+				E98B1AFD289FFE4800056BCE /* DetailsView.swift */,
+			);
+			path = details;
+			sourceTree = "<group>";
+		};
+		E9FD3B1B28B7691300BB7B7C /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				E9B4AE08289EF01D00260AEC /* SettingsView.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		E9FD3B1C28B7691C00BB7B7C /* map */ = {
+			isa = PBXGroup;
+			children = (
+				E9E7CBCB277D10B700E1EB4A /* Station.swift */,
+				E9EC31F028AA2920006DB23A /* MapView.swift */,
+				E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		E9FD3B2728B76F2E00BB7B7C /* app */ = {
+			isa = PBXGroup;
+			children = (
+				E98B1AFF28A021E800056BCE /* App.swift */,
+				E930259428AD7EF500F44210 /* TabBarView.swift */,
+				E9FD3B2528B76AD100BB7B7C /* MapStyle.swift */,
+				E9FD3B1C28B7691C00BB7B7C /* map */,
+				E9FD3B1B28B7691300BB7B7C /* settings */,
+				E9FD3B1A28B7690800BB7B7C /* details */,
+				E9FD3B1928B768FB00BB7B7C /* apiClient */,
+				E9FD3B1828B766AD00BB7B7C /* favorite */,
+				E92E46C0289FC26F0067DA0A /* userDefaultsClient */,
+			);
+			path = app;
 			sourceTree = "<group>";
 		};
 		EB54F9B520B07595008221A0 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				EBA372FC1EA3A0CC00E214DD /* Main.storyboard */,
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBADFBD220B080A20012909E /* Info.plist */,
@@ -536,13 +339,8 @@
 		EBA372F71EA3A0CC00E214DD /* velib-map */ = {
 			isa = PBXGroup;
 			children = (
-				E9B4AE05289EEF8000260AEC /* TCA */,
+				E9FD3B2728B76F2E00BB7B7C /* app */,
 				E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */,
-				E9C2FF1323CE25AD00FFCDBD /* di */,
-				E9E7CBCF277D14C200E1EB4A /* app */,
-				E9E7CBA0277CD7F500E1EB4A /* domain */,
-				E9E7CB97277CD59D00E1EB4A /* data */,
-				EB1FFF0820A72A8F00AA9F79 /* utils */,
 				EB54F9B520B07595008221A0 /* SupportingFiles */,
 			);
 			path = "velib-map";
@@ -656,7 +454,6 @@
 			files = (
 				EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */,
 				EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */,
-				EBA372FE1EA3A0CC00E214DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,22 +468,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-velib-map/Pods-velib-map-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys-framework/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/ZLogger/ZLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLogger.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -815,60 +602,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E7CBB0277CD97900E1EB4A /* UseCaseAssembly.swift in Sources */,
-				E9C2FF1B23CE26DD00FFCDBD /* RepositoryAssembly.swift in Sources */,
-				E9E7CBE5277D14EF00E1EB4A /* FavoriteTableViewController.swift in Sources */,
-				E9E7CBEC277DAE7400E1EB4A /* StationRouter.swift in Sources */,
-				E9E7CBC0277CE88200E1EB4A /* GetNumberOfFavoriteStationsUseCase.swift in Sources */,
-				E9E7CBF1277DBA7E00E1EB4A /* MoyaProviderExtensions.swift in Sources */,
 				E9EC31F128AA2920006DB23A /* MapView.swift in Sources */,
-				E9E7CBB6277CDB4300E1EB4A /* MapRepository.swift in Sources */,
-				E9E7CBE3277D14EF00E1EB4A /* SettingsViewController.swift in Sources */,
 				E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */,
-				E9C2FF1723CE266C00FFCDBD /* AppAssembly.swift in Sources */,
-				EBC4DFF820B0332300E5966C /* Constants.swift in Sources */,
-				E9C2FF1523CE25F200FFCDBD /* AppComponent.swift in Sources */,
 				E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */,
-				E92E46BD289FBACC0067DA0A /* TabBarController.swift in Sources */,
 				E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */,
 				E93163DB28A6D6A60019459F /* FavoriteListView.swift in Sources */,
-				E9E7CBE4277D14EF00E1EB4A /* MapViewController.swift in Sources */,
 				E9E7CBC9277D0FF500E1EB4A /* StationResponse.swift in Sources */,
-				E9E7CBCE277D11A900E1EB4A /* DomainModelConvertible.swift in Sources */,
-				E9E7CBA8277CD8C000E1EB4A /* StationRepository.swift in Sources */,
-				E9E7CBAB277CD8CD00E1EB4A /* FavoriteLocalDataSource.swift in Sources */,
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
 				E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */,
-				E9E7CBC2277D0BAE00E1EB4A /* GetSpecificStationsUseCase.swift in Sources */,
-				E9E7CBF6277DC6B400E1EB4A /* APIError.swift in Sources */,
-				E9E7CBEE277DB07A00E1EB4A /* RouterAssembly.swift in Sources */,
-				E9E7CBE6277D14EF00E1EB4A /* FavoriteTableViewCell.swift in Sources */,
-				E9E7CBAC277CD8CD00E1EB4A /* StationRemoteDataSource.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 				E92E46C5289FC26F0067DA0A /* Live.swift in Sources */,
-				E9E7CBAE277CD8EA00E1EB4A /* GetAllStationsUseCase.swift in Sources */,
-				E9E7CBDA277D14C300E1EB4A /* MapPresenter.swift in Sources */,
 				E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */,
-				E9E7CBBE277CE7D800E1EB4A /* RemoveFavoriteStationUseCase.swift in Sources */,
-				E9E7CBD9277D14C300E1EB4A /* DetailsPresenter.swift in Sources */,
-				E9E7CBD8277D14C300E1EB4A /* UIStation.swift in Sources */,
-				E9E7CBE7277D14EF00E1EB4A /* DetailsViewController.swift in Sources */,
-				E9E7CBBC277CE75800E1EB4A /* AddFavoriteStationUseCase.swift in Sources */,
-				E9E7CBB4277CDAFC00E1EB4A /* GetMapStyleUseCase.swift in Sources */,
+				E9FD3B2628B76AD100BB7B7C /* MapStyle.swift in Sources */,
+				E9E7CBD8277D14C300E1EB4A /* StationMarker.swift in Sources */,
 				E93163DD28A6DD9C0019459F /* ApiClient.swift in Sources */,
-				E9E7CBB8277CDE5600E1EB4A /* IsFavoriteStationUseCase.swift in Sources */,
-				E9E7CBC4277D0C7800E1EB4A /* GetFavoriteStationsIds.swift in Sources */,
-				E9E7CBC6277D0DBF00E1EB4A /* SetMapStyleUseCase.swift in Sources */,
-				EBADFBBE20B0798A0012909E /* Loadable.swift in Sources */,
-				E9E7CBDB277D14C300E1EB4A /* FavoritePresenter.swift in Sources */,
-				E9C2FF1923CE26A900FFCDBD /* PresenterAssembly.swift in Sources */,
+				E9FD3B2428B76AC500BB7B7C /* FetchStationObjectResponse.swift in Sources */,
 				E9EC31ED28A78E2E006DB23A /* FavoriteEmptyCell.swift in Sources */,
-				E9E7CBF7277DC6B400E1EB4A /* MapStyle.swift in Sources */,
-				E9E7CBCC277D10B700E1EB4A /* DomainStation.swift in Sources */,
-				E9E7CBB2277CDA0100E1EB4A /* DataSourceAssembly.swift in Sources */,
-				EBADFBBF20B0798A0012909E /* PopupManager.swift in Sources */,
-				E9E7CBDC277D14C300E1EB4A /* SettingsPresenter.swift in Sources */,
-				E9E7CBF5277DC6B400E1EB4A /* FetchStationObjectResponse.swift in Sources */,
+				E9E7CBCC277D10B700E1EB4A /* Station.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,14 +633,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EBA372FC1EA3A0CC00E214DD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EBA372FD1EA3A0CC00E214DD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

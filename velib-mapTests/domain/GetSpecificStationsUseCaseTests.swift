@@ -25,7 +25,7 @@ class GetSpecificStationsUseCaseTests: XCTestCase {
     }
     
     func testInvoke() async throws {
-        let expectedDomainStation = [DomainStation(
+        let expectedDomainStation = [Station(
             freeDocks: 1,
             code: "123",
             name: "Test name",
@@ -36,7 +36,7 @@ class GetSpecificStationsUseCaseTests: XCTestCase {
             geolocation: [12.23, 45.67]
         )]
         
-        let expectedUIStation = expectedDomainStation.map { $0.toUIITem() }
+        let expectedUIStation = expectedDomainStation.map { $0.toStationPin() }
         let expectedIds = ["1"]
         
         stub(mockRepository) { stub in

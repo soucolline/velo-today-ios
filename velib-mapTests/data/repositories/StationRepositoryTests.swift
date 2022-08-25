@@ -44,7 +44,7 @@ class StationRepositoryTests: XCTestCase {
         ]
 
         let expectedDomainStation = [
-            DomainStation(
+            Station(
                 freeDocks: 1,
                 code: "123",
                 name: "Test station",
@@ -81,7 +81,7 @@ class StationRepositoryTests: XCTestCase {
         ]
 
         let expectedDomainStation = [
-            DomainStation(
+            Station(
                 freeDocks: 1,
                 code: "123",
                 name: "Test station",
