@@ -1,17 +1,17 @@
 disabled_rules:
   - trailing_whitespace
   - switch_case_alignment
+  - force_unwrapping
+  - force_cast
 opt_in_rules:
   - empty_count
   - empty_string
-  - fatal_error_message
   - first_where
   - private_action
   - private_outlet
   - toggle_bool
   - unused_declaration
   - strong_iboutlet
-  - force_unwrapping
   - implicit_return
 
 included:
@@ -19,10 +19,6 @@ included:
 excluded:
   - Pods
   - velib-mapTests
-
-force_cast: warning # implicitly
-force_try:
-  severity: warning # explicitly
 
 line_length: 200
 
