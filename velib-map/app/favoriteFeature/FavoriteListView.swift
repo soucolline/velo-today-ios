@@ -13,14 +13,17 @@ struct FavoriteState: Equatable {
   var detailState: DetailsState = .init()
   var stations: [Station] = []
   var isFetchStationRequestInFlight = false
+  var errorText = "Impossible de charger les données de certaines stations"
   
   @BindableState var shouldShowError = false
+  @BindableState var shouldShowEmptyView = false
 }
 
 enum FavoriteAction: Equatable, BindableAction {
   case detailsAction(DetailsAction)
   case fetchFavoriteStations
   case fetchFavoriteStationsResponse(TaskResult<[Station]>)
+  case hideErrorView
   case binding(BindingAction<FavoriteState>)
 }
 
@@ -40,6 +43,14 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
       return .none
     }
     
+    guard !stationsIds.isEmpty else {
+      state.isFetchStationRequestInFlight = false
+      state.shouldShowEmptyView = true
+      return .none
+    }
+    
+    state.shouldShowEmptyView = false
+    
     return .task {
       var stations: [Station] = []
       
@@ -55,6 +66,10 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
       return await .fetchFavoriteStationsResponse(TaskResult { [stations] in stations })
     }
     
+  case .hideErrorView:
+    state.shouldShowError = false
+    return .none
+    
   case .fetchFavoriteStationsResponse(.success(let stationResponse)):
     state.isFetchStationRequestInFlight = false
     state.stations = stationResponse
@@ -63,7 +78,10 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
   case .fetchFavoriteStationsResponse(.failure(let error)):
       state.isFetchStationRequestInFlight = false
       state.shouldShowError = true
-    return .none
+    return .task {
+      try await Task.sleep(nanoseconds: NSEC_PER_SEC * 2)
+      return .hideErrorView
+    }
     
   case .binding:
     return .none
@@ -80,41 +98,49 @@ struct FavoriteListView: View {
   var body: some View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
-        List {
-          if viewStore.isFetchStationRequestInFlight {
-            ForEach(0..<10) { _ in
-              FavoriteEmptyCell()
-            }
-          } else {
-            ForEach(viewStore.stations) { station in
-              NavigationLink(
-                destination: DetailsView(
-                  store: Store(
-                    initialState: DetailsState(
-                      station: station.toStationPin(),
-                      title: station.name,
-                      isFavoriteStation: true),
-                    reducer: detailsReducer,
-                    environment: DetailsEnvironment(userDefaultsClient: .live())
+        ZStack {
+          List {
+            if viewStore.isFetchStationRequestInFlight {
+              ForEach(0..<10) { _ in
+                FavoriteEmptyCell()
+              }
+            } else {
+              ForEach(viewStore.stations) { station in
+                NavigationLink(
+                  destination: DetailsView(
+                    store: Store(
+                      initialState: DetailsState(
+                        station: station.toStationPin(),
+                        title: station.name,
+                        isFavoriteStation: true),
+                      reducer: detailsReducer,
+                      environment: DetailsEnvironment(userDefaultsClient: .live())
+                    )
                   )
-                )
-              ) {
-                FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
+                ) {
+                  FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
+                }
               }
             }
           }
-        }
-        .navigationTitle("Favoris")
-        .task {
-          viewStore.send(.fetchFavoriteStations)
+          .navigationTitle("Favoris")
+          .task {
+            viewStore.send(.fetchFavoriteStations)
+          }
+          
+          if viewStore.shouldShowEmptyView {
+            FavoriteEmptyView()
+          }
+          
+          ErrorView(
+            errorText: .constant(viewStore.errorText),
+            isVisible: viewStore.binding(\.$shouldShowError)
+          )
         }
       }
       .navigationViewStyle(.stack)
       .refreshable {
         viewStore.send(.fetchFavoriteStations)
-      }
-      .alert(isPresented: viewStore.binding(\.$shouldShowError)) {
-        Alert(title: Text("Erreur"), message: Text("Impossible de charger les données de certaines stations"))
       }
     }
   }

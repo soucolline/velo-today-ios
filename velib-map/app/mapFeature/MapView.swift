@@ -13,17 +13,22 @@ import MapKit
 struct MapState: Equatable {
   var stations: [Station] = []
   var hasAlreadyLoadedStations = false
+  var errorText = "Impossible de charger les données de certaines stations"
   
   var coordinateRegion = MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 48.866667, longitude: 2.333333),
     latitudinalMeters: 1000 * 2.0,
     longitudinalMeters: 1000 * 2.0
   )
+  
+  @BindableState var shouldShowError = false
 }
 
-enum MapAction: Equatable {
+enum MapAction: Equatable, BindableAction {
   case fetchAllStations
   case fetchAllStationsResponse(TaskResult<[Station]>)
+  case hideError
+  case binding(BindingAction<MapState>)
 }
 
 struct MapEnvironment {
@@ -44,6 +49,16 @@ let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, action, e
     
   case .fetchAllStationsResponse(.failure(let error)):
     state.hasAlreadyLoadedStations = true
+    return .task {
+      try await Task.sleep(nanoseconds: NSEC_PER_SEC * 2)
+      return .hideError
+    }
+    
+  case .hideError:
+    state.shouldShowError = false
+    return .none
+    
+  case .binding:
     return .none
   }
 }
@@ -55,7 +70,7 @@ struct MapView: View {
   var body: some View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
-        VStack {
+        ZStack {
           Map(coordinateRegion: .constant(viewStore.coordinateRegion), interactionModes: [.all], annotationItems: viewStore.stations.map { $0.toStationPin() }) { item in
             MapAnnotation(coordinate: item.coordinate) {
               NavigationLink(
@@ -78,6 +93,11 @@ struct MapView: View {
               }
             }
           }
+          
+          ErrorView(
+            errorText: .constant(viewStore.errorText),
+            isVisible: viewStore.binding(\.$shouldShowError)
+          )
         }
         .navigationTitle("Stations disponibles")
         .toolbar {
