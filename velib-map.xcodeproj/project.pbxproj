@@ -11,6 +11,8 @@
 		E9054DDF28B805E600A48A15 /* DetailsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9054DDE28B805E600A48A15 /* DetailsReducerTests.swift */; };
 		E9054DE128B80B7E00A48A15 /* FavoriteReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9054DE028B80B7E00A48A15 /* FavoriteReducerTests.swift */; };
 		E9054DE328B8134700A48A15 /* SettingsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9054DE228B8134700A48A15 /* SettingsReducerTests.swift */; };
+		E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3E728DCC3A300001181 /* MapViewController.swift */; };
+		E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3EB28DCC5D700001181 /* MapUIKit.swift */; };
 		E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C1289FC26F0067DA0A /* Mocks.swift */; };
 		E92E46C5289FC26F0067DA0A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C2289FC26F0067DA0A /* Live.swift */; };
 		E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E46C3289FC26F0067DA0A /* Interface.swift */; };
@@ -28,7 +30,6 @@
 		E9E7CBD8277D14C300E1EB4A /* StationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */; };
 		E9EC31ED28A78E2E006DB23A /* FavoriteEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */; };
 		E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */; };
-		E9EC31F128AA2920006DB23A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31F028AA2920006DB23A /* MapView.swift */; };
 		E9FD3B2428B76AC500BB7B7C /* FetchStationObjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD3B2328B76AC500BB7B7C /* FetchStationObjectResponse.swift */; };
 		E9FD3B2628B76AD100BB7B7C /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD3B2528B76AD100BB7B7C /* MapStyle.swift */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
@@ -66,6 +67,8 @@
 		E9054DDE28B805E600A48A15 /* DetailsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsReducerTests.swift; sourceTree = "<group>"; };
 		E9054DE028B80B7E00A48A15 /* FavoriteReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteReducerTests.swift; sourceTree = "<group>"; };
 		E9054DE228B8134700A48A15 /* SettingsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducerTests.swift; sourceTree = "<group>"; };
+		E911D3E728DCC3A300001181 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E911D3EB28DCC5D700001181 /* MapUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUIKit.swift; sourceTree = "<group>"; };
 		E92E46C1289FC26F0067DA0A /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		E92E46C2289FC26F0067DA0A /* Live.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
 		E92E46C3289FC26F0067DA0A /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationMarker.swift; sourceTree = "<group>"; };
 		E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEmptyCell.swift; sourceTree = "<group>"; };
 		E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
-		E9EC31F028AA2920006DB23A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FD3B2328B76AC500BB7B7C /* FetchStationObjectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchStationObjectResponse.swift; sourceTree = "<group>"; };
@@ -202,7 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				E9E7CBCB277D10B700E1EB4A /* Station.swift */,
-				E9EC31F028AA2920006DB23A /* MapView.swift */,
+				E911D3E728DCC3A300001181 /* MapViewController.swift */,
+				E911D3EB28DCC5D700001181 /* MapUIKit.swift */,
 				E9E7CBD2277D14C200E1EB4A /* StationMarker.swift */,
 			);
 			path = mapFeature;
@@ -446,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E943073028B96A0F00D767D0 /* FavoriteEmptyView.swift in Sources */,
-				E9EC31F128AA2920006DB23A /* MapView.swift in Sources */,
 				E92E46C6289FC26F0067DA0A /* Interface.swift in Sources */,
 				E9B4AE09289EF01D00260AEC /* SettingsView.swift in Sources */,
 				E92E46C4289FC26F0067DA0A /* Mocks.swift in Sources */,
@@ -454,9 +456,11 @@
 				E9E7CBC9277D0FF500E1EB4A /* StationResponse.swift in Sources */,
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
 				E943072E28B958C800D767D0 /* ErrorView.swift in Sources */,
+				E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */,
 				E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 				E92E46C5289FC26F0067DA0A /* Live.swift in Sources */,
+				E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */,
 				E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */,
 				E9FD3B2628B76AD100BB7B7C /* MapStyle.swift in Sources */,
 				E9E7CBD8277D14C300E1EB4A /* StationMarker.swift in Sources */,
@@ -765,7 +769,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = exactVersion;
-				version = 0.39.0;
+				version = 0.40.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

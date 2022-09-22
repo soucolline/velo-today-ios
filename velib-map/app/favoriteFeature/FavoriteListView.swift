@@ -161,6 +161,16 @@ struct FavoriteListView_Previews: PreviewProvider {
               freeMechanicalBikes: 14,
               freeElectricBikes: 15,
               geolocation: [12, 13]
+            ),
+            Station(
+              freeDocks: 1,
+              code: "Code",
+              name: "Name of the station but super long",
+              totalDocks: 12,
+              freeBikes: 10,
+              freeMechanicalBikes: 14,
+              freeElectricBikes: 15,
+              geolocation: [12, 13]
             )
           ],
           isFetchStationRequestInFlight: false

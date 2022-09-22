@@ -21,6 +21,8 @@ final class StationMarker: NSObject, MKAnnotation, Identifiable {
   let freeElectricBikes: Int
   let geolocation: [Double]
   
+  var title: String?
+  
   lazy var coordinate: CLLocationCoordinate2D = {
     CLLocationCoordinate2D(latitude: geolocation.first!, longitude: geolocation.last!)
   }()
@@ -44,6 +46,7 @@ final class StationMarker: NSObject, MKAnnotation, Identifiable {
     self.freeElectricBikes = freeElectricBikes
     self.geolocation = geolocation
     
+    self.title = name
     super.init()
   }
   

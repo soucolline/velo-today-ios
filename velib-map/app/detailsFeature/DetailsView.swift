@@ -116,7 +116,7 @@ struct DetailsView: View {
         .padding(20)
       }
       .navigationTitle(viewStore.title)
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarTitleDisplayMode(.large)
       .onAppear {
         viewStore.send(.onAppear)
       }
