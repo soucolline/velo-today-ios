@@ -35,7 +35,8 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     action: /AppAction.map,
     environment: {
       MapEnvironment(
-        apiClient: $0.apiClient
+        apiClient: $0.apiClient,
+        userDefaultsClient: $0.userDefaultsClient
       )
     }
   ),

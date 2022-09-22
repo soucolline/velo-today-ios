@@ -15,6 +15,7 @@ struct MapState: Equatable {
   var stations: [Station] = []
   var hasAlreadyLoadedStations = false
   var errorText = "Impossible de charger les données de certaines stations"
+  var mapStyle: MapStyle = .normal
   
   var coordinateRegion = MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 48.866667, longitude: 2.333333),
@@ -28,12 +29,14 @@ struct MapState: Equatable {
 enum MapAction: Equatable, BindableAction {
   case fetchAllStations
   case fetchAllStationsResponse(TaskResult<[Station]>)
+  case getMapStyle
   case hideError
   case binding(BindingAction<MapState>)
 }
 
 struct MapEnvironment {
   var apiClient: ApiClient
+  var userDefaultsClient: UserDefaultsClient
 }
 
 let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, action, environment in
@@ -54,6 +57,13 @@ let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, action, e
       try await Task.sleep(nanoseconds: NSEC_PER_SEC * 2)
       return .hideError
     }
+    
+  case .getMapStyle:
+    let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
+    let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
+    
+    state.mapStyle = mapStyle
+    return .none
     
   case .hideError:
     state.shouldShowError = false

@@ -55,11 +55,25 @@ class MapViewController: UIViewController {
         self.mapView.addAnnotations(stations.map { $0.toStationPin() })
       })
       .store(in: &cancellables)
+    
+    self.viewStore.publisher.mapStyle
+      .sink(receiveValue: { mapStyle in
+          switch mapStyle {
+          case .normal:
+            self.mapView.mapType = .standard
+          case .hybrid:
+            self.mapView.mapType = .hybrid
+          case .satellite:
+            self.mapView.mapType = .satellite
+          }
+      })
+      .store(in: &cancellables)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.setMapStyle()
+    
+    viewStore.send(.getMapStyle)
   }
   
   func setupNavigationBar() {
@@ -86,17 +100,6 @@ class MapViewController: UIViewController {
     
     self.mapView.delegate = self
     self.mapView.showsUserLocation = true
-  }
-
-  func setMapStyle() {
-//    switch self.presenter.getMapStyleForDisplay() {
-//    case .normal:
-//      self.mapView.mapType = .standard
-//    case .hybrid:
-//      self.mapView.mapType = .hybrid
-//    case .satellite:
-//      self.mapView.mapType = .satellite
-//    }
   }
   
   func centerMapOnLocation(location: CLLocation) {
