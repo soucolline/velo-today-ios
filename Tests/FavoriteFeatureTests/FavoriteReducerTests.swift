@@ -9,8 +9,8 @@
 import Foundation
 import ComposableArchitecture
 import XCTest
-
-@testable import velib_map
+import FavoriteFeature
+import Models
 
 @MainActor
 class FavoriteReducerTests: XCTestCase {

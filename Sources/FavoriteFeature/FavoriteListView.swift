@@ -15,13 +15,13 @@ import Models
 import DetailsFeature
 
 public struct FavoriteState: Equatable {
-  var detailState: DetailsState
-  var stations: [Station]
-  var isFetchStationRequestInFlight: Bool
-  var errorText: String
+  public var detailState: DetailsState
+  public var stations: [Station]
+  public var isFetchStationRequestInFlight: Bool
+  public var errorText: String
   
-  @BindableState var shouldShowError: Bool
-  @BindableState var shouldShowEmptyView: Bool
+  @BindableState public var shouldShowError: Bool
+  @BindableState public var shouldShowEmptyView: Bool
   
   public init(
     detailState: DetailsState = .init(),
@@ -49,9 +49,9 @@ public enum FavoriteAction: Equatable, BindableAction {
 }
 
 public struct FavoriteEnvironment {
-  var userDefaultsClient: UserDefaultsClient
-  var apiClient: ApiClient
-  var mainQueue: AnySchedulerOf<DispatchQueue>
+  public var userDefaultsClient: UserDefaultsClient
+  public var apiClient: ApiClient
+  public var mainQueue: AnySchedulerOf<DispatchQueue>
   
   public init(
     userDefaultsClient: UserDefaultsClient = .live(),
@@ -179,6 +179,7 @@ public struct FavoriteListView: View {
   }
 }
 
+#if DEBUG
 struct FavoriteListView_Previews: PreviewProvider {
   static var previews: some View {
     FavoriteListView(
@@ -218,3 +219,4 @@ struct FavoriteListView_Previews: PreviewProvider {
     )
   }
 }
+#endif

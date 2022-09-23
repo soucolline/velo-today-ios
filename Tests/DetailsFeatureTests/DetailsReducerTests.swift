@@ -9,9 +9,9 @@
 import Foundation
 import ComposableArchitecture
 import XCTest
+import Models
+import DetailsFeature
 import MapKit
-
-@testable import velib_map
 
 class DetailsReducerTests: XCTestCase {
   private let station = StationMarker(

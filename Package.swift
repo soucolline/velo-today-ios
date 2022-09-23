@@ -30,6 +30,16 @@ let package = Package(
         name: "DetailsFeature",
         dependencies: [
           "Models",
+          "UserDefaultsClient",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
+      .testTarget(
+        name: "DetailsFeatureTests",
+        dependencies: [
+          "DetailsFeature",
+          "UserDefaultsClient",
+          "Models",
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
@@ -41,6 +51,17 @@ let package = Package(
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
+      .testTarget(
+        name: "FavoriteFeatureTests",
+        dependencies: [
+          "ApiClient",
+          "FavoriteFeature",
+          "Models",
+          "DetailsFeature",
+          "UserDefaultsClient",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
       .target(
         name: "MapFeature",
         dependencies: [
@@ -49,11 +70,32 @@ let package = Package(
          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
+      .testTarget(
+        name: "MapFeatureTests",
+        dependencies: [
+          "ApiClient",
+          "MapFeature",
+          "Models",
+          "DetailsFeature",
+          "UserDefaultsClient",
+         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
       .target(name: "Models"),
       .target(
         name: "SettingsFeature",
         dependencies: [
           "Models",
+          "UserDefaultsClient",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
+      .testTarget(
+        name: "SettingsFeatureTests",
+        dependencies: [
+          "SettingsFeature",
+          "Models",
+          "UserDefaultsClient",
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),

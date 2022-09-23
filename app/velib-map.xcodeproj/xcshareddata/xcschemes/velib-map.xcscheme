@@ -49,14 +49,43 @@
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E94D2B9522DB94AB00A80A76"
-               BuildableName = "velib-mapTests.xctest"
-               BlueprintName = "velib-mapTests"
-               ReferencedContainer = "container:velib-map.xcodeproj">
+               BlueprintIdentifier = "DetailsFeatureTests"
+               BuildableName = "DetailsFeatureTests"
+               BlueprintName = "DetailsFeatureTests"
+               ReferencedContainer = "container:..">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FavoriteFeatureTests"
+               BuildableName = "FavoriteFeatureTests"
+               BlueprintName = "FavoriteFeatureTests"
+               ReferencedContainer = "container:..">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "MapFeatureTests"
+               BuildableName = "MapFeatureTests"
+               BlueprintName = "MapFeatureTests"
+               ReferencedContainer = "container:..">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SettingsFeatureTests"
+               BuildableName = "SettingsFeatureTests"
+               BlueprintName = "SettingsFeatureTests"
+               ReferencedContainer = "container:..">
             </BuildableReference>
          </TestableReference>
       </Testables>

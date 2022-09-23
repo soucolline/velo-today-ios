@@ -8,8 +8,8 @@
 
 import XCTest
 import ComposableArchitecture
-
-@testable import velib_map
+import MapFeature
+import Models
 
 @MainActor
 class MapReducerTests: XCTestCase {

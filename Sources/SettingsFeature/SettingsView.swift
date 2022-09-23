@@ -33,8 +33,8 @@ public enum SettingsAction: Equatable, BindableAction {
 }
 
 public struct SettingsEnvironment {
-  var userDefaultsClient: UserDefaultsClient
-  var getAppVersion: () -> String
+  public var userDefaultsClient: UserDefaultsClient
+  public var getAppVersion: () -> String
   
   public init(
     userDefaultsClient: UserDefaultsClient,
@@ -113,6 +113,7 @@ public struct SettingsView: View {
   }
 }
 
+#if DEBUG
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView(
@@ -127,3 +128,4 @@ struct SettingsView_Previews: PreviewProvider {
     )
   }
 }
+#endif
