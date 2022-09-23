@@ -13,11 +13,10 @@
 		E9054DE328B8134700A48A15 /* SettingsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9054DE228B8134700A48A15 /* SettingsReducerTests.swift */; };
 		E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04528DE1BD00011F0CE /* UserDefaultsClient */; };
 		E911A04828DE1DD70011F0CE /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04728DE1DD70011F0CE /* Models */; };
-		E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3E728DCC3A300001181 /* MapViewController.swift */; };
-		E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3EB28DCC5D700001181 /* MapUIKit.swift */; };
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
+		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
 		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
 		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
 		E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */; };
@@ -56,8 +55,6 @@
 		E9054DDE28B805E600A48A15 /* DetailsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsReducerTests.swift; sourceTree = "<group>"; };
 		E9054DE028B80B7E00A48A15 /* FavoriteReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteReducerTests.swift; sourceTree = "<group>"; };
 		E9054DE228B8134700A48A15 /* SettingsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducerTests.swift; sourceTree = "<group>"; };
-		E911D3E728DCC3A300001181 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		E911D3EB28DCC5D700001181 /* MapUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUIKit.swift; sourceTree = "<group>"; };
 		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +87,7 @@
 				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
 				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
 				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
+				E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */,
 				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
 				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
 				ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */,
@@ -131,21 +129,11 @@
 			path = "velib-mapTests";
 			sourceTree = "<group>";
 		};
-		E9FD3B1C28B7691C00BB7B7C /* mapFeature */ = {
-			isa = PBXGroup;
-			children = (
-				E911D3E728DCC3A300001181 /* MapViewController.swift */,
-				E911D3EB28DCC5D700001181 /* MapUIKit.swift */,
-			);
-			path = mapFeature;
-			sourceTree = "<group>";
-		};
 		E9FD3B2728B76F2E00BB7B7C /* app */ = {
 			isa = PBXGroup;
 			children = (
 				E98B1AFF28A021E800056BCE /* App.swift */,
 				E930259428AD7EF500F44210 /* TabBarView.swift */,
-				E9FD3B1C28B7691C00BB7B7C /* mapFeature */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -236,6 +224,7 @@
 				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
 				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
 				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
+				E9C79B0528DE449200B870D8 /* MapFeature */,
 			);
 			productName = "velib-map";
 			productReference = EBA372F51EA3A0CC00E214DD /* velib-map.app */;
@@ -378,9 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
-				E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
-				E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +687,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		E9C79B0528DE449200B870D8 /* MapFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MapFeature;
 		};
 		E9FB1F2628DE29CF004BFE32 /* ApiClient */ = {
 			isa = XCSwiftPackageProductDependency;

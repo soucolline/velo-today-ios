@@ -10,6 +10,7 @@ let package = Package(
       .library(name: "ApiClient", targets: ["ApiClient"]),
       .library(name: "DetailsFeature", targets: ["DetailsFeature"]),
       .library(name: "FavoriteFeature", targets: ["FavoriteFeature"]),
+      .library(name: "MapFeature", targets: ["MapFeature"]),
       .library(name: "Models", targets: ["Models"]),
       .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
@@ -18,25 +19,42 @@ let package = Package(
       .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.40.2"),
     ],
     targets: [
-      .target(name: "ApiClient"),
+      .target(
+        name: "ApiClient",
+        dependencies: [
+          "Models",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
       .target(
         name: "DetailsFeature",
         dependencies: [
           "Models",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
       .target(
         name: "FavoriteFeature",
         dependencies: [
           "Models",
-          "DetailsFeature"
+          "DetailsFeature",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
+      .target(
+        name: "MapFeature",
+        dependencies: [
+          "Models",
+          "DetailsFeature",
+         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
       .target(name: "Models"),
       .target(
         name: "SettingsFeature",
         dependencies: [
-          "Models"
+          "Models",
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
       .target(

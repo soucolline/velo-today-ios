@@ -13,6 +13,7 @@ import ApiClient
 import SettingsFeature
 import DetailsFeature
 import FavoriteFeature
+import MapFeature
 
 struct AppState: Equatable {
   var mapState: MapState = .init()
