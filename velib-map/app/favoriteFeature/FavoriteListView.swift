@@ -30,6 +30,7 @@ enum FavoriteAction: Equatable, BindableAction {
 struct FavoriteEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var apiClient: ApiClient
+  var mainQueue: AnySchedulerOf<DispatchQueue>
 }
 
 let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment> { state, action, environment in
@@ -38,12 +39,9 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
     state.stations = []
     state.isFetchStationRequestInFlight = true
     
-    guard let stationsIds = environment.userDefaultsClient.arrayForKey("favoriteStationsCode") else {
-      state.isFetchStationRequestInFlight = false
-      return .none
-    }
-    
-    guard !stationsIds.isEmpty else {
+    guard let stationsIds = environment.userDefaultsClient.arrayForKey("favoriteStationsCode"),
+          !stationsIds.isEmpty
+    else {
       state.isFetchStationRequestInFlight = false
       state.shouldShowEmptyView = true
       return .none
@@ -79,7 +77,7 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
       state.isFetchStationRequestInFlight = false
       state.shouldShowError = true
     return .task {
-      try await Task.sleep(nanoseconds: NSEC_PER_SEC * 2)
+      try await environment.mainQueue.sleep(for: 2)
       return .hideErrorView
     }
     
@@ -161,6 +159,16 @@ struct FavoriteListView_Previews: PreviewProvider {
               freeMechanicalBikes: 14,
               freeElectricBikes: 15,
               geolocation: [12, 13]
+            ),
+            Station(
+              freeDocks: 1,
+              code: "Code",
+              name: "Name of the station but super long",
+              totalDocks: 12,
+              freeBikes: 10,
+              freeMechanicalBikes: 14,
+              freeElectricBikes: 15,
+              geolocation: [12, 13]
             )
           ],
           isFetchStationRequestInFlight: false
@@ -168,7 +176,8 @@ struct FavoriteListView_Previews: PreviewProvider {
         reducer: favoriteReducer,
         environment: .init(
           userDefaultsClient: .noop,
-          apiClient: .unimplemented
+          apiClient: .unimplemented,
+          mainQueue: .main
         )
       )
     )

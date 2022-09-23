@@ -27,6 +27,7 @@ struct AppEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var getAppVersion: () -> String
   var apiClient: ApiClient
+  var mainQueue: AnySchedulerOf<DispatchQueue>
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
@@ -35,7 +36,8 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     action: /AppAction.map,
     environment: {
       MapEnvironment(
-        apiClient: $0.apiClient
+        apiClient: $0.apiClient,
+        userDefaultsClient: $0.userDefaultsClient
       )
     }
   ),
@@ -56,7 +58,8 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     environment: {
       FavoriteEnvironment(
         userDefaultsClient: $0.userDefaultsClient,
-        apiClient: $0.apiClient
+        apiClient: $0.apiClient,
+        mainQueue: $0.mainQueue
       )
     }
   ),
@@ -78,35 +81,37 @@ struct TabBarView: View {
   let store: Store<AppState, AppAction>
   
   var body: some View {
-    TabView {
-      MapView(
-        store: self.store.scope(
-          state: \.mapState,
-          action: AppAction.map
+    NavigationView {
+      TabView {
+        MapUIKit(
+          store: self.store.scope(
+            state: \.mapState,
+            action: AppAction.map
+          )
         )
-      )
-      .tabItem {
-        Label("Stations", systemImage: "bicycle.circle.fill")
-      }
-      
-      FavoriteListView(
-        store: self.store.scope(
-          state: \.favoriteState,
-          action: AppAction.favorite
+        .tabItem {
+          Label("Stations", systemImage: "bicycle.circle.fill")
+        }
+        
+        FavoriteListView(
+          store: self.store.scope(
+            state: \.favoriteState,
+            action: AppAction.favorite
+          )
         )
-      )
-      .tabItem {
-        Label("Favoris", systemImage: "star.circle.fill")
-      }
-      
-      SettingsView(
-        store: self.store.scope(
-          state: \.settingsState,
-          action: AppAction.settings
+        .tabItem {
+          Label("Favoris", systemImage: "star.circle.fill")
+        }
+        
+        SettingsView(
+          store: self.store.scope(
+            state: \.settingsState,
+            action: AppAction.settings
+          )
         )
-      )
-      .tabItem {
-        Label("Réglages", systemImage: "gear.circle.fill")
+        .tabItem {
+          Label("Réglages", systemImage: "gear.circle.fill")
+        }
       }
     }
   }
@@ -121,7 +126,8 @@ struct TabBarView_Previews: PreviewProvider {
         environment: .init(
           userDefaultsClient: .noop,
           getAppVersion: { "123" },
-          apiClient: .unimplemented
+          apiClient: .unimplemented,
+          mainQueue: .unimplemented
         )
       )
     )
