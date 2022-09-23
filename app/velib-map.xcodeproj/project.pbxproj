@@ -49,7 +49,6 @@
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
@@ -109,14 +108,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E94D2B9722DB94AB00A80A76 /* velib-mapTests */ = {
-			isa = PBXGroup;
-			children = (
-				E94D2B9A22DB94AB00A80A76 /* Info.plist */,
-			);
-			path = "velib-mapTests";
-			sourceTree = "<group>";
-		};
 		E9FD3B2728B76F2E00BB7B7C /* app */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +132,6 @@
 			children = (
 				E9C80F3B28DE198100F6488F /* velo-today-ios */,
 				EBA372F71EA3A0CC00E214DD /* velib-map */,
-				E94D2B9722DB94AB00A80A76 /* velib-mapTests */,
 				EBA372F61EA3A0CC00E214DD /* Products */,
 				680088FA8F458C29EE8BAF70 /* Pods */,
 				45F125794AA96C2A4D3B6D5B /* Frameworks */,
