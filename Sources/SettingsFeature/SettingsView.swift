@@ -12,9 +12,9 @@ import UserDefaultsClient
 import Models
 
 public struct SettingsState: Equatable {
-  public var mapStyle = MapStyle.normal
-  public var appVersion = "1.0.0"
-  @BindableState public var selectedPickerIndex = 0
+  public var mapStyle: MapStyle
+  public var appVersion: String
+  @BindableState public var selectedPickerIndex: Int
   
   public init(
     mapStyle: MapStyle = MapStyle.normal,

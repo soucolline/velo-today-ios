@@ -6,23 +6,41 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
+import Foundation
 import ComposableArchitecture
 import SwiftUI
 import ApiClient
 import UserDefaultsClient
 import Models
+import DetailsFeature
 
-struct FavoriteState: Equatable {
-  var detailState: DetailsState = .init()
-  var stations: [Station] = []
-  var isFetchStationRequestInFlight = false
-  var errorText = "Impossible de charger les données de certaines stations"
+public struct FavoriteState: Equatable {
+  var detailState: DetailsState
+  var stations: [Station]
+  var isFetchStationRequestInFlight: Bool
+  var errorText: String
   
-  @BindableState var shouldShowError = false
-  @BindableState var shouldShowEmptyView = false
+  @BindableState var shouldShowError: Bool
+  @BindableState var shouldShowEmptyView: Bool
+  
+  public init(
+    detailState: DetailsState = .init(),
+    stations: [Station] = [],
+    isFetchStationRequestInFlight: Bool = false,
+    errorText: String = "Impossible de charger les données de certaines stations",
+    shouldShowError: Bool = false,
+    shouldShowEmptyView: Bool = false
+  ) {
+    self.detailState = detailState
+    self.stations = stations
+    self.isFetchStationRequestInFlight = isFetchStationRequestInFlight
+    self.errorText = errorText
+    self.shouldShowError = shouldShowError
+    self.shouldShowEmptyView = shouldShowEmptyView
+  }
 }
 
-enum FavoriteAction: Equatable, BindableAction {
+public enum FavoriteAction: Equatable, BindableAction {
   case detailsAction(DetailsAction)
   case fetchFavoriteStations
   case fetchFavoriteStationsResponse(TaskResult<[Station]>)
@@ -30,13 +48,23 @@ enum FavoriteAction: Equatable, BindableAction {
   case binding(BindingAction<FavoriteState>)
 }
 
-struct FavoriteEnvironment {
+public struct FavoriteEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var apiClient: ApiClient
   var mainQueue: AnySchedulerOf<DispatchQueue>
+  
+  public init(
+    userDefaultsClient: UserDefaultsClient = .live(),
+    apiClient: ApiClient = .live,
+    mainQueue: AnySchedulerOf<DispatchQueue> = DispatchQueue.main.eraseToAnyScheduler()
+  ) {
+    self.userDefaultsClient = userDefaultsClient
+    self.apiClient = apiClient
+    self.mainQueue = mainQueue
+  }
 }
 
-let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment> { state, action, environment in
+public let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment> { state, action, environment in
   switch action {
   case .fetchFavoriteStations:
     state.stations = []
@@ -93,10 +121,14 @@ let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment
 }
 .binding()
 
-struct FavoriteListView: View {
+public struct FavoriteListView: View {
   let store: Store<FavoriteState, FavoriteAction>
   
-  var body: some View {
+  public init(store: Store<FavoriteState, FavoriteAction>) {
+    self.store = store
+  }
+  
+  public var body: some View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
         ZStack {

@@ -12,39 +12,56 @@ import MapKit
 import UserDefaultsClient
 import Models
 
-struct DetailsState: Equatable {
-  var station: StationMarker = StationMarker(
-    freeDocks: 1,
-    code: "123",
-    name: "Test name",
-    totalDocks: 4,
-    freeBikes: 5,
-    freeMechanicalBikes: 6,
-    freeElectricBikes: 7,
-    geolocation: [20, 30]
-  )
+public struct DetailsState: Equatable {
+  public var station: StationMarker
+  public var title: String
+  public var isFavoriteStation: Bool
   
-  var title = ""
-  var isFavoriteStation = false
+  @BindableState public var stationLocation: MKCoordinateRegion
   
-  @BindableState var stationLocation =  MKCoordinateRegion(
-    center: CLLocationCoordinate2D(latitude: 48.866667, longitude: 2.333333),
-    latitudinalMeters: 2000,
-    longitudinalMeters: 2000
-  )
+  public init(
+    station: StationMarker = StationMarker(
+      freeDocks: 1,
+      code: "123",
+      name: "Test name",
+      totalDocks: 4,
+      freeBikes: 5,
+      freeMechanicalBikes: 6,
+      freeElectricBikes: 7,
+      geolocation: [20, 30]
+    ),
+    title: String = "",
+    isFavoriteStation: Bool = false,
+    stationLocation: MKCoordinateRegion = MKCoordinateRegion(
+      center: CLLocationCoordinate2D(
+        latitude: 48.866667,
+        longitude: 2.333333),
+      latitudinalMeters: 2000,
+      longitudinalMeters: 2000
+    )
+  ) {
+    self.station = station
+    self.title = title
+    self.isFavoriteStation = isFavoriteStation
+    self.stationLocation = stationLocation
+  }
 }
 
-enum DetailsAction: Equatable, BindableAction {
+public enum DetailsAction: Equatable, BindableAction {
   case onAppear
   case binding(BindingAction<DetailsState>)
   case favoriteButtonTapped
 }
 
-struct DetailsEnvironment {
-  var userDefaultsClient: UserDefaultsClient
+public struct DetailsEnvironment {
+  public var userDefaultsClient: UserDefaultsClient
+  
+  public init(userDefaultsClient: UserDefaultsClient) {
+    self.userDefaultsClient = userDefaultsClient
+  }
 }
 
-let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { state, action, environment in
+public let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { state, action, environment in
   switch action {
   case .onAppear:
     state.title = state.station.name
@@ -79,10 +96,14 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
 .binding()
 .debug()
 
-struct DetailsView: View {
+public struct DetailsView: View {
   let store: Store<DetailsState, DetailsAction>
   
-  var body: some View {
+  public init(store: Store<DetailsState, DetailsAction>) {
+    self.store = store
+  }
+  
+  public var body: some View {
     WithViewStore(self.store) { viewStore in
       VStack(spacing: 0) {
         Map(coordinateRegion: viewStore.binding(\.$stationLocation), interactionModes: [], annotationItems: [viewStore.station]) {

@@ -16,16 +16,11 @@
 		E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3E728DCC3A300001181 /* MapViewController.swift */; };
 		E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911D3EB28DCC5D700001181 /* MapUIKit.swift */; };
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
-		E93163DB28A6D6A60019459F /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163DA28A6D6A60019459F /* FavoriteListView.swift */; };
-		E943072E28B958C800D767D0 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943072D28B958C800D767D0 /* ErrorView.swift */; };
-		E943073028B96A0F00D767D0 /* FavoriteEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943072F28B96A0F00D767D0 /* FavoriteEmptyView.swift */; };
-		E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFD289FFE4800056BCE /* DetailsView.swift */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
-		E9EC31ED28A78E2E006DB23A /* FavoriteEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */; };
-		E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */; };
 		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
 		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
+		E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 		ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */; };
@@ -64,18 +59,12 @@
 		E911D3E728DCC3A300001181 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E911D3EB28DCC5D700001181 /* MapUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUIKit.swift; sourceTree = "<group>"; };
 		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		E93163DA28A6D6A60019459F /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
-		E943072D28B958C800D767D0 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		E943072F28B96A0F00D767D0 /* FavoriteEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEmptyView.swift; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D2B9A22DB94AB00A80A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E98B1AFD289FFE4800056BCE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9C80F3B28DE198100F6488F /* velo-today-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "velo-today-ios"; path = ..; sourceTree = "<group>"; };
-		E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEmptyCell.swift; sourceTree = "<group>"; };
-		E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +90,7 @@
 				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
 				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
 				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
+				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
 				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
 				ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */,
 			);
@@ -141,25 +131,6 @@
 			path = "velib-mapTests";
 			sourceTree = "<group>";
 		};
-		E9FD3B1828B766AD00BB7B7C /* favoriteFeature */ = {
-			isa = PBXGroup;
-			children = (
-				E93163DA28A6D6A60019459F /* FavoriteListView.swift */,
-				E9EC31EC28A78E2E006DB23A /* FavoriteEmptyCell.swift */,
-				E9EC31EE28A794AB006DB23A /* FavoriteCell.swift */,
-				E943072F28B96A0F00D767D0 /* FavoriteEmptyView.swift */,
-			);
-			path = favoriteFeature;
-			sourceTree = "<group>";
-		};
-		E9FD3B1A28B7690800BB7B7C /* detailsFeature */ = {
-			isa = PBXGroup;
-			children = (
-				E98B1AFD289FFE4800056BCE /* DetailsView.swift */,
-			);
-			path = detailsFeature;
-			sourceTree = "<group>";
-		};
 		E9FD3B1C28B7691C00BB7B7C /* mapFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +145,7 @@
 			children = (
 				E98B1AFF28A021E800056BCE /* App.swift */,
 				E930259428AD7EF500F44210 /* TabBarView.swift */,
-				E943072D28B958C800D767D0 /* ErrorView.swift */,
 				E9FD3B1C28B7691C00BB7B7C /* mapFeature */,
-				E9FD3B1A28B7690800BB7B7C /* detailsFeature */,
-				E9FD3B1828B766AD00BB7B7C /* favoriteFeature */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -267,6 +235,7 @@
 				E911A04728DE1DD70011F0CE /* Models */,
 				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
 				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
+				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
 			);
 			productName = "velib-map";
 			productReference = EBA372F51EA3A0CC00E214DD /* velib-map.app */;
@@ -408,16 +377,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E943073028B96A0F00D767D0 /* FavoriteEmptyView.swift in Sources */,
-				E93163DB28A6D6A60019459F /* FavoriteListView.swift in Sources */,
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
-				E943072E28B958C800D767D0 /* ErrorView.swift in Sources */,
 				E911D3EC28DCC5D700001181 /* MapUIKit.swift in Sources */,
-				E9EC31EF28A794AB006DB23A /* FavoriteCell.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 				E911D3E828DCC3A300001181 /* MapViewController.swift in Sources */,
-				E98B1AFE289FFE4800056BCE /* DetailsView.swift in Sources */,
-				E9EC31ED28A78E2E006DB23A /* FavoriteEmptyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +708,10 @@
 		E9FB1F2828DE2B21004BFE32 /* SettingsFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SettingsFeature;
+		};
+		E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FavoriteFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

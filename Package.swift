@@ -8,18 +8,29 @@ let package = Package(
     platforms: [.iOS(.v15)],
     products: [
       .library(name: "ApiClient", targets: ["ApiClient"]),
+      .library(name: "DetailsFeature", targets: ["DetailsFeature"]),
+      .library(name: "FavoriteFeature", targets: ["FavoriteFeature"]),
       .library(name: "Models", targets: ["Models"]),
       .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
-//      .library(name: "Models", targets: ["Models"]),
-//      .library(name: "UVClient", targets: ["UVClient"])
     ],
     dependencies: [
       .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.40.2"),
     ],
     targets: [
+      .target(name: "ApiClient"),
       .target(
-        name: "ApiClient"
+        name: "DetailsFeature",
+        dependencies: [
+          "Models",
+        ]
+      ),
+      .target(
+        name: "FavoriteFeature",
+        dependencies: [
+          "Models",
+          "DetailsFeature"
+        ]
       ),
       .target(name: "Models"),
       .target(
@@ -34,37 +45,5 @@ let package = Package(
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       )
-//      .target(
-//        name: "AppFeature",
-//        dependencies: [
-//          "Models",
-//          "UVClient",
-//          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-//          .product(name: "ComposableCoreLocation", package: "composable-core-location")
-//        ]
-//      ),
-//      .target(name: "Models"),
-//      .target(
-//        name: "UVClient",
-//        dependencies: [
-//          "Models",
-//          .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-//        ]
-//      ),
-//      .testTarget(
-//        name: "AppFeatureTests",
-//        dependencies: [
-//          "AppFeature",
-//          "Models",
-//          "UVClient",
-//          .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-//        ]
-//      ),
-//      .testTarget(
-//        name: "ModelsTests",
-//        dependencies: [
-//          "Models"
-//        ]
-//      )
     ]
 )

@@ -11,6 +11,8 @@ import SwiftUI
 import UserDefaultsClient
 import ApiClient
 import SettingsFeature
+import DetailsFeature
+import FavoriteFeature
 
 struct AppState: Equatable {
   var mapState: MapState = .init()
