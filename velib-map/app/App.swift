@@ -21,7 +21,8 @@ struct Application: App {
           environment: .init(
             userDefaultsClient: .live(),
             getAppVersion: { Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String },
-            apiClient: .live
+            apiClient: .live,
+            mainQueue: .main
           )
         )
       )

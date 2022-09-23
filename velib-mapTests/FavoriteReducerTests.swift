@@ -22,7 +22,9 @@ class FavoriteReducerTests: XCTestCase {
       reducer: favoriteReducer,
       environment: .init(
         userDefaultsClient: .failing,
-        apiClient: .unimplemented)
+        apiClient: .unimplemented,
+        mainQueue: DispatchQueue.test.eraseToAnyScheduler()
+      )
     )
     
     store.environment.userDefaultsClient.arrayForKey = { _ in nil }
@@ -31,6 +33,7 @@ class FavoriteReducerTests: XCTestCase {
       $0.stations = []
       $0.isFetchStationRequestInFlight = true
       $0.isFetchStationRequestInFlight = false
+      $0.shouldShowEmptyView = true
     }
   }
   
@@ -40,7 +43,9 @@ class FavoriteReducerTests: XCTestCase {
       reducer: favoriteReducer,
       environment: .init(
         userDefaultsClient: .failing,
-        apiClient: .unimplemented)
+        apiClient: .unimplemented,
+        mainQueue: DispatchQueue.test.eraseToAnyScheduler()
+      )
     )
     
     let stationResponse1 = Station(
@@ -84,17 +89,20 @@ class FavoriteReducerTests: XCTestCase {
   }
   
   func testFetchFavoriteStations_Failure() async {
+    let mainQueue = DispatchQueue.test
     let store = TestStore(
       initialState: .init(),
       reducer: favoriteReducer,
       environment: .init(
         userDefaultsClient: .failing,
-        apiClient: .unimplemented)
+        apiClient: .unimplemented,
+        mainQueue: mainQueue.eraseToAnyScheduler()
+      )
     )
     
     let error = "\(#file) test error"
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in ["123", "456"] }
+    store.environment.userDefaultsClient.arrayForKey = { _ in ["123"] }
     store.environment.apiClient.fetchStation = { _ in throw error }
     
     await store.send(.fetchFavoriteStations) {
@@ -105,6 +113,11 @@ class FavoriteReducerTests: XCTestCase {
     await store.receive(.fetchFavoriteStationsResponse(.failure(error))) {
       $0.isFetchStationRequestInFlight = false
       $0.shouldShowError = true
+    }
+    
+    await mainQueue.advance(by: 2)
+    await store.receive(.hideErrorView) {
+      $0.shouldShowError = false
     }
   }
 }

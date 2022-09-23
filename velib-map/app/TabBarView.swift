@@ -27,6 +27,7 @@ struct AppEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var getAppVersion: () -> String
   var apiClient: ApiClient
+  var mainQueue: AnySchedulerOf<DispatchQueue>
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
@@ -57,7 +58,8 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     environment: {
       FavoriteEnvironment(
         userDefaultsClient: $0.userDefaultsClient,
-        apiClient: $0.apiClient
+        apiClient: $0.apiClient,
+        mainQueue: $0.mainQueue
       )
     }
   ),
@@ -124,7 +126,8 @@ struct TabBarView_Previews: PreviewProvider {
         environment: .init(
           userDefaultsClient: .noop,
           getAppVersion: { "123" },
-          apiClient: .unimplemented
+          apiClient: .unimplemented,
+          mainQueue: .unimplemented
         )
       )
     )

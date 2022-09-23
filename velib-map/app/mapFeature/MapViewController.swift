@@ -47,8 +47,18 @@ class MapViewController: UIViewController {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     self.locationManager.requestLocation()
     
-    self.viewStore.send(.fetchAllStations)
+    setupViews()
     
+    self.viewStore.send(.fetchAllStations)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    viewStore.send(.getMapStyle)
+  }
+  
+  func setupViews() {
     self.viewStore.publisher.stations
       .sink(receiveValue: { stations in
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -68,12 +78,26 @@ class MapViewController: UIViewController {
           }
       })
       .store(in: &cancellables)
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
     
-    viewStore.send(.getMapStyle)
+    self.viewStore.publisher.shouldShowError
+      .sink(receiveValue: { [weak self] shouldShow in
+        guard let self else { return }
+        
+        if shouldShow {
+          let alert = UIAlertController(
+            title: "Erreur",
+            message: self.viewStore.errorText,
+            preferredStyle: .alert
+          )
+          let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.viewStore.send(.hideError)
+          }
+          alert.addAction(okAction)
+          
+          self.present(alert, animated: true)
+        }
+      })
+      .store(in: &cancellables)
   }
   
   func setupNavigationBar() {

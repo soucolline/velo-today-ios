@@ -18,7 +18,8 @@ class MapReducerTests: XCTestCase {
       initialState: .init(),
       reducer: mapReducer,
       environment: .init(
-        apiClient: .unimplemented
+        apiClient: .unimplemented,
+        userDefaultsClient: .noop
       )
     )
     
@@ -47,7 +48,8 @@ class MapReducerTests: XCTestCase {
       initialState: .init(),
       reducer: mapReducer,
       environment: .init(
-        apiClient: .unimplemented
+        apiClient: .unimplemented,
+        userDefaultsClient: .noop
       )
     )
     
@@ -57,6 +59,7 @@ class MapReducerTests: XCTestCase {
     await store.send(.fetchAllStations)
     await store.receive(.fetchAllStationsResponse(.failure(error))) {
       $0.hasAlreadyLoadedStations = true
+      $0.shouldShowError = true
     }
   }
 }
