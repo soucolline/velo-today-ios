@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
 import ApiClient
+import SettingsFeature
 
 struct AppState: Equatable {
   var mapState: MapState = .init()

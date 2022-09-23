@@ -9,6 +9,7 @@ let package = Package(
     products: [
       .library(name: "ApiClient", targets: ["ApiClient"]),
       .library(name: "Models", targets: ["Models"]),
+      .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
 //      .library(name: "Models", targets: ["Models"]),
 //      .library(name: "UVClient", targets: ["UVClient"])
@@ -21,6 +22,12 @@ let package = Package(
         name: "ApiClient"
       ),
       .target(name: "Models"),
+      .target(
+        name: "SettingsFeature",
+        dependencies: [
+          "Models"
+        ]
+      ),
       .target(
         name: "UserDefaultsClient",
         dependencies: [

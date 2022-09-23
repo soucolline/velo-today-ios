@@ -9,24 +9,43 @@
 import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
+import Models
 
-struct SettingsState: Equatable {
-  var mapStyle = MapStyle.normal
-  var appVersion = "1.0.0"
-  @BindableState var selectedPickerIndex = 0
+public struct SettingsState: Equatable {
+  public var mapStyle = MapStyle.normal
+  public var appVersion = "1.0.0"
+  @BindableState public var selectedPickerIndex = 0
+  
+  public init(
+    mapStyle: MapStyle = MapStyle.normal,
+    appVersion: String = "1.0.0",
+    selectedPickerIndex: Int = 0
+  ) {
+    self.mapStyle = mapStyle
+    self.appVersion = appVersion
+    self.selectedPickerIndex = selectedPickerIndex
+  }
 }
 
-enum SettingsAction: Equatable, BindableAction {
+public enum SettingsAction: Equatable, BindableAction {
   case onAppear
   case binding(BindingAction<SettingsState>)
 }
 
-struct SettingsEnvironment {
+public struct SettingsEnvironment {
   var userDefaultsClient: UserDefaultsClient
   var getAppVersion: () -> String
+  
+  public init(
+    userDefaultsClient: UserDefaultsClient,
+    getAppVersion: @escaping () -> String
+  ) {
+    self.userDefaultsClient = userDefaultsClient
+    self.getAppVersion = getAppVersion
+  }
 }
 
-let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment> { state, action, environment in
+public let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment> { state, action, environment in
   switch action {
   case .onAppear:
     let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
@@ -53,10 +72,14 @@ let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment
 .binding()
 .debug()
 
-struct SettingsView: View {
+public struct SettingsView: View {
   let store: Store<SettingsState, SettingsAction>
   
-  var body: some View {
+  public init(store: Store<SettingsState, SettingsAction>) {
+    self.store = store
+  }
+  
+  public var body: some View {
     WithViewStore(store) { viewStore in
       NavigationView {
         List {

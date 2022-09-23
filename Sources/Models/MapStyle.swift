@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum MapStyle: String, CaseIterable {
+public enum MapStyle: String, CaseIterable {
   
   case normal = "normalStyle"
   case hybrid = "hybridStyle"
   case satellite = "satelliteStyle"
   
-  var pickerValue: Int {
+  public var pickerValue: Int {
     switch self {
     case .normal: return 0
     case .hybrid: return 1
@@ -22,7 +22,7 @@ enum MapStyle: String, CaseIterable {
     }
   }
   
-  static func initFromInt(value: Int) -> MapStyle {
+  public static func initFromInt(value: Int) -> MapStyle {
     switch value {
     case 0: return .normal
     case 1: return .hybrid

@@ -11,6 +11,7 @@ import Foundation
 import SwiftUI
 import UserDefaultsClient
 import ApiClient
+import SettingsFeature
 
 @main
 struct Application: App {
