@@ -11,6 +11,8 @@ import Foundation
 import SwiftUI
 import MapKit
 import UserDefaultsClient
+import Models
+import ApiClient
 
 struct MapState: Equatable {
   var stations: [Station] = []

@@ -10,6 +10,7 @@ import ComposableArchitecture
 import Foundation
 import SwiftUI
 import UserDefaultsClient
+import ApiClient
 
 @main
 struct Application: App {

@@ -8,7 +8,9 @@
 
 import ComposableArchitecture
 import SwiftUI
+import ApiClient
 import UserDefaultsClient
+import Models
 
 struct FavoriteState: Equatable {
   var detailState: DetailsState = .init()

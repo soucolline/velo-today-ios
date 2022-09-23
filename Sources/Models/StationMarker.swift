@@ -10,24 +10,24 @@ import Foundation
 import CoreLocation
 import MapKit
 
-final class StationMarker: NSObject, MKAnnotation, Identifiable {
+public final class StationMarker: NSObject, MKAnnotation, Identifiable {
   
-  let freeDocks: Int
-  let code: String
-  let name: String
-  let totalDocks: Int
-  let freeBikes: Int
-  let freeMechanicalBikes: Int
-  let freeElectricBikes: Int
-  let geolocation: [Double]
+  public let freeDocks: Int
+  public let code: String
+  public let name: String
+  public let totalDocks: Int
+  public let freeBikes: Int
+  public let freeMechanicalBikes: Int
+  public let freeElectricBikes: Int
+  public let geolocation: [Double]
   
-  var title: String?
+  public var title: String?
   
-  lazy var coordinate: CLLocationCoordinate2D = {
+  public lazy var coordinate: CLLocationCoordinate2D = {
     CLLocationCoordinate2D(latitude: geolocation.first!, longitude: geolocation.last!)
   }()
   
-  init(
+  public init(
     freeDocks: Int,
     code: String,
     name: String,

@@ -7,12 +7,26 @@ let package = Package(
     name: "velo-today-ios",
     platforms: [.iOS(.v15)],
     products: [
-      .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
+      .library(name: "ApiClient", targets: ["ApiClient"]),
+      .library(name: "Models", targets: ["Models"]),
+      .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
 //      .library(name: "Models", targets: ["Models"]),
 //      .library(name: "UVClient", targets: ["UVClient"])
     ],
+    dependencies: [
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.40.2"),
+    ],
     targets: [
-      .target(name: "UserDefaultsClient")
+      .target(
+        name: "ApiClient"
+      ),
+      .target(name: "Models"),
+      .target(
+        name: "UserDefaultsClient",
+        dependencies: [
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      )
 //      .target(
 //        name: "AppFeature",
 //        dependencies: [

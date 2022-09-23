@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 import MapKit
 import UserDefaultsClient
+import Models
 
 struct DetailsState: Equatable {
   var station: StationMarker = StationMarker(

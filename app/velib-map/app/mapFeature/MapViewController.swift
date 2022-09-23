@@ -12,6 +12,7 @@ import MapKit
 import CoreLocation
 import Combine
 import SwiftUI
+import Models
 
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!

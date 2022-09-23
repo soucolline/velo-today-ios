@@ -1,20 +1,15 @@
 //
-//  ApiClient.swift
-//  velib-map
+//  File.swift
+//  
 //
-//  Created by Thomas Guilleminot on 12/08/2022.
-//  Copyright © 2022 Thomas Guilleminot. All rights reserved.
+//  Created by Thomas Guilleminot on 23/09/2022.
 //
 
 import Foundation
-
-struct ApiClient {
-  var fetchStation: @Sendable (String) async throws -> Station
-  var fetchAllStations: @Sendable () async throws -> [Station]
-}
+import Models
 
 extension ApiClient {
-  static let live = Self(
+  public static let live = Self(
     fetchStation: { id in
       let url = URL(string: "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=1000&q=\(id)")!
       
@@ -38,22 +33,3 @@ extension ApiClient {
     }
   )
 }
-
-extension String: Error {
-  
-}
-
-extension String: LocalizedError {
-  public var errorDescription: String? { self }
-}
-
-#if DEBUG
-import XCTestDynamicOverlay
-
-extension ApiClient {
-  static let unimplemented = Self(
-    fetchStation: XCTUnimplemented("\(Self.self) fetchStation unimplemented"),
-    fetchAllStations: XCTUnimplemented("\(Self.self) fetchAllStations unimplemented")
-  )
-}
-#endif

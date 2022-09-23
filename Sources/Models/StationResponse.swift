@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct StationResponse: Codable, Equatable {
-  let freeDocks: Int
-  let code: String
-  let name: String
-  let totalDocks: Int
-  let freeBikes: Int
-  let freeMechanicalBikes: Int
-  let freeElectricBikes: Int
-  let geo: [Double]
+public struct StationResponse: Codable, Equatable {
+  public let freeDocks: Int
+  public let code: String
+  public let name: String
+  public let totalDocks: Int
+  public let freeBikes: Int
+  public let freeMechanicalBikes: Int
+  public let freeElectricBikes: Int
+  public let geo: [Double]
 
   enum CodingKeys: String, CodingKey {
     case freeDocks = "numdocksavailable"
@@ -31,7 +31,7 @@ struct StationResponse: Codable, Equatable {
 }
 
 extension StationResponse {
-  func toStation() -> Station {
+  public func toStation() -> Station {
     Station(
       freeDocks: freeDocks,
       code: code,
