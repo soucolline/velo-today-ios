@@ -8,6 +8,7 @@
 
 import ComposableArchitecture
 import SwiftUI
+import UserDefaultsClient
 
 struct SettingsState: Equatable {
   var mapStyle = MapStyle.normal

@@ -8,6 +8,7 @@
 
 import ComposableArchitecture
 import SwiftUI
+import UserDefaultsClient
 
 struct AppState: Equatable {
   var mapState: MapState = .init()

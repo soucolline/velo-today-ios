@@ -20,7 +20,7 @@ public struct UserDefaultsClient {
     self.getFavoriteStationsIds().contains(code)
   }
   
-  func addFavoriteStation(for code: String) -> Effect<Never, Never> {
+  public func addFavoriteStation(for code: String) -> Effect<Never, Never> {
     var stations = self.getFavoriteStationsIds()
 
     guard !stations.contains(code) else { return .none }
@@ -30,7 +30,7 @@ public struct UserDefaultsClient {
     return self.setArray(stations, Const.favoriteStationsId)
   }
 
-  func removeFavoriteStations(for code: String) -> Effect<Never, Never> {
+  public func removeFavoriteStations(for code: String) -> Effect<Never, Never> {
     var stations = self.getFavoriteStationsIds()
 
     guard stations.contains(code) else { return .none }

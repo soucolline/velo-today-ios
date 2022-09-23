@@ -10,6 +10,7 @@ import ComposableArchitecture
 import Foundation
 import SwiftUI
 import MapKit
+import UserDefaultsClient
 
 struct MapState: Equatable {
   var stations: [Station] = []

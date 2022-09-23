@@ -9,6 +9,7 @@
 import ComposableArchitecture
 import Foundation
 import SwiftUI
+import UserDefaultsClient
 
 @main
 struct Application: App {
