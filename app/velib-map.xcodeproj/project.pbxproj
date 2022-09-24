@@ -10,9 +10,12 @@
 		E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04528DE1BD00011F0CE /* UserDefaultsClient */; };
 		E911A04828DE1DD70011F0CE /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04728DE1DD70011F0CE /* Models */; };
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
+		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
+		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
 		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
 		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
 		E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */; };
@@ -48,6 +51,7 @@
 		2413D55EBACB8020A6DB241A /* Pods-velib-map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-velib-map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-velib-map/Pods-velib-map.debug.xcconfig"; sourceTree = "<group>"; };
 		3C18E88C379F1440D3F3D185 /* Pods_velib_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_velib_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		E93F912628DF9EE200012D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -81,6 +85,8 @@
 				E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */,
 				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
 				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
+				E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */,
+				E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				ECE4F335AE599A31397EF909 /* Pods_velib_map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +129,7 @@
 				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
 				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
 				EBADFBD220B080A20012909E /* Info.plist */,
+				E93F912628DF9EE200012D2C /* GoogleService-Info.plist */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -203,6 +210,8 @@
 				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
 				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
 				E9C79B0528DE449200B870D8 /* MapFeature */,
+				E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */,
 			);
 			productName = "velib-map";
 			productReference = EBA372F51EA3A0CC00E214DD /* velib-map.app */;
@@ -242,6 +251,7 @@
 			mainGroup = EBA372EC1EA3A0CC00E214DD;
 			packageReferences = (
 				E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EBA372F61EA3A0CC00E214DD /* Products */;
 			projectDirPath = "";
@@ -267,6 +277,7 @@
 			files = (
 				EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */,
 				EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */,
+				E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +654,14 @@
 				version = 0.40.2;
 			};
 		};
+		E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 9.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -662,6 +681,16 @@
 		E9C79B0528DE449200B870D8 /* MapFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MapFeature;
+		};
+		E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		E9FB1F2628DE29CF004BFE32 /* ApiClient */ = {
 			isa = XCSwiftPackageProductDependency;

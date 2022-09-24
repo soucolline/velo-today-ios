@@ -12,9 +12,12 @@ import SwiftUI
 import UserDefaultsClient
 import ApiClient
 import SettingsFeature
+import Firebase
 
 @main
 struct Application: App {
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  
   var body: some Scene {
     WindowGroup {
       TabBarView(
@@ -30,5 +33,12 @@ struct Application: App {
         )
       )
     }
+  }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
   }
 }
