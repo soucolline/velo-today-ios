@@ -42,8 +42,8 @@ class DetailsReducerTests: XCTestCase {
       $0.title = self.station.name
       $0.stationLocation = MKCoordinateRegion(
         center: self.station.coordinate,
-        latitudinalMeters: 500,
-        longitudinalMeters: 500
+        latitudinalMeters: 200,
+        longitudinalMeters: 200
       )
       $0.isFavoriteStation = true
     }

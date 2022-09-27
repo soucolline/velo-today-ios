@@ -102,7 +102,7 @@ public struct MapUIKit: UIViewControllerRepresentable {
   }
   
   public func makeUIViewController(context: Context) -> some UIViewController {
-    MapViewController(store: self.store)
+    UINavigationController(rootViewController: MapViewController(store: self.store))
   }
   
   public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

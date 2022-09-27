@@ -171,14 +171,20 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     guard let station = view.annotation as? StationMarker else { return }
     
-    let detailView = DetailsView(
+    let detailView = UIHostingController(rootView: DetailsView(
       store: Store(
         initialState: .init(station: station),
         reducer: detailsReducer,
         environment: .init(userDefaultsClient: .live()))
-    )
+    ))
     
-    self.navigationController?.pushViewController(UIHostingController(rootView: detailView), animated: true)
+    if let sheet = detailView.sheetPresentationController {
+      sheet.detents = [.medium()]
+      sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+      sheet.prefersEdgeAttachedInCompactHeight = true
+      sheet.preferredCornerRadius = 12
+    }
+    self.present(detailView, animated: true)
   }
   
 }

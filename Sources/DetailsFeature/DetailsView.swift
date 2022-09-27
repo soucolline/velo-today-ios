@@ -67,8 +67,8 @@ public let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironm
     state.title = state.station.name
     state.stationLocation = MKCoordinateRegion(
       center: state.station.coordinate,
-      latitudinalMeters: 500,
-      longitudinalMeters: 500
+      latitudinalMeters: 200,
+      longitudinalMeters: 200
     )
     
     state.isFavoriteStation = environment.userDefaultsClient.isFavoriteStation(code: state.station.code)
