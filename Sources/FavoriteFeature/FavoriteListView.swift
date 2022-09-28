@@ -134,7 +134,7 @@ public struct FavoriteListView: View {
         ZStack {
           List {
             if viewStore.isFetchStationRequestInFlight {
-              ForEach(0..<10) { _ in
+              ForEach(0..<3) { _ in
                 FavoriteEmptyCell()
               }
             } else {
