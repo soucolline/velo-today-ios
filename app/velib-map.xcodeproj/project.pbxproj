@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04528DE1BD00011F0CE /* UserDefaultsClient */; };
+		E911A04828DE1DD70011F0CE /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04728DE1DD70011F0CE /* Models */; };
+		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
+		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
+		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
+		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
+		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
+		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
+		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
+		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
+		E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */; };
+		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
+		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E94D2B9B22DB94AB00A80A76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBA372ED1EA3A0CC00E214DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBA372F41EA3A0CC00E214DD;
+			remoteInfo = "velib-map";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E9C2FF3923DCA86800FFCDBD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		E93F912628DF9EE200012D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
+		E9C80F3B28DE198100F6488F /* velo-today-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "velo-today-ios"; path = ..; sourceTree = "<group>"; };
+		E9F9715D2802D72500D1DAA8 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9F9715F2802D73600D1DAA8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBA372F51EA3A0CC00E214DD /* velib-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "velib-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBA373021EA3A0CC00E214DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EBADFBD220B080A20012909E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E94D2B9322DB94AB00A80A76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBA372F21EA3A0CC00E214DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */,
+				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
+				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
+				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
+				E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */,
+				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
+				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
+				E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */,
+				E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45F125794AA96C2A4D3B6D5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9F9715F2802D73600D1DAA8 /* Alamofire.framework */,
+				E9F9715D2802D72500D1DAA8 /* Moya.framework */,
+				E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9FD3B2728B76F2E00BB7B7C /* app */ = {
+			isa = PBXGroup;
+			children = (
+				E98B1AFF28A021E800056BCE /* App.swift */,
+				E930259428AD7EF500F44210 /* TabBarView.swift */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		EB54F9B520B07595008221A0 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */,
+				EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */,
+				EBADFBD220B080A20012909E /* Info.plist */,
+				E93F912628DF9EE200012D2C /* GoogleService-Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EBA372EC1EA3A0CC00E214DD = {
+			isa = PBXGroup;
+			children = (
+				E9C80F3B28DE198100F6488F /* velo-today-ios */,
+				EBA372F71EA3A0CC00E214DD /* velib-map */,
+				EBA372F61EA3A0CC00E214DD /* Products */,
+				45F125794AA96C2A4D3B6D5B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBA372F61EA3A0CC00E214DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBA372F51EA3A0CC00E214DD /* velib-map.app */,
+				E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBA372F71EA3A0CC00E214DD /* velib-map */ = {
+			isa = PBXGroup;
+			children = (
+				E9FD3B2728B76F2E00BB7B7C /* app */,
+				E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */,
+				EB54F9B520B07595008221A0 /* SupportingFiles */,
+			);
+			path = "velib-map";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E94D2B9522DB94AB00A80A76 /* velib-mapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */;
+			buildPhases = (
+				E94D2B9222DB94AB00A80A76 /* Sources */,
+				E94D2B9322DB94AB00A80A76 /* Frameworks */,
+				E94D2B9422DB94AB00A80A76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E94D2B9C22DB94AB00A80A76 /* PBXTargetDependency */,
+			);
+			name = "velib-mapTests";
+			productName = "velib-mapTests";
+			productReference = E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EBA372F41EA3A0CC00E214DD /* velib-map */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBA373071EA3A0CC00E214DD /* Build configuration list for PBXNativeTarget "velib-map" */;
+			buildPhases = (
+				EBA372F11EA3A0CC00E214DD /* Sources */,
+				EBA372F21EA3A0CC00E214DD /* Frameworks */,
+				EBA372F31EA3A0CC00E214DD /* Resources */,
+				EB11657120A6DAF40086F8D7 /* SwiftLint */,
+				E9C2FF3923DCA86800FFCDBD /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "velib-map";
+			packageProductDependencies = (
+				E9B4AE02289EEF1000260AEC /* ComposableArchitecture */,
+				E911A04528DE1BD00011F0CE /* UserDefaultsClient */,
+				E911A04728DE1DD70011F0CE /* Models */,
+				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
+				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
+				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
+				E9C79B0528DE449200B870D8 /* MapFeature */,
+				E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */,
+			);
+			productName = "velib-map";
+			productReference = EBA372F51EA3A0CC00E214DD /* velib-map.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBA372ED1EA3A0CC00E214DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1250;
+				ORGANIZATIONNAME = "Thomas Guilleminot";
+				TargetAttributes = {
+					E94D2B9522DB94AB00A80A76 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = XDX42S5M9N;
+						ProvisioningStyle = Automatic;
+					};
+					EBA372F41EA3A0CC00E214DD = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = XDX42S5M9N;
+						LastSwiftMigration = 0930;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = EBA372F01EA3A0CC00E214DD /* Build configuration list for PBXProject "velib-map" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBA372EC1EA3A0CC00E214DD;
+			packageReferences = (
+				E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = EBA372F61EA3A0CC00E214DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBA372F41EA3A0CC00E214DD /* velib-map */,
+				E94D2B9522DB94AB00A80A76 /* velib-mapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E94D2B9422DB94AB00A80A76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBA372F31EA3A0CC00E214DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */,
+				EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */,
+				E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EB11657120A6DAF40086F8D7 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E94D2B9222DB94AB00A80A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBA372F11EA3A0CC00E214DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
+				E98B1B0028A021E800056BCE /* App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E94D2B9C22DB94AB00A80A76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBA372F41EA3A0CC00E214DD /* velib-map */;
+			targetProxy = E94D2B9B22DB94AB00A80A76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBA373021EA3A0CC00E214DD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E94D2B9D22DB94AB00A80A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Cuckoo\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Keys-framework\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Moya\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "velib-mapTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-mapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E94D2B9E22DB94AB00A80A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "velib-mapTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-mapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EBA373051EA3A0CC00E214DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EBA373061EA3A0CC00E214DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBA373081EA3A0CC00E214DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.10.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
+				PROVISIONING_PROFILE_SPECIFIER = "velib-today_dev";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EBA373091EA3A0CC00E214DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.10.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "600004c0-06e2-45b1-ab37-456b3d7e1f45";
+				PROVISIONING_PROFILE_SPECIFIER = "velib-today_appstore";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E94D2B9F22DB94AB00A80A76 /* Build configuration list for PBXNativeTarget "velib-mapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E94D2B9D22DB94AB00A80A76 /* Debug */,
+				E94D2B9E22DB94AB00A80A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBA372F01EA3A0CC00E214DD /* Build configuration list for PBXProject "velib-map" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBA373051EA3A0CC00E214DD /* Debug */,
+				EBA373061EA3A0CC00E214DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBA373071EA3A0CC00E214DD /* Build configuration list for PBXNativeTarget "velib-map" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBA373081EA3A0CC00E214DD /* Debug */,
+				EBA373091EA3A0CC00E214DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 0.40.2;
+			};
+		};
+		E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 9.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E911A04528DE1BD00011F0CE /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		E911A04728DE1DD70011F0CE /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
+		};
+		E9B4AE02289EEF1000260AEC /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		E9C79B0528DE449200B870D8 /* MapFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MapFeature;
+		};
+		E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		E9FB1F2628DE29CF004BFE32 /* ApiClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ApiClient;
+		};
+		E9FB1F2828DE2B21004BFE32 /* SettingsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SettingsFeature;
+		};
+		E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FavoriteFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EBA372ED1EA3A0CC00E214DD /* Project object */;
+}
