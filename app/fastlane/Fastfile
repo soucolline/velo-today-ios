@@ -1,0 +1,13 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Run tests"
+  lane :tests do
+    ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+    ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+    run_tests(
+      devices: "iPhone 14 Pro",
+      scheme: "velib-map"
+    )
+  end
+end
