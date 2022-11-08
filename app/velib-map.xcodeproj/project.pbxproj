@@ -518,6 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
@@ -545,6 +546,7 @@
 				);
 				MARKETING_VERSION = 2.0.0;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "600004c0-06e2-45b1-ab37-456b3d7e1f45";
