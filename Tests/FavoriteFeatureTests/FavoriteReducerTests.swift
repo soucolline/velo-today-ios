@@ -71,10 +71,8 @@ class FavoriteReducerTests: XCTestCase {
     )
     
     store.environment.userDefaultsClient.arrayForKey = { _ in ["123", "456"] }
-    store.environment.apiClient.fetchStation = { station in
-      if station == "123" { return stationResponse1 }
-      if station == "456" { return stationResponse2 }
-      fatalError("should not happen")
+    store.environment.apiClient.fetchAllStations = {
+      [stationResponse1, stationResponse2]
     }
     
     await store.send(.fetchFavoriteStations) {
@@ -103,7 +101,7 @@ class FavoriteReducerTests: XCTestCase {
     let error = "\(#file) test error"
     
     store.environment.userDefaultsClient.arrayForKey = { _ in ["123"] }
-    store.environment.apiClient.fetchStation = { _ in throw error }
+    store.environment.apiClient.fetchAllStations = { throw error }
     
     await store.send(.fetchFavoriteStations) {
       $0.stations = []

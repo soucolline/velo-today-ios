@@ -81,18 +81,13 @@ public let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvi
     state.shouldShowEmptyView = false
     
     return .task {
-      var stations: [Station] = []
-      
-      for id in stationsIds {
-        do {
-          let stationId = try await environment.apiClient.fetchStation(id)
-          stations.append(stationId)
-        } catch let error {
-          return .fetchFavoriteStationsResponse(TaskResult.failure(error))
+      await .fetchFavoriteStationsResponse(
+        TaskResult {
+          try await environment.apiClient.fetchAllStations().filter { station in
+            return stationsIds.first(where: { id in id == station.code }) != nil
+          }
         }
-      }
-      
-      return await .fetchFavoriteStationsResponse(TaskResult { [stations] in stations })
+      )
     }
     
   case .hideErrorView:
@@ -157,9 +152,6 @@ public struct FavoriteListView: View {
             }
           }
           .navigationTitle("Favoris")
-          .task {
-            viewStore.send(.fetchFavoriteStations)
-          }
           
           if viewStore.shouldShowEmptyView {
             FavoriteEmptyView()
@@ -173,6 +165,9 @@ public struct FavoriteListView: View {
       }
       .navigationViewStyle(.stack)
       .refreshable {
+        viewStore.send(.fetchFavoriteStations)
+      }
+      .task {
         viewStore.send(.fetchFavoriteStations)
       }
     }

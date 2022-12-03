@@ -11,16 +11,10 @@ import Models
 
 struct FetchStationObjectResponseRoot: Decodable {
   
-  let records: [FetchStationObjectResponse]
+  let data: FetchStationObjectResponseData
   
 }
 
-struct FetchStationObjectResponse: Codable {
-  
-  let station: StationResponse
-  
-  enum CodingKeys: String, CodingKey {
-    case station = "fields"
-  }
-  
+struct FetchStationObjectResponseData: Decodable {
+  let stations: [StationResponse]
 }

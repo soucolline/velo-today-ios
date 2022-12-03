@@ -46,8 +46,11 @@ let package = Package(
       .target(
         name: "FavoriteFeature",
         dependencies: [
+          "ApiClient",
+          "DetailsFeature",
           "Models",
           "DetailsFeature",
+          "UserDefaultsClient",
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
@@ -65,6 +68,7 @@ let package = Package(
       .target(
         name: "MapFeature",
         dependencies: [
+          "ApiClient",
           "Models",
           "DetailsFeature",
          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
