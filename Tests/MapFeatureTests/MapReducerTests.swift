@@ -36,10 +36,13 @@ class MapReducerTests: XCTestCase {
     
     store.environment.apiClient.fetchAllStations = { [station] }
     
-    await store.send(.fetchAllStations)
+    await store.send(.fetchAllStations) {
+      $0.shouldShowLoader = true
+    }
     await store.receive(.fetchAllStationsResponse(.success([station]))) {
       $0.stations = [station]
       $0.hasAlreadyLoadedStations = true
+      $0.shouldShowLoader = false
     }
   }
   
@@ -56,10 +59,13 @@ class MapReducerTests: XCTestCase {
     let error = "test failed"
     store.environment.apiClient.fetchAllStations = { throw error }
     
-    await store.send(.fetchAllStations)
+    await store.send(.fetchAllStations) {
+      $0.shouldShowLoader = true
+    }
     await store.receive(.fetchAllStationsResponse(.failure(error))) {
       $0.hasAlreadyLoadedStations = true
       $0.shouldShowError = true
+      $0.shouldShowLoader = false
     }
   }
 }

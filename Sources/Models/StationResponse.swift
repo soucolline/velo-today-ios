@@ -23,21 +23,6 @@ public struct StationResponse: Codable, Equatable {
 }
 
 extension StationResponse {
-  public func toStation() -> Station {
-    Station(
-      freeDocks: freeDocks,
-      code: stationCode,
-      name: "name",
-      totalDocks: -1,
-      freeBikes: freeBikes,
-      freeMechanicalBikes: -1,
-      freeElectricBikes: -1,
-      geolocation: []
-    )
-  }
-}
-
-extension StationResponse {
   public var freeMechanicalBikes: Int? {
     for dict in bikesAvailableType {
       if let mechanical = dict["mechanical"] {
