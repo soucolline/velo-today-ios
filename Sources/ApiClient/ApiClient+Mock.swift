@@ -12,7 +12,6 @@ import XCTestDynamicOverlay
 
 extension ApiClient {
   public static let unimplemented = Self(
-    fetchStation: XCTUnimplemented("\(Self.self) fetchStation unimplemented"),
     fetchAllStations: XCTUnimplemented("\(Self.self) fetchAllStations unimplemented")
   )
 }

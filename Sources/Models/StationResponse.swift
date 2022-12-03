@@ -10,23 +10,15 @@ import Foundation
 
 public struct StationResponse: Codable, Equatable {
   public let freeDocks: Int
-  public let code: String
-  public let name: String
-  public let totalDocks: Int
+  public let stationCode: String
   public let freeBikes: Int
-  public let freeMechanicalBikes: Int
-  public let freeElectricBikes: Int
-  public let geo: [Double]
+  public let bikesAvailableType: [[String: Int]]
 
   enum CodingKeys: String, CodingKey {
-    case freeDocks = "numdocksavailable"
-    case code = "stationcode"
-    case name
-    case totalDocks = "capacity"
-    case freeBikes = "numbikesavailable"
-    case freeMechanicalBikes = "mechanical"
-    case freeElectricBikes = "ebike"
-    case geo = "coordonnees_geo"
+    case freeDocks = "numDocksAvailable"
+    case stationCode
+    case freeBikes = "numBikesAvailable"
+    case bikesAvailableType = "num_bikes_available_types"
   }
 }
 
@@ -34,13 +26,35 @@ extension StationResponse {
   public func toStation() -> Station {
     Station(
       freeDocks: freeDocks,
-      code: code,
-      name: name,
-      totalDocks: totalDocks,
+      code: stationCode,
+      name: "name",
+      totalDocks: -1,
       freeBikes: freeBikes,
-      freeMechanicalBikes: freeMechanicalBikes,
-      freeElectricBikes: freeElectricBikes,
-      geolocation: geo
+      freeMechanicalBikes: -1,
+      freeElectricBikes: -1,
+      geolocation: []
     )
+  }
+}
+
+extension StationResponse {
+  public var freeMechanicalBikes: Int? {
+    for dict in bikesAvailableType {
+      if let mechanical = dict["mechanical"] {
+        return mechanical
+      }
+    }
+    
+    return nil
+  }
+  
+  public var freeElectricBikes: Int? {
+    for dict in bikesAvailableType {
+      if let mechanical = dict["ebike"] {
+        return mechanical
+      }
+    }
+    
+    return nil
   }
 }

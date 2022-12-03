@@ -19,6 +19,7 @@ public struct MapState: Equatable {
   public var hasAlreadyLoadedStations: Bool
   public var errorText: String
   public var mapStyle: MapStyle
+  public var shouldShowLoader: Bool
   public var shouldShowError: Bool
   public var coordinateRegion: MKCoordinateRegion
   
@@ -27,6 +28,7 @@ public struct MapState: Equatable {
     hasAlreadyLoadedStations: Bool = false,
     errorText: String = "Impossible de charger les données de certaines stations",
     mapStyle: MapStyle = .normal,
+    shouldShowLoader: Bool = false,
     shouldShowError: Bool = false,
     coordinateRegion: MKCoordinateRegion = MKCoordinateRegion(
       center: CLLocationCoordinate2D(latitude: 48.866667, longitude: 2.333333),
@@ -37,6 +39,7 @@ public struct MapState: Equatable {
     self.hasAlreadyLoadedStations = hasAlreadyLoadedStations
     self.errorText = errorText
     self.mapStyle = mapStyle
+    self.shouldShowLoader = shouldShowLoader
     self.shouldShowError = shouldShowError
     self.coordinateRegion = coordinateRegion
   }
@@ -63,6 +66,7 @@ public struct MapEnvironment {
 public let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, action, environment in
   switch action {
   case .fetchAllStations:
+    state.shouldShowLoader = true
     return .task(priority: .background) {
       await .fetchAllStationsResponse(TaskResult { try await environment.apiClient.fetchAllStations() })
     }
@@ -70,11 +74,13 @@ public let mapReducer = Reducer<MapState, MapAction, MapEnvironment> { state, ac
   case .fetchAllStationsResponse(.success(let stations)):
     state.stations = stations
     state.hasAlreadyLoadedStations = true
+    state.shouldShowLoader = false
     return .none
     
   case .fetchAllStationsResponse(.failure(let error)):
     state.hasAlreadyLoadedStations = true
     state.shouldShowError = true
+    state.shouldShowLoader = false
     return .none
     
   case .getMapStyle:
