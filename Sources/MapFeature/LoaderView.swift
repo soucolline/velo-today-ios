@@ -11,9 +11,10 @@ public struct LoaderView: View {
   public var body: some View {
     VStack(spacing: 10) {
       ProgressView()
-        .progressViewStyle(CircularProgressViewStyle())
+        .progressViewStyle(CircularProgressViewStyle(tint: .black))
       Text("Chargement des stations")
         .lineLimit(0)
+        .foregroundColor(.black)
     }
     .padding()
     .background(.white)
