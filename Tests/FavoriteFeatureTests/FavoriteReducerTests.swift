@@ -19,15 +19,10 @@ class FavoriteReducerTests: XCTestCase {
       initialState: .init(
         isFetchStationRequestInFlight: true
       ),
-      reducer: favoriteReducer,
-      environment: .init(
-        userDefaultsClient: .failing,
-        apiClient: .unimplemented,
-        mainQueue: DispatchQueue.test.eraseToAnyScheduler()
-      )
+      reducer: FavoriteReducer()
     )
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in nil }
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in nil }
     
     store.send(.fetchFavoriteStations) {
       $0.stations = []
@@ -40,12 +35,7 @@ class FavoriteReducerTests: XCTestCase {
   func testFetchFavoriteStations_Success() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: favoriteReducer,
-      environment: .init(
-        userDefaultsClient: .failing,
-        apiClient: .unimplemented,
-        mainQueue: DispatchQueue.test.eraseToAnyScheduler()
-      )
+      reducer: FavoriteReducer()
     )
     
     let stationResponse1 = Station(
@@ -70,11 +60,9 @@ class FavoriteReducerTests: XCTestCase {
       geolocation: [3,4]
     )
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in ["123", "456"] }
-    store.environment.apiClient.fetchStation = { station in
-      if station == "123" { return stationResponse1 }
-      if station == "456" { return stationResponse2 }
-      fatalError("should not happen")
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in ["123", "456"] }
+    store.dependencies.apiClient.fetchAllStations = {
+      [stationResponse1, stationResponse2]
     }
     
     await store.send(.fetchFavoriteStations) {
@@ -92,18 +80,13 @@ class FavoriteReducerTests: XCTestCase {
     let mainQueue = DispatchQueue.test
     let store = TestStore(
       initialState: .init(),
-      reducer: favoriteReducer,
-      environment: .init(
-        userDefaultsClient: .failing,
-        apiClient: .unimplemented,
-        mainQueue: mainQueue.eraseToAnyScheduler()
-      )
+      reducer: FavoriteReducer().dependency(\.mainQueue, mainQueue.eraseToAnyScheduler())
     )
     
     let error = "\(#file) test error"
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in ["123"] }
-    store.environment.apiClient.fetchStation = { _ in throw error }
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in ["123"] }
+    store.dependencies.apiClient.fetchAllStations = { throw error }
     
     await store.send(.fetchFavoriteStations) {
       $0.stations = []

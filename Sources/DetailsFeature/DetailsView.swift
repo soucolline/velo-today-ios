@@ -12,94 +12,10 @@ import MapKit
 import UserDefaultsClient
 import Models
 
-public struct DetailsState: Equatable {
-  public var station: StationMarker
-  public var title: String
-  public var isFavoriteStation: Bool
-  
-  @BindableState public var stationLocation: MKCoordinateRegion
-  
-  public init(
-    station: StationMarker = StationMarker(
-      freeDocks: 1,
-      code: "123",
-      name: "Test name",
-      totalDocks: 4,
-      freeBikes: 5,
-      freeMechanicalBikes: 6,
-      freeElectricBikes: 7,
-      geolocation: [20, 30]
-    ),
-    title: String = "",
-    isFavoriteStation: Bool = false,
-    stationLocation: MKCoordinateRegion = MKCoordinateRegion(
-      center: CLLocationCoordinate2D(
-        latitude: 48.866667,
-        longitude: 2.333333),
-      latitudinalMeters: 2000,
-      longitudinalMeters: 2000
-    )
-  ) {
-    self.station = station
-    self.title = title
-    self.isFavoriteStation = isFavoriteStation
-    self.stationLocation = stationLocation
-  }
-}
-
-public enum DetailsAction: Equatable, BindableAction {
-  case onAppear
-  case binding(BindingAction<DetailsState>)
-  case favoriteButtonTapped
-}
-
-public struct DetailsEnvironment {
-  public var userDefaultsClient: UserDefaultsClient
-  
-  public init(userDefaultsClient: UserDefaultsClient) {
-    self.userDefaultsClient = userDefaultsClient
-  }
-}
-
-public let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { state, action, environment in
-  switch action {
-  case .onAppear:
-    state.title = state.station.name
-    state.stationLocation = MKCoordinateRegion(
-      center: state.station.coordinate,
-      latitudinalMeters: 200,
-      longitudinalMeters: 200
-    )
-    
-    state.isFavoriteStation = environment.userDefaultsClient.isFavoriteStation(code: state.station.code)
-    
-    return .none
-    
-  case .favoriteButtonTapped:
-    if state.isFavoriteStation {
-      state.isFavoriteStation = false
-      return environment.userDefaultsClient
-        .removeFavoriteStations(for: state.station.code)
-        .fireAndForget()
-      
-    } else {
-      state.isFavoriteStation = true
-      return environment.userDefaultsClient
-        .addFavoriteStation(for: state.station.code)
-        .fireAndForget()
-    }
-    
-  case .binding:
-    return .none
-  }
-}
-.binding()
-.debug()
-
 public struct DetailsView: View {
-  let store: Store<DetailsState, DetailsAction>
+  let store: StoreOf<DetailsReducer>
   
-  public init(store: Store<DetailsState, DetailsAction>) {
+  public init(store: StoreOf<DetailsReducer>) {
     self.store = store
   }
   
@@ -154,10 +70,7 @@ struct DetailsView_Previews: PreviewProvider {
       DetailsView(
         store: Store(
           initialState: .init(),
-          reducer: detailsReducer,
-          environment: DetailsEnvironment(
-            userDefaultsClient: .noop
-          )
+          reducer: DetailsReducer()
         )
       )
     }

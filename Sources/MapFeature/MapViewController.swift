@@ -18,17 +18,18 @@ import DetailsFeature
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  let viewStore: ViewStore<MapState, MapAction>
+  let viewStore: ViewStoreOf<MapReducer>
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!
+  private var loadingView = UIHostingController<LoaderView>(rootView: LoaderView())
 
   var loaderMessage = "Chargement des stations"
   
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
-  init(store: Store<MapState, MapAction>) {
+  init(store: StoreOf<MapReducer>) {
     self.viewStore = ViewStore(store)
     super.init(nibName: nil, bundle: nil)
   }
@@ -43,6 +44,7 @@ class MapViewController: UIViewController {
     
     setupNavigationBar()
     setupMap()
+    setupLoader()
     
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
@@ -81,6 +83,20 @@ class MapViewController: UIViewController {
       })
       .store(in: &cancellables)
     
+    self.viewStore.publisher.shouldShowLoader
+      .sink(receiveValue: { [weak self] shouldShow in
+        if shouldShow {
+          UIView.animate(withDuration: 0.5, delay: 0.0) {
+            self?.loadingView.view.alpha = 1.0
+          }
+        } else {
+          UIView.animate(withDuration: 0.5, delay: 0.0) {
+            self?.loadingView.view.alpha = 0.0
+          }
+        }
+      })
+      .store(in: &cancellables)
+    
     self.viewStore.publisher.shouldShowError
       .sink(receiveValue: { [weak self] shouldShow in
         guard let self else { return }
@@ -100,6 +116,16 @@ class MapViewController: UIViewController {
         }
       })
       .store(in: &cancellables)
+  }
+  
+  func setupLoader() {
+    self.loadingView.view.backgroundColor = .clear
+    self.loadingView.view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+    self.loadingView.view.center = view.center
+    self.loadingView.view.center.y -= self.loadingView.view.frame.height / 2
+    self.loadingView.view.alpha = 0.0
+    
+    self.view.addSubview(loadingView.view)
   }
   
   func setupNavigationBar() {
@@ -174,8 +200,8 @@ extension MapViewController: MKMapViewDelegate {
     let detailView = UIHostingController(rootView: DetailsView(
       store: Store(
         initialState: .init(station: station),
-        reducer: detailsReducer,
-        environment: .init(userDefaultsClient: .live()))
+        reducer: DetailsReducer()
+      )
     ))
     
     if let sheet = detailView.sheetPresentationController {

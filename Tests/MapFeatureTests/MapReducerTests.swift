@@ -16,11 +16,7 @@ class MapReducerTests: XCTestCase {
   func testFetchAllStations_Success() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: mapReducer,
-      environment: .init(
-        apiClient: .unimplemented,
-        userDefaultsClient: .noop
-      )
+      reducer: MapReducer()
     )
     
     let station = Station(
@@ -34,32 +30,34 @@ class MapReducerTests: XCTestCase {
       geolocation: [1, 2]
     )
     
-    store.environment.apiClient.fetchAllStations = { [station] }
+    store.dependencies.apiClient.fetchAllStations = { [station] }
     
-    await store.send(.fetchAllStations)
+    await store.send(.fetchAllStations) {
+      $0.shouldShowLoader = true
+    }
     await store.receive(.fetchAllStationsResponse(.success([station]))) {
       $0.stations = [station]
       $0.hasAlreadyLoadedStations = true
+      $0.shouldShowLoader = false
     }
   }
   
   func testFetchAllStations_Failure() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: mapReducer,
-      environment: .init(
-        apiClient: .unimplemented,
-        userDefaultsClient: .noop
-      )
+      reducer: MapReducer()
     )
     
     let error = "test failed"
-    store.environment.apiClient.fetchAllStations = { throw error }
+    store.dependencies.apiClient.fetchAllStations = { throw error }
     
-    await store.send(.fetchAllStations)
+    await store.send(.fetchAllStations) {
+      $0.shouldShowLoader = true
+    }
     await store.receive(.fetchAllStationsResponse(.failure(error))) {
       $0.hasAlreadyLoadedStations = true
       $0.shouldShowError = true
+      $0.shouldShowLoader = false
     }
   }
 }

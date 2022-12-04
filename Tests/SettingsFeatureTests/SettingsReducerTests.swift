@@ -16,15 +16,11 @@ class SettingsReducerTests: XCTestCase {
   func testOnAppear() {
     let store = TestStore(
       initialState: .init(),
-      reducer: settingsReducer,
-      environment: .init(
-        userDefaultsClient: .failing,
-        getAppVersion: { fatalError("unimplemented") }
-      )
+      reducer: SettingsReducer()
     )
     
-    store.environment.userDefaultsClient.stringForKey = { _ in "hybridStyle" }
-    store.environment.getAppVersion = { "123" }
+    store.dependencies.userDefaultsClient.stringForKey = { _ in "hybridStyle" }
+    store.dependencies.userDefaultsClient.getAppVersion = { "123" }
     
     store.send(.onAppear) {
       $0.mapStyle = .hybrid
@@ -36,14 +32,10 @@ class SettingsReducerTests: XCTestCase {
   func testSelectedPickerIndexBinding() {
     let store = TestStore(
       initialState: .init(),
-      reducer: settingsReducer,
-      environment: .init(
-        userDefaultsClient: .failing,
-        getAppVersion: { fatalError("unimplemented") }
-      )
+      reducer: SettingsReducer()
     )
     
-    store.environment.userDefaultsClient.setString = { _, _ in .none }
+    store.dependencies.userDefaultsClient.setString = { _, _ in .none }
     
     store.send(.set(\.$selectedPickerIndex, 2)) {
       $0.selectedPickerIndex = 2

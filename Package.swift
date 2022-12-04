@@ -16,7 +16,7 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.40.2"),
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.47.2"),
     ],
     targets: [
       .target(
@@ -46,8 +46,10 @@ let package = Package(
       .target(
         name: "FavoriteFeature",
         dependencies: [
-          "Models",
+          "ApiClient",
           "DetailsFeature",
+          "Models",
+          "UserDefaultsClient",
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
       ),
@@ -65,6 +67,7 @@ let package = Package(
       .target(
         name: "MapFeature",
         dependencies: [
+          "ApiClient",
           "Models",
           "DetailsFeature",
          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
