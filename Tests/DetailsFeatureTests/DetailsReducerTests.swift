@@ -30,13 +30,10 @@ class DetailsReducerTests: XCTestCase {
       initialState: .init(
         station: station
       ),
-      reducer: detailsReducer,
-      environment: .init(
-        userDefaultsClient: .failing
-      )
+      reducer: DetailsReducer()
     )
     
-    store.environment.userDefaultsClient.override(array: ["123"], forKey: "favoriteStationsCode")
+    store.dependencies.userDefaultsClient.override(array: ["123"], forKey: "favoriteStationsCode")
     
     store.send(.onAppear) {
       $0.title = self.station.name
@@ -54,13 +51,10 @@ class DetailsReducerTests: XCTestCase {
       initialState: .init(
         isFavoriteStation: true
       ),
-      reducer: detailsReducer,
-      environment: .init(
-        userDefaultsClient: .failing
-      )
+      reducer: DetailsReducer()
     )
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in [] }
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in [] }
     
     store.send(.favoriteButtonTapped) {
       $0.isFavoriteStation = false
@@ -72,14 +66,11 @@ class DetailsReducerTests: XCTestCase {
       initialState: .init(
         isFavoriteStation: false
       ),
-      reducer: detailsReducer,
-      environment: .init(
-        userDefaultsClient: .failing
-      )
+      reducer: DetailsReducer()
     )
     
-    store.environment.userDefaultsClient.arrayForKey = { _ in [] }
-    store.environment.userDefaultsClient.setArray = { _, _ in .none }
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in [] }
+    store.dependencies.userDefaultsClient.setArray = { _, _ in .none }
     
     store.send(.favoriteButtonTapped) {
       $0.isFavoriteStation = true
