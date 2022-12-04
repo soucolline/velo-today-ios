@@ -14,112 +14,10 @@ import UserDefaultsClient
 import Models
 import DetailsFeature
 
-public struct FavoriteState: Equatable {
-  public var detailState: DetailsState
-  public var stations: [Station]
-  public var isFetchStationRequestInFlight: Bool
-  public var errorText: String
-  
-  @BindableState public var shouldShowError: Bool
-  @BindableState public var shouldShowEmptyView: Bool
-  
-  public init(
-    detailState: DetailsState = .init(),
-    stations: [Station] = [],
-    isFetchStationRequestInFlight: Bool = false,
-    errorText: String = "Impossible de charger les données de certaines stations",
-    shouldShowError: Bool = false,
-    shouldShowEmptyView: Bool = false
-  ) {
-    self.detailState = detailState
-    self.stations = stations
-    self.isFetchStationRequestInFlight = isFetchStationRequestInFlight
-    self.errorText = errorText
-    self.shouldShowError = shouldShowError
-    self.shouldShowEmptyView = shouldShowEmptyView
-  }
-}
-
-public enum FavoriteAction: Equatable, BindableAction {
-  case detailsAction(DetailsAction)
-  case fetchFavoriteStations
-  case fetchFavoriteStationsResponse(TaskResult<[Station]>)
-  case hideErrorView
-  case binding(BindingAction<FavoriteState>)
-}
-
-public struct FavoriteEnvironment {
-  public var userDefaultsClient: UserDefaultsClient
-  public var apiClient: ApiClient
-  public var mainQueue: AnySchedulerOf<DispatchQueue>
-  
-  public init(
-    userDefaultsClient: UserDefaultsClient = .live(),
-    apiClient: ApiClient = .live,
-    mainQueue: AnySchedulerOf<DispatchQueue> = DispatchQueue.main.eraseToAnyScheduler()
-  ) {
-    self.userDefaultsClient = userDefaultsClient
-    self.apiClient = apiClient
-    self.mainQueue = mainQueue
-  }
-}
-
-public let favoriteReducer = Reducer<FavoriteState, FavoriteAction, FavoriteEnvironment> { state, action, environment in
-  switch action {
-  case .fetchFavoriteStations:
-    state.stations = []
-    state.isFetchStationRequestInFlight = true
-    
-    guard let stationsIds = environment.userDefaultsClient.arrayForKey("favoriteStationsCode"),
-          !stationsIds.isEmpty
-    else {
-      state.isFetchStationRequestInFlight = false
-      state.shouldShowEmptyView = true
-      return .none
-    }
-    
-    state.shouldShowEmptyView = false
-    
-    return .task {
-      await .fetchFavoriteStationsResponse(
-        TaskResult {
-          try await environment.apiClient.fetchAllStations().filter { station in
-            return stationsIds.first(where: { id in id == station.code }) != nil
-          }
-        }
-      )
-    }
-    
-  case .hideErrorView:
-    state.shouldShowError = false
-    return .none
-    
-  case .fetchFavoriteStationsResponse(.success(let stationResponse)):
-    state.isFetchStationRequestInFlight = false
-    state.stations = stationResponse
-    return .none
-    
-  case .fetchFavoriteStationsResponse(.failure(let error)):
-      state.isFetchStationRequestInFlight = false
-      state.shouldShowError = true
-    return .task {
-      try await environment.mainQueue.sleep(for: 2)
-      return .hideErrorView
-    }
-    
-  case .binding:
-    return .none
-    
-  case .detailsAction:
-    return .none
-  }
-}
-.binding()
-
 public struct FavoriteListView: View {
-  let store: Store<FavoriteState, FavoriteAction>
-  
-  public init(store: Store<FavoriteState, FavoriteAction>) {
+  let store: StoreOf<FavoriteReducer>
+
+  public init(store: StoreOf<FavoriteReducer>) {
     self.store = store
   }
   
@@ -137,12 +35,11 @@ public struct FavoriteListView: View {
                 NavigationLink(
                   destination: DetailsView(
                     store: Store(
-                      initialState: DetailsState(
+                      initialState: DetailsReducer.State(
                         station: station.toStationPin(),
                         title: station.name,
                         isFavoriteStation: true),
-                      reducer: detailsReducer,
-                      environment: DetailsEnvironment(userDefaultsClient: .live())
+                      reducer: DetailsReducer()
                     )
                   )
                 ) {
@@ -179,7 +76,7 @@ struct FavoriteListView_Previews: PreviewProvider {
   static var previews: some View {
     FavoriteListView(
       store: Store(
-        initialState: FavoriteState(
+        initialState: FavoriteReducer.State(
           stations: [
             Station(
               freeDocks: 12,
@@ -204,12 +101,7 @@ struct FavoriteListView_Previews: PreviewProvider {
           ],
           isFetchStationRequestInFlight: false
         ),
-        reducer: favoriteReducer,
-        environment: .init(
-          userDefaultsClient: .noop,
-          apiClient: .unimplemented,
-          mainQueue: .main
-        )
+        reducer: FavoriteReducer()
       )
     )
   }

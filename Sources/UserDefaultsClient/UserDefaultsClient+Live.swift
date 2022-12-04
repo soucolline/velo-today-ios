@@ -45,6 +45,9 @@ extension UserDefaultsClient {
         .fireAndForget {
           userDefaults.set(value, forKey: key)
         }
+      },
+      getAppVersion: {
+        Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
       }
     )
   }
