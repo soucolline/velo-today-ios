@@ -39,7 +39,7 @@ public struct FavoriteListView: View {
                         station: station.toStationPin(),
                         title: station.name,
                         isFavoriteStation: true),
-                      reducer: DetailsReducer(userDefaultsClient: .live())
+                      reducer: DetailsReducer()
                     )
                   )
                 ) {
@@ -101,7 +101,7 @@ struct FavoriteListView_Previews: PreviewProvider {
           ],
           isFetchStationRequestInFlight: false
         ),
-        reducer: FavoriteReducer(userDefaultsClient: .noop, apiClient: .unimplemented, mainQueue: .main)
+        reducer: FavoriteReducer()
       )
     )
   }

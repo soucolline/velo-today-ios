@@ -52,11 +52,9 @@ public struct DetailsReducer: ReducerProtocol {
     case favoriteButtonTapped
   }
   
-  public let userDefaultsClient: UserDefaultsClient
+  @Dependency(\.userDefaultsClient) public var userDefaultsClient: UserDefaultsClient
   
-  public init(userDefaultsClient: UserDefaultsClient) {
-    self.userDefaultsClient = userDefaultsClient
-  }
+  public init() {}
   
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()

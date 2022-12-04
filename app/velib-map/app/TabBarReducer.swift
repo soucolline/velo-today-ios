@@ -30,38 +30,21 @@ struct TabBarReducer: ReducerProtocol {
     case favorite(FavoriteReducer.Action)
   }
   
-  var userDefaultsClient: UserDefaultsClient
-  var getAppVersion: () -> String
-  var apiClient: ApiClient
-  var mainQueue: AnySchedulerOf<DispatchQueue>
-  
-  init(
-    userDefaultsClient: UserDefaultsClient,
-    getAppVersion: @escaping () -> String,
-    apiClient: ApiClient,
-    mainQueue: AnySchedulerOf<DispatchQueue>
-  ) {
-    self.userDefaultsClient = userDefaultsClient
-    self.getAppVersion = getAppVersion
-    self.apiClient = apiClient
-    self.mainQueue = mainQueue
-  }
-  
   var body: some ReducerProtocol<State, Action> {
     Scope(state: \.mapState, action: /Action.map) {
-      MapReducer(apiClient: apiClient, userDefaultsClient: userDefaultsClient)
+      MapReducer()
     }
     
     Scope(state: \.detailsState, action: /Action.details) {
-      DetailsReducer(userDefaultsClient: userDefaultsClient)
+      DetailsReducer()
     }
     
     Scope(state: \.favoriteState, action: /Action.favorite) {
-      FavoriteReducer(userDefaultsClient: userDefaultsClient, apiClient: apiClient, mainQueue: mainQueue)
+      FavoriteReducer()
     }
     
     Scope(state: \.settingsState, action: /Action.settings) {
-      SettingsReducer(userDefaultsClient: userDefaultsClient, getAppVersion: getAppVersion)
+      SettingsReducer()
     }
   }
 }

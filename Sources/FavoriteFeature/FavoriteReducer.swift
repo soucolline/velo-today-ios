@@ -47,19 +47,11 @@ public struct FavoriteReducer: ReducerProtocol {
     case binding(BindingAction<State>)
   }
   
-  public var userDefaultsClient: UserDefaultsClient
-  public var apiClient: ApiClient
-  public var mainQueue: AnySchedulerOf<DispatchQueue>
+  @Dependency(\.userDefaultsClient) public var userDefaultsClient
+  @Dependency(\.apiClient) public var apiClient
+  @Dependency(\.mainQueue) public var mainQueue
   
-  public init(
-    userDefaultsClient: UserDefaultsClient = .live(),
-    apiClient: ApiClient = .live,
-    mainQueue: AnySchedulerOf<DispatchQueue> = DispatchQueue.main.eraseToAnyScheduler()
-  ) {
-    self.userDefaultsClient = userDefaultsClient
-    self.apiClient = apiClient
-    self.mainQueue = mainQueue
-  }
+  public init() {}
   
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()

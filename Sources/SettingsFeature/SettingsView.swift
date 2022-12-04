@@ -58,7 +58,7 @@ struct SettingsView_Previews: PreviewProvider {
     SettingsView(
       store: Store(
         initialState: SettingsReducer.State(),
-        reducer: SettingsReducer(userDefaultsClient: .noop, getAppVersion: { "1.234.567" })
+        reducer: SettingsReducer()
       )
     )
   }

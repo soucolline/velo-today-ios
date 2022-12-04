@@ -15,4 +15,10 @@ extension ApiClient {
     fetchAllStations: XCTUnimplemented("\(Self.self) fetchAllStations unimplemented")
   )
 }
+
+extension ApiClientKey {
+  static let testValue = ApiClient.unimplemented
+  static let previewValue = ApiClient.unimplemented
+}
+
 #endif

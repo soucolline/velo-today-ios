@@ -70,7 +70,7 @@ struct DetailsView_Previews: PreviewProvider {
       DetailsView(
         store: Store(
           initialState: .init(),
-          reducer: DetailsReducer(userDefaultsClient: .noop)
+          reducer: DetailsReducer()
         )
       )
     }

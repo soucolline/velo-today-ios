@@ -200,7 +200,7 @@ extension MapViewController: MKMapViewDelegate {
     let detailView = UIHostingController(rootView: DetailsView(
       store: Store(
         initialState: .init(station: station),
-        reducer: DetailsReducer(userDefaultsClient: .live())
+        reducer: DetailsReducer()
       )
     ))
     

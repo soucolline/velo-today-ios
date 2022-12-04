@@ -50,13 +50,10 @@ public struct MapReducer: ReducerProtocol {
     case hideError
   }
 
-  public var apiClient: ApiClient
-  public var userDefaultsClient: UserDefaultsClient
+  @Dependency(\.apiClient) public var apiClient
+  @Dependency(\.userDefaultsClient) public var userDefaultsClient
   
-  public init(apiClient: ApiClient, userDefaultsClient: UserDefaultsClient) {
-    self.apiClient = apiClient
-    self.userDefaultsClient = userDefaultsClient
-  }
+  public init() {}
   
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {

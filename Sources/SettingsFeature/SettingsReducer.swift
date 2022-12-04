@@ -31,16 +31,10 @@ public struct SettingsReducer: ReducerProtocol {
     case binding(BindingAction<State>)
   }
   
-  public var userDefaultsClient: UserDefaultsClient
-  public var getAppVersion: () -> String
+  @Dependency(\.userDefaultsClient) public var userDefaultsClient
+  @Dependency(\.userDefaultsClient.getAppVersion) public var getAppVersion: () -> String
   
-  public init(
-    userDefaultsClient: UserDefaultsClient,
-    getAppVersion: @escaping () -> String
-  ) {
-    self.userDefaultsClient = userDefaultsClient
-    self.getAppVersion = getAppVersion
-  }
+  public init() {}
   
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()

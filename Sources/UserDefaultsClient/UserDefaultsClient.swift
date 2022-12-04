@@ -15,6 +15,7 @@ public struct UserDefaultsClient {
   public var setInteger: (Int, String) -> Effect<Never, Never>
   public var setString: (String, String) -> Effect<Never, Never>
   public var setArray: ([String]?, String) -> Effect<Never, Never>
+  public var getAppVersion: () -> String
 
   public func isFavoriteStation(code: String) -> Bool {
     self.getFavoriteStationsIds().contains(code)

@@ -23,7 +23,7 @@ struct Application: App {
       TabBarView(
         store: Store(
           initialState: .init(),
-          reducer: TabBarReducer(userDefaultsClient: .live(), getAppVersion: { Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }, apiClient: .live, mainQueue: .main)
+          reducer: TabBarReducer()
         )
       )
     }
