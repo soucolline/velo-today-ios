@@ -11,71 +11,10 @@ import SwiftUI
 import UserDefaultsClient
 import Models
 
-public struct SettingsState: Equatable {
-  public var mapStyle: MapStyle
-  public var appVersion: String
-  @BindableState public var selectedPickerIndex: Int
-  
-  public init(
-    mapStyle: MapStyle = MapStyle.normal,
-    appVersion: String = "1.0.0",
-    selectedPickerIndex: Int = 0
-  ) {
-    self.mapStyle = mapStyle
-    self.appVersion = appVersion
-    self.selectedPickerIndex = selectedPickerIndex
-  }
-}
-
-public enum SettingsAction: Equatable, BindableAction {
-  case onAppear
-  case binding(BindingAction<SettingsState>)
-}
-
-public struct SettingsEnvironment {
-  public var userDefaultsClient: UserDefaultsClient
-  public var getAppVersion: () -> String
-  
-  public init(
-    userDefaultsClient: UserDefaultsClient,
-    getAppVersion: @escaping () -> String
-  ) {
-    self.userDefaultsClient = userDefaultsClient
-    self.getAppVersion = getAppVersion
-  }
-}
-
-public let settingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment> { state, action, environment in
-  switch action {
-  case .onAppear:
-    let mapStyleUserDefaults = environment.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
-    
-    let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
-    
-    state.mapStyle = mapStyle
-    state.selectedPickerIndex = mapStyle.pickerValue
-    state.appVersion = environment.getAppVersion()
-    
-    return .none
-  
-  case .binding(\.$selectedPickerIndex):
-    state.mapStyle = MapStyle.initFromInt(value: state.selectedPickerIndex)
-    
-    return environment.userDefaultsClient
-      .setString(state.mapStyle.rawValue, "mapStyle")
-      .fireAndForget()
-    
-  case .binding:
-    return .none
-  }
-}
-.binding()
-.debug()
-
 public struct SettingsView: View {
-  let store: Store<SettingsState, SettingsAction>
+  let store: StoreOf<SettingsReducer>
   
-  public init(store: Store<SettingsState, SettingsAction>) {
+  public init(store: StoreOf<SettingsReducer>) {
     self.store = store
   }
   
@@ -118,12 +57,8 @@ struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView(
       store: Store(
-        initialState: SettingsState(),
-        reducer: settingsReducer,
-        environment: SettingsEnvironment(
-          userDefaultsClient: .noop,
-          getAppVersion: { "1.234.567" }
-        )
+        initialState: SettingsReducer.State(),
+        reducer: SettingsReducer(userDefaultsClient: .noop, getAppVersion: { "1.234.567" })
       )
     )
   }

@@ -18,7 +18,7 @@ import DetailsFeature
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  let viewStore: ViewStore<MapState, MapAction>
+  let viewStore: ViewStoreOf<MapReducer>
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!
@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
-  init(store: Store<MapState, MapAction>) {
+  init(store: StoreOf<MapReducer>) {
     self.viewStore = ViewStore(store)
     super.init(nibName: nil, bundle: nil)
   }
@@ -200,8 +200,8 @@ extension MapViewController: MKMapViewDelegate {
     let detailView = UIHostingController(rootView: DetailsView(
       store: Store(
         initialState: .init(station: station),
-        reducer: detailsReducer,
-        environment: .init(userDefaultsClient: .live()))
+        reducer: DetailsReducer(userDefaultsClient: .live())
+      )
     ))
     
     if let sheet = detailView.sheetPresentationController {

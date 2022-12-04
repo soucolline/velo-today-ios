@@ -16,7 +16,7 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.40.2"),
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.47.2"),
     ],
     targets: [
       .target(
@@ -49,7 +49,6 @@ let package = Package(
           "ApiClient",
           "DetailsFeature",
           "Models",
-          "DetailsFeature",
           "UserDefaultsClient",
           .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         ]
