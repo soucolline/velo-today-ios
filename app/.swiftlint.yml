@@ -10,10 +10,10 @@ opt_in_rules:
   - private_action
   - private_outlet
   - toggle_bool
-  - unused_declaration
   - strong_iboutlet
   - implicit_return
-
+analyzer_rules:
+  - unused_declaration
 included:
   - velib-map
 excluded:

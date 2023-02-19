@@ -19,8 +19,8 @@ public struct FavoriteReducer: ReducerProtocol {
     public var isFetchStationRequestInFlight: Bool
     public var errorText: String
     
-    @BindableState public var shouldShowError: Bool
-    @BindableState public var shouldShowEmptyView: Bool
+    @BindingState public var shouldShowError: Bool
+    @BindingState public var shouldShowEmptyView: Bool
     
     public init(
       detailState: DetailsReducer.State = .init(),

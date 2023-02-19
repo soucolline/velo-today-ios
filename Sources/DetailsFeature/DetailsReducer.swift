@@ -16,7 +16,7 @@ public struct DetailsReducer: ReducerProtocol {
     public var title: String
     public var isFavoriteStation: Bool
     
-    @BindableState public var stationLocation: MKCoordinateRegion
+    @BindingState public var stationLocation: MKCoordinateRegion
     
     public init(
       station: StationMarker = StationMarker(

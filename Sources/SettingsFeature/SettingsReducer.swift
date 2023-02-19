@@ -13,7 +13,7 @@ public struct SettingsReducer: ReducerProtocol {
   public struct State: Equatable {
     public var mapStyle: MapStyle
     public var appVersion: String
-    @BindableState public var selectedPickerIndex: Int
+    @BindingState public var selectedPickerIndex: Int
     
     public init(
       mapStyle: MapStyle = MapStyle.normal,

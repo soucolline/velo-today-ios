@@ -8,20 +8,20 @@ public struct UserDefaultsClient {
   public var integerForKey: (String) -> Int
   public var stringForKey: (String) -> String?
   public var arrayForKey: (String) -> [String]?
-  public var remove: (String) -> Effect<Never, Never>
-  public var setBool: (Bool, String) -> Effect<Never, Never>
-  public var setData: (Data?, String) -> Effect<Never, Never>
-  public var setDouble: (Double, String) -> Effect<Never, Never>
-  public var setInteger: (Int, String) -> Effect<Never, Never>
-  public var setString: (String, String) -> Effect<Never, Never>
-  public var setArray: ([String]?, String) -> Effect<Never, Never>
+  public var remove: (String) -> EffectTask<Never>
+  public var setBool: (Bool, String) -> EffectTask<Never>
+  public var setData: (Data?, String) -> EffectTask<Never>
+  public var setDouble: (Double, String) -> EffectTask<Never>
+  public var setInteger: (Int, String) -> EffectTask<Never>
+  public var setString: (String, String) -> EffectTask<Never>
+  public var setArray: ([String]?, String) -> EffectTask<Never>
   public var getAppVersion: () -> String
 
   public func isFavoriteStation(code: String) -> Bool {
     self.getFavoriteStationsIds().contains(code)
   }
   
-  public func addFavoriteStation(for code: String) -> Effect<Never, Never> {
+  public func addFavoriteStation(for code: String) -> EffectTask<Never> {
     var stations = self.getFavoriteStationsIds()
 
     guard !stations.contains(code) else { return .none }
@@ -31,7 +31,7 @@ public struct UserDefaultsClient {
     return self.setArray(stations, Const.favoriteStationsId)
   }
 
-  public func removeFavoriteStations(for code: String) -> Effect<Never, Never> {
+  public func removeFavoriteStations(for code: String) -> EffectTask<Never> {
     var stations = self.getFavoriteStationsIds()
 
     guard stations.contains(code) else { return .none }
