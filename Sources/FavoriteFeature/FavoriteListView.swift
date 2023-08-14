@@ -22,7 +22,7 @@ public struct FavoriteListView: View {
   }
   
   public var body: some View {
-    WithViewStore(self.store) { viewStore in
+    WithViewStore(self.store, observe: { $0 }) { viewStore in
       NavigationView {
         ZStack {
           List {
@@ -38,9 +38,10 @@ public struct FavoriteListView: View {
                       initialState: DetailsReducer.State(
                         station: station.toStationPin(),
                         title: station.name,
-                        isFavoriteStation: true),
-                      reducer: DetailsReducer()
-                    )
+                        isFavoriteStation: true)
+                    ) {
+                      DetailsReducer()
+                    }
                   )
                 ) {
                   FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
@@ -56,7 +57,7 @@ public struct FavoriteListView: View {
           
           ErrorView(
             errorText: .constant(viewStore.errorText),
-            isVisible: viewStore.binding(\.$shouldShowError)
+            isVisible: viewStore.$shouldShowError
           )
         }
       }
@@ -100,9 +101,10 @@ struct FavoriteListView_Previews: PreviewProvider {
             )
           ],
           isFetchStationRequestInFlight: false
-        ),
-        reducer: FavoriteReducer()
-      )
+        )
+      ) {
+        FavoriteReducer()
+      }
     )
   }
 }

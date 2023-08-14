@@ -22,9 +22,10 @@ struct Application: App {
     WindowGroup {
       TabBarView(
         store: Store(
-          initialState: .init(),
-          reducer: TabBarReducer()
-        )
+          initialState: .init()
+        ) {
+          TabBarReducer()
+        }
       )
     }
   }

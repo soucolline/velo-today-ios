@@ -11,7 +11,7 @@ import UserDefaultsClient
 import Models
 import ApiClient
 
-public struct MapReducer: ReducerProtocol {
+public struct MapReducer: Reducer {
   public struct State: Equatable {
     public var stations: [Station]
     public var hasAlreadyLoadedStations: Bool
@@ -55,36 +55,38 @@ public struct MapReducer: ReducerProtocol {
   
   public init() {}
   
-  public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-    switch action {
-    case .fetchAllStations:
-      state.shouldShowLoader = true
-      return .task(priority: .background) {
-        await .fetchAllStationsResponse(TaskResult { try await self.apiClient.fetchAllStations() })
+  public var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      switch action {
+      case .fetchAllStations:
+        state.shouldShowLoader = true
+        return .run(priority: .background) { send in
+          await send(.fetchAllStationsResponse(TaskResult { try await self.apiClient.fetchAllStations() }))
+        }
+        
+      case .fetchAllStationsResponse(.success(let stations)):
+        state.stations = stations
+        state.hasAlreadyLoadedStations = true
+        state.shouldShowLoader = false
+        return .none
+        
+      case .fetchAllStationsResponse(.failure):
+        state.hasAlreadyLoadedStations = true
+        state.shouldShowError = true
+        state.shouldShowLoader = false
+        return .none
+        
+      case .getMapStyle:
+        let mapStyleUserDefaults = self.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
+        let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
+        
+        state.mapStyle = mapStyle
+        return .none
+        
+      case .hideError:
+        state.shouldShowError = false
+        return .none
       }
-      
-    case .fetchAllStationsResponse(.success(let stations)):
-      state.stations = stations
-      state.hasAlreadyLoadedStations = true
-      state.shouldShowLoader = false
-      return .none
-      
-    case .fetchAllStationsResponse(.failure):
-      state.hasAlreadyLoadedStations = true
-      state.shouldShowError = true
-      state.shouldShowLoader = false
-      return .none
-      
-    case .getMapStyle:
-      let mapStyleUserDefaults = self.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
-      let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
-      
-      state.mapStyle = mapStyle
-      return .none
-      
-    case .hideError:
-      state.shouldShowError = false
-      return .none
     }
   }
 }

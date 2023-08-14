@@ -60,9 +60,10 @@ struct TabBarView_Previews: PreviewProvider {
   static var previews: some View {
     TabBarView(
       store: Store(
-        initialState: .init(),
-        reducer: TabBarReducer()
-      )
+        initialState: .init()
+      ) {
+        TabBarReducer()
+      }
     )
   }
 }

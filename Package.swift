@@ -16,7 +16,7 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.51.0"),
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.0.0"),
     ],
     targets: [
       .target(
