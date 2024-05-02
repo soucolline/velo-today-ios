@@ -20,11 +20,11 @@ public struct DetailsView: View {
   }
   
   public var body: some View {
-    WithViewStore(self.store) { viewStore in
+    WithViewStore(self.store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
-        Map(coordinateRegion: viewStore.binding(\.$stationLocation), interactionModes: [], annotationItems: [viewStore.station]) {
-          MapMarker(coordinate: $0.coordinate, tint: .orange)
-        }
+//        Map(coordinateRegion: viewStore.binding(\.$stationLocation), interactionModes: [], annotationItems: [viewStore.station]) {
+//          MapMarker(coordinate: $0.coordinate, tint: .orange)
+//        }
         Button {
           viewStore.send(.favoriteButtonTapped)
         } label: {
@@ -70,7 +70,7 @@ struct DetailsView_Previews: PreviewProvider {
       DetailsView(
         store: Store(
           initialState: .init(),
-          reducer: DetailsReducer()
+          reducer: { DetailsReducer() }
         )
       )
     }

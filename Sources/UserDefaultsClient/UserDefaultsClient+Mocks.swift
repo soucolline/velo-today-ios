@@ -6,13 +6,13 @@ extension UserDefaultsClient {
     integerForKey: { _ in 0 },
     stringForKey: { _ in nil },
     arrayForKey: { _ in nil },
-    remove: { _ in .none },
-    setBool: { _, _ in .none },
-    setData: { _, _ in .none },
-    setDouble: { _, _ in .none },
-    setInteger: { _, _ in .none },
-    setString: { _, _ in .none },
-    setArray: { _, _ in .none},
+    remove: { _ in },
+    setBool: { _, _ in  },
+    setData: { _, _ in  },
+    setDouble: { _, _ in  },
+    setInteger: { _, _ in  },
+    setString: { _, _ in  },
+    setArray: { _, _ in },
     getAppVersion: { "123" }
   )
 }
@@ -21,6 +21,7 @@ extension UserDefaultsClient {
 import Foundation
 import XCTestDynamicOverlay
 
+/*
 extension UserDefaultsClient {
   public static let failing = Self(
     boolForKey: { key
@@ -82,4 +83,5 @@ extension UserDefaultsClientKey {
   static let testValue = UserDefaultsClient.noop
   static let previewValue = UserDefaultsClient.noop
 }
+ */
 #endif

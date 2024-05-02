@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
   let locationManager = CLLocationManager()
   
   init(store: StoreOf<MapReducer>) {
-    self.viewStore = ViewStore(store)
+    self.viewStore = ViewStore(store, observe: { $0 })
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -200,7 +200,9 @@ extension MapViewController: MKMapViewDelegate {
     let detailView = UIHostingController(rootView: DetailsView(
       store: Store(
         initialState: .init(station: station),
-        reducer: DetailsReducer()
+        reducer: {
+          DetailsReducer()
+        }
       )
     ))
     

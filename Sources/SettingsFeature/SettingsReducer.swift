@@ -9,7 +9,7 @@ import ComposableArchitecture
 import UserDefaultsClient
 import Models
 
-public struct SettingsReducer: ReducerProtocol {
+public struct SettingsReducer: Reducer {
   public struct State: Equatable {
     public var mapStyle: MapStyle
     public var appVersion: String
@@ -36,7 +36,7 @@ public struct SettingsReducer: ReducerProtocol {
   
   public init() {}
   
-  public var body: some ReducerProtocol<State, Action> {
+  public var body: some Reducer<State, Action> {
     BindingReducer()
     Reduce { state, action in
       switch action {
@@ -54,9 +54,8 @@ public struct SettingsReducer: ReducerProtocol {
       case .binding(\.$selectedPickerIndex):
         state.mapStyle = MapStyle.initFromInt(value: state.selectedPickerIndex)
         
-        return self.userDefaultsClient
-          .setString(state.mapStyle.rawValue, "mapStyle")
-          .fireAndForget()
+        return .none
+        //return self.userDefaultsClient.setString(state.mapStyle.rawValue, "mapStyle")
         
       case .binding:
         return .none

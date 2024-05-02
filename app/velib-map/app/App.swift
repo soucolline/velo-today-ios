@@ -23,7 +23,7 @@ struct Application: App {
       TabBarView(
         store: Store(
           initialState: .init(),
-          reducer: TabBarReducer()
+          reducer: { TabBarReducer() }
         )
       )
     }

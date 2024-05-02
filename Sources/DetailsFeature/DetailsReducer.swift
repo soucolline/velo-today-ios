@@ -10,7 +10,7 @@ import MapKit
 import Models
 import UserDefaultsClient
 
-public struct DetailsReducer: ReducerProtocol {
+public struct DetailsReducer: Reducer {
   public struct State: Equatable {
     public var station: StationMarker
     public var title: String
@@ -56,7 +56,7 @@ public struct DetailsReducer: ReducerProtocol {
   
   public init() {}
   
-  public var body: some ReducerProtocol<State, Action> {
+  public var body: some Reducer<State, Action> {
     BindingReducer()
     Reduce { state, action in
       switch action {
@@ -75,15 +75,15 @@ public struct DetailsReducer: ReducerProtocol {
       case .favoriteButtonTapped:
         if state.isFavoriteStation {
           state.isFavoriteStation = false
-          return self.userDefaultsClient
-            .removeFavoriteStations(for: state.station.code)
-            .fireAndForget()
+          
+          return .none
+          //return self.userDefaultsClient.removeFavoriteStations(for: state.station.code)
           
         } else {
           state.isFavoriteStation = true
-          return self.userDefaultsClient
-            .addFavoriteStation(for: state.station.code)
-            .fireAndForget()
+          
+          return .none
+          //return self.userDefaultsClient.addFavoriteStation(for: state.station.code)
         }
         
       case .binding:

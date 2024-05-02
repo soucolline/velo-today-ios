@@ -12,7 +12,7 @@ import Foundation
 import UserDefaultsClient
 import Models
 
-public struct FavoriteReducer: ReducerProtocol {
+public struct FavoriteReducer: Reducer {
   public struct State: Equatable {
     public var detailState: DetailsReducer.State
     public var stations: [Station]
@@ -53,7 +53,7 @@ public struct FavoriteReducer: ReducerProtocol {
   
   public init() {}
   
-  public var body: some ReducerProtocol<State, Action> {
+  public var body: some Reducer<State, Action> {
     BindingReducer()
     Reduce { state, action in
       switch action {
@@ -71,13 +71,14 @@ public struct FavoriteReducer: ReducerProtocol {
         
         state.shouldShowEmptyView = false
         
-        return .task {
-          await .fetchFavoriteStationsResponse(
-            TaskResult {
-              try await self.apiClient.fetchAllStations().filter { station in
-                return stationsIds.first(where: { id in id == station.code }) != nil
+        return .run { send in
+          await send(.fetchFavoriteStationsResponse(
+              TaskResult {
+                try await self.apiClient.fetchAllStations().filter { station in
+                  return stationsIds.first(where: { id in id == station.code }) != nil
+                }
               }
-            }
+            )
           )
         }
         
@@ -93,9 +94,9 @@ public struct FavoriteReducer: ReducerProtocol {
       case .fetchFavoriteStationsResponse(.failure):
           state.isFetchStationRequestInFlight = false
           state.shouldShowError = true
-        return .task {
+        return .run { send in
           try await self.mainQueue.sleep(for: 2)
-          return .hideErrorView
+          return await send(.hideErrorView)
         }
         
       case .binding:

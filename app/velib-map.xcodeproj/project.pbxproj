@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -599,7 +599,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = exactVersion;
-				version = 0.51.0;
+				version = 1.10.2;
 			};
 		};
 		E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

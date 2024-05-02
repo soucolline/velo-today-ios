@@ -11,7 +11,7 @@ import UserDefaultsClient
 import Models
 import ApiClient
 
-public struct MapReducer: ReducerProtocol {
+public struct MapReducer: Reducer {
   public struct State: Equatable {
     public var stations: [Station]
     public var hasAlreadyLoadedStations: Bool
@@ -55,12 +55,12 @@ public struct MapReducer: ReducerProtocol {
   
   public init() {}
   
-  public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+  public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .fetchAllStations:
       state.shouldShowLoader = true
-      return .task(priority: .background) {
-        await .fetchAllStationsResponse(TaskResult { try await self.apiClient.fetchAllStations() })
+      return .run(priority: .background) { send in
+        await send(.fetchAllStationsResponse(TaskResult { try await self.apiClient.fetchAllStations() }))
       }
       
     case .fetchAllStationsResponse(.success(let stations)):

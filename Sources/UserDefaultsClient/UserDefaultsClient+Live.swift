@@ -12,39 +12,25 @@ extension UserDefaultsClient {
       stringForKey: userDefaults.string(forKey:),
       arrayForKey: userDefaults.stringArray(forKey:),
       remove: { key in
-        .fireAndForget {
           userDefaults.removeObject(forKey: key)
-        }
       },
       setBool: { value, key in
-        .fireAndForget {
-          userDefaults.set(value, forKey: key)
-        }
+        userDefaults.set(value, forKey: key)
       },
       setData: { data, key in
-        .fireAndForget {
-          userDefaults.set(data, forKey: key)
-        }
+        userDefaults.set(data, forKey: key)
       },
       setDouble: { value, key in
-        .fireAndForget {
-          userDefaults.set(value, forKey: key)
-        }
+        userDefaults.set(value, forKey: key)
       },
       setInteger: { value, key in
-        .fireAndForget {
-          userDefaults.set(value, forKey: key)
-        }
+        userDefaults.set(value, forKey: key)
       },
       setString: { value, key in
-        .fireAndForget {
-          userDefaults.set(value, forKey: key)
-        }
+        userDefaults.set(value, forKey: key)
       },
       setArray: { value, key in
-        .fireAndForget {
-          userDefaults.set(value, forKey: key)
-        }
+        userDefaults.set(value, forKey: key)
       },
       getAppVersion: {
         Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String

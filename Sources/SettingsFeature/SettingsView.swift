@@ -19,16 +19,16 @@ public struct SettingsView: View {
   }
   
   public var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       NavigationView {
         List {
           Section(header: Text("Type de carte ")) {
-            Picker("toto", selection: viewStore.binding(\.$selectedPickerIndex)) {
-              Text("Normal").tag(0)
-              Text("Hybrid").tag(1)
-              Text("Sattelite").tag(2)
-            }
-            .pickerStyle(.segmented)
+//            Picker("toto", selection: viewStore.binding(\.$selectedPickerIndex)) {
+//              Text("Normal").tag(0)
+//              Text("Hybrid").tag(1)
+//              Text("Sattelite").tag(2)
+//            }
+//            .pickerStyle(.segmented)
           }
           
           Section(header: Text("App information")) {
@@ -58,7 +58,7 @@ struct SettingsView_Previews: PreviewProvider {
     SettingsView(
       store: Store(
         initialState: SettingsReducer.State(),
-        reducer: SettingsReducer()
+        reducer: { SettingsReducer() }
       )
     )
   }
