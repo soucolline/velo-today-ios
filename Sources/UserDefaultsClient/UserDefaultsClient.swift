@@ -2,18 +2,8 @@ import ComposableArchitecture
 import Foundation
 
 public struct UserDefaultsClient {
-  public var boolForKey: (String) -> Bool
-  public var dataForKey: (String) -> Data?
-  public var doubleForKey: (String) -> Double
-  public var integerForKey: (String) -> Int
-  public var stringForKey: (String) -> String?
   public var arrayForKey: (String) -> [String]?
   public var remove: (String) -> Void
-  public var setBool: (Bool, String) -> Void
-  public var setData: (Data?, String) -> Void
-  public var setDouble: (Double, String) -> Void
-  public var setInteger: (Int, String) -> Void
-  public var setString: (String, String) -> Void
   public var setArray: ([String]?, String) -> Void
   public var getAppVersion: () -> String
 

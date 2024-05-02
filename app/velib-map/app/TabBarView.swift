@@ -19,36 +19,38 @@ struct TabBarView: View {
   let store: StoreOf<TabBarReducer>
   
   var body: some View {
-    NavigationView {
-      TabView {
-        MapUIKit(
-          store: self.store.scope(
-            state: \.mapState,
-            action: TabBarReducer.Action.map
+    WithPerceptionTracking {
+      NavigationView {
+        TabView {
+          MapUIKit(
+            store: self.store.scope(
+              state: \.mapState,
+              action: \.map
+            )
           )
-        )
-        .tabItem {
-          Label("Stations", systemImage: "bicycle.circle.fill")
-        }
-        
-        FavoriteListView(
-          store: self.store.scope(
-            state: \.favoriteState,
-            action: TabBarReducer.Action.favorite
+          .tabItem {
+            Label("Stations", systemImage: "bicycle.circle.fill")
+          }
+          
+          FavoriteListView(
+            store: self.store.scope(
+              state: \.favoriteState,
+              action: \.favorite
+            )
           )
-        )
-        .tabItem {
-          Label("Favoris", systemImage: "star.circle.fill")
-        }
-        
-        SettingsView(
-          store: self.store.scope(
-            state: \.settingsState,
-            action: TabBarReducer.Action.settings
+          .tabItem {
+            Label("Favoris", systemImage: "star.circle.fill")
+          }
+          
+          SettingsView(
+            store: self.store.scope(
+              state: \.settingsState,
+              action: \.settings
+            )
           )
-        )
-        .tabItem {
-          Label("Réglages", systemImage: "gear.circle.fill")
+          .tabItem {
+            Label("Réglages", systemImage: "gear.circle.fill")
+          }
         }
       }
     }

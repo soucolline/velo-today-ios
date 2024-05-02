@@ -9,11 +9,15 @@ import ComposableArchitecture
 import UserDefaultsClient
 import Models
 
-public struct SettingsReducer: Reducer {
+@Reducer
+public struct SettingsReducer {
+  @ObservableState
   public struct State: Equatable {
+    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normal"
+    
     public var mapStyle: MapStyle
     public var appVersion: String
-    @BindingState public var selectedPickerIndex: Int
+    public var selectedPickerIndex: Int
     
     public init(
       mapStyle: MapStyle = MapStyle.normal,
@@ -31,19 +35,16 @@ public struct SettingsReducer: Reducer {
     case binding(BindingAction<State>)
   }
   
-  @Dependency(\.userDefaultsClient) public var userDefaultsClient
   @Dependency(\.userDefaultsClient.getAppVersion) public var getAppVersion: () -> String
   
   public init() {}
   
-  public var body: some Reducer<State, Action> {
+  public var body: some ReducerOf<Self> {
     BindingReducer()
     Reduce { state, action in
       switch action {
       case .onAppear:
-        let mapStyleUserDefaults = self.userDefaultsClient.stringForKey("mapStyle") ?? "normal"
-        
-        let mapStyle = MapStyle(rawValue: mapStyleUserDefaults) ?? .normal
+        let mapStyle = MapStyle(rawValue: state.mapStyleUserDefaults) ?? .normal
         
         state.mapStyle = mapStyle
         state.selectedPickerIndex = mapStyle.pickerValue
@@ -51,12 +52,12 @@ public struct SettingsReducer: Reducer {
         
         return .none
       
-      case .binding(\.$selectedPickerIndex):
+      case .binding(\.selectedPickerIndex):
         state.mapStyle = MapStyle.initFromInt(value: state.selectedPickerIndex)
+        state.mapStyleUserDefaults = state.mapStyle.rawValue
         
         return .none
-        //return self.userDefaultsClient.setString(state.mapStyle.rawValue, "mapStyle")
-        
+
       case .binding:
         return .none
       }

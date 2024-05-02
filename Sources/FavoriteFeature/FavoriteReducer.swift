@@ -12,15 +12,20 @@ import Foundation
 import UserDefaultsClient
 import Models
 
-public struct FavoriteReducer: Reducer {
+@Reducer
+public struct FavoriteReducer {
+  @ObservableState
   public struct State: Equatable {
+//    @Shared(.appStorage("favoriteStationsCode")) var favoriteStationsCode: [String] = []
+    @Shared(.inMemory("stations")) public var stations: [Station] = []
+
+    public var favoriteStations: [Station] = []
     public var detailState: DetailsReducer.State
-    public var stations: [Station]
     public var isFetchStationRequestInFlight: Bool
     public var errorText: String
     
-    @BindingState public var shouldShowError: Bool
-    @BindingState public var shouldShowEmptyView: Bool
+    public var shouldShowError: Bool
+    public var shouldShowEmptyView: Bool
     
     public init(
       detailState: DetailsReducer.State = .init(),
@@ -39,10 +44,11 @@ public struct FavoriteReducer: Reducer {
     }
   }
   
-  public enum Action: Equatable, BindableAction {
+  public enum Action: BindableAction {
+    case onAppear
     case detailsAction(DetailsReducer.Action)
     case fetchFavoriteStations
-    case fetchFavoriteStationsResponse(TaskResult<[Station]>)
+    case fetchFavoriteStationsResponse(Result<[Station], Error>)
     case hideErrorView
     case binding(BindingAction<State>)
   }
@@ -53,31 +59,29 @@ public struct FavoriteReducer: Reducer {
   
   public init() {}
   
-  public var body: some Reducer<State, Action> {
+  public var body: some ReducerOf<Self> {
     BindingReducer()
     Reduce { state, action in
       switch action {
-      case .fetchFavoriteStations:
-        state.stations = []
-        state.isFetchStationRequestInFlight = true
-        
+      case .onAppear:
         guard let stationsIds = self.userDefaultsClient.arrayForKey("favoriteStationsCode"),
-              !stationsIds.isEmpty
-        else {
-          state.isFetchStationRequestInFlight = false
-          state.shouldShowEmptyView = true
+              !stationsIds.isEmpty else {
           return .none
         }
         
+        state.favoriteStations = state.stations.filter { stationsIds.contains($0.code) }
+        
+        return .none
+        
+      case .fetchFavoriteStations:
+        state.favoriteStations = []
+        state.isFetchStationRequestInFlight = true
         state.shouldShowEmptyView = false
         
         return .run { send in
-          await send(.fetchFavoriteStationsResponse(
-              TaskResult {
-                try await self.apiClient.fetchAllStations().filter { station in
-                  return stationsIds.first(where: { id in id == station.code }) != nil
-                }
-              }
+          await send(
+            .fetchFavoriteStationsResponse(
+              Result { try await self.apiClient.fetchAllStations() }
             )
           )
         }
@@ -87,8 +91,15 @@ public struct FavoriteReducer: Reducer {
         return .none
         
       case .fetchFavoriteStationsResponse(.success(let stationResponse)):
-        state.isFetchStationRequestInFlight = false
+        guard let stationsIds = self.userDefaultsClient.arrayForKey("favoriteStationsCode"),
+              !stationsIds.isEmpty else {
+          return .none
+        }
+        
         state.stations = stationResponse
+        state.favoriteStations = stationResponse.filter { stationsIds.contains($0.code) }
+        state.isFetchStationRequestInFlight = false
+        
         return .none
         
       case .fetchFavoriteStationsResponse(.failure):
