@@ -18,7 +18,7 @@ import DetailsFeature
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  let store: StoreOf<MapReducer>
+  @Perception.Bindable var store: StoreOf<MapReducer>
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!
@@ -97,6 +97,24 @@ class MapViewController: UIViewController {
         alert.addAction(okAction)
         
         self.present(alert, animated: true)
+      }
+    }
+    
+    observe { [weak self] in
+      guard let self else { return }
+      if let store = self.store.scope(state: \.details, action: \.showDetails) {
+        let detailView = UIHostingController(rootView: DetailsView(store: store))
+        
+        detailView.presentationController?.delegate = self
+        if let sheet = detailView.sheetPresentationController {
+          sheet.detents = [.medium()]
+          sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+          sheet.prefersEdgeAttachedInCompactHeight = true
+          sheet.preferredCornerRadius = 12
+        }
+        self.present(detailView, animated: true)
+      } else {
+        self.dismiss(animated: true)
       }
     }
     
@@ -187,22 +205,7 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     guard let station = view.annotation as? StationMarker else { return }
     
-    let detailView = UIHostingController(rootView: DetailsView(
-      store: Store(
-        initialState: .init(station: station),
-        reducer: {
-          DetailsReducer()
-        }
-      )
-    ))
-    
-    if let sheet = detailView.sheetPresentationController {
-      sheet.detents = [.medium()]
-      sheet.prefersScrollingExpandsWhenScrolledToEdge = true
-      sheet.prefersEdgeAttachedInCompactHeight = true
-      sheet.preferredCornerRadius = 12
-    }
-    self.present(detailView, animated: true)
+    store.send(.stationPinTapped(station))
   }
   
 }
@@ -221,4 +224,10 @@ extension MapViewController: CLLocationManagerDelegate {
     self.centerMapOnLocation(location: self.initialLocation)
   }
   
+}
+
+extension MapViewController: UIAdaptivePresentationControllerDelegate {
+  func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+    store.send(.hideDetails)
+  }
 }

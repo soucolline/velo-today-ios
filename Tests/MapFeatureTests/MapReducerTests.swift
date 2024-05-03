@@ -8,6 +8,7 @@
 
 import XCTest
 import ComposableArchitecture
+import DetailsFeature
 import MapFeature
 import Models
 
@@ -85,6 +86,24 @@ class MapReducerTests: XCTestCase {
     
     await store.send(.hideError) {
       $0.shouldShowError = false
+    }
+  }
+  
+  @MainActor
+  func testShowDetails() async {
+    let store = TestStore(
+      initialState: .init(),
+      reducer: { MapReducer() }
+    )
+    
+    let marker = StationMarker(freeDocks: 1, code: "123", name: "test", totalDocks: 4, freeBikes: 67, freeMechanicalBikes: 23, freeElectricBikes: 32, geolocation: [2,3])
+    
+    await store.send(\.stationPinTapped, marker) {
+      $0.details = DetailsReducer.State(station: marker)
+    }
+    
+    await store.send(.hideDetails) {
+      $0.details = nil
     }
   }
 }

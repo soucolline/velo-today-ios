@@ -18,9 +18,10 @@ public struct FavoriteReducer {
   public struct State: Equatable {
 //    @Shared(.appStorage("favoriteStationsCode")) var favoriteStationsCode: [String] = []
     @Shared(.inMemory("stations")) public var stations: [Station] = []
+    
+    @Presents public var details: DetailsReducer.State?
 
     public var favoriteStations: [Station] = []
-    public var detailState: DetailsReducer.State
     public var isFetchStationRequestInFlight: Bool
     public var errorText: String
     
@@ -28,14 +29,14 @@ public struct FavoriteReducer {
     public var shouldShowEmptyView: Bool
     
     public init(
-      detailState: DetailsReducer.State = .init(),
+      details: DetailsReducer.State? = nil,
       stations: [Station] = [],
       isFetchStationRequestInFlight: Bool = false,
       errorText: String = "Impossible de charger les données de certaines stations",
       shouldShowError: Bool = false,
       shouldShowEmptyView: Bool = false
     ) {
-      self.detailState = detailState
+      self.details = details
       self.stations = stations
       self.isFetchStationRequestInFlight = isFetchStationRequestInFlight
       self.errorText = errorText
@@ -46,11 +47,12 @@ public struct FavoriteReducer {
   
   public enum Action: BindableAction {
     case onAppear
-    case detailsAction(DetailsReducer.Action)
     case fetchFavoriteStations
     case fetchFavoriteStationsResponse(Result<[Station], Error>)
+    case stationTapped(Station)
     case hideErrorView
     case binding(BindingAction<State>)
+    case details(PresentationAction<DetailsReducer.Action>)
   }
   
   @Dependency(\.userDefaultsClient) public var userDefaultsClient
@@ -116,12 +118,24 @@ public struct FavoriteReducer {
           return await send(.hideErrorView)
         }
         
+      case .stationTapped(let station):
+        state.details = DetailsReducer.State(
+          station: station.toStationPin(),
+          title: station.name,
+          isFavoriteStation: true
+        )
+        return .none
+        
       case .binding:
         return .none
         
-      case .detailsAction:
+      case .details:
         return .none
       }
     }
+    .ifLet(\.$details, action: \.details) {
+      DetailsReducer()
+    }
+    ._printChanges()
   }
 }
