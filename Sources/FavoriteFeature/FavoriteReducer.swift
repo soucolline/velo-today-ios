@@ -66,10 +66,13 @@ public struct FavoriteReducer {
       case .onAppear:
         guard let stationsIds = self.userDefaultsClient.arrayForKey("favoriteStationsCode"),
               !stationsIds.isEmpty else {
+          state.favoriteStations = []
+          state.shouldShowEmptyView = true
           return .none
         }
         
         state.favoriteStations = state.stations.filter { stationsIds.contains($0.code) }
+        state.shouldShowEmptyView = state.favoriteStations.isEmpty
         
         return .none
         
@@ -91,8 +94,11 @@ public struct FavoriteReducer {
         return .none
         
       case .fetchFavoriteStationsResponse(.success(let stationResponse)):
+        state.isFetchStationRequestInFlight = false
+        
         guard let stationsIds = self.userDefaultsClient.arrayForKey("favoriteStationsCode"),
               !stationsIds.isEmpty else {
+          state.shouldShowEmptyView = true
           return .none
         }
         

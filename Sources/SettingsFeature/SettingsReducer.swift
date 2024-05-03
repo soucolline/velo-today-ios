@@ -13,7 +13,7 @@ import Models
 public struct SettingsReducer {
   @ObservableState
   public struct State: Equatable {
-    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normal"
+    @Shared(.appStorage("mapStyle")) public var mapStyleUserDefaults: String = "normalStyle"
     
     public var mapStyle: MapStyle
     public var appVersion: String

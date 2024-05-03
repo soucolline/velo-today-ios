@@ -14,7 +14,7 @@ import ApiClient
 public struct MapReducer {
   @ObservableState
   public struct State: Equatable {
-    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normal"
+    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"
     @Shared(.inMemory("stations")) public var stations: [Station] = []
 
     public var hasAlreadyLoadedStations: Bool

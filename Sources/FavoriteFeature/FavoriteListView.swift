@@ -59,13 +59,13 @@ public struct FavoriteListView: View {
             isVisible: $store.shouldShowError
           )
         }
+        .onAppear {
+          store.send(.onAppear)
+        }
       }
       .navigationViewStyle(.stack)
       .refreshable {
         store.send(.fetchFavoriteStations)
-      }
-      .onAppear {
-        store.send(.onAppear)
       }
     }
   }

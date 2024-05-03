@@ -25,17 +25,18 @@ class DetailsReducerTests: XCTestCase {
     geolocation: [1, 2]
   )
   
-  func testOnAppear() {
+  @MainActor
+  func testOnAppear() async {
     let store = TestStore(
       initialState: .init(
         station: station
       ),
-      reducer: DetailsReducer()
+      reducer: { DetailsReducer() }
     )
     
     store.dependencies.userDefaultsClient.override(array: ["123"], forKey: "favoriteStationsCode")
     
-    store.send(.onAppear) {
+    await store.send(.onAppear) {
       $0.title = self.station.name
       $0.stationLocation = MKCoordinateRegion(
         center: self.station.coordinate,
@@ -46,33 +47,35 @@ class DetailsReducerTests: XCTestCase {
     }
   }
   
-  func testFavoriteButtonTapped_Favorite() {
+  @MainActor
+  func testFavoriteButtonTapped_Favorite() async {
     let store = TestStore(
       initialState: .init(
         isFavoriteStation: true
       ),
-      reducer: DetailsReducer()
+      reducer: { DetailsReducer() }
     )
     
     store.dependencies.userDefaultsClient.arrayForKey = { _ in [] }
     
-    store.send(.favoriteButtonTapped) {
+    await store.send(.favoriteButtonTapped) {
       $0.isFavoriteStation = false
     }
   }
   
-  func testFavoriteButtonTapped_NotFavorite() {
+  @MainActor
+  func testFavoriteButtonTapped_NotFavorite() async {
     let store = TestStore(
       initialState: .init(
         isFavoriteStation: false
       ),
-      reducer: DetailsReducer()
+      reducer: { DetailsReducer() }
     )
     
     store.dependencies.userDefaultsClient.arrayForKey = { _ in [] }
-    store.dependencies.userDefaultsClient.setArray = { _, _ in .none }
+    store.dependencies.userDefaultsClient.setArray = { _, _ in }
     
-    store.send(.favoriteButtonTapped) {
+    await store.send(.favoriteButtonTapped) {
       $0.isFavoriteStation = true
     }
   }
