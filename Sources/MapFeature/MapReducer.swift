@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import DetailsFeature
 import MapKit
 import Models
 import ApiClient
@@ -16,6 +17,8 @@ public struct MapReducer {
   public struct State: Equatable {
     @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"
     @Shared(.inMemory("stations")) public var stations: [Station] = []
+    
+    var details: DetailsReducer.State?
 
     public var hasAlreadyLoadedStations: Bool
     public var errorText: String
@@ -51,6 +54,9 @@ public struct MapReducer {
     case fetchAllStationsResponse(Result<[Station], Error>)
     case getMapStyle
     case hideError
+    case stationPinTapped(StationMarker)
+    case hideDetails
+    case showDetails(DetailsReducer.Action)
   }
 
   @Dependency(\.apiClient) public var apiClient
@@ -87,7 +93,21 @@ public struct MapReducer {
       case .hideError:
         state.shouldShowError = false
         return .none
+        
+      case .hideDetails:
+        state.details = nil
+        return .none
+        
+      case .stationPinTapped(let station):
+        state.details = DetailsReducer.State(station: station)
+        return .none
+        
+      case .showDetails:
+        return .none
       }
+    }
+    .ifLet(\.details, action: \.showDetails) {
+      DetailsReducer()
     }
   }
 }
