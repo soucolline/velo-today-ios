@@ -12,18 +12,18 @@ import UserDefaultsClient
 import Models
 
 public struct SettingsView: View {
-  let store: StoreOf<SettingsReducer>
+  @Perception.Bindable var store: StoreOf<SettingsReducer>
   
   public init(store: StoreOf<SettingsReducer>) {
     self.store = store
   }
   
   public var body: some View {
-    WithViewStore(store) { viewStore in
+    WithPerceptionTracking {
       NavigationView {
         List {
           Section(header: Text("Type de carte ")) {
-            Picker("toto", selection: viewStore.binding(\.$selectedPickerIndex)) {
+            Picker("toto", selection: $store.selectedPickerIndex) {
               Text("Normal").tag(0)
               Text("Hybrid").tag(1)
               Text("Sattelite").tag(2)
@@ -35,7 +35,7 @@ public struct SettingsView: View {
             HStack {
               Text("Version number")
               Spacer()
-              Text(viewStore.state.appVersion)
+              Text(store.appVersion)
                 .opacity(0.8)
                 .foregroundColor(.gray)
             }
@@ -45,22 +45,18 @@ public struct SettingsView: View {
         .navigationTitle("Réglages")
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
-          viewStore.send(.onAppear)
+          store.send(.onAppear)
         }
       }
     }
   }
 }
 
-#if DEBUG
-struct SettingsView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingsView(
-      store: Store(
-        initialState: SettingsReducer.State(),
-        reducer: SettingsReducer()
-      )
+#Preview {
+  SettingsView(
+    store: Store(
+      initialState: .init(),
+      reducer: { SettingsReducer() }
     )
-  }
+  )
 }
-#endif

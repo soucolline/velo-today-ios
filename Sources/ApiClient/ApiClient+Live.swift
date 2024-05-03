@@ -11,8 +11,8 @@ import Models
 extension ApiClient {
   public static let live = Self(
     fetchAllStations: {
-      let locationURL = URL(string: "https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_information.json")!
-      let bikesURL = URL(string: "https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_status.json")!
+      let locationURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_information.json")!
+      let bikesURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_status.json")!
       
       async let (locationData, _) = try await URLSession.shared.data(from: locationURL)
       async let (bikesData, _) = try await URLSession.shared.data(from: bikesURL)

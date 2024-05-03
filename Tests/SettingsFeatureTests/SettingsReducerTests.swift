@@ -13,33 +13,35 @@ import SettingsFeature
 import Models
 
 class SettingsReducerTests: XCTestCase {
-  func testOnAppear() {
+  @MainActor
+  func testOnAppear() async {
+    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "hybridStyle"
+    
     let store = TestStore(
       initialState: .init(),
-      reducer: SettingsReducer()
+      reducer: { SettingsReducer() }
     )
     
-    store.dependencies.userDefaultsClient.stringForKey = { _ in "hybridStyle" }
     store.dependencies.userDefaultsClient.getAppVersion = { "123" }
     
-    store.send(.onAppear) {
+    await store.send(.onAppear) {
       $0.mapStyle = .hybrid
       $0.selectedPickerIndex = MapStyle.hybrid.pickerValue
       $0.appVersion = "123"
     }
   }
   
-  func testSelectedPickerIndexBinding() {
+  @MainActor
+  func testSelectedPickerIndexBinding() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: SettingsReducer()
+      reducer: { SettingsReducer() }
     )
     
-    store.dependencies.userDefaultsClient.setString = { _, _ in .none }
-    
-    store.send(.set(\.$selectedPickerIndex, 2)) {
+    await store.send(\.binding.selectedPickerIndex, 2) {
       $0.selectedPickerIndex = 2
       $0.mapStyle = .satellite
+      $0.mapStyleUserDefaults = "satelliteStyle"
     }
   }
 }
