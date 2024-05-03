@@ -19,7 +19,7 @@ public struct FavoriteReducer {
 //    @Shared(.appStorage("favoriteStationsCode")) var favoriteStationsCode: [String] = []
     @Shared(.inMemory("stations")) public var stations: [Station] = []
     
-    @Presents var details: DetailsReducer.State?
+    @Presents public var details: DetailsReducer.State?
 
     public var favoriteStations: [Station] = []
     public var isFetchStationRequestInFlight: Bool

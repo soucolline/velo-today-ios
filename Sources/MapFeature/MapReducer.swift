@@ -18,7 +18,7 @@ public struct MapReducer {
     @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"
     @Shared(.inMemory("stations")) public var stations: [Station] = []
     
-    var details: DetailsReducer.State?
+    public var details: DetailsReducer.State?
 
     public var hasAlreadyLoadedStations: Bool
     public var errorText: String
@@ -28,6 +28,7 @@ public struct MapReducer {
     public var coordinateRegion: MKCoordinateRegion
     
     public init(
+      details: DetailsReducer.State? = nil,
       stations: [Station] = [],
       hasAlreadyLoadedStations: Bool = false,
       errorText: String = "Impossible de charger les données de certaines stations",
