@@ -15,7 +15,9 @@ import DetailsFeature
 import FavoriteFeature
 import MapFeature
 
-struct TabBarReducer: ReducerProtocol {
+@Reducer
+struct TabBarReducer {
+  @ObservableState
   struct State: Equatable {
     var mapState: MapReducer.State = .init()
     var detailsState: DetailsReducer.State = .init()
@@ -23,14 +25,14 @@ struct TabBarReducer: ReducerProtocol {
     var favoriteState: FavoriteReducer.State = .init()
   }
   
-  enum Action: Equatable {
+  enum Action {
     case map(MapReducer.Action)
     case details(DetailsReducer.Action)
     case settings(SettingsReducer.Action)
     case favorite(FavoriteReducer.Action)
   }
   
-  var body: some ReducerProtocol<State, Action> {
+  var body: some ReducerOf<Self> {
     Scope(state: \.mapState, action: /Action.map) {
       MapReducer()
     }

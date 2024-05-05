@@ -13,40 +13,40 @@ import UserDefaultsClient
 import Models
 
 public struct DetailsView: View {
-  let store: StoreOf<DetailsReducer>
+  @Perception.Bindable var store: StoreOf<DetailsReducer>
   
   public init(store: StoreOf<DetailsReducer>) {
     self.store = store
   }
   
   public var body: some View {
-    WithViewStore(self.store) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 0) {
-        Map(coordinateRegion: viewStore.binding(\.$stationLocation), interactionModes: [], annotationItems: [viewStore.station]) {
+        Map(coordinateRegion: $store.stationLocation, interactionModes: [], annotationItems: [store.station]) {
           MapMarker(coordinate: $0.coordinate, tint: .orange)
         }
         Button {
-          viewStore.send(.favoriteButtonTapped)
+          store.send(.favoriteButtonTapped)
         } label: {
-          Text(viewStore.isFavoriteStation ? "Suppprimer des favoris" : "Ajouter aux favoris")
+          Text(store.isFavoriteStation ? "Suppprimer des favoris" : "Ajouter aux favoris")
             .foregroundColor(.white)
             .frame(height: 40)
             .frame(maxWidth: .infinity)
-            .background(viewStore.isFavoriteStation ? .red : .green)
+            .background(store.isFavoriteStation ? .red : .green)
         }
         
         VStack {
-          Text("\(viewStore.station.freeMechanicalBikes) Velos disponibles")
+          Text("\(store.station.freeMechanicalBikes) Velos disponibles")
             .stationStackStyle()
             .background(.orange)
             .cornerRadius(8)
           
-          Text("\(viewStore.station.freeElectricBikes) Vélos éléctriques disponibles")
+          Text("\(store.station.freeElectricBikes) Vélos éléctriques disponibles")
             .stationStackStyle()
             .background(.teal)
             .cornerRadius(8)
           
-          Text("\(viewStore.station.freeDocks) stands disponibles")
+          Text("\(store.station.freeDocks) stands disponibles")
             .stationStackStyle()
             .background(.pink)
             .cornerRadius(8)
@@ -54,29 +54,25 @@ public struct DetailsView: View {
         .frame(maxWidth: .infinity)
         .padding(20)
       }
-      .navigationTitle(viewStore.title)
+      .navigationTitle(store.title)
       .navigationBarTitleDisplayMode(.large)
       .onAppear {
-        viewStore.send(.onAppear)
+        store.send(.onAppear)
       }
     }
   }
 }
 
-#if DEBUG
-struct DetailsView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationView {
-      DetailsView(
-        store: Store(
-          initialState: .init(),
-          reducer: DetailsReducer()
-        )
+#Preview {
+  NavigationView {
+    DetailsView(
+      store: Store(
+        initialState: .init(),
+        reducer: { DetailsReducer() }
       )
-    }
+    )
   }
 }
-#endif
 
 struct StationStackStyle: ViewModifier {
   func body(content: Content) -> some View {

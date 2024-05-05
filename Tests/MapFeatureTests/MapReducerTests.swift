@@ -8,15 +8,16 @@
 
 import XCTest
 import ComposableArchitecture
+import DetailsFeature
 import MapFeature
 import Models
 
-@MainActor
 class MapReducerTests: XCTestCase {
+  @MainActor
   func testFetchAllStations_Success() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: MapReducer()
+      reducer: { MapReducer() }
     )
     
     let station = Station(
@@ -35,17 +36,18 @@ class MapReducerTests: XCTestCase {
     await store.send(.fetchAllStations) {
       $0.shouldShowLoader = true
     }
-    await store.receive(.fetchAllStationsResponse(.success([station]))) {
+    await store.receive(\.fetchAllStationsResponse.success) {
       $0.stations = [station]
       $0.hasAlreadyLoadedStations = true
       $0.shouldShowLoader = false
     }
   }
   
+  @MainActor
   func testFetchAllStations_Failure() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: MapReducer()
+      reducer: { MapReducer() }
     )
     
     let error = "test failed"
@@ -54,10 +56,54 @@ class MapReducerTests: XCTestCase {
     await store.send(.fetchAllStations) {
       $0.shouldShowLoader = true
     }
-    await store.receive(.fetchAllStationsResponse(.failure(error))) {
+    await store.receive(\.fetchAllStationsResponse.failure) {
       $0.hasAlreadyLoadedStations = true
       $0.shouldShowError = true
       $0.shouldShowLoader = false
+    }
+  }
+  
+  @MainActor
+  func testGetMapStyle() async {
+    @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults = "hybridStyle"
+    
+    let store = TestStore(
+      initialState: .init(),
+      reducer: { MapReducer() }
+    )
+    
+    await store.send(.getMapStyle) {
+      $0.mapStyle = .hybrid
+    }
+  }
+  
+  @MainActor
+  func testHideError() async {
+    let store = TestStore(
+      initialState: .init(shouldShowError: true),
+      reducer: { MapReducer() }
+    )
+    
+    await store.send(.hideError) {
+      $0.shouldShowError = false
+    }
+  }
+  
+  @MainActor
+  func testShowDetails() async {
+    let store = TestStore(
+      initialState: .init(),
+      reducer: { MapReducer() }
+    )
+    
+    let marker = StationMarker(freeDocks: 1, code: "123", name: "test", totalDocks: 4, freeBikes: 67, freeMechanicalBikes: 23, freeElectricBikes: 32, geolocation: [2,3])
+    
+    await store.send(\.stationPinTapped, marker) {
+      $0.details = DetailsReducer.State(station: marker)
+    }
+    
+    await store.send(.hideDetails) {
+      $0.details = nil
     }
   }
 }

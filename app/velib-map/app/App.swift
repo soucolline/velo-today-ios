@@ -20,12 +20,16 @@ struct Application: App {
   
   var body: some Scene {
     WindowGroup {
-      TabBarView(
-        store: Store(
-          initialState: .init(),
-          reducer: TabBarReducer()
+      if _XCTIsTesting {
+        EmptyView()
+      } else {
+        TabBarView(
+          store: Store(
+            initialState: .init(),
+            reducer: { TabBarReducer() }
+          )
         )
-      )
+      }
     }
   }
 }

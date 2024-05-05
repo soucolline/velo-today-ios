@@ -12,30 +12,51 @@ import XCTest
 import FavoriteFeature
 import Models
 
-@MainActor
 class FavoriteReducerTests: XCTestCase {
-  func testFetchFavoriteStations_NoStations() {
+  @MainActor
+  func testOnAppear() async {
+    @Shared(.inMemory("stations")) var stations: [Station] = []
+    
     let store = TestStore(
-      initialState: .init(
-        isFetchStationRequestInFlight: true
-      ),
-      reducer: FavoriteReducer()
+      initialState: .init(),
+      reducer: { FavoriteReducer() }
     )
     
+    store.dependencies.userDefaultsClient.arrayForKey = { _ in ["123"] }
+    
+    await store.send(.onAppear) {
+      $0.favoriteStations = []
+      $0.shouldShowEmptyView = true
+    }
+  }
+  
+  @MainActor
+  func testFetchFavoriteStations_NoStations() async {
+    let store = TestStore(
+      initialState: .init(),
+      reducer: { FavoriteReducer() }
+    )
+    
+    store.dependencies.apiClient.fetchAllStations = { [] }
     store.dependencies.userDefaultsClient.arrayForKey = { _ in nil }
     
-    store.send(.fetchFavoriteStations) {
-      $0.stations = []
+    await store.send(.fetchFavoriteStations) {
+      $0.favoriteStations = []
       $0.isFetchStationRequestInFlight = true
+      $0.shouldShowEmptyView = false
+    }
+    
+    await store.receive(\.fetchFavoriteStationsResponse.success) {
       $0.isFetchStationRequestInFlight = false
       $0.shouldShowEmptyView = true
     }
   }
   
+  @MainActor
   func testFetchFavoriteStations_Success() async {
     let store = TestStore(
       initialState: .init(),
-      reducer: FavoriteReducer()
+      reducer: { FavoriteReducer() }
     )
     
     let stationResponse1 = Station(
@@ -70,17 +91,19 @@ class FavoriteReducerTests: XCTestCase {
       $0.isFetchStationRequestInFlight = true
     }
     
-    await store.receive(.fetchFavoriteStationsResponse(.success([stationResponse1, stationResponse2]))) {
+    await store.receive(\.fetchFavoriteStationsResponse.success) {
       $0.isFetchStationRequestInFlight = false
       $0.stations = [stationResponse1, stationResponse2]
+      $0.favoriteStations = [stationResponse1, stationResponse2]
     }
   }
   
+  @MainActor
   func testFetchFavoriteStations_Failure() async {
     let mainQueue = DispatchQueue.test
     let store = TestStore(
       initialState: .init(),
-      reducer: FavoriteReducer().dependency(\.mainQueue, mainQueue.eraseToAnyScheduler())
+      reducer: { FavoriteReducer().dependency(\.mainQueue, mainQueue.eraseToAnyScheduler()) }
     )
     
     let error = "\(#file) test error"
@@ -93,13 +116,13 @@ class FavoriteReducerTests: XCTestCase {
       $0.isFetchStationRequestInFlight = true
     }
     
-    await store.receive(.fetchFavoriteStationsResponse(.failure(error))) {
+    await store.receive(\.fetchFavoriteStationsResponse.failure) {
       $0.isFetchStationRequestInFlight = false
       $0.shouldShowError = true
     }
     
     await mainQueue.advance(by: 2)
-    await store.receive(.hideErrorView) {
+    await store.receive(\.hideErrorView) {
       $0.shouldShowError = false
     }
   }

@@ -10,13 +10,15 @@ import MapKit
 import Models
 import UserDefaultsClient
 
-public struct DetailsReducer: ReducerProtocol {
+@Reducer
+public struct DetailsReducer {
+  @ObservableState
   public struct State: Equatable {
     public var station: StationMarker
     public var title: String
     public var isFavoriteStation: Bool
     
-    @BindableState public var stationLocation: MKCoordinateRegion
+    public var stationLocation: MKCoordinateRegion
     
     public init(
       station: StationMarker = StationMarker(
@@ -46,7 +48,7 @@ public struct DetailsReducer: ReducerProtocol {
     }
   }
   
-  public enum Action: Equatable, BindableAction {
+  public enum Action: BindableAction {
     case onAppear
     case binding(BindingAction<State>)
     case favoriteButtonTapped
@@ -56,7 +58,7 @@ public struct DetailsReducer: ReducerProtocol {
   
   public init() {}
   
-  public var body: some ReducerProtocol<State, Action> {
+  public var body: some ReducerOf<Self> {
     BindingReducer()
     Reduce { state, action in
       switch action {
@@ -75,15 +77,15 @@ public struct DetailsReducer: ReducerProtocol {
       case .favoriteButtonTapped:
         if state.isFavoriteStation {
           state.isFavoriteStation = false
-          return self.userDefaultsClient
-            .removeFavoriteStations(for: state.station.code)
-            .fireAndForget()
+          self.userDefaultsClient.removeFavoriteStations(for: state.station.code)
+          
+          return .none
           
         } else {
           state.isFavoriteStation = true
-          return self.userDefaultsClient
-            .addFavoriteStation(for: state.station.code)
-            .fireAndForget()
+          self.userDefaultsClient.addFavoriteStation(for: state.station.code)
+          
+          return .none
         }
         
       case .binding:

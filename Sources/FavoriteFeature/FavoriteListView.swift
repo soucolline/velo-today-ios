@@ -15,34 +15,30 @@ import Models
 import DetailsFeature
 
 public struct FavoriteListView: View {
-  let store: StoreOf<FavoriteReducer>
+  @Perception.Bindable var store: StoreOf<FavoriteReducer>
 
   public init(store: StoreOf<FavoriteReducer>) {
     self.store = store
   }
   
   public var body: some View {
-    WithViewStore(self.store) { viewStore in
+    WithPerceptionTracking {
       NavigationView {
         ZStack {
           List {
-            if viewStore.isFetchStationRequestInFlight {
+            if store.isFetchStationRequestInFlight {
               ForEach(0..<3) { _ in
                 FavoriteEmptyCell()
               }
             } else {
-              ForEach(viewStore.stations) { station in
-                NavigationLink(
-                  destination: DetailsView(
-                    store: Store(
-                      initialState: DetailsReducer.State(
-                        station: station.toStationPin(),
-                        title: station.name,
-                        isFavoriteStation: true),
-                      reducer: DetailsReducer()
-                    )
-                  )
+              ForEach(store.favoriteStations) { station in
+                NavigationLinkStore(
+                  self.store.scope(state: \.$details, action: \.details)
                 ) {
+                  store.send(.stationTapped(station))
+                } destination: { store in
+                  DetailsView(store: store)
+                } label: {
                   FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
                 }
               }
@@ -50,60 +46,56 @@ public struct FavoriteListView: View {
           }
           .navigationTitle("Favoris")
           
-          if viewStore.shouldShowEmptyView {
+          if store.shouldShowEmptyView {
             FavoriteEmptyView()
           }
           
           ErrorView(
-            errorText: .constant(viewStore.errorText),
-            isVisible: viewStore.binding(\.$shouldShowError)
+            errorText: $store.errorText,
+            isVisible: $store.shouldShowError
           )
+        }
+        .onAppear {
+          store.send(.onAppear)
         }
       }
       .navigationViewStyle(.stack)
       .refreshable {
-        viewStore.send(.fetchFavoriteStations)
-      }
-      .task {
-        viewStore.send(.fetchFavoriteStations)
+        store.send(.fetchFavoriteStations)
       }
     }
   }
 }
 
-#if DEBUG
-struct FavoriteListView_Previews: PreviewProvider {
-  static var previews: some View {
-    FavoriteListView(
-      store: Store(
-        initialState: FavoriteReducer.State(
-          stations: [
-            Station(
-              freeDocks: 12,
-              code: "Code",
-              name: "Name of the station",
-              totalDocks: 12,
-              freeBikes: 10,
-              freeMechanicalBikes: 14,
-              freeElectricBikes: 15,
-              geolocation: [12, 13]
-            ),
-            Station(
-              freeDocks: 1,
-              code: "Code",
-              name: "Name of the station but super long",
-              totalDocks: 12,
-              freeBikes: 10,
-              freeMechanicalBikes: 14,
-              freeElectricBikes: 15,
-              geolocation: [12, 13]
-            )
-          ],
-          isFetchStationRequestInFlight: false
-        ),
-        reducer: FavoriteReducer()
-      )
+#Preview {
+  FavoriteListView(
+    store: Store(
+      initialState: FavoriteReducer.State(
+        stations: [
+          Station(
+            freeDocks: 12,
+            code: "Code",
+            name: "Name of the station",
+            totalDocks: 12,
+            freeBikes: 10,
+            freeMechanicalBikes: 14,
+            freeElectricBikes: 15,
+            geolocation: [12, 13]
+          ),
+          Station(
+            freeDocks: 1,
+            code: "Code",
+            name: "Name of the station but super long",
+            totalDocks: 12,
+            freeBikes: 10,
+            freeMechanicalBikes: 14,
+            freeElectricBikes: 15,
+            geolocation: [12, 13]
+          )
+        ],
+        isFetchStationRequestInFlight: false
+      ),
+      reducer: { FavoriteReducer() }
     )
-  }
+  )
 }
-#endif

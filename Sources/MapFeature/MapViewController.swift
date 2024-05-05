@@ -18,7 +18,7 @@ import DetailsFeature
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  let viewStore: ViewStoreOf<MapReducer>
+  @Perception.Bindable var store: StoreOf<MapReducer>
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!
@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
   let locationManager = CLLocationManager()
   
   init(store: StoreOf<MapReducer>) {
-    self.viewStore = ViewStore(store)
+    self.store = store
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -53,67 +53,75 @@ class MapViewController: UIViewController {
     
     setupViews()
     
-    self.viewStore.send(.fetchAllStations)
+    self.store.send(.fetchAllStations)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    viewStore.send(.getMapStyle)
+    self.store.send(.getMapStyle)
   }
   
   func setupViews() {
-    self.viewStore.publisher.stations
+    observe { [weak self] in
+      guard let self else { return }
+      
+      switch self.store.mapStyle {
+      case .normal:
+        self.mapView.mapType = .standard
+      case .hybrid:
+        self.mapView.mapType = .hybrid
+      case .satellite:
+        self.mapView.mapType = .satellite
+      }
+      
+      if self.store.shouldShowLoader {
+        UIView.animate(withDuration: 0.5, delay: 0.0) {
+          self.loadingView.view.alpha = 1.0
+        }
+      } else {
+        UIView.animate(withDuration: 0.5, delay: 0.0) {
+          self.loadingView.view.alpha = 0.0
+        }
+      }
+      
+      if self.store.shouldShowError {
+        let alert = UIAlertController(
+          title: "Erreur",
+          message: self.store.errorText,
+          preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+          self.store.send(.hideError)
+        }
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true)
+      }
+    }
+    
+    observe { [weak self] in
+      guard let self else { return }
+      if let store = self.store.scope(state: \.details, action: \.showDetails) {
+        let detailView = UIHostingController(rootView: DetailsView(store: store))
+        
+        detailView.presentationController?.delegate = self
+        if let sheet = detailView.sheetPresentationController {
+          sheet.detents = [.medium()]
+          sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+          sheet.prefersEdgeAttachedInCompactHeight = true
+          sheet.preferredCornerRadius = 12
+        }
+        self.present(detailView, animated: true)
+      } else {
+        self.dismiss(animated: true)
+      }
+    }
+    
+    self.store.publisher.stations
       .sink(receiveValue: { stations in
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.addAnnotations(stations.map { $0.toStationPin() })
-      })
-      .store(in: &cancellables)
-    
-    self.viewStore.publisher.mapStyle
-      .sink(receiveValue: { mapStyle in
-          switch mapStyle {
-          case .normal:
-            self.mapView.mapType = .standard
-          case .hybrid:
-            self.mapView.mapType = .hybrid
-          case .satellite:
-            self.mapView.mapType = .satellite
-          }
-      })
-      .store(in: &cancellables)
-    
-    self.viewStore.publisher.shouldShowLoader
-      .sink(receiveValue: { [weak self] shouldShow in
-        if shouldShow {
-          UIView.animate(withDuration: 0.5, delay: 0.0) {
-            self?.loadingView.view.alpha = 1.0
-          }
-        } else {
-          UIView.animate(withDuration: 0.5, delay: 0.0) {
-            self?.loadingView.view.alpha = 0.0
-          }
-        }
-      })
-      .store(in: &cancellables)
-    
-    self.viewStore.publisher.shouldShowError
-      .sink(receiveValue: { [weak self] shouldShow in
-        guard let self else { return }
-        
-        if shouldShow {
-          let alert = UIAlertController(
-            title: "Erreur",
-            message: self.viewStore.errorText,
-            preferredStyle: .alert
-          )
-          let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            self.viewStore.send(.hideError)
-          }
-          alert.addAction(okAction)
-          
-          self.present(alert, animated: true)
-        }
       })
       .store(in: &cancellables)
   }
@@ -165,7 +173,7 @@ class MapViewController: UIViewController {
   }
   
   @objc private func reloadPins() {
-    self.viewStore.send(.fetchAllStations)
+    self.store.send(.fetchAllStations)
   }
   
 }
@@ -197,20 +205,7 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     guard let station = view.annotation as? StationMarker else { return }
     
-    let detailView = UIHostingController(rootView: DetailsView(
-      store: Store(
-        initialState: .init(station: station),
-        reducer: DetailsReducer()
-      )
-    ))
-    
-    if let sheet = detailView.sheetPresentationController {
-      sheet.detents = [.medium()]
-      sheet.prefersScrollingExpandsWhenScrolledToEdge = true
-      sheet.prefersEdgeAttachedInCompactHeight = true
-      sheet.preferredCornerRadius = 12
-    }
-    self.present(detailView, animated: true)
+    store.send(.stationPinTapped(station))
   }
   
 }
@@ -229,4 +224,10 @@ extension MapViewController: CLLocationManagerDelegate {
     self.centerMapOnLocation(location: self.initialLocation)
   }
   
+}
+
+extension MapViewController: UIAdaptivePresentationControllerDelegate {
+  func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+    store.send(.hideDetails)
+  }
 }

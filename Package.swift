@@ -3,6 +3,8 @@
 
 import PackageDescription
 
+let tca: Target.Dependency = .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+
 let package = Package(
     name: "velo-today-ios",
     platforms: [.iOS(.v15)],
@@ -16,14 +18,14 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "0.47.2"),
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.10.2"),
     ],
     targets: [
       .target(
         name: "ApiClient",
         dependencies: [
           "Models",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .target(
@@ -31,7 +33,7 @@ let package = Package(
         dependencies: [
           "Models",
           "UserDefaultsClient",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .testTarget(
@@ -40,7 +42,7 @@ let package = Package(
           "DetailsFeature",
           "UserDefaultsClient",
           "Models",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .target(
@@ -50,7 +52,7 @@ let package = Package(
           "DetailsFeature",
           "Models",
           "UserDefaultsClient",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .testTarget(
@@ -70,7 +72,7 @@ let package = Package(
           "ApiClient",
           "Models",
           "DetailsFeature",
-         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+         tca,
         ]
       ),
       .testTarget(
@@ -81,7 +83,7 @@ let package = Package(
           "Models",
           "DetailsFeature",
           "UserDefaultsClient",
-         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+         tca,
         ]
       ),
       .target(name: "Models"),
@@ -90,7 +92,7 @@ let package = Package(
         dependencies: [
           "Models",
           "UserDefaultsClient",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .testTarget(
@@ -99,13 +101,13 @@ let package = Package(
           "SettingsFeature",
           "Models",
           "UserDefaultsClient",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       ),
       .target(
         name: "UserDefaultsClient",
         dependencies: [
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          tca,
         ]
       )
     ]
