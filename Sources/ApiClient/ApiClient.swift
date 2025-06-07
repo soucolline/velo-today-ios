@@ -9,6 +9,6 @@
 import Foundation
 import Models
 
-public struct ApiClient {
+public struct ApiClient: Sendable {
   public var fetchAllStations: @Sendable () async throws -> [Station]
 }

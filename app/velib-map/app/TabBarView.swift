@@ -42,11 +42,8 @@ struct TabBarView: View {
             Label("Favoris", systemImage: "star.circle.fill")
           }
           
-          SettingsView(
-            store: self.store.scope(
-              state: \.settingsState,
-              action: \.settings
-            )
+          SettingsScreen(
+            viewModel: SettingsScreenViewModel()
           )
           .tabItem {
             Label("Réglages", systemImage: "gear.circle.fill")

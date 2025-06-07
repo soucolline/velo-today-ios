@@ -91,7 +91,7 @@ extension View {
   }
 }
 
-extension MKCoordinateRegion: Equatable {
+extension MKCoordinateRegion: @retroactive Equatable {
   static public func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool {
     (lhs.span.latitudeDelta == rhs.span.latitudeDelta) && (lhs.span.longitudeDelta == rhs.span.longitudeDelta) &&
     (lhs.center.latitude == rhs.center.latitude) && (lhs.center.longitude == rhs.center.longitude)

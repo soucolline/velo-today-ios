@@ -12,7 +12,7 @@ import Models
 import ApiClient
 
 @Reducer
-public struct MapReducer {
+public struct MapReducer: Sendable {
   @ObservableState
   public struct State: Equatable {
     @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"
@@ -40,13 +40,15 @@ public struct MapReducer {
         latitudinalMeters: 1000 * 2.0,
         longitudinalMeters: 1000 * 2.0)
     ) {
-      self.stations = stations
       self.hasAlreadyLoadedStations = hasAlreadyLoadedStations
       self.errorText = errorText
       self.mapStyle = mapStyle
       self.shouldShowLoader = shouldShowLoader
       self.shouldShowError = shouldShowError
       self.coordinateRegion = coordinateRegion
+      $stations.withLock {
+          $0 = stations
+      }
     }
   }
 
@@ -74,7 +76,7 @@ public struct MapReducer {
         }
         
       case .fetchAllStationsResponse(.success(let stations)):
-        state.stations = stations
+        state.$stations.withLock { $0 = stations }
         state.hasAlreadyLoadedStations = true
         state.shouldShowLoader = false
         return .none

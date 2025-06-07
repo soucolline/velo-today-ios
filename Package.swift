@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 6.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -18,7 +18,7 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.10.2"),
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.20.2"),
     ],
     targets: [
       .target(

@@ -13,7 +13,7 @@ import UserDefaultsClient
 import Models
 
 @Reducer
-public struct FavoriteReducer {
+public struct FavoriteReducer: Sendable {
   @ObservableState
   public struct State: Equatable {
 //    @Shared(.appStorage("favoriteStationsCode")) var favoriteStationsCode: [String] = []
@@ -37,7 +37,6 @@ public struct FavoriteReducer {
       shouldShowEmptyView: Bool = false
     ) {
       self.details = details
-      self.stations = stations
       self.isFetchStationRequestInFlight = isFetchStationRequestInFlight
       self.errorText = errorText
       self.shouldShowError = shouldShowError
@@ -104,7 +103,7 @@ public struct FavoriteReducer {
           return .none
         }
         
-        state.stations = stationResponse
+        state.$stations.withLock { $0 = stationResponse }
         state.favoriteStations = stationResponse.filter { stationsIds.contains($0.code) }
         state.isFetchStationRequestInFlight = false
         

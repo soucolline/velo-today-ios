@@ -12,16 +12,6 @@ import Foundation
 import XCTestDynamicOverlay
 
 extension UserDefaultsClient {
-  public static let failing = Self(
-    arrayForKey: { key in
-      XCTFail("\(Self.self).arrayForKey(\(key)) is unimplemented")
-      return nil
-    },
-    remove: { key in unimplemented() },
-    setArray: { _, key in unimplemented() },
-    getAppVersion: { unimplemented() }
-  )
-
   public mutating func override(array: [String]?, forKey key: String) {
     self.arrayForKey = { [self] in $0 == key ? array : self.arrayForKey(key) }
   }

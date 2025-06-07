@@ -210,7 +210,7 @@ extension MapViewController: MKMapViewDelegate {
   
 }
 
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController: @preconcurrency CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = manager.location else { return }

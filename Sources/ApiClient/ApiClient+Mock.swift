@@ -11,14 +11,14 @@ import Foundation
 import XCTestDynamicOverlay
 
 extension ApiClient {
-  public static let unimplemented = Self(
-    fetchAllStations: XCTUnimplemented("\(Self.self) fetchAllStations unimplemented")
+  public static let noop = Self(
+    fetchAllStations: unimplemented("\(Self.self) fetchAllStations unimplemented")
   )
 }
 
 extension ApiClientKey {
-  static let testValue = ApiClient.unimplemented
-  static let previewValue = ApiClient.unimplemented
+  static let testValue = ApiClient.noop
+  static let previewValue = ApiClient.noop
 }
 
 #endif

@@ -21,32 +21,26 @@ struct TabBarReducer {
   struct State: Equatable {
     var mapState: MapReducer.State = .init()
     var detailsState: DetailsReducer.State = .init()
-    var settingsState: SettingsReducer.State = .init()
     var favoriteState: FavoriteReducer.State = .init()
   }
   
   enum Action {
     case map(MapReducer.Action)
     case details(DetailsReducer.Action)
-    case settings(SettingsReducer.Action)
     case favorite(FavoriteReducer.Action)
   }
   
   var body: some ReducerOf<Self> {
-    Scope(state: \.mapState, action: /Action.map) {
+    Scope(state: \.mapState, action: \.map) {
       MapReducer()
     }
     
-    Scope(state: \.detailsState, action: /Action.details) {
+    Scope(state: \.detailsState, action: \.details) {
       DetailsReducer()
     }
     
-    Scope(state: \.favoriteState, action: /Action.favorite) {
+    Scope(state: \.favoriteState, action: \.favorite) {
       FavoriteReducer()
-    }
-    
-    Scope(state: \.settingsState, action: /Action.settings) {
-      SettingsReducer()
     }
   }
 }
