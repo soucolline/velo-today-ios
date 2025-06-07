@@ -52,39 +52,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DetailsFeatureTests"
-               BuildableName = "DetailsFeatureTests"
-               BlueprintName = "DetailsFeatureTests"
-               ReferencedContainer = "container:..">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FavoriteFeatureTests"
-               BuildableName = "FavoriteFeatureTests"
-               BlueprintName = "FavoriteFeatureTests"
-               ReferencedContainer = "container:..">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "MapFeatureTests"
-               BuildableName = "MapFeatureTests"
-               BlueprintName = "MapFeatureTests"
-               ReferencedContainer = "container:..">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SettingsFeatureTests"
-               BuildableName = "SettingsFeatureTests"
-               BlueprintName = "SettingsFeatureTests"
+               BlueprintIdentifier = "AppTests"
+               BuildableName = "AppTests"
+               BlueprintName = "AppTests"
                ReferencedContainer = "container:..">
             </BuildableReference>
          </TestableReference>

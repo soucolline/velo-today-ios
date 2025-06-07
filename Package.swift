@@ -42,16 +42,6 @@ let package = Package(
           perception,
         ]
       ),
-      .testTarget(
-        name: "DetailsFeatureTests",
-        dependencies: [
-          "DetailsFeature",
-          "UserDefaultsClient",
-          "Models",
-          sharing,
-          perception,
-        ]
-      ),
       .target(
         name: "FavoriteFeature",
         dependencies: [
@@ -61,16 +51,6 @@ let package = Package(
           "UserDefaultsClient",
           sharing,
           perception,
-        ]
-      ),
-      .testTarget(
-        name: "FavoriteFeatureTests",
-        dependencies: [
-          "ApiClient",
-          "FavoriteFeature",
-          "Models",
-          "DetailsFeature",
-          "UserDefaultsClient"
         ]
       ),
       .target(
@@ -84,28 +64,10 @@ let package = Package(
           navigation
         ]
       ),
-      .testTarget(
-        name: "MapFeatureTests",
-        dependencies: [
-          "ApiClient",
-          "MapFeature",
-          "Models",
-          "DetailsFeature",
-          "UserDefaultsClient",
-        ]
-      ),
       .target(name: "Models"),
       .target(
         name: "SettingsFeature",
         dependencies: [
-          "Models",
-          "UserDefaultsClient",
-        ]
-      ),
-      .testTarget(
-        name: "SettingsFeatureTests",
-        dependencies: [
-          "SettingsFeature",
           "Models",
           "UserDefaultsClient",
         ]
@@ -116,6 +78,9 @@ let package = Package(
           sharing,
           perception
         ]
+      ),
+      .testTarget(
+        name: "AppTests"
       )
     ]
 )
