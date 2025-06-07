@@ -6,7 +6,6 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
 import ApiClient
@@ -14,6 +13,7 @@ import SettingsFeature
 import DetailsFeature
 import FavoriteFeature
 import MapFeature
+import Perception
 
 struct TabBarView: View {
   var body: some View {

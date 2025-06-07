@@ -6,7 +6,6 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import UIKit
 import MapKit
 import CoreLocation
@@ -14,6 +13,8 @@ import Combine
 import SwiftUI
 import Models
 import DetailsFeature
+import Perception
+import UIKitNavigation
 
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!

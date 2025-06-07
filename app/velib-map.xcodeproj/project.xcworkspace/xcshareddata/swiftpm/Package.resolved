@@ -1,4 +1,5 @@
 {
+  "originHash" : "f80bf340a04313507c4c0e8d0d2d2fd6b38409c0e567801ee63c2d2ed1c743e3",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -145,15 +146,6 @@
       }
     },
     {
-      "identity" : "swift-composable-architecture",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-composable-architecture",
-      "state" : {
-        "revision" : "6574de2396319a58e86e2178577268cb4aeccc30",
-        "version" : "1.20.2"
-      }
-    },
-    {
       "identity" : "swift-concurrency-extras",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
@@ -244,5 +236,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

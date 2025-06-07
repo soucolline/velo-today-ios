@@ -6,10 +6,10 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
 import Models
+import Perception
 
 public struct SettingsScreen: View {
   @Perception.Bindable var viewModel: SettingsScreenViewModel

@@ -6,11 +6,11 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import SwiftUI
 import MapKit
 import UserDefaultsClient
 import Models
+import Perception
 
 public struct DetailsScreen: View {
   @Perception.Bindable var viewModel: DetailsScreenViewModel

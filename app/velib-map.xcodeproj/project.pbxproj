@@ -12,7 +12,6 @@
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
 		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
-		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
 		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
@@ -74,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */,
 				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
 				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
 				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
@@ -185,7 +183,6 @@
 			);
 			name = "velib-map";
 			packageProductDependencies = (
-				E9B4AE02289EEF1000260AEC /* ComposableArchitecture */,
 				E911A04528DE1BD00011F0CE /* UserDefaultsClient */,
 				E911A04728DE1DD70011F0CE /* Models */,
 				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
@@ -233,7 +230,6 @@
 			);
 			mainGroup = EBA372EC1EA3A0CC00E214DD;
 			packageReferences = (
-				E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EBA372F61EA3A0CC00E214DD /* Products */;
@@ -587,14 +583,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = exactVersion;
-				version = 1.20.2;
-			};
-		};
 		E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -613,11 +601,6 @@
 		E911A04728DE1DD70011F0CE /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
-		};
-		E9B4AE02289EEF1000260AEC /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
 		};
 		E9C79B0528DE449200B870D8 /* MapFeature */ = {
 			isa = XCSwiftPackageProductDependency;

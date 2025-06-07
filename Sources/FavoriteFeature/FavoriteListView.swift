@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import ComposableArchitecture
 import SwiftUI
 import ApiClient
 import UserDefaultsClient
 import Models
 import DetailsFeature
+import Perception
 
 public struct FavoriteListScreen: View {
   @Perception.Bindable var viewModel: FavoriteScreenViewModel
