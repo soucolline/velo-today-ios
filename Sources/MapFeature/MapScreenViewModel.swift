@@ -21,7 +21,7 @@ public class MapScreenViewModel {
   @PerceptionIgnored
   @Shared(.inMemory("stations")) public var stations: [Station] = []
   @PerceptionIgnored
-  @Dependency(\.apiClientProtocol) public var apiClient
+  @Dependency(\.apiClient) public var apiClient
   
   public enum Destination {
     case details(StationMarker)

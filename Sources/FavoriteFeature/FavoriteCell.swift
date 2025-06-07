@@ -44,12 +44,10 @@ struct FavoriteCell: View {
   }
 }
 
-struct FavoriteCell_Previews: PreviewProvider {
-  static var previews: some View {
-    List {
-      FavoriteCell(
-        name: "Station name", freeBikes: 12, freeDocks: 13
-      )
-    }
+#Preview {
+  List {
+    FavoriteCell(
+      name: "Station name", freeBikes: 12, freeDocks: 13
+    )
   }
 }

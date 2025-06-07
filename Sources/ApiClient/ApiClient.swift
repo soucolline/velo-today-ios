@@ -9,15 +9,11 @@
 import Foundation
 import Models
 
-public struct ApiClient: Sendable {
-  public var fetchAllStations: @Sendable () async throws -> [Station]
-}
-
-public protocol ApiClientProtocol: Sendable {
+public protocol ApiClient: Sendable {
   func fetchAllStations() async throws -> [Station]
 }
 
-public final class ApiClientImpl: ApiClientProtocol {
+public final class ApiClientImpl: ApiClient {
   public func fetchAllStations() async throws -> [Station] {
     let locationURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_information.json")!
     let bikesURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_status.json")!

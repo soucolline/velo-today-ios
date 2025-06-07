@@ -14,11 +14,11 @@ import UserDefaultsClient
 import Models
 import DetailsFeature
 
-public struct FavoriteListView: View {
-  @Perception.Bindable var store: StoreOf<FavoriteReducer>
+public struct FavoriteListScreen: View {
+  @Perception.Bindable var viewModel: FavoriteScreenViewModel
 
-  public init(store: StoreOf<FavoriteReducer>) {
-    self.store = store
+  public init(viewModel: FavoriteScreenViewModel) {
+    self.viewModel = viewModel
   }
   
   public var body: some View {
@@ -26,51 +26,52 @@ public struct FavoriteListView: View {
       NavigationView {
         ZStack {
           List {
-            if store.isFetchStationRequestInFlight {
+            if viewModel.isFetchStationRequestInFlight {
               ForEach(0..<3) { _ in
                 FavoriteEmptyCell()
               }
             } else {
-              ForEach(store.favoriteStations) { station in
-//                NavigationLinkStore(
-//                  self.store.scope(state: \.$details, action: \.details)
-//                ) {
-//                  store.send(.stationTapped(station))
-//                } destination: { store in
-//                  DetailsView(viewModel: DetailsScreenViewModel())
-//                } label: {
+              ForEach(viewModel.favoriteStations) { station in
+                NavigationLink {
+                  DetailsScreen(
+                    viewModel: DetailsScreenViewModel(
+                      station: station.toStationPin(),
+                      title: station.name,
+                      isFavoriteStation: true
+                    )
+                  )
+                } label: {
                   FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
-//                }
+                }
               }
             }
           }
           .navigationTitle("Favoris")
           
-          if store.shouldShowEmptyView {
+          if viewModel.shouldShowEmptyView {
             FavoriteEmptyView()
           }
           
           ErrorView(
-            errorText: $store.errorText,
-            isVisible: $store.shouldShowError
+            errorText: $viewModel.errorText,
+            isVisible: $viewModel.shouldShowError
           )
         }
         .onAppear {
-          store.send(.onAppear)
+          viewModel.onAppear()
         }
       }
       .navigationViewStyle(.stack)
       .refreshable {
-        store.send(.fetchFavoriteStations)
+        await viewModel.fetchFavoriteStations()
       }
     }
   }
 }
 
 #Preview {
-  FavoriteListView(
-    store: Store(
-      initialState: FavoriteReducer.State(
+  FavoriteListScreen(
+    viewModel: FavoriteScreenViewModel(
         stations: [
           Station(
             freeDocks: 12,
@@ -94,8 +95,6 @@ public struct FavoriteListView: View {
           )
         ],
         isFetchStationRequestInFlight: false
-      ),
-      reducer: { FavoriteReducer() }
     )
   )
 }

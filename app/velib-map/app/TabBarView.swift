@@ -16,8 +16,6 @@ import FavoriteFeature
 import MapFeature
 
 struct TabBarView: View {
-  let store: StoreOf<TabBarReducer>
-  
   var body: some View {
     WithPerceptionTracking {
       NavigationView {
@@ -29,11 +27,8 @@ struct TabBarView: View {
             Label("Stations", systemImage: "bicycle.circle.fill")
           }
           
-          FavoriteListView(
-            store: self.store.scope(
-              state: \.favoriteState,
-              action: \.favorite
-            )
+          FavoriteListScreen(
+            viewModel: FavoriteScreenViewModel()
           )
           .tabItem {
             Label("Favoris", systemImage: "star.circle.fill")
@@ -51,15 +46,6 @@ struct TabBarView: View {
   }
 }
 
-#if DEBUG
-struct TabBarView_Previews: PreviewProvider {
-  static var previews: some View {
-    TabBarView(
-      store: Store(
-        initialState: .init(),
-        reducer: { TabBarReducer() }
-      )
-    )
-  }
+#Preview {
+  TabBarView()
 }
-#endif

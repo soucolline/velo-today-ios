@@ -9,23 +9,12 @@ import Foundation
 import Dependencies
 
 enum ApiClientKey: DependencyKey {
-  static let liveValue = ApiClient.live
+  static let liveValue: ApiClient = ApiClientImpl()
 }
 
 public extension DependencyValues {
   var apiClient: ApiClient {
     get { self[ApiClientKey.self] }
     set { self[ApiClientKey.self] = newValue }
-  }
-}
-
-enum ApiClientProtocolKey: DependencyKey {
-  static let liveValue: ApiClientProtocol = ApiClientImpl()
-}
-
-public extension DependencyValues {
-  var apiClientProtocol: ApiClientProtocol {
-    get { self[ApiClientProtocolKey.self] }
-    set { self[ApiClientProtocolKey.self] = newValue }
   }
 }

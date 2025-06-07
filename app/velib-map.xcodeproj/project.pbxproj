@@ -12,7 +12,6 @@
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
 		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
-		E99379EE293CB3F500D13242 /* TabBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99379ED293CB3F500D13242 /* TabBarReducer.swift */; };
 		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
 		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -52,7 +51,6 @@
 		E93F912628DF9EE200012D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E99379ED293CB3F500D13242 /* TabBarReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReducer.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9C80F3B28DE198100F6488F /* velo-today-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "velo-today-ios"; path = ..; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				E98B1AFF28A021E800056BCE /* App.swift */,
-				E99379ED293CB3F500D13242 /* TabBarReducer.swift */,
 				E930259428AD7EF500F44210 /* TabBarView.swift */,
 			);
 			path = app;
@@ -299,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
-				E99379EE293CB3F500D13242 /* TabBarReducer.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,12 +23,7 @@ struct Application: App {
       if _XCTIsTesting {
         EmptyView()
       } else {
-        TabBarView(
-          store: Store(
-            initialState: .init(),
-            reducer: { TabBarReducer() }
-          )
-        )
+        TabBarView()
       }
     }
   }
