@@ -23,10 +23,7 @@ struct TabBarView: View {
       NavigationView {
         TabView {
           MapUIKit(
-            store: self.store.scope(
-              state: \.mapState,
-              action: \.map
-            )
+            viewModel: MapScreenViewModel()
           )
           .tabItem {
             Label("Stations", systemImage: "bicycle.circle.fill")

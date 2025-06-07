@@ -15,14 +15,14 @@ import Models
 import ApiClient
 
 public struct MapUIKit: UIViewControllerRepresentable {
-  let store: StoreOf<MapReducer>
+  let viewModel: MapScreenViewModel
   
-  public init(store: StoreOf<MapReducer>) {
-    self.store = store
+  public init(viewModel: MapScreenViewModel) {
+    self.viewModel = viewModel
   }
   
   public func makeUIViewController(context: Context) -> some UIViewController {
-    UINavigationController(rootViewController: MapViewController(store: self.store))
+    UINavigationController(rootViewController: MapViewController(viewModel: viewModel))
   }
   
   public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

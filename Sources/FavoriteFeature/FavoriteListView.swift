@@ -32,15 +32,15 @@ public struct FavoriteListView: View {
               }
             } else {
               ForEach(store.favoriteStations) { station in
-                NavigationLinkStore(
-                  self.store.scope(state: \.$details, action: \.details)
-                ) {
-                  store.send(.stationTapped(station))
-                } destination: { store in
-                  DetailsView(store: store)
-                } label: {
+//                NavigationLinkStore(
+//                  self.store.scope(state: \.$details, action: \.details)
+//                ) {
+//                  store.send(.stationTapped(station))
+//                } destination: { store in
+//                  DetailsView(viewModel: DetailsScreenViewModel())
+//                } label: {
                   FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
-                }
+//                }
               }
             }
           }

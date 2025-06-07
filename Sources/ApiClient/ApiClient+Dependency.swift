@@ -19,3 +19,13 @@ public extension DependencyValues {
   }
 }
 
+enum ApiClientProtocolKey: DependencyKey {
+  static let liveValue: ApiClientProtocol = ApiClientImpl()
+}
+
+public extension DependencyValues {
+  var apiClientProtocol: ApiClientProtocol {
+    get { self[ApiClientProtocolKey.self] }
+    set { self[ApiClientProtocolKey.self] = newValue }
+  }
+}
