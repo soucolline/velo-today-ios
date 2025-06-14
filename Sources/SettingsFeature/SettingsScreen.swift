@@ -1,21 +1,21 @@
 //
-//  SettingsView.swift
+//  SettingsScreen.swift
 //  velib-map
 //
 //  Created by Thomas Guilleminot on 06/08/2022.
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
 import Models
+import Perception
 
-public struct SettingsView: View {
-  @Perception.Bindable var store: StoreOf<SettingsReducer>
+public struct SettingsScreen: View {
+  @Perception.Bindable var viewModel: SettingsScreenViewModel
   
-  public init(store: StoreOf<SettingsReducer>) {
-    self.store = store
+  public init(viewModel: SettingsScreenViewModel) {
+    self.viewModel = viewModel
   }
   
   public var body: some View {
@@ -23,7 +23,7 @@ public struct SettingsView: View {
       NavigationView {
         List {
           Section(header: Text("Type de carte ")) {
-            Picker("toto", selection: $store.selectedPickerIndex) {
+            Picker("toto", selection: $viewModel.selectedPickerIndex) {
               Text("Normal").tag(0)
               Text("Hybrid").tag(1)
               Text("Sattelite").tag(2)
@@ -35,7 +35,7 @@ public struct SettingsView: View {
             HStack {
               Text("Version number")
               Spacer()
-              Text(store.appVersion)
+              Text(viewModel.appVersion)
                 .opacity(0.8)
                 .foregroundColor(.gray)
             }
@@ -45,7 +45,7 @@ public struct SettingsView: View {
         .navigationTitle("Réglages")
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
-          store.send(.onAppear)
+          viewModel.onAppear()
         }
       }
     }
@@ -53,10 +53,7 @@ public struct SettingsView: View {
 }
 
 #Preview {
-  SettingsView(
-    store: Store(
-      initialState: .init(),
-      reducer: { SettingsReducer() }
-    )
+  SettingsScreen(
+    viewModel: SettingsScreenViewModel()
   )
 }

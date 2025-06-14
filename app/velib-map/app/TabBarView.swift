@@ -6,7 +6,6 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import SwiftUI
 import UserDefaultsClient
 import ApiClient
@@ -14,39 +13,29 @@ import SettingsFeature
 import DetailsFeature
 import FavoriteFeature
 import MapFeature
+import Perception
 
 struct TabBarView: View {
-  let store: StoreOf<TabBarReducer>
-  
   var body: some View {
     WithPerceptionTracking {
       NavigationView {
         TabView {
           MapUIKit(
-            store: self.store.scope(
-              state: \.mapState,
-              action: \.map
-            )
+            viewModel: MapScreenViewModel()
           )
           .tabItem {
             Label("Stations", systemImage: "bicycle.circle.fill")
           }
           
-          FavoriteListView(
-            store: self.store.scope(
-              state: \.favoriteState,
-              action: \.favorite
-            )
+          FavoriteListScreen(
+            viewModel: FavoriteScreenViewModel()
           )
           .tabItem {
             Label("Favoris", systemImage: "star.circle.fill")
           }
           
-          SettingsView(
-            store: self.store.scope(
-              state: \.settingsState,
-              action: \.settings
-            )
+          SettingsScreen(
+            viewModel: SettingsScreenViewModel()
           )
           .tabItem {
             Label("Réglages", systemImage: "gear.circle.fill")
@@ -57,15 +46,6 @@ struct TabBarView: View {
   }
 }
 
-#if DEBUG
-struct TabBarView_Previews: PreviewProvider {
-  static var previews: some View {
-    TabBarView(
-      store: Store(
-        initialState: .init(),
-        reducer: { TabBarReducer() }
-      )
-    )
-  }
+#Preview {
+  TabBarView()
 }
-#endif

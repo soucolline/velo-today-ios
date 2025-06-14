@@ -39,10 +39,8 @@ struct FavoriteEmptyCell: View {
   }
 }
 
-struct FavoriteEmptyCell_Previews: PreviewProvider {
-  static var previews: some View {
-    List {
-      FavoriteEmptyCell()
-    }
+#Preview {
+  List {
+    FavoriteEmptyCell()
   }
 }

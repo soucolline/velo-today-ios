@@ -33,8 +33,6 @@ struct ErrorView: View {
   }
 }
 
-struct ErrorView_Previews: PreviewProvider {
-  static var previews: some View {
-    ErrorView(errorText: .constant("This is an error"), isVisible: .constant(true))
-  }
+#Preview {
+  ErrorView(errorText: .constant("This is an error"), isVisible: .constant(true))
 }

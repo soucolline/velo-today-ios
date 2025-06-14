@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Station: Equatable, Identifiable {
+public struct Station: Equatable, Identifiable, Sendable {
   public let id = UUID()
   public let freeDocks: Int
   public let code: String
