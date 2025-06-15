@@ -118,14 +118,13 @@ class MapViewController: UIViewController {
           sheet.detents = [.medium()]
           sheet.prefersScrollingExpandsWhenScrolledToEdge = true
           sheet.prefersEdgeAttachedInCompactHeight = true
-          sheet.preferredCornerRadius = 12
         }
         self.present(detailView, animated: true)
         
       case .none:
         self.dismiss(animated: true)
       }
-      }
+    }
 
     self.viewModel.$stations.publisher
       .sink(receiveValue: { stations in
@@ -160,7 +159,7 @@ class MapViewController: UIViewController {
   func setupMap() {
     self.mapView = MKMapView()
     view.insertSubview(self.mapView, at: 0)
-    
+      
     self.mapView.translatesAutoresizingMaskIntoConstraints = false
     self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
     self.mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true

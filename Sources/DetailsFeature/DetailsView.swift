@@ -20,6 +20,7 @@ public struct DetailsScreen: View {
   }
   
   public var body: some View {
+    let _ = Self._printChanges()
     WithPerceptionTracking {
       VStack(spacing: 0) {
         Map(coordinateRegion: $viewModel.stationLocation, interactionModes: [], annotationItems: [viewModel.station]) {
@@ -56,9 +57,6 @@ public struct DetailsScreen: View {
       }
       .navigationTitle(viewModel.title)
       .navigationBarTitleDisplayMode(.large)
-      .onAppear {
-        viewModel.onAppear()
-      }
     }
   }
 }
@@ -66,7 +64,18 @@ public struct DetailsScreen: View {
 #Preview {
   NavigationView {
     DetailsScreen(
-      viewModel: DetailsScreenViewModel()
+      viewModel: DetailsScreenViewModel(
+        station: StationMarker(
+          freeDocks: 1,
+          code: "123",
+          name: "Test name",
+          totalDocks: 4,
+          freeBikes: 5,
+          freeMechanicalBikes: 6,
+          freeElectricBikes: 7,
+          geolocation: [20, 30]
+        ),
+      )
     )
   }
 }
@@ -84,12 +93,5 @@ struct StationStackStyle: ViewModifier {
 extension View {
   func stationStackStyle() -> some View {
     modifier(StationStackStyle())
-  }
-}
-
-extension MKCoordinateRegion: @retroactive Equatable {
-  static public func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool {
-    (lhs.span.latitudeDelta == rhs.span.latitudeDelta) && (lhs.span.longitudeDelta == rhs.span.longitudeDelta) &&
-    (lhs.center.latitude == rhs.center.latitude) && (lhs.center.longitude == rhs.center.longitude)
   }
 }

@@ -23,6 +23,7 @@ struct TabBarView: View {
           MapUIKit(
             viewModel: MapScreenViewModel()
           )
+          .ignoresSafeAreaForiOS26()
           .tabItem {
             Label("Stations", systemImage: "bicycle.circle.fill")
           }
@@ -48,4 +49,15 @@ struct TabBarView: View {
 
 #Preview {
   TabBarView()
+}
+
+private extension View {
+  @ViewBuilder
+  func ignoresSafeAreaForiOS26() -> some View {
+    if #available(iOS 26.0, *) {
+      ignoresSafeArea()
+    } else {
+      self
+    }
+  }
 }

@@ -15,48 +15,22 @@ import UserDefaultsClient
 public final class DetailsScreenViewModel {
   public var station: StationMarker
   public var title: String
-  public var isFavoriteStation: Bool
+  public var isFavoriteStation = false
   public var stationLocation: MKCoordinateRegion
   
   @PerceptionIgnored
   @Dependency(\.userDefaultsRepository) public var userDefaultsRepository
   
-  public init(
-    station: StationMarker = StationMarker(
-      freeDocks: 1,
-      code: "123",
-      name: "Test name",
-      totalDocks: 4,
-      freeBikes: 5,
-      freeMechanicalBikes: 6,
-      freeElectricBikes: 7,
-      geolocation: [20, 30]
-    ),
-    title: String = "",
-    isFavoriteStation: Bool = false,
-    stationLocation: MKCoordinateRegion = MKCoordinateRegion(
-      center: CLLocationCoordinate2D(
-        latitude: 48.866667,
-        longitude: 2.333333),
-      latitudinalMeters: 2000,
-      longitudinalMeters: 2000
-    )
-  ) {
+  public init(station: StationMarker, isFavoriteStation: Bool = false) {
     self.station = station
-    self.title = title
-    self.isFavoriteStation = isFavoriteStation
-    self.stationLocation = stationLocation
-  }
-  
-  public func onAppear() {
-    title = station.name
-    stationLocation = MKCoordinateRegion(
+    self.title = station.name
+    self.stationLocation = MKCoordinateRegion(
       center: station.coordinate,
       latitudinalMeters: 200,
       longitudinalMeters: 200
     )
     
-    isFavoriteStation = self.userDefaultsRepository.isFavoriteStation(code: station.code)
+    self.isFavoriteStation = self.userDefaultsRepository.isFavoriteStation(code: station.code)
   }
   
   public func favoriteButtonTapped() {

@@ -36,7 +36,6 @@ public struct FavoriteListScreen: View {
                   DetailsScreen(
                     viewModel: DetailsScreenViewModel(
                       station: station.toStationPin(),
-                      title: station.name,
                       isFavoriteStation: true
                     )
                   )
