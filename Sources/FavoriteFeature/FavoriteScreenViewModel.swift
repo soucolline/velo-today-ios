@@ -15,7 +15,6 @@ import UserDefaultsClient
 import Models
 
 @Perceptible
-@MainActor
 public final class FavoriteScreenViewModel {
   @PerceptionIgnored
   @Shared(.inMemory("stations")) public var stations: [Station] = []

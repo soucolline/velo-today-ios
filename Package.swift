@@ -22,7 +22,7 @@ let package = Package(
     dependencies: [
       .package(url: "https://github.com/pointfreeco/swift-sharing", exact: "2.5.2"),
       .package(url: "https://github.com/pointfreeco/swift-perception", exact: "1.6.0"),
-      .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.3.0")
+      .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.3.1")
     ],
     targets: [
       .target(
@@ -31,6 +31,9 @@ let package = Package(
           "Models",
           sharing,
           perception
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -40,6 +43,9 @@ let package = Package(
           "UserDefaultsClient",
           sharing,
           perception,
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -51,6 +57,9 @@ let package = Package(
           "UserDefaultsClient",
           sharing,
           perception,
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -62,14 +71,25 @@ let package = Package(
           sharing,
           perception,
           navigation
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
-      .target(name: "Models"),
+      .target(
+        name: "Models",
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
+        ]
+      ),
       .target(
         name: "SettingsFeature",
         dependencies: [
           "Models",
           "UserDefaultsClient",
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -77,6 +97,9 @@ let package = Package(
         dependencies: [
           sharing,
           perception
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .testTarget(

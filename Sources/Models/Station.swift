@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Station: Equatable, Identifiable, Sendable {
+public nonisolated struct Station: Equatable, Identifiable, Sendable {
   public let id = UUID()
   public let freeDocks: Int
   public let code: String
@@ -42,6 +42,7 @@ public struct Station: Equatable, Identifiable, Sendable {
 }
 
 extension Station {
+  @MainActor
   public func toStationPin() -> StationMarker {
     StationMarker(
       freeDocks: freeDocks,

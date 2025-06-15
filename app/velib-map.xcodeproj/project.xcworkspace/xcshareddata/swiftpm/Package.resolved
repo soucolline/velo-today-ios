@@ -1,5 +1,5 @@
 {
-  "originHash" : "7a5d043d4193e6507b61f717ecdbcabd9239626f96633e5147a5dc625c1cde2b",
+  "originHash" : "3da914958dac7be580a51a9de7387020d9b75b0b2745a4a06e6db7c3e97ad4ae",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-navigation",
       "state" : {
-        "revision" : "db6bc9dbfed001f21e6728fd36413d9342c235b4",
-        "version" : "2.3.0"
+        "revision" : "ae208d1a5cf33aee1d43734ea780a09ada6e2a21",
+        "version" : "2.3.1"
       }
     },
     {

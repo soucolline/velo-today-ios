@@ -14,7 +14,6 @@ import Models
 import ApiClient
 
 @Perceptible
-@MainActor
 public class MapScreenViewModel {
   @PerceptionIgnored
   @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"

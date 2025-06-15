@@ -14,6 +14,8 @@ public protocol ApiClient: Sendable {
 }
 
 public final class ApiClientImpl: ApiClient {
+  
+  @concurrent
   public func fetchAllStations() async throws -> [Station] {
     let locationURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_information.json")!
     let bikesURL = URL(string: "https://velib-metropole-opendata.smovengo.cloud/opendata/Velib_Metropole/station_status.json")!
