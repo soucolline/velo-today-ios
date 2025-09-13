@@ -8,22 +8,21 @@
 import ApiClient
 import Dependencies
 import Sharing
-import Perception
 import DetailsFeature
 import Foundation
 import UserDefaultsClient
 import Models
 
-@Perceptible
+@Observable
 public final class FavoriteScreenViewModel {
-  @PerceptionIgnored
+  @ObservationIgnored
   @Shared(.inMemory("stations")) public var stations: [Station] = []
   
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.userDefaultsRepository) public var userDefaultsRepository
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.apiClient) public var apiClient
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.mainQueue) public var mainQueue
   
   public var favoriteStations: [Station] = []

@@ -9,44 +9,41 @@
 import SwiftUI
 import UserDefaultsClient
 import Models
-import Perception
 
 public struct SettingsScreen: View {
-  @Perception.Bindable var viewModel: SettingsScreenViewModel
+  @Bindable var viewModel: SettingsScreenViewModel
   
   public init(viewModel: SettingsScreenViewModel) {
     self.viewModel = viewModel
   }
   
   public var body: some View {
-    WithPerceptionTracking {
-      NavigationView {
-        List {
-          Section(header: Text("Type de carte ")) {
-            Picker("toto", selection: $viewModel.selectedPickerIndex) {
-              Text("Normal").tag(0)
-              Text("Hybrid").tag(1)
-              Text("Sattelite").tag(2)
-            }
-            .pickerStyle(.segmented)
+    NavigationView {
+      List {
+        Section(header: Text("Type de carte ")) {
+          Picker("toto", selection: $viewModel.selectedPickerIndex) {
+            Text("Normal").tag(0)
+            Text("Hybrid").tag(1)
+            Text("Sattelite").tag(2)
+          }
+          .pickerStyle(.segmented)
+        }
+        
+        Section(header: Text("App information")) {
+          HStack {
+            Text("Version number")
+            Spacer()
+            Text(viewModel.appVersion)
+              .opacity(0.8)
+              .foregroundColor(.gray)
           }
           
-          Section(header: Text("App information")) {
-            HStack {
-              Text("Version number")
-              Spacer()
-              Text(viewModel.appVersion)
-                .opacity(0.8)
-                .foregroundColor(.gray)
-            }
-            
-          }
         }
-        .navigationTitle("Réglages")
-        .navigationBarTitleDisplayMode(.large)
-        .onAppear {
-          viewModel.onAppear()
-        }
+      }
+      .navigationTitle("Réglages")
+      .navigationBarTitleDisplayMode(.large)
+      .onAppear {
+        viewModel.onAppear()
       }
     }
   }

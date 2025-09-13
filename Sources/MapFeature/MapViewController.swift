@@ -13,13 +13,12 @@ import Combine
 import SwiftUI
 import Models
 import DetailsFeature
-import Perception
 import UIKitNavigation
 
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  @Perception.Bindable var viewModel: MapScreenViewModel
+  @Bindable var viewModel: MapScreenViewModel
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!

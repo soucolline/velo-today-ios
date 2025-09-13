@@ -6,19 +6,18 @@
 //
 
 import Dependencies
-import Perception
 import MapKit
 import Models
 import UserDefaultsClient
 
-@Perceptible
+@Observable
 public final class DetailsScreenViewModel {
   public var station: StationMarker
   public var title: String
   public var isFavoriteStation = false
   public var stationLocation: MKCoordinateRegion
   
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.userDefaultsRepository) public var userDefaultsRepository
   
   public init(station: StationMarker, isFavoriteStation: Bool = false) {

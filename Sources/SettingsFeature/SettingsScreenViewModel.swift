@@ -6,17 +6,16 @@
 //
 
 import Dependencies
-import Perception
 import Sharing
 import UserDefaultsClient
 import Models
 import Foundation
 
-@Perceptible
+@Observable
 public class SettingsScreenViewModel {
-  @PerceptionIgnored
+  @ObservationIgnored
   @Shared(.appStorage("mapStyle")) public var mapStyleUserDefaults: String = "normalStyle"
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.userDefaultsRepository) public var userDefaultsRepository
   
   public var mapStyle: MapStyle

@@ -4,12 +4,11 @@
 import PackageDescription
 
 let sharing: Target.Dependency = .product(name: "Sharing", package: "swift-sharing")
-let perception: Target.Dependency = .product(name: "Perception", package: "swift-perception")
 let navigation: Target.Dependency = .product(name: "UIKitNavigation", package: "swift-navigation")
 
 let package = Package(
     name: "velo-today-ios",
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS(.v18)],
     products: [
       .library(name: "ApiClient", targets: ["ApiClient"]),
       .library(name: "DetailsFeature", targets: ["DetailsFeature"]),
@@ -21,7 +20,6 @@ let package = Package(
     ],
     dependencies: [
       .package(url: "https://github.com/pointfreeco/swift-sharing", exact: "2.5.2"),
-      .package(url: "https://github.com/pointfreeco/swift-perception", exact: "1.6.0"),
       .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.3.1")
     ],
     targets: [
@@ -29,8 +27,7 @@ let package = Package(
         name: "ApiClient",
         dependencies: [
           "Models",
-          sharing,
-          perception
+          sharing
         ],
         swiftSettings: [
           .defaultIsolation(MainActor.self)
@@ -41,8 +38,7 @@ let package = Package(
         dependencies: [
           "Models",
           "UserDefaultsClient",
-          sharing,
-          perception,
+          sharing
         ],
         swiftSettings: [
           .defaultIsolation(MainActor.self)
@@ -56,7 +52,6 @@ let package = Package(
           "Models",
           "UserDefaultsClient",
           sharing,
-          perception,
         ],
         swiftSettings: [
           .defaultIsolation(MainActor.self)
@@ -69,7 +64,6 @@ let package = Package(
           "Models",
           "DetailsFeature",
           sharing,
-          perception,
           navigation
         ],
         swiftSettings: [
@@ -95,8 +89,7 @@ let package = Package(
       .target(
         name: "UserDefaultsClient",
         dependencies: [
-          sharing,
-          perception
+          sharing
         ],
         swiftSettings: [
           .defaultIsolation(MainActor.self)

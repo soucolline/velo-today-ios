@@ -6,20 +6,19 @@
 //
 
 import Dependencies
-import Perception
 import Sharing
 import DetailsFeature
 import MapKit
 import Models
 import ApiClient
 
-@Perceptible
+@Observable
 public class MapScreenViewModel {
-  @PerceptionIgnored
+  @ObservationIgnored
   @Shared(.appStorage("mapStyle")) var mapStyleUserDefaults: String = "normalStyle"
-  @PerceptionIgnored
+  @ObservationIgnored
   @Shared(.inMemory("stations")) public var stations: [Station] = []
-  @PerceptionIgnored
+  @ObservationIgnored
   @Dependency(\.apiClient) public var apiClient
   
   public enum Destination {
