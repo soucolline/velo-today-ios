@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct FetchStationLocationResponseRoot: Decodable {
+nonisolated struct FetchStationLocationResponseRoot: Decodable {
   let data: FetchStationLocationResponseData
 }
 
-struct FetchStationLocationResponseData: Decodable {
+nonisolated struct FetchStationLocationResponseData: Decodable {
   let stations: [FetchStationLocationResponse]
 }
 

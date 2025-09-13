@@ -13,33 +13,31 @@ import SettingsFeature
 import DetailsFeature
 import FavoriteFeature
 import MapFeature
-import Perception
 
 struct TabBarView: View {
   var body: some View {
-    WithPerceptionTracking {
-      NavigationView {
-        TabView {
-          MapUIKit(
-            viewModel: MapScreenViewModel()
-          )
-          .tabItem {
-            Label("Stations", systemImage: "bicycle.circle.fill")
-          }
-          
-          FavoriteListScreen(
-            viewModel: FavoriteScreenViewModel()
-          )
-          .tabItem {
-            Label("Favoris", systemImage: "star.circle.fill")
-          }
-          
-          SettingsScreen(
-            viewModel: SettingsScreenViewModel()
-          )
-          .tabItem {
-            Label("Réglages", systemImage: "gear.circle.fill")
-          }
+    NavigationView {
+      TabView {
+        MapUIKit(
+          viewModel: MapScreenViewModel()
+        )
+        .ignoresSafeAreaForiOS26()
+        .tabItem {
+          Label("Stations", systemImage: "bicycle.circle.fill")
+        }
+        
+        FavoriteListScreen(
+          viewModel: FavoriteScreenViewModel()
+        )
+        .tabItem {
+          Label("Favoris", systemImage: "star.circle.fill")
+        }
+        
+        SettingsScreen(
+          viewModel: SettingsScreenViewModel()
+        )
+        .tabItem {
+          Label("Réglages", systemImage: "gear.circle.fill")
         }
       }
     }
@@ -48,4 +46,15 @@ struct TabBarView: View {
 
 #Preview {
   TabBarView()
+}
+
+private extension View {
+  @ViewBuilder
+  func ignoresSafeAreaForiOS26() -> some View {
+    if #available(iOS 26.0, *) {
+      ignoresSafeArea()
+    } else {
+      self
+    }
+  }
 }

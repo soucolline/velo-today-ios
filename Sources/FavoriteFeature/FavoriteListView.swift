@@ -12,59 +12,55 @@ import ApiClient
 import UserDefaultsClient
 import Models
 import DetailsFeature
-import Perception
 
 public struct FavoriteListScreen: View {
-  @Perception.Bindable var viewModel: FavoriteScreenViewModel
+  @Bindable var viewModel: FavoriteScreenViewModel
 
   public init(viewModel: FavoriteScreenViewModel) {
     self.viewModel = viewModel
   }
   
   public var body: some View {
-    WithPerceptionTracking {
-      NavigationView {
-        ZStack {
-          List {
-            if viewModel.isFetchStationRequestInFlight {
-              ForEach(0..<3) { _ in
-                FavoriteEmptyCell()
-              }
-            } else {
-              ForEach(viewModel.favoriteStations) { station in
-                NavigationLink {
-                  DetailsScreen(
-                    viewModel: DetailsScreenViewModel(
-                      station: station.toStationPin(),
-                      title: station.name,
-                      isFavoriteStation: true
-                    )
+    NavigationView {
+      ZStack {
+        List {
+          if viewModel.isFetchStationRequestInFlight {
+            ForEach(0..<3) { _ in
+              FavoriteEmptyCell()
+            }
+          } else {
+            ForEach(viewModel.favoriteStations) { station in
+              NavigationLink {
+                DetailsScreen(
+                  viewModel: DetailsScreenViewModel(
+                    station: station.toStationPin(),
+                    isFavoriteStation: true
                   )
-                } label: {
-                  FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
-                }
+                )
+              } label: {
+                FavoriteCell(name: station.name, freeBikes: station.freeBikes, freeDocks: station.freeDocks)
               }
             }
           }
-          .navigationTitle("Favoris")
-          
-          if viewModel.shouldShowEmptyView {
-            FavoriteEmptyView()
-          }
-          
-          ErrorView(
-            errorText: $viewModel.errorText,
-            isVisible: $viewModel.shouldShowError
-          )
         }
-        .onAppear {
-          viewModel.onAppear()
+        .navigationTitle("Favoris")
+        
+        if viewModel.shouldShowEmptyView {
+          FavoriteEmptyView()
         }
+        
+        ErrorView(
+          errorText: $viewModel.errorText,
+          isVisible: $viewModel.shouldShowError
+        )
       }
-      .navigationViewStyle(.stack)
-      .refreshable {
-        await viewModel.fetchFavoriteStations()
+      .onAppear {
+        viewModel.onAppear()
       }
+    }
+    .navigationViewStyle(.stack)
+    .refreshable {
+      await viewModel.fetchFavoriteStations()
     }
   }
 }
