@@ -9,7 +9,7 @@ import Foundation
 import Dependencies
 
 enum ApiClientKey: DependencyKey {
-  static let liveValue = ApiClient.live
+  static let liveValue: ApiClient = ApiClientImpl()
 }
 
 public extension DependencyValues {
@@ -18,4 +18,3 @@ public extension DependencyValues {
     set { self[ApiClientKey.self] = newValue }
   }
 }
-

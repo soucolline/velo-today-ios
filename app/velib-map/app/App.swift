@@ -6,13 +6,13 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import Foundation
 import SwiftUI
 import UserDefaultsClient
 import ApiClient
 import SettingsFeature
 import Firebase
+import XCTestDynamicOverlay
 
 @main
 struct Application: App {
@@ -23,12 +23,7 @@ struct Application: App {
       if _XCTIsTesting {
         EmptyView()
       } else {
-        TabBarView(
-          store: Store(
-            initialState: .init(),
-            reducer: { TabBarReducer() }
-          )
-        )
+        TabBarView()
       }
     }
   }

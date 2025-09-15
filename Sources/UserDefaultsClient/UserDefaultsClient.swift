@@ -1,12 +1,28 @@
-import ComposableArchitecture
 import Foundation
 
-public struct UserDefaultsClient {
-  public var arrayForKey: (String) -> [String]?
-  public var remove: (String) -> Void
-  public var setArray: ([String]?, String) -> Void
-  public var getAppVersion: () -> String
+public protocol UserDefaultsRepository: Sendable {
+  func array(for key: String) -> [String]
+  func getAppVersion() -> String
+  func isFavoriteStation(code: String) -> Bool
+  func addFavoriteStation(for code: String)
+  func removeFavoriteStations(for code: String)
+}
 
+public final class UserDefaultsRepositoryImpl: UserDefaultsRepository, @unchecked Sendable {
+  private let userDefaults: UserDefaults
+  
+  public init(userDefaults: UserDefaults) {
+    self.userDefaults = userDefaults
+  }
+  
+  public func array(for key: String) -> [String] {
+    userDefaults.stringArray(forKey: key) ?? []
+  }
+  
+  public func getAppVersion() -> String {
+    Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+  }
+  
   public func isFavoriteStation(code: String) -> Bool {
     self.getFavoriteStationsIds().contains(code)
   }
@@ -18,7 +34,7 @@ public struct UserDefaultsClient {
 
     stations.append(code)
     
-    return self.setArray(stations, Const.favoriteStationsId)
+    return self.set(array: stations, for: Const.favoriteStationsId)
   }
 
   public func removeFavoriteStations(for code: String) {
@@ -28,11 +44,19 @@ public struct UserDefaultsClient {
 
     stations.removeAll { $0 == code }
     
-    return self.setArray(stations, Const.favoriteStationsId)
+    return self.set(array: stations, for: Const.favoriteStationsId)
   }
   
   private func getFavoriteStationsIds() -> [String] {
-    self.arrayForKey(Const.favoriteStationsId) ?? []
+    self.array(for: Const.favoriteStationsId)
+  }
+  
+  private func set(array: [String]?, for key: String) {
+    userDefaults.set(array, forKey: key)
+  }
+  
+  private func remove(key: String) {
+    userDefaults.removeObject(forKey: key)
   }
   
   private struct Const {

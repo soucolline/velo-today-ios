@@ -1,13 +1,14 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
-let tca: Target.Dependency = .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+let sharing: Target.Dependency = .product(name: "Sharing", package: "swift-sharing")
+let navigation: Target.Dependency = .product(name: "UIKitNavigation", package: "swift-navigation")
 
 let package = Package(
     name: "velo-today-ios",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS(.v18)],
     products: [
       .library(name: "ApiClient", targets: ["ApiClient"]),
       .library(name: "DetailsFeature", targets: ["DetailsFeature"]),
@@ -18,14 +19,18 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.10.2"),
+      .package(url: "https://github.com/pointfreeco/swift-sharing", exact: "2.5.2"),
+      .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.3.1")
     ],
     targets: [
       .target(
         name: "ApiClient",
         dependencies: [
           "Models",
-          tca,
+          sharing
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -33,16 +38,10 @@ let package = Package(
         dependencies: [
           "Models",
           "UserDefaultsClient",
-          tca,
-        ]
-      ),
-      .testTarget(
-        name: "DetailsFeatureTests",
-        dependencies: [
-          "DetailsFeature",
-          "UserDefaultsClient",
-          "Models",
-          tca,
+          sharing
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -52,18 +51,10 @@ let package = Package(
           "DetailsFeature",
           "Models",
           "UserDefaultsClient",
-          tca,
-        ]
-      ),
-      .testTarget(
-        name: "FavoriteFeatureTests",
-        dependencies: [
-          "ApiClient",
-          "FavoriteFeature",
-          "Models",
-          "DetailsFeature",
-          "UserDefaultsClient",
-          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+          sharing,
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
@@ -72,43 +63,40 @@ let package = Package(
           "ApiClient",
           "Models",
           "DetailsFeature",
-         tca,
+          sharing,
+          navigation
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
-      .testTarget(
-        name: "MapFeatureTests",
-        dependencies: [
-          "ApiClient",
-          "MapFeature",
-          "Models",
-          "DetailsFeature",
-          "UserDefaultsClient",
-         tca,
+      .target(
+        name: "Models",
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
-      .target(name: "Models"),
       .target(
         name: "SettingsFeature",
         dependencies: [
           "Models",
           "UserDefaultsClient",
-          tca,
-        ]
-      ),
-      .testTarget(
-        name: "SettingsFeatureTests",
-        dependencies: [
-          "SettingsFeature",
-          "Models",
-          "UserDefaultsClient",
-          tca,
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
       ),
       .target(
         name: "UserDefaultsClient",
         dependencies: [
-          tca,
+          sharing
+        ],
+        swiftSettings: [
+          .defaultIsolation(MainActor.self)
         ]
+      ),
+      .testTarget(
+        name: "AppTests"
       )
     ]
 )

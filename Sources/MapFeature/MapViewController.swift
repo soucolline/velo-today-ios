@@ -6,7 +6,6 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import ComposableArchitecture
 import UIKit
 import MapKit
 import CoreLocation
@@ -14,11 +13,12 @@ import Combine
 import SwiftUI
 import Models
 import DetailsFeature
+import UIKitNavigation
 
 class MapViewController: UIViewController {
   @IBOutlet private var reloadBtn: UIBarButtonItem!
   
-  @Perception.Bindable var store: StoreOf<MapReducer>
+  @Bindable var viewModel: MapScreenViewModel
   var cancellables: Set<AnyCancellable> = []
   
   private var mapView: MKMapView!
@@ -29,8 +29,8 @@ class MapViewController: UIViewController {
   let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
   let locationManager = CLLocationManager()
   
-  init(store: StoreOf<MapReducer>) {
-    self.store = store
+  init(viewModel: MapScreenViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -53,20 +53,22 @@ class MapViewController: UIViewController {
     
     setupViews()
     
-    self.store.send(.fetchAllStations)
+    Task {
+      await viewModel.fetchAllStations()
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    self.store.send(.getMapStyle)
+    self.viewModel.getMapStyle()
   }
   
   func setupViews() {
     observe { [weak self] in
       guard let self else { return }
       
-      switch self.store.mapStyle {
+      switch self.viewModel.mapStyle {
       case .normal:
         self.mapView.mapType = .standard
       case .hybrid:
@@ -75,7 +77,7 @@ class MapViewController: UIViewController {
         self.mapView.mapType = .satellite
       }
       
-      if self.store.shouldShowLoader {
+      if self.viewModel.shouldShowLoader {
         UIView.animate(withDuration: 0.5, delay: 0.0) {
           self.loadingView.view.alpha = 1.0
         }
@@ -85,14 +87,14 @@ class MapViewController: UIViewController {
         }
       }
       
-      if self.store.shouldShowError {
+      if self.viewModel.shouldShowError {
         let alert = UIAlertController(
           title: "Erreur",
-          message: self.store.errorText,
+          message: self.viewModel.errorText,
           preferredStyle: .alert
         )
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-          self.store.send(.hideError)
+          self.viewModel.hideError()
         }
         alert.addAction(okAction)
         
@@ -102,23 +104,28 @@ class MapViewController: UIViewController {
     
     observe { [weak self] in
       guard let self else { return }
-      if let store = self.store.scope(state: \.details, action: \.showDetails) {
-        let detailView = UIHostingController(rootView: DetailsView(store: store))
-        
+      switch viewModel.destination {
+      case .details(let station):
+        let detailView = UIHostingController(
+          rootView: DetailsScreen(
+            viewModel: DetailsScreenViewModel(station: station)
+          )
+        )
+
         detailView.presentationController?.delegate = self
         if let sheet = detailView.sheetPresentationController {
           sheet.detents = [.medium()]
           sheet.prefersScrollingExpandsWhenScrolledToEdge = true
           sheet.prefersEdgeAttachedInCompactHeight = true
-          sheet.preferredCornerRadius = 12
         }
         self.present(detailView, animated: true)
-      } else {
+        
+      case .none:
         self.dismiss(animated: true)
       }
     }
-    
-    self.store.publisher.stations
+
+    self.viewModel.$stations.publisher
       .sink(receiveValue: { stations in
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.addAnnotations(stations.map { $0.toStationPin() })
@@ -151,7 +158,7 @@ class MapViewController: UIViewController {
   func setupMap() {
     self.mapView = MKMapView()
     view.insertSubview(self.mapView, at: 0)
-    
+      
     self.mapView.translatesAutoresizingMaskIntoConstraints = false
     self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
     self.mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -173,7 +180,9 @@ class MapViewController: UIViewController {
   }
   
   @objc private func reloadPins() {
-    self.store.send(.fetchAllStations)
+    Task {
+      await viewModel.fetchAllStations()
+    }
   }
   
 }
@@ -205,12 +214,12 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     guard let station = view.annotation as? StationMarker else { return }
     
-    store.send(.stationPinTapped(station))
+    viewModel.stationPinTapped(station: station)
   }
   
 }
 
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController: @preconcurrency CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = manager.location else { return }
@@ -228,6 +237,6 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: UIAdaptivePresentationControllerDelegate {
   func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-    store.send(.hideDetails)
+    viewModel.hideDetails()
   }
 }

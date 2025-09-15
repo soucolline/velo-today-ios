@@ -12,8 +12,6 @@
 		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
 		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
-		E99379EE293CB3F500D13242 /* TabBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99379ED293CB3F500D13242 /* TabBarReducer.swift */; };
-		E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E9B4AE02289EEF1000260AEC /* ComposableArchitecture */; };
 		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
 		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
@@ -35,14 +33,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E9C2FF3923DCA86800FFCDBD /* Embed App Extensions */ = {
+		E9C2FF3923DCA86800FFCDBD /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -52,7 +50,6 @@
 		E93F912628DF9EE200012D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E99379ED293CB3F500D13242 /* TabBarReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReducer.swift; sourceTree = "<group>"; };
 		E9C2FF2D23DCA86800FFCDBD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9C2FF3D23DCAA6200FFCDBD /* velib-map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "velib-map.entitlements"; sourceTree = "<group>"; };
 		E9C80F3B28DE198100F6488F /* velo-today-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "velo-today-ios"; path = ..; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9B4AE03289EEF1000260AEC /* ComposableArchitecture in Frameworks */,
 				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
 				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
 				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
@@ -105,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				E98B1AFF28A021E800056BCE /* App.swift */,
-				E99379ED293CB3F500D13242 /* TabBarReducer.swift */,
 				E930259428AD7EF500F44210 /* TabBarView.swift */,
 			);
 			path = app;
@@ -180,7 +175,7 @@
 				EBA372F21EA3A0CC00E214DD /* Frameworks */,
 				EBA372F31EA3A0CC00E214DD /* Resources */,
 				EB11657120A6DAF40086F8D7 /* SwiftLint */,
-				E9C2FF3923DCA86800FFCDBD /* Embed App Extensions */,
+				E9C2FF3923DCA86800FFCDBD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -188,7 +183,6 @@
 			);
 			name = "velib-map";
 			packageProductDependencies = (
-				E9B4AE02289EEF1000260AEC /* ComposableArchitecture */,
 				E911A04528DE1BD00011F0CE /* UserDefaultsClient */,
 				E911A04728DE1DD70011F0CE /* Models */,
 				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
@@ -208,8 +202,9 @@
 		EBA372ED1EA3A0CC00E214DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Thomas Guilleminot";
 				TargetAttributes = {
 					E94D2B9522DB94AB00A80A76 = {
@@ -235,7 +230,6 @@
 			);
 			mainGroup = EBA372EC1EA3A0CC00E214DD;
 			packageReferences = (
-				E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EBA372F61EA3A0CC00E214DD /* Products */;
@@ -298,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
-				E99379EE293CB3F500D13242 /* TabBarReducer.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,13 +321,11 @@
 		E94D2B9D22DB94AB00A80A76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -364,13 +355,11 @@
 		E94D2B9E22DB94AB00A80A76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "velib-mapTests/Info.plist";
@@ -423,8 +412,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = XDX42S5M9N;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -445,7 +436,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -484,8 +478,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = XDX42S5M9N;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -499,8 +495,11 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -508,47 +507,43 @@
 		EBA373081EA3A0CC00E214DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4862d4da-a539-43f1-bb6a-c649b1d8b2dd";
 				PROVISIONING_PROFILE_SPECIFIER = "velib-today_dev";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		EBA373091EA3A0CC00E214DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "velib-map/velib-map.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XDX42S5M9N;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/velib-map/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.1.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zlatan.velib-map";
@@ -557,7 +552,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "velib-today_appstore";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -594,20 +589,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = exactVersion;
-				version = 1.10.2;
-			};
-		};
 		E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 10.24.0;
+				version = 11.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -620,11 +607,6 @@
 		E911A04728DE1DD70011F0CE /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
-		};
-		E9B4AE02289EEF1000260AEC /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9B4AE01289EEF1000260AEC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
 		};
 		E9C79B0528DE449200B870D8 /* MapFeature */ = {
 			isa = XCSwiftPackageProductDependency;

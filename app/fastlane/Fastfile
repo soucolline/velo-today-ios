@@ -6,7 +6,7 @@ platform :ios do
     ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
     ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
     scan(
-      devices: "iPhone 14 Pro",
+      devices: "iPhone 16 Pro",
       scheme: "velib-map",
       xcargs: "-skipMacroValidation"
     )
