@@ -30,7 +30,8 @@ let package = Package(
           sharing
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
@@ -41,7 +42,8 @@ let package = Package(
           sharing
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
@@ -54,7 +56,8 @@ let package = Package(
           sharing,
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
@@ -67,13 +70,15 @@ let package = Package(
           navigation
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
         name: "Models",
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
@@ -83,7 +88,8 @@ let package = Package(
           "UserDefaultsClient",
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .target(
@@ -92,7 +98,8 @@ let package = Package(
           sharing
         ],
         swiftSettings: [
-          .defaultIsolation(MainActor.self)
+          .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+          .enableUpcomingFeature("InferIsolatedConformances")
         ]
       ),
       .testTarget(
