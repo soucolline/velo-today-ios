@@ -9,12 +9,10 @@
 import Foundation
 import Models
 
-nonisolated struct FetchStationObjectResponseRoot: Decodable {
-  
-  let data: FetchStationObjectResponseData
-  
+struct FetchStationObjectResponseRoot: Decodable {
+  let data: FetchStationObjectResponseData  
 }
 
-nonisolated struct FetchStationObjectResponseData: Decodable {
+struct FetchStationObjectResponseData: Decodable {
   let stations: [StationResponse]
 }

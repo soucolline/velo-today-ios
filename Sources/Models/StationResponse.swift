@@ -8,13 +8,13 @@
 
 import Foundation
 
-public nonisolated struct StationResponse: Codable, Equatable {
-  public nonisolated let freeDocks: Int
-  public nonisolated let stationCode: String
-  public nonisolated let freeBikes: Int
-  public nonisolated let bikesAvailableType: [[String: Int]]
+public struct StationResponse: Codable, Equatable {
+  public let freeDocks: Int
+  public let stationCode: String
+  public let freeBikes: Int
+  public let bikesAvailableType: [[String: Int]]
 
-  nonisolated enum CodingKeys: String, CodingKey {
+  enum CodingKeys: String, CodingKey {
     case freeDocks = "numDocksAvailable"
     case stationCode
     case freeBikes = "numBikesAvailable"
@@ -23,7 +23,7 @@ public nonisolated struct StationResponse: Codable, Equatable {
 }
 
 extension StationResponse {
-  public nonisolated var freeMechanicalBikes: Int? {
+  public var freeMechanicalBikes: Int? {
     for dict in bikesAvailableType {
       if let mechanical = dict["mechanical"] {
         return mechanical
@@ -33,7 +33,7 @@ extension StationResponse {
     return nil
   }
   
-  public nonisolated var freeElectricBikes: Int? {
+  public var freeElectricBikes: Int? {
     for dict in bikesAvailableType {
       if let mechanical = dict["ebike"] {
         return mechanical
