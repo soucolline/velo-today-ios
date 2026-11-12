@@ -1,30 +1,49 @@
-//
-//  MapUIKit.swift
-//  velib-map
-//
-//  Created by Thomas Guilleminot on 22/09/2022.
-//  Copyright © 2022 Thomas Guilleminot. All rights reserved.
-//
-
-import Foundation
-import SwiftUI
-import MapKit
-import UserDefaultsClient
+import ComposableArchitecture
+import DetailsFeature
 import Models
-import ApiClient
+import SwiftUI
 
-public struct MapUIKit: UIViewControllerRepresentable {
-  let viewModel: MapScreenViewModel
-  
-  public init(viewModel: MapScreenViewModel) {
-    self.viewModel = viewModel
+public struct MapScreen: View {
+  @Bindable var store: StoreOf<MapFeature>
+
+  public init(store: StoreOf<MapFeature>) {
+    self.store = store
   }
-  
-  public func makeUIViewController(context: Context) -> some UIViewController {
-    UINavigationController(rootViewController: MapViewController(viewModel: viewModel))
+
+  public var body: some View {
+    MapUIKit(
+      center: store.center,
+      isLoading: store.isLoading,
+      stations: store.stations,
+      style: store.style,
+      onReload: { store.send(.reloadButtonTapped) },
+      onStationTapped: { store.send(.stationPinTapped($0)) }
+    )
+    .onAppear { store.send(.onAppear) }
+    .alert($store.scope(state: \.alert, action: \.alert))
+    .sheet(item: $store.scope(state: \.details, action: \.details)) { detailsStore in
+      DetailsScreen(store: detailsStore)
+        .presentationDetents([.medium])
+    }
   }
-  
-  public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    
+}
+
+private struct MapUIKit: UIViewControllerRepresentable {
+  let center: MapLocation
+  let isLoading: Bool
+  let stations: [Station]
+  let style: Models.MapStyle
+  let onReload: () -> Void
+  let onStationTapped: (Station) -> Void
+
+  func makeUIViewController(context: Context) -> UINavigationController {
+    UINavigationController(rootViewController: MapViewController())
+  }
+
+  func updateUIViewController(_ navigationController: UINavigationController, context: Context) {
+    guard let controller = navigationController.viewControllers.first as? MapViewController else { return }
+    controller.onReload = onReload
+    controller.onStationTapped = onStationTapped
+    controller.render(center: center, isLoading: isLoading, stations: stations, style: style)
   }
 }

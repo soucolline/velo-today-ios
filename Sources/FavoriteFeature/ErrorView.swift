@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ErrorView: View {
-  @Binding var errorText: String
-  @Binding var isVisible: Bool
+  let errorText: String
+  let isVisible: Bool
   
   var body: some View {
     VStack {
@@ -28,11 +28,12 @@ struct ErrorView: View {
       .cornerRadius(12)
       .padding()
       .offset(y: isVisible ? 0 : 200)
+      .opacity(isVisible ? 1 : 0)
       .animation(.default, value: isVisible)
     }
   }
 }
 
 #Preview {
-  ErrorView(errorText: .constant("This is an error"), isVisible: .constant(true))
+  ErrorView(errorText: "This is an error", isVisible: true)
 }

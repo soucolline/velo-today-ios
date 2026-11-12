@@ -6,25 +6,25 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
+import ComposableArchitecture
 import SwiftUI
-import UserDefaultsClient
 import Models
 
 public struct SettingsScreen: View {
-  @Bindable var viewModel: SettingsScreenViewModel
+  @Bindable var store: StoreOf<SettingsFeature>
   
-  public init(viewModel: SettingsScreenViewModel) {
-    self.viewModel = viewModel
+  public init(store: StoreOf<SettingsFeature>) {
+    self.store = store
   }
   
   public var body: some View {
-    NavigationView {
+    NavigationStack {
       List {
         Section(header: Text("Type de carte ")) {
-          Picker("toto", selection: $viewModel.selectedPickerIndex) {
+          Picker("Type de carte", selection: $store.selectedPickerIndex.sending(\.pickerSelectionChanged)) {
             Text("Normal").tag(0)
             Text("Hybrid").tag(1)
-            Text("Sattelite").tag(2)
+            Text("Satellite").tag(2)
           }
           .pickerStyle(.segmented)
         }
@@ -33,7 +33,7 @@ public struct SettingsScreen: View {
           HStack {
             Text("Version number")
             Spacer()
-            Text(viewModel.appVersion)
+            Text(store.appVersion)
               .opacity(0.8)
               .foregroundColor(.gray)
           }
@@ -43,14 +43,8 @@ public struct SettingsScreen: View {
       .navigationTitle("Réglages")
       .navigationBarTitleDisplayMode(.large)
       .onAppear {
-        viewModel.onAppear()
+        store.send(.onAppear)
       }
     }
   }
-}
-
-#Preview {
-  SettingsScreen(
-    viewModel: SettingsScreenViewModel()
-  )
 }

@@ -6,46 +6,50 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
+import ComposableArchitecture
 import SwiftUI
 import MapKit
-import UserDefaultsClient
 import Models
 
 public struct DetailsScreen: View {
-  @Bindable var viewModel: DetailsScreenViewModel
+  let store: StoreOf<DetailsFeature>
   
-  public init(viewModel: DetailsScreenViewModel) {
-    self.viewModel = viewModel
+  public init(store: StoreOf<DetailsFeature>) {
+    self.store = store
   }
   
   public var body: some View {
     VStack(spacing: 0) {
-      Map(position: .constant(MapCameraPosition.region(viewModel.stationLocation)), interactionModes: []) {
-        Marker(viewModel.station.name, coordinate: viewModel.station.coordinate)
+      Map(position: .constant(MapCameraPosition.region(MKCoordinateRegion(
+        center: store.station.coordinate,
+        latitudinalMeters: 200,
+        longitudinalMeters: 200
+      ))), interactionModes: []) {
+        Marker(store.station.name, coordinate: store.station.coordinate)
           .tint(.orange)
       }
       Button {
-        viewModel.favoriteButtonTapped()
+        store.send(.favoriteButtonTapped)
       } label: {
-        Text(viewModel.isFavoriteStation ? "Suppprimer des favoris" : "Ajouter aux favoris")
+        Text(store.isFavoriteStation ? "Supprimer des favoris" : "Ajouter aux favoris")
           .foregroundColor(.white)
           .frame(height: 40)
           .frame(maxWidth: .infinity)
-          .background(viewModel.isFavoriteStation ? .red : .green)
+          .background(store.isFavoriteStation ? .red : .green)
       }
       
       VStack {
-        Text("\(viewModel.station.freeMechanicalBikes) Velos disponibles")
+        Text("\(store.station.freeMechanicalBikes) Velos disponibles")
           .stationStackStyle()
           .background(.orange)
           .cornerRadius(8)
         
-        Text("\(viewModel.station.freeElectricBikes) Vélos éléctriques disponibles")
+        Text("\(store.station.freeElectricBikes) Vélos éléctriques disponibles")
           .stationStackStyle()
           .background(.teal)
           .cornerRadius(8)
         
-        Text("\(viewModel.station.freeDocks) stands disponibles")
+        Text("\(store.station.freeDocks) stands disponibles")
           .stationStackStyle()
           .background(.pink)
           .cornerRadius(8)
@@ -53,27 +57,8 @@ public struct DetailsScreen: View {
       .frame(maxWidth: .infinity)
       .padding(20)
     }
-    .navigationTitle(viewModel.title)
+    .navigationTitle(store.station.name)
     .navigationBarTitleDisplayMode(.large)
-  }
-}
-
-#Preview {
-  NavigationView {
-    DetailsScreen(
-      viewModel: DetailsScreenViewModel(
-        station: StationMarker(
-          freeDocks: 1,
-          code: "123",
-          name: "Test name",
-          totalDocks: 4,
-          freeBikes: 5,
-          freeMechanicalBikes: 6,
-          freeElectricBikes: 7,
-          geolocation: [20, 30]
-        ),
-      )
-    )
   }
 }
 

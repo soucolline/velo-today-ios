@@ -7,17 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04528DE1BD00011F0CE /* UserDefaultsClient */; };
-		E911A04828DE1DD70011F0CE /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04728DE1DD70011F0CE /* Models */; };
-		E930259528AD7EF500F44210 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930259428AD7EF500F44210 /* TabBarView.swift */; };
+		E911A04628DE1BD00011F0CE /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E911A04528DE1BD00011F0CE /* AppFeature */; };
 		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
-		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
-		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
-		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
-		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
-		E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */; };
 		EBA373001EA3A0CC00E214DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA372FF1EA3A0CC00E214DD /* Assets.xcassets */; };
 		EBA373031EA3A0CC00E214DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA373011EA3A0CC00E214DD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -46,7 +39,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E930259428AD7EF500F44210 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E93F912628DF9EE200012D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E94D2B9622DB94AB00A80A76 /* velib-mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "velib-mapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98B1AFF28A021E800056BCE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -73,14 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */,
-				E911A04628DE1BD00011F0CE /* UserDefaultsClient in Frameworks */,
-				E911A04828DE1DD70011F0CE /* Models in Frameworks */,
-				E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */,
-				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
-				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
+				E911A04628DE1BD00011F0CE /* AppFeature in Frameworks */,
 				E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */,
-				E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				E98B1AFF28A021E800056BCE /* App.swift */,
-				E930259428AD7EF500F44210 /* TabBarView.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -183,13 +168,7 @@
 			);
 			name = "velib-map";
 			packageProductDependencies = (
-				E911A04528DE1BD00011F0CE /* UserDefaultsClient */,
-				E911A04728DE1DD70011F0CE /* Models */,
-				E9FB1F2628DE29CF004BFE32 /* ApiClient */,
-				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
-				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
-				E9C79B0528DE449200B870D8 /* MapFeature */,
-				E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				E911A04528DE1BD00011F0CE /* AppFeature */,
 				E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */,
 			);
 			productName = "velib-map";
@@ -291,7 +270,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E930259528AD7EF500F44210 /* TabBarView.swift in Sources */,
 				E98B1B0028A021E800056BCE /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,45 +574,20 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 11.2.0;
+				version = 13.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E911A04528DE1BD00011F0CE /* UserDefaultsClient */ = {
+		E911A04528DE1BD00011F0CE /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = UserDefaultsClient;
-		};
-		E911A04728DE1DD70011F0CE /* Models */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Models;
-		};
-		E9C79B0528DE449200B870D8 /* MapFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MapFeature;
-		};
-		E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
+			productName = AppFeature;
 		};
 		E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		E9FB1F2628DE29CF004BFE32 /* ApiClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ApiClient;
-		};
-		E9FB1F2828DE2B21004BFE32 /* SettingsFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SettingsFeature;
-		};
-		E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FavoriteFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

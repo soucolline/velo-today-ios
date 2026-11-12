@@ -6,25 +6,19 @@
 //  Copyright © 2022 Thomas Guilleminot. All rights reserved.
 //
 
-import Foundation
-import SwiftUI
-import UserDefaultsClient
-import ApiClient
-import SettingsFeature
+import AppFeature
 import Firebase
-import XCTestDynamicOverlay
+import SwiftUI
 
 @main
 struct Application: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   
+  private let screen = AppScreen()
+
   var body: some Scene {
     WindowGroup {
-      if _XCTIsTesting {
-        EmptyView()
-      } else {
-        TabBarView()
-      }
+      screen
     }
   }
 }

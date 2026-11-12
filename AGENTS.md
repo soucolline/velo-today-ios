@@ -1,0 +1,1 @@
+always use xcode native MCP to build
