@@ -1,4 +1,4 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -19,8 +19,8 @@ let package = Package(
       .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"])
     ],
     dependencies: [
-      .package(url: "https://github.com/pointfreeco/swift-sharing", exact: "2.5.2"),
-      .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.3.1")
+      .package(url: "https://github.com/pointfreeco/swift-sharing", exact: "2.10.1"),
+      .package(url: "https://github.com/pointfreeco/swift-navigation", exact: "2.11.2")
     ],
     targets: [
       .target(

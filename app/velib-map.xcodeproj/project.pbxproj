@@ -13,7 +13,6 @@
 		E93F912728DF9EE200012D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93F912628DF9EE200012D2C /* GoogleService-Info.plist */; };
 		E98B1B0028A021E800056BCE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B1AFF28A021E800056BCE /* App.swift */; };
 		E9C79B0628DE449200B870D8 /* MapFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0528DE449200B870D8 /* MapFeature */; };
-		E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */; };
 		E9FB1F2728DE29CF004BFE32 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2628DE29CF004BFE32 /* ApiClient */; };
 		E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E9FB1F2828DE2B21004BFE32 /* SettingsFeature */; };
@@ -80,7 +79,6 @@
 				E9FB1F2B28DE40CA004BFE32 /* FavoriteFeature in Frameworks */,
 				E9FB1F2928DE2B21004BFE32 /* SettingsFeature in Frameworks */,
 				E9C79B0B28DE584E00B870D8 /* FirebaseCrashlytics in Frameworks */,
-				E9C79B0928DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +187,6 @@
 				E9FB1F2828DE2B21004BFE32 /* SettingsFeature */,
 				E9FB1F2A28DE40CA004BFE32 /* FavoriteFeature */,
 				E9C79B0528DE449200B870D8 /* MapFeature */,
-				E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */,
 			);
 			productName = "velib-map";
@@ -596,7 +593,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 11.2.0;
+				version = 13.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -613,11 +610,6 @@
 		E9C79B0528DE449200B870D8 /* MapFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MapFeature;
-		};
-		E9C79B0828DE584E00B870D8 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9C79B0728DE584E00B870D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		E9C79B0A28DE584E00B870D8 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;

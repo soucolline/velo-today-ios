@@ -12,7 +12,6 @@ import UserDefaultsClient
 import ApiClient
 import SettingsFeature
 import Firebase
-import XCTestDynamicOverlay
 
 @main
 struct Application: App {
@@ -20,11 +19,7 @@ struct Application: App {
   
   var body: some Scene {
     WindowGroup {
-      if _XCTIsTesting {
-        EmptyView()
-      } else {
-        TabBarView()
-      }
+      TabBarView()
     }
   }
 }
