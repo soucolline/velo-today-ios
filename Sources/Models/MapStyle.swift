@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum MapStyle: String, CaseIterable {
+public enum MapStyle: String, CaseIterable, Sendable {
   
   case normal = "normalStyle"
   case hybrid = "hybridStyle"

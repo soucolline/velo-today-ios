@@ -6,10 +6,11 @@
 //  Copyright © 2021 Thomas Guilleminot. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 
 public struct Station: Equatable, Identifiable, Sendable {
-  public let id = UUID()
+  public var id: String { code }
   public let freeDocks: Int
   public let code: String
   public let name: String
@@ -42,17 +43,12 @@ public struct Station: Equatable, Identifiable, Sendable {
 }
 
 extension Station {
+  public var coordinate: CLLocationCoordinate2D {
+    CLLocationCoordinate2D(latitude: geolocation.first ?? 0, longitude: geolocation.last ?? 0)
+  }
+
   @MainActor
   public func toStationPin() -> StationMarker {
-    StationMarker(
-      freeDocks: freeDocks,
-      code: code,
-      name: name,
-      totalDocks: totalDocks,
-      freeBikes: freeBikes,
-      freeMechanicalBikes: freeMechanicalBikes,
-      freeElectricBikes: freeElectricBikes,
-      geolocation: geolocation
-    )
+    StationMarker(station: self)
   }
 }

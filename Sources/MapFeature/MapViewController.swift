@@ -1,242 +1,117 @@
-//
-//  MapViewController.swift
-//  velib-map
-//
-//  Created by Thomas Guilleminot on 22/09/2022.
-//  Copyright © 2022 Thomas Guilleminot. All rights reserved.
-//
-
-import UIKit
 import MapKit
-import CoreLocation
-import Combine
-import SwiftUI
 import Models
-import DetailsFeature
-import UIKitNavigation
+import SwiftUI
+import UIKit
 
-class MapViewController: UIViewController {
-  @IBOutlet private var reloadBtn: UIBarButtonItem!
-  
-  @Bindable var viewModel: MapScreenViewModel
-  var cancellables: Set<AnyCancellable> = []
-  
-  private var mapView: MKMapView!
-  private var loadingView = UIHostingController<LoaderView>(rootView: LoaderView())
+final class MapViewController: UIViewController, MKMapViewDelegate {
+  var onReload: (() -> Void)?
+  var onStationTapped: ((Station) -> Void)?
 
-  var loaderMessage = "Chargement des stations"
-  
-  let initialLocation = CLLocation(latitude: 48.866667, longitude: 2.333333)
-  let locationManager = CLLocationManager()
-  
-  init(viewModel: MapScreenViewModel) {
-    self.viewModel = viewModel
-    super.init(nibName: nil, bundle: nil)
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
+  private var annotations: [StationMarker] = []
+  private var displayedCenter: MapLocation?
+  private var displayedStations: [Station] = []
+  private let loadingView = UIHostingController(rootView: LoaderView())
+  private let mapView = MKMapView()
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Stations disponibles"
-    
+    title = "Stations disponibles"
     setupNavigationBar()
     setupMap()
     setupLoader()
-    
-    self.locationManager.delegate = self
-    self.locationManager.requestWhenInUseAuthorization()
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-    self.locationManager.requestLocation()
-    
-    setupViews()
-    
-    Task {
-      await viewModel.fetchAllStations()
-    }
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-    self.viewModel.getMapStyle()
-  }
-  
-  func setupViews() {
-    observe { [weak self] in
-      guard let self else { return }
-      
-      switch self.viewModel.mapStyle {
-      case .normal:
-        self.mapView.mapType = .standard
-      case .hybrid:
-        self.mapView.mapType = .hybrid
-      case .satellite:
-        self.mapView.mapType = .satellite
-      }
-      
-      if self.viewModel.shouldShowLoader {
-        UIView.animate(withDuration: 0.5, delay: 0.0) {
-          self.loadingView.view.alpha = 1.0
-        }
-      } else {
-        UIView.animate(withDuration: 0.5, delay: 0.0) {
-          self.loadingView.view.alpha = 0.0
-        }
-      }
-      
-      if self.viewModel.shouldShowError {
-        let alert = UIAlertController(
-          title: "Erreur",
-          message: self.viewModel.errorText,
-          preferredStyle: .alert
-        )
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-          self.viewModel.hideError()
-        }
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true)
-      }
-    }
-    
-    observe { [weak self] in
-      guard let self else { return }
-      switch viewModel.destination {
-      case .details(let station):
-        let detailView = UIHostingController(
-          rootView: DetailsScreen(
-            viewModel: DetailsScreenViewModel(station: station)
-          )
-        )
 
-        detailView.presentationController?.delegate = self
-        if let sheet = detailView.sheetPresentationController {
-          sheet.detents = [.medium()]
-          sheet.prefersScrollingExpandsWhenScrolledToEdge = true
-          sheet.prefersEdgeAttachedInCompactHeight = true
-        }
-        self.present(detailView, animated: true)
-        
-      case .none:
-        self.dismiss(animated: true)
-      }
+  func render(center: MapLocation, isLoading: Bool, stations: [Station], style: Models.MapStyle) {
+    loadViewIfNeeded()
+
+    switch style {
+    case .normal: mapView.mapType = .standard
+    case .hybrid: mapView.mapType = .hybrid
+    case .satellite: mapView.mapType = .satellite
     }
 
-    self.viewModel.$stations.publisher
-      .sink(receiveValue: { stations in
-        self.mapView.removeAnnotations(self.mapView.annotations)
-        self.mapView.addAnnotations(stations.map { $0.toStationPin() })
-      })
-      .store(in: &cancellables)
+    if displayedCenter != center {
+      let region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude),
+        latitudinalMeters: 2_000,
+        longitudinalMeters: 2_000
+      )
+      mapView.setRegion(region, animated: displayedCenter != nil)
+      displayedCenter = center
+    }
+
+    if displayedStations != stations {
+      mapView.removeAnnotations(annotations)
+      annotations = stations.map { $0.toStationPin() }
+      mapView.addAnnotations(annotations)
+      displayedStations = stations
+    }
+
+    let alpha: CGFloat = isLoading ? 1 : 0
+    if loadingView.view.alpha != alpha {
+      UIView.animate(withDuration: 0.5) { self.loadingView.view.alpha = alpha }
+    }
   }
-  
-  func setupLoader() {
-    self.loadingView.view.backgroundColor = .clear
-    self.loadingView.view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-    self.loadingView.view.center = view.center
-    self.loadingView.view.center.y -= self.loadingView.view.frame.height / 2
-    self.loadingView.view.alpha = 0.0
-    
-    self.view.addSubview(loadingView.view)
+
+  private func setupLoader() {
+    addChild(loadingView)
+    let loader = loadingView.view!
+    loader.backgroundColor = .clear
+    loader.translatesAutoresizingMaskIntoConstraints = false
+    loader.isUserInteractionEnabled = false
+    loader.alpha = 0
+    view.addSubview(loader)
+    NSLayoutConstraint.activate([
+      loader.widthAnchor.constraint(equalToConstant: 300),
+      loader.heightAnchor.constraint(equalToConstant: 100),
+      loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      loader.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50)
+    ])
+    loadingView.didMove(toParent: self)
   }
-  
-  func setupNavigationBar() {
-    let navigationBarAppearance = UINavigationBarAppearance()
-    navigationBarAppearance.configureWithOpaqueBackground()
-    
-    let reloadButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(reloadPins))
-    
-    self.navigationController?.navigationBar.prefersLargeTitles = true
-    self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-    self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-    self.navigationItem.rightBarButtonItem = reloadButton
-  }
-  
-  func setupMap() {
-    self.mapView = MKMapView()
-    view.insertSubview(self.mapView, at: 0)
-      
-    self.mapView.translatesAutoresizingMaskIntoConstraints = false
-    self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-    self.mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-    self.mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-    self.mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-    
-    self.mapView.delegate = self
-    self.mapView.showsUserLocation = true
-  }
-  
-  func centerMapOnLocation(location: CLLocation) {
-    let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius * 2.0,
-      longitudinalMeters: regionRadius * 2.0
+
+  private func setupNavigationBar() {
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.standardAppearance = appearance
+    navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "gobackward"),
+      primaryAction: UIAction { [weak self] _ in self?.onReload?() }
     )
-    self.mapView.setRegion(coordinateRegion, animated: true)
   }
-  
-  @objc private func reloadPins() {
-    Task {
-      await viewModel.fetchAllStations()
-    }
-  }
-  
-}
 
-extension MapViewController: MKMapViewDelegate {
-  
-  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+  private func setupMap() {
+    mapView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(mapView)
+    NSLayoutConstraint.activate([
+      mapView.topAnchor.constraint(equalTo: view.topAnchor),
+      mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
+    mapView.delegate = self
+    mapView.showsUserLocation = true
+  }
+
+  func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? StationMarker else { return nil }
-    
-    let identifier = "velibPin"
-    let pin: MKMarkerAnnotationView
-    
-    if let deqeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-      deqeuedView.annotation = annotation
-      pin = deqeuedView
-    } else {
-      pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-      pin.canShowCallout = true
-      pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
-    }
 
-    pin.glyphText = "\(annotation.freeBikes)"
-    pin.markerTintColor = UIColor.orange
+    let identifier = "velibPin"
+    let pin = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+      ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+    pin.annotation = annotation
+    pin.canShowCallout = true
+    pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+    pin.glyphText = "\(annotation.station.freeBikes)"
+    pin.markerTintColor = .orange
     pin.clusteringIdentifier = "mapCluster"
-    
     return pin
   }
-  
+
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    guard let station = view.annotation as? StationMarker else { return }
-    
-    viewModel.stationPinTapped(station: station)
-  }
-  
-}
-
-extension MapViewController: @preconcurrency CLLocationManagerDelegate {
-  
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let location = manager.location else { return }
-    
-    self.centerMapOnLocation(location: location)
-    self.locationManager.stopUpdatingLocation()
-    self.locationManager.delegate = nil
-  }
-  
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    self.centerMapOnLocation(location: self.initialLocation)
-  }
-  
-}
-
-extension MapViewController: UIAdaptivePresentationControllerDelegate {
-  func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-    viewModel.hideDetails()
+    guard let annotation = view.annotation as? StationMarker else { return }
+    onStationTapped?(annotation.station)
   }
 }
