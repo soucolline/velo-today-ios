@@ -72,8 +72,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
 
   private func setupNavigationBar() {
     let appearance = UINavigationBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    navigationController?.navigationBar.prefersLargeTitles = true
     navigationController?.navigationBar.standardAppearance = appearance
     navigationController?.navigationBar.scrollEdgeAppearance = appearance
     navigationItem.rightBarButtonItem = UIBarButtonItem(

@@ -57,6 +57,7 @@ public struct DetailsScreen: View {
       .frame(maxWidth: .infinity)
       .padding(20)
     }
+    .frame(minWidth: 0, maxWidth: .infinity)
     .navigationTitle(store.station.name)
     .navigationBarTitleDisplayMode(.large)
   }
