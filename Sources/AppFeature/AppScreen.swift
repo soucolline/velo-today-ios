@@ -37,7 +37,6 @@ public struct AppScreen: View {
   public var body: some View {
     TabView {
       MapScreen(store: mapStore)
-        .ignoresSafeAreaForiOS26()
         .tabItem { Label("Stations", systemImage: "bicycle.circle.fill") }
 
       FavoriteListScreen(store: favoritesStore)
@@ -45,17 +44,6 @@ public struct AppScreen: View {
 
       SettingsScreen(store: settingsStore)
         .tabItem { Label("Réglages", systemImage: "gear.circle.fill") }
-    }
-  }
-}
-
-private extension View {
-  @ViewBuilder
-  func ignoresSafeAreaForiOS26() -> some View {
-    if #available(iOS 26.0, *) {
-      ignoresSafeArea()
-    } else {
-      self
     }
   }
 }

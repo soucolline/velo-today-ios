@@ -11,7 +11,7 @@ public struct MapScreen: View {
   }
 
   public var body: some View {
-    MapUIKit(
+    let map = MapUIKit(
       center: store.center,
       isLoading: store.isLoading,
       stations: store.stations,
@@ -19,11 +19,27 @@ public struct MapScreen: View {
       onReload: { store.send(.reloadButtonTapped) },
       onStationTapped: { store.send(.stationPinTapped($0)) }
     )
+
+    ZStack {
+      if #available(iOS 26.0, *) {
+        map.ignoresSafeArea()
+      } else {
+        map
+      }
+    }
     .onAppear { store.send(.onAppear) }
     .alert($store.scope(state: \.alert, action: \.alert))
     .sheet(item: $store.scope(state: \.details, action: \.details)) { detailsStore in
-      DetailsScreen(store: detailsStore)
-        .presentationDetents([.medium])
+      let details = DetailsScreen(store: detailsStore)
+      Group {
+        if #available(iOS 27.1, *) {
+          // The vertical system bar can inset the sheet even when it does not overlap it.
+          details.ignoresSafeArea(.container, edges: .horizontal)
+        } else {
+          details
+        }
+      }
+      .presentationDetents([.medium])
     }
   }
 }
